@@ -484,6 +484,25 @@ textarea:focus-visible, [tabindex]:focus-visible {
 @media(max-width:420px){.result-row{grid-template-columns:70px minmax(0,1fr);gap:6px}.result-verdict{grid-column:2;text-align:left}.result-row strong{font-size:13px;letter-spacing:0}.check-row{grid-template-columns:20px minmax(0,1fr);gap:6px}.check-row b{grid-column:2}.sb-metric-value{font-size:19px}.scene-kicker{font-size:11px}.sb-timeline-counter{font-size:11px}}
 input,select,textarea{font-size:16px}
 .result-row[aria-pressed="true"]{border-color:var(--sb-accent);box-shadow:inset 3px 0 var(--sb-accent);background:var(--sb-surface-2)}
+/* Самостоятельная сборка шаблонов. Все действия доступны нажатием и с клавиатуры. */
+#pattern-lab{display:grid;gap:var(--sb-gap-card);min-width:0}
+.p-task{font-size:14px;line-height:1.7;margin:0;padding:14px;border-radius:12px;background:var(--sb-surface);border-left:3px solid var(--sb-accent)}
+.p-roadmap{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 8px}.p-roadmap span{padding:6px 9px;background:var(--sb-surface-2);border-radius:7px;color:var(--sb-accent-text);font-size:11px;font-weight:750}
+.p-palette{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.p-palette-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:64px;min-height:68px;padding:9px 12px;border:1px solid var(--sb-border);border-radius:10px;background:var(--sb-surface);color:var(--sb-text)}.p-palette-btn strong{font:800 20px var(--sb-mono)}.p-palette-btn span{font-size:11px}.p-palette-btn[aria-pressed=true]{background:var(--sb-action);color:var(--sb-action-text);border-color:var(--sb-action)}
+.p-custom{padding:12px;border:1px solid var(--sb-border);border-radius:12px;background:var(--sb-surface)}.p-custom>label{display:block;font-size:12px;font-weight:750;color:var(--sb-muted);margin-bottom:6px}.p-custom-row{display:flex;flex-wrap:wrap;gap:8px}.p-custom-row input{flex:1 1 110px;width:100%;min-width:0;min-height:44px;padding:8px 12px;border:1px solid var(--sb-border);border-radius:10px;background:var(--sb-card);font-size:16px}
+.p-builder{display:flex;flex-wrap:wrap;gap:8px;padding:18px 12px;margin:16px 0;background:var(--sb-surface);border:1px solid var(--sb-border);border-radius:12px;min-height:120px;align-content:center;justify-content:center}
+.p-slot{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;min-height:88px;min-width:52px;max-width:100%;flex:0 1 64px;padding:8px 5px;border:1px solid var(--sb-border);border-radius:10px;background:var(--sb-card);color:var(--sb-text)}.p-slot.is-block{flex-basis:136px;border-left:4px solid var(--sb-accent)}.p-slot strong{font:800 22px var(--sb-mono);overflow-wrap:anywhere;max-width:100%}.p-slot-caption{font-size:10px;line-height:1.4;overflow-wrap:anywhere}.p-slot.is-empty{border-style:dashed;background:var(--sb-surface)}.p-slot.is-selected{outline:2px solid var(--sb-accent);outline-offset:2px}.p-slot.is-blocked{opacity:.45;border-style:dashed;cursor:not-allowed}
+.p-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.p-actions>.sb-btn{font-size:13px}
+.p-witness{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px}.p-witness span{font:750 16px var(--sb-mono);padding:7px;min-width:26px;text-align:center;border-radius:6px;background:var(--sb-surface)}.p-witness .is-error{outline:2px solid var(--sb-error);color:var(--sb-error-text)}
+.p-mini-pattern{display:flex;flex-wrap:wrap;gap:4px;max-width:100%}.p-mini-token{padding:4px 7px;background:var(--sb-surface-2);border:1px solid var(--sb-border);border-radius:6px;font:700 12px var(--sb-mono);overflow-wrap:anywhere;max-width:100%}.p-mini-token.is-block{border-color:var(--sb-accent)}
+.p-factor-slots{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:16px 0}.p-factor-slot{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-width:52px;min-height:80px;max-width:100%;flex:0 1 66px;padding:8px 5px;border:1px solid var(--sb-border);border-radius:10px;background:var(--sb-surface);color:var(--sb-text)}.p-factor-slot strong{font:800 20px var(--sb-mono);overflow-wrap:anywhere}.p-factor-slot>span:last-child{font-size:11px}.p-factor-slot.is-selected{outline:2px solid var(--sb-accent);outline-offset:2px;background:var(--sb-surface-2)}
+.p-digit-list{display:flex;flex-wrap:wrap;gap:6px}.p-digit-list span{display:grid;place-items:center;min-width:32px;min-height:32px;border:1px solid var(--sb-border);border-radius:7px;background:var(--sb-card);font:700 15px var(--sb-mono)}.p-digit-list span.is-excluded{text-decoration:line-through;color:var(--sb-error-text);border-style:dashed;background:var(--sb-error-surface)}
+.p-formula{padding:14px;margin:14px 0;border:1px solid var(--sb-border);border-radius:12px;background:var(--sb-surface-2);font:700 16px/1.7 var(--sb-mono);color:var(--sb-accent-text);overflow-wrap:anywhere}.p-example-stage{padding:12px;text-align:center;background:var(--sb-surface);border-radius:12px;margin-bottom:16px}.p-real-word{font:800 clamp(18px,3vw,29px)/1.6 var(--sb-mono);letter-spacing:2px;overflow-wrap:anywhere;padding-top:8px}
+.p-collection-summary{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;margin:12px 0;font-size:12px;color:var(--sb-muted)}.p-collection-summary b{font-variant-numeric:tabular-nums;color:var(--sb-text)}.p-collection{display:grid;gap:8px;max-height:360px;overflow-y:auto;padding:3px;min-width:0}.p-collection-item{display:flex;align-items:center;gap:6px;padding:7px;border:1px solid var(--sb-border);border-radius:10px;background:var(--sb-surface);min-width:0}.p-collection-select{display:grid;gap:7px;flex:1;min-width:44px;min-height:44px;text-align:left;padding:6px;background:transparent;color:var(--sb-text);border:0;border-radius:7px}.p-collection-select>span:last-child{font-size:12px;font-weight:750}.p-demo-label{font-size:10px;color:var(--sb-muted);max-width:65px;overflow-wrap:anywhere}
+.p-group-inputs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}.p-group-inputs label{display:grid;gap:6px;align-content:end;font-size:12px;color:var(--sb-muted);font-weight:700;min-width:0}.p-group-inputs input{width:100%;min-width:0;min-height:44px;background:var(--sb-surface);border:1px solid var(--sb-border);border-radius:10px;padding:8px 10px;font-size:16px;color:var(--sb-text)}.p-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}.p-groups strong{color:var(--sb-accent-text);font-size:19px}
+.p-lesson-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media(max-width:1180px){.p-lesson-grid{grid-template-columns:minmax(0,1fr)}.p-group-inputs{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:768px){.p-builder{padding:14px 8px;gap:7px}.p-slot{flex-basis:52px}.p-slot.is-block{flex-basis:111px}.p-lesson-grid{gap:12px}.p-actions>.sb-btn{flex:1 1 140px}.p-groups{grid-template-columns:minmax(0,1fr)}}
 
 </style>
 </head>
@@ -494,6 +513,7 @@ input,select,textarea{font-size:16px}
 <picture class="sb-brand-picture"><source media="(prefers-color-scheme: dark)" srcset="data:image/png;base64,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"><img class="sb-logo" src="data:image/png;base64,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" width="419" height="89" alt="Школково"></picture>
 <nav class="sb-section-nav" aria-label="Режимы задания №8">
 <button type="button" class="sb-section-btn" data-mode="basics" aria-pressed="false">Как считать варианты</button>
+<button type="button" class="sb-section-btn" data-mode="patterns" aria-pressed="false">Собери шаблон</button>
 <button type="button" class="sb-section-btn" data-mode="numbers" aria-pressed="true">Слова и числа</button>
 <button type="button" class="sb-section-btn" data-mode="rules" aria-pressed="false">Ограничения и шаблоны</button>
 <button type="button" class="sb-section-btn" data-mode="perms" aria-pressed="false">Перестановки букв</button>
@@ -501,6 +521,7 @@ input,select,textarea{font-size:16px}
 </nav></aside>
 <main class="sb-main">
 <header class="sb-card sb-hero"><div class="sb-eyebrow">Задание №8 · Комбинаторика</div><h1 id="title">Слова, числа и выбор позиции</h1><p id="description">Исследуйте варианты и условия, сравнивайте перебор и подсчёт по формуле.</p><div class="hero-bottom"><span class="hero-chip">Выбор → проверка → подсчёт</span><span class="hero-chip">Примеры из методички</span></div></header>
+<div id="pattern-lab" hidden></div>
 <section class="sb-card" id="practice-card" hidden aria-labelledby="practice-title"><span class="practice-tag">ПРОВЕРЬ СЕБЯ</span><h2 class="sb-h2" id="practice-title">Сначала ваш прогноз</h2><p id="question" class="sb-caption"></p><form id="prediction-form" class="practice-form"><div class="sb-field"><label for="prediction">Ваш ответ</label><input id="prediction" type="text" inputmode="numeric" maxlength="20" autocomplete="off"></div><button class="sb-btn sb-btn--primary" type="submit">Проверить ответ</button></form><div id="feedback" class="sb-quiz-feedback" role="status" hidden></div></section>
 <section class="sb-card" id="basics-scene" hidden><div class="sb-eyebrow">Выбираем способ подсчёта</div><h2 class="sb-h2" id="basic-title"></h2><div id="basic-decisions" class="decision-grid"></div><div class="sb-surface"><div class="basic-formula" id="basic-formula"></div><p id="basic-substitution" class="sb-numeric"></p><p class="sb-caption" id="basic-explanation"></p></div><h3 class="sb-h3" style="margin-top:20px">Как выглядят варианты</h3><div id="basic-examples" class="basic-examples"></div><p id="basic-count-label" class="sb-caption"></p></section>
 <section class="sb-card" id="explorer" aria-labelledby="scene-title">
@@ -529,7 +550,7 @@ input,select,textarea{font-size:16px}
 <section class="sb-card" id="results-card"><div class="sb-eyebrow">Исследуем список</div><h2 class="sb-h2">Варианты и результаты проверки</h2><p class="sb-caption">Нажмите на строку, чтобы разобрать её по шагам. Номера относятся к полному списку уникальных вариантов.</p><div class="result-filter" style="margin-top:12px"><button type="button" class="sb-btn" id="filter-all" data-action="filter-all" aria-pressed="true">Все варианты</button><button type="button" class="sb-btn" id="filter-valid" data-action="filter-valid" aria-pressed="false">Только подходящие</button></div><div class="results" id="rows"></div><div class="table-footer"><button type="button" class="sb-btn sb-btn--icon" id="table-prev" data-action="table-prev" aria-label="Предыдущая страница вариантов">←</button><output id="table-counter"></output><button type="button" class="sb-btn sb-btn--icon" id="table-next" data-action="table-next" aria-label="Следующая страница вариантов">→</button></div></section>
 <div id="lesson-cards"></div><p class="endnote">Все вычисления выполняются внутри песочницы. Ответы предназначены для самопроверки.</p>
 </main>
-<aside class="sb-card sb-params" aria-labelledby="params-title"><h2 class="sb-h2" id="params-title">Параметры</h2><p class="sb-caption" id="settings-description">Измените настройки и нажмите «Применить». Новый опыт начнётся с первого варианта.</p><form id="settings-form"><div id="fields"></div><p class="field-error" id="field-error" role="status" hidden></p><div class="settings-actions"><button type="submit" class="sb-btn sb-btn--primary" id="apply">Применить</button></div></form><div class="params-divider"></div><label class="sb-toggle"><input type="checkbox" id="practice-toggle"><span><b>Проверь себя</b><br>Сначала предложить свой ответ</span></label><p class="sb-caption">Итоговый ответ и разбор появятся после проверки. Все разделы доступны в любой момент.</p></aside>
+<aside class="sb-card sb-params" aria-labelledby="params-title"><h2 class="sb-h2" id="params-title">Параметры</h2><p class="sb-caption" id="settings-description">Измените настройки и нажмите «Применить». Новый опыт начнётся с первого варианта.</p><form id="settings-form"><div id="fields"></div><p class="field-error" id="field-error" role="status" hidden></p><div class="settings-actions"><button type="submit" class="sb-btn sb-btn--primary" id="apply">Применить</button></div></form><div id="practice-settings"><div class="params-divider"></div><label class="sb-toggle"><input type="checkbox" id="practice-toggle"><span><b>Проверь себя</b><br>Сначала предложить свой ответ</span></label><p class="sb-caption">Итоговый ответ и разбор появятся после проверки. Все разделы доступны в любой момент.</p></div></aside>
 </div>
 <script>
 /* Математика лаборатории: точный подсчёт по префиксам, без полного перебора. */
@@ -610,21 +631,379 @@ const api={factorial,choose,unique,createModel};
 if(typeof module!=='undefined')module.exports=api;else root.Combinatorics=api;
 })(typeof window==='undefined'?globalThis:window);
 
+/* Конструктор шаблонов: декартовы произведения, проверка всех слов и покрытие. */
+(function(root){
+'use strict';
+const CASES={
+ alternate:{id:'alternate',name:'Чередование чётности',kind:'parity',length:6,alphabet:'0123456',task:'Сколько существует шестизначных семиричных чисел, в которых чётные и нечётные цифры чередуются? Цифры могут повторяться.',palette:['Ч','Н','*','≠0','?'],rule:'alternate'},
+ odd:{id:'odd',name:'Пять нечётных без соседства',kind:'parity',length:12,alphabet:'01234567',task:'Восьмеричная запись числа содержит 12 знаков и ровно пять нечётных цифр. Никакие две нечётные цифры не стоят рядом. Сколько таких чисел?',palette:['Ч','Н','*','≠0','?'],rule:'odd',count:5},
+ ay:{id:'ay',name:'СЛУЧАЙ: обязательный блок АЙ',kind:'letters',length:7,alphabet:'СЛУЧАЙ',task:'Из букв СЛУЧАЙ составляют семибуквенные слова. В каждом слове ровно одна Й, которая стоит непосредственно после А. Сколько слов можно составить?',palette:['АЙ','*','А','?'],rule:'ay'},
+ vowels:{id:'vowels',name:'Гласная в начале, согласная в конце',kind:'letters',length:5,alphabet:'АСУ',task:'Из букв А, С, У составляют слова длиной 5. Слово начинается с гласной и заканчивается согласной. Буквы могут повторяться. Сколько различных слов получится?',palette:['Г','С','*','А','У','?'],rule:'vowels'}
+};
+const tokensFor=c=>[...c.palette,'↳'];
+const cleanSet=(s,c)=>[...new Set([...String(s).toUpperCase()].filter(x=>c.alphabet.includes(x)))].join('');
+function blank(c){return Array(c.length).fill('?');}
+function domains(tokens,c){
+ if(!Array.isArray(tokens)||tokens.length!==c.length)return null;
+ const result=[];
+ for(let i=0;i<c.length;i++){
+  const t=tokens[i];let chars='';
+  if(t==='?'||!t)return null;
+  if(t==='АЙ'){if(c.rule!=='ay'||tokens[i+1]!=='↳')return null;chars='А';}
+  else if(t==='↳'){if(c.rule!=='ay'||tokens[i-1]!=='АЙ')return null;chars='Й';}
+  else if(t==='*')chars=c.rule==='ay'?c.alphabet.replace('Й',''):c.alphabet;
+  else if(t==='Ч')chars=[...c.alphabet].filter(x=>Number(x)%2===0).join('');
+  else if(t==='Н')chars=[...c.alphabet].filter(x=>Number(x)%2===1).join('');
+  else if(t==='≠0')chars=c.alphabet.replace('0','');
+  else if(t==='Г')chars=[...c.alphabet].filter(x=>'АЕЁИОУЫЭЮЯ'.includes(x)).join('');
+  else if(t==='С'&&c.rule==='vowels')chars='С';
+  else if(t.startsWith('set:'))chars=cleanSet(t.slice(4),c);
+  else if(c.alphabet.includes(t)&&t.length===1)chars=t;
+  else return null;
+  if(!i&&c.kind==='parity')chars=chars.replace('0','');
+  result.push([...chars]);
+ }
+ return result;
+}
+function reason(word,c){
+ if(c.kind==='parity'&&word[0]==='0')return {message:'Число не может начинаться с нуля.',positions:[0]};
+ if(c.rule==='alternate')for(let i=1;i<word.length;i++)if(Number(word[i])%2===Number(word[i-1])%2)return {message:'В позициях '+i+' и '+(i+1)+' стоят цифры одной чётности.',positions:[i-1,i]};
+ if(c.rule==='odd'){
+  const n=[...word].filter(x=>Number(x)%2===1).length;
+  if(n!==c.count)return {message:'Нечётных цифр '+n+', а должно быть ровно '+c.count+'.',positions:[]};
+  for(let i=1;i<word.length;i++)if(Number(word[i])%2&&Number(word[i-1])%2)return {message:'Нечётные цифры в позициях '+i+' и '+(i+1)+' стоят рядом.',positions:[i-1,i]};
+ }
+ if(c.rule==='ay'){
+  if([...word].filter(x=>x==='Й').length!==1)return {message:'Буква Й должна встречаться ровно один раз.',positions:[]};
+  const i=word.indexOf('Й');if(!i||word[i-1]!=='А')return {message:'Перед Й должна непосредственно стоять А.',positions:[i]};
+ }
+ if(c.rule==='vowels'){
+  if(!'АУ'.includes(word[0]))return {message:'Первая буква должна быть гласной.',positions:[0]};
+  if(word.at(-1)!=='С')return {message:'Последняя буква должна быть согласной С.',positions:[c.length-1]};
+ }
+ return null;
+}
+function transition(c,pos,last,count,bad,ch){
+ if(c.rule==='alternate'&&pos&&Number(ch)%2===Number(last)%2)bad=true;
+ if(c.rule==='odd'){if(pos&&Number(ch)%2&&Number(last)%2)bad=true;count+=Number(ch)%2;}
+ if(c.rule==='ay'){if(ch==='Й'){count++;if(last!=='А')bad=true;}}
+ if(c.rule==='vowels'&&(!pos&&!'АУ'.includes(ch)||pos===c.length-1&&ch!=='С'))bad=true;
+ return {count,bad};
+}
+function analyze(tokens,c){
+ const ds=domains(tokens,c);
+ if(!ds)return {complete:false,valid:false,message:'Заполните все позиции. Блок АЙ занимает две соседние ячейки.'};
+ const total=ds.reduce((r,d)=>r*d.length,1),memo=new Map();
+ function walk(pos,last,count,bad){
+  if(pos===c.length){const ok=!bad&&(c.rule!=='odd'||count===c.count)&&(c.rule!=='ay'||count===1);return ok?1:0;}
+  const key=[pos,last,count,+bad].join('|');if(memo.has(key))return memo.get(key);
+  let n=0;for(const ch of ds[pos]){const next=transition(c,pos,last,count,bad,ch);n+=walk(pos+1,ch,next.count,next.bad);}memo.set(key,n);return n;
+ }
+ const validCount=walk(0,'',0,false);
+ function find(valid){
+  let word='',count=0,bad=false;
+  for(let pos=0;pos<c.length;pos++){
+   let chosen=false;
+   for(const ch of ds[pos]){const next=transition(c,pos,word.at(-1)||'',count,bad,ch),good=walk(pos+1,ch,next.count,next.bad),raw=ds.slice(pos+1).reduce((r,d)=>r*d.length,1);
+    if(valid?good>0:raw>good){word+=ch;count=next.count;bad=next.bad;chosen=true;break;}}
+   if(!chosen)return null;
+  }
+  return word;
+ }
+ const counterexample=validCount<total?find(false):null;
+ return {complete:true,valid:total>0&&validCount===total,total,validCount,domains:ds,factors:ds.map(d=>d.length),example:validCount?find(true):null,counterexample,violation:counterexample?reason(counterexample,c):null,message:!total?'В одной из позиций нет допустимых символов.':validCount===total?'Все слова этого шаблона выполняют условие.':'Шаблон допускает слова, нарушающие условие.'};
+}
+function canonical(c){
+ if(c.rule==='alternate')return [Array.from({length:c.length},(_,i)=>i%2?'Н':'Ч'),Array.from({length:c.length},(_,i)=>i%2?'Ч':'Н')];
+ if(c.rule==='ay')return Array.from({length:c.length-1},(_,i)=>{const p=Array(c.length).fill('*');p[i]='АЙ';p[i+1]='↳';return p;});
+ if(c.rule==='vowels')return [['Г','*','*','*','С']];
+ const out=[];function visit(s,n){if(s.length===c.length){if(n===c.count)out.push([...s]);return;}visit(s+'Ч',n);if(n<c.count&&s.at(-1)!=='Н')visit(s+'Н',n+1);}visit('',0);return out;
+}
+function intersection(a,b,c){const da=domains(a,c),db=domains(b,c);if(!da||!db)return null;let word='';for(let i=0;i<c.length;i++){const common=da[i].find(ch=>db[i].includes(ch));if(!common)return null;word+=common;}return word;}
+function findUncovered(c,patterns){
+ const boxes=patterns.map(p=>domains(p,c)).filter(Boolean);
+ function outside(ds,active,pos,prefix){
+  if(active.some(box=>ds.slice(pos).every((d,j)=>d.every(ch=>box[pos+j].includes(ch)))))return null;
+  if(pos===ds.length)return prefix;
+  if(!active.length)return prefix+ds.slice(pos).map(d=>d[0]).join('');
+  for(const ch of ds[pos]){const found=outside(ds,active.filter(box=>box[pos].includes(ch)),pos+1,prefix+ch);if(found)return found;}
+  return null;
+ }
+ for(const p of canonical(c)){const found=outside(domains(p,c),boxes,0,'');if(found)return found;}return null;
+}
+function collection(c,patterns){
+ let total=0;const accepted=[];
+ for(const p of patterns){const a=analyze(p,c);if(!a.valid)continue;if(accepted.some(other=>intersection(p,other,c)))continue;accepted.push(p);total+=a.total;}
+ return {patterns:accepted,total,uncovered:findUncovered(c,accepted)};
+}
+function remaining(c,covered,bases=canonical(c)){
+ const cuts=covered.map(t=>domains(t,c)).filter(Boolean),out=[];
+ function subtract(box,cut){
+  const shared=box.map((d,i)=>d.filter(ch=>cut[i].includes(ch)));
+  if(shared.some(d=>!d.length))return [box];
+  const pieces=[],core=box.map(d=>d.slice());
+  for(let i=0;i<box.length;i++){const diff=core[i].filter(ch=>!cut[i].includes(ch));if(diff.length){const piece=core.map(d=>d.slice());piece[i]=diff;pieces.push(piece);}core[i]=shared[i];}
+  return pieces;
+ }
+ for(const base of bases){let pieces=[domains(base,c)];for(const cut of cuts)pieces=pieces.flatMap(box=>subtract(box,cut));for(const box of pieces)out.push(box.every((d,i)=>d.join('')===domains(base,c)[i].join(''))?base.slice():box.map(d=>'set:'+d.join('')));}
+ return out;
+}
+function wordAt(tokens,c,index){const ds=domains(tokens,c);if(!ds||ds.some(d=>!d.length))return '';let s='';for(let i=ds.length-1;i>=0;i--){s=ds[i][index%ds[i].length]+s;index=Math.floor(index/ds[i].length);}return s;}
+function notation(p){return p.map(t=>t==='↳'?'':t.startsWith('set:')?'['+t.slice(4)+']':t).join('');}
+function newWork(c){return {draft:blank(c),collection:[],sample:null,sampleStep:0,generated:0,checkRequested:false,coverageRequested:false,groupRequested:false,groupInputs:{a:'',b:'',total:''},groupChecked:false,repairPosition:-1,repairCount:'',repairReason:'',repairChecked:false};}
+function initial(){return {caseId:'alternate',phase:'build',palette:'Ч',custom:'',selected:0,work:Object.fromEntries(Object.values(CASES).map(c=>[c.id,newWork(c)]))};}
+function normalize(saved){
+ const d=initial();if(!saved||typeof saved!=='object')return d;
+ if(CASES[saved.caseId])d.caseId=saved.caseId;if(['build','collect','group','repair'].includes(saved.phase))d.phase=saved.phase;
+ if(saved.phase==='repair')d.caseId='alternate';
+ const cur=CASES[d.caseId];d.custom=typeof saved.custom==='string'?cleanSet(saved.custom,cur):'';
+ d.palette=typeof saved.palette==='string'&&((tokensFor(cur).includes(saved.palette)&&saved.palette!=='↳')||(saved.palette.startsWith('set:')&&cleanSet(saved.palette.slice(4),cur)))?saved.palette:'?';d.selected=Number.isInteger(saved.selected)?Math.max(0,Math.min(cur.length-1,saved.selected)):0;
+ function pattern(p,c){return Array.isArray(p)&&p.length===c.length&&p.every(t=>typeof t==='string'&&(tokensFor(c).includes(t)||t.startsWith('set:')&&t.length<=20))?p.slice():null;}
+ for(const c of Object.values(CASES)){
+  const s=saved.work?.[c.id];if(!s||typeof s!=='object')continue;const w=d.work[c.id];w.draft=pattern(s.draft,c)||blank(c);w.sample=pattern(s.sample,c);
+  const candidates=Array.isArray(s.collection)?s.collection.slice(0,80).map(p=>pattern(p,c)).filter(Boolean):[];w.collection=collection(c,candidates).patterns;
+  w.generated=Number.isInteger(s.generated)?Math.max(0,Math.min(canonical(c).length,s.generated)):0;
+  const a=w.sample?analyze(w.sample,c):null;if(!a?.valid)w.sample=null;
+  w.sampleStep=a?.valid&&Number.isInteger(s.sampleStep)?Math.max(0,Math.min(c.length+1+a.total,s.sampleStep)):0;
+  for(const flag of ['checkRequested','coverageRequested','groupRequested','groupChecked','repairChecked'])w[flag]=s[flag]===true;
+  for(const k of ['a','b','total'])w.groupInputs[k]=typeof s.groupInputs?.[k]==='string'?s.groupInputs[k].replace(/[^0-9 ]/g,'').slice(0,20):'';
+  w.repairPosition=Number.isInteger(s.repairPosition)?Math.max(-1,Math.min(5,s.repairPosition)):-1;
+  w.repairCount=typeof s.repairCount==='string'?s.repairCount.replace(/\D/g,'').slice(0,2):'';w.repairReason=['zero','repeat','parity'].includes(s.repairReason)?s.repairReason:'';
+ }
+ return d;
+}
+const api={CASES,blank,cleanSet,domains,analyze,reason,canonical,intersection,findUncovered,collection,remaining,wordAt,notation,initial,normalize};
+if(typeof module!=='undefined')module.exports=api;else root.TemplateMath=api;
+})(typeof window==='undefined'?globalThis:window);
+
+/* UI самостоятельного конструирования. В состоянии — действия ученика, не готовые ответы. */
+const PatternUI=(()=>{
+ const M=TemplateMath;
+ let ticking=null,tickKind='',feedback=null,focusPosition=null;
+ const p=()=>state.patterns,c=()=>M.CASES[p().caseId],w=()=>p().work[p().caseId];
+ const el=id=>document.getElementById(id),format=n=>new Intl.NumberFormat('ru-RU').format(n);
+ const html=s=>String(s).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
+ const action=(label,name,attrs='')=>'<button type="button" class="sb-btn" data-paction="'+name+'" '+attrs+'>'+label+'</button>';
+ function stop(save=true){if(ticking){clearInterval(ticking);ticking=null;tickKind='';if(save)persist();}}
+ function settings(){
+  const selector=(label,key,value,options)=>'<div class="sb-field"><label>'+label+'<select data-pfield="'+key+'" aria-label="'+label+'">'+options.map(([v,t])=>'<option value="'+v+'" '+(v===value?'selected':'')+'>'+t+'</option>').join('')+'</select></label></div>';
+  return selector('Задача конструктора','caseId',p().caseId,Object.values(M.CASES).map(x=>[x.id,({alternate:'Чередование чётности',odd:'5 нечётных без соседства',ay:'СЛУЧАЙ: блок АЙ',vowels:'Гласная → согласная'})[x.id]]))+selector('Учебный этап','phase',p().phase,[['build','1. Соберите один шаблон'],['collect','2. Найдите все шаблоны'],['group','3. Выведите общую формулу'],['repair','Найдите ошибку в подсчёте']])+'<p class="sb-caption">Выбор задачи и этапа применяется сразу. Результаты каждой задачи сохраняются отдельно.</p><div class="params-divider"></div><h3 class="sb-h3">Как работать</h3><p class="sb-caption">Выберите карточку из палитры, затем нажмите на позицию. Для замены блока сначала уберите его карточкой «?».</p>'+action('Начать эту задачу заново','restart')+'<div id="p-restart-confirm" hidden><p class="sb-caption">Очистить вашу коллекцию и сборку только для этой задачи?</p>'+action('Да, очистить','restart-confirm')+action('Оставить','restart-cancel')+'</div>';
+ }
+ function collectionView(){
+  const list=w().collection.map(x=>x.slice());
+  list.push(...M.remaining(c(),w().collection,M.canonical(c()).slice(0,w().generated)));
+  return M.collection(c(),list);
+ }
+ function label(t){return t==='*'?'Любой':t==='?'?'Убрать':t==='Г'?'Гласная':t==='С'&&c().rule==='vowels'?'Согласная':t==='Ч'?'Чётная':t==='Н'?'Нечётная':t==='≠0'?'Без нуля':t==='АЙ'?'Блок из 2 букв':t.startsWith('set:')?'Свой набор':'Буква';}
+ function templateMarkup(tokens,interactive=false){
+  return tokens.map((t,i)=>{
+   if(t==='↳')return '';
+   const blocked=c().rule==='odd'&&p().palette==='Н'&&[tokens[i-1],tokens[i+1]].includes('Н');
+   const classes='p-slot '+(t==='?'?'is-empty':'')+(t==='АЙ'?' is-block':'')+(p().selected===i&&interactive?' is-selected':'')+(blocked?' is-blocked':'');
+   return interactive?'<button type="button" class="'+classes+'" data-paction="place" data-pos="'+i+'" aria-label="Позиция '+(i+1)+(t==='АЙ'?' и '+(i+2):'')+': '+html(t.startsWith('set:')?t.slice(4):t)+(blocked?'. Нечётная здесь недоступна из-за соседней Н':'')+'" aria-disabled="'+blocked+'"><span class="slot-index">'+(i+1)+(t==='АЙ'?'–'+(i+2):'')+'</span><strong>'+html(t.startsWith('set:')?'['+t.slice(4)+']':t)+'</strong><span class="p-slot-caption">'+(t==='?'?'Выберите':label(t))+'</span></button>':'<span class="p-mini-token '+(t==='АЙ'?'is-block':'')+'">'+html(t.startsWith('set:')?'['+t.slice(4)+']':t)+'</span>';
+  }).join('');
+ }
+ function boot(){
+  el('pattern-lab').innerHTML=`
+<section class="sb-card" aria-labelledby="p-title"><div class="sb-scene-head"><div><div class="sb-eyebrow">Соберите → посмотрите → посчитайте</div><h2 class="sb-h2" id="p-title">Собери шаблон</h2></div><span class="sb-status" id="p-status">Конструктор</span></div><p class="p-task" id="p-task"></p><div class="p-roadmap" aria-label="Этапы работы"><span>01 · Соберите</span><span>02 · Найдите все</span><span>03 · Обобщите</span></div><p class="sb-caption" id="p-phase-note"></p></section>
+<section class="sb-card" id="p-build-card" aria-labelledby="p-build-title"><div class="sb-eyebrow">Ваша математическая модель</div><h2 class="sb-h2" id="p-build-title">Заполните позиции по условию</h2><p class="sb-caption">Сначала выберите карточку, затем нажмите на ячейку. Проверка учитывает все слова, которые описывает собранная схема.</p><div class="p-palette" id="p-palette" role="group" aria-label="Карточки шаблона"></div><div class="p-custom"><label for="p-custom-input">Свой набор символов для одной позиции</label><div class="p-custom-row"><input id="p-custom-input" type="text" maxlength="12" autocomplete="off" spellcheck="false"><button type="button" class="sb-btn" data-paction="custom">Выбрать набор</button></div><p class="sb-caption" id="p-custom-hint"></p></div><div class="p-builder" id="p-builder" role="group" aria-label="Позиции шаблона"></div><p class="sb-caption" id="p-block-note"></p><div class="p-actions"><button type="button" class="sb-btn sb-btn--primary" data-paction="check">Проверить шаблон</button><button type="button" class="sb-btn" data-paction="add">Добавить шаблон</button><button type="button" class="sb-btn" data-paction="clear">Очистить поле</button></div><div id="p-feedback" class="sb-quiz-feedback" role="status" aria-live="polite" hidden></div></section>
+<section class="sb-card" id="p-sample-card" aria-labelledby="p-sample-title" hidden><div class="sb-scene-head"><div><div class="sb-eyebrow">От обозначений к реальным символам</div><h2 class="sb-h2" id="p-sample-title">Что описывает шаблон</h2></div><span class="sb-status" id="p-sample-status"></span></div><div class="p-mini-pattern" id="p-sample-pattern"></div><div id="p-factor-slots" class="p-factor-slots" role="group" aria-label="Число вариантов по позициям"></div><div id="p-domain-detail" class="sb-surface"></div><div class="p-formula" id="p-product"></div><div class="p-example-stage"><span class="sb-caption" id="p-example-caption"></span><div class="p-real-word" id="p-real-word"></div></div><section class="sb-playback" aria-label="Управление заполнением шаблона"><div class="sb-timeline-head"><h3 class="sb-timeline-title" id="p-timeline-title">Ход алгоритма</h3><output id="p-counter" class="sb-timeline-counter" for="p-range"></output></div><input class="sb-playback-range" type="range" id="p-range" min="0" max="1" value="0" aria-labelledby="p-timeline-title"><div class="sb-playback-toolbar"><div class="sb-playback-actions"><button type="button" class="sb-btn sb-btn--icon" data-paction="sample-back" aria-label="Назад по заполнению шаблона">←</button><button type="button" class="sb-btn sb-btn--primary" id="p-play" data-paction="sample-play">▶ Запуск</button><button type="button" class="sb-btn sb-btn--icon" id="p-forward" data-paction="sample-forward" aria-label="Вперёд по заполнению шаблона">→</button><button type="button" class="sb-btn" data-paction="sample-next">Следующее слово</button><button type="button" class="sb-btn" data-paction="sample-reset">↺ Сброс</button></div><div class="sb-playback-speed" role="group" aria-label="Скорость заполнения шаблона"><span class="sb-speed-label">Скорость</span><div class="sb-speed-segment"><button type="button" class="sb-speed-btn" data-pspeed="0.5" aria-pressed="false">0,5×</button><button type="button" class="sb-speed-btn" data-pspeed="1" aria-pressed="true">1×</button><button type="button" class="sb-speed-btn" data-pspeed="2" aria-pressed="false">2×</button></div></div></div><div class="sb-step-spotlight"><span class="sb-step-spotlight-label">ТЕКУЩИЙ ШАГ</span><span id="p-sample-explain" role="status"></span></div></section></section>
+<section class="sb-card" id="p-collection-card" aria-labelledby="p-collection-title"><div class="sb-eyebrow">Складываем только непересекающиеся случаи</div><h2 class="sb-h2" id="p-collection-title">Коллекция найденных шаблонов</h2><div class="p-collection-summary" id="p-collection-summary"></div><div id="p-collection" class="p-collection"></div><div class="p-actions"><button type="button" class="sb-btn sb-btn--primary" data-paction="coverage">Все ли случаи учтены?</button><button type="button" class="sb-btn" id="p-generate" data-paction="generate">Показать остальные по шагам</button><button type="button" class="sb-btn" data-paction="groups">Перейти к общей формуле</button></div><div id="p-coverage" class="sb-quiz-feedback" role="status" aria-live="polite" hidden></div><p id="p-generation-note" class="sb-caption"></p></section>
+<section class="sb-card" id="p-groups-card" hidden aria-labelledby="p-groups-title"><div class="sb-eyebrow">От отдельных схем к семействам</div><h2 class="sb-h2" id="p-groups-title">Выведите общую формулу</h2><p class="sb-caption" id="p-group-task"></p><form id="p-group-form"><div class="p-group-inputs"><label><span id="p-group-label-a"></span><input type="text" inputmode="numeric" id="p-group-a" maxlength="20" required></label><label><span id="p-group-label-b"></span><input type="text" inputmode="numeric" id="p-group-b" maxlength="20" required></label><label>Всего подходящих слов / чисел<input type="text" inputmode="numeric" id="p-group-total" maxlength="20" required></label></div><button type="submit" class="sb-btn sb-btn--primary">Проверить формулу</button></form><div id="p-group-feedback" class="sb-quiz-feedback" role="status" hidden></div><div id="p-groups" class="p-groups" hidden></div><div id="p-group-formula" class="p-formula" hidden></div></section>
+<section class="sb-card" id="p-repair-card" hidden aria-labelledby="p-repair-title"><div class="sb-eyebrow">Найдите и объясните ошибку</div><h2 class="sb-h2" id="p-repair-title">Верный шаблон, неверный множитель</h2><p class="sb-caption">Шаблон ЧНЧНЧН подходит условию. Но в одном из множителей подсчёта допущена ошибка. Нажмите на эту позицию.</p><div id="p-repair-slots" class="p-factor-slots"></div><form id="p-repair-form"><div class="sb-field"><label for="p-repair-count">Сколько цифр на выбранной позиции?</label><input id="p-repair-count" type="number" min="0" max="7" required></div><div class="sb-field"><label for="p-repair-reason">Почему нужен другой множитель?</label><select id="p-repair-reason" required><option value="">Выберите объяснение</option><option value="zero">Ноль не может быть первой цифрой числа</option><option value="repeat">Все использованные цифры надо убрать</option><option value="parity">Ноль является нечётной цифрой</option></select></div><button type="submit" class="sb-btn sb-btn--primary">Проверить исправление</button></form><div class="sb-quiz-feedback" id="p-repair-feedback" role="status" hidden></div></section>
+<div class="p-lesson-grid" id="p-lessons"></div>`;
+  el('pattern-lab').addEventListener('click',event=>{
+   const b=event.target.closest('button');if(!b||loading)return;
+   if(b.dataset.pspeed){const play=tickKind;stop(false);state.speed=+b.dataset.pspeed;if(play==='sample')startSample();else if(play==='generate')startGeneration();renderSample();persist();return;}
+   const a=b.dataset.paction;if(!a)return;
+   if(a==='palette'){p().palette=b.dataset.token;feedback=null;renderBuilder();persist();}
+   if(a==='place')place(+b.dataset.pos);
+   if(a==='custom'){const chars=M.cleanSet(p().custom,c());if(!chars){showFeedback('Выберите хотя бы один символ из алфавита задачи.',false);return;}p().palette='set:'+chars;renderBuilder();persist();}
+   if(a==='clear'){stop(false);w().draft=M.blank(c());w().checkRequested=false;feedback=null;renderBuilder();persist();}
+   if(a==='check')check(false);
+   if(a==='add')check(true);
+   if(a==='sample-select'){const all=collectionView().patterns;setSample(all[+b.dataset.index]);renderSample();persist();}
+   if(a==='remove'){stop(false);const index=+b.dataset.index;w().collection.splice(index,1);w().coverageRequested=false;feedback=null;renderCollection();persist();}
+   if(a==='coverage'){w().coverageRequested=true;renderCollection();persist();}
+   if(a==='generate'){if(tickKind==='generate'){stop();renderCollection();}else startGeneration();}
+   if(a==='groups'){stop(false);p().phase='group';w().groupRequested=true;render();$('fields').innerHTML=settings();el('p-group-a').focus();persist();}
+   if(a==='sample-position'){p().selected=+b.dataset.pos;renderSample();persist();}
+   if(a==='sample-back')sampleMove(w().sampleStep-1);
+   if(a==='sample-forward')sampleMove(w().sampleStep+1);
+   if(a==='sample-next')sampleMove(Math.max(c().length+2,w().sampleStep+1));
+   if(a==='sample-reset')sampleMove(0);
+   if(a==='sample-play'){if(tickKind==='sample'){stop();renderSample();}else startSample();}
+   if(a==='repair-position'){w().repairPosition=+b.dataset.pos;w().repairChecked=false;renderRepair();persist();}
+  });
+  el('p-palette').addEventListener('dragstart',event=>{const b=event.target.closest('[data-token]');if(b){event.dataTransfer.setData('application/x-task8-token',b.dataset.token);event.dataTransfer.effectAllowed='copy';}});
+  el('p-builder').addEventListener('dragover',event=>{if([...event.dataTransfer.types].includes('application/x-task8-token')){event.preventDefault();event.dataTransfer.dropEffect='copy';}});
+  el('p-builder').addEventListener('drop',event=>{const b=event.target.closest('[data-pos]'),token=event.dataTransfer.getData('application/x-task8-token');if(b&&c().palette.includes(token)){event.preventDefault();p().palette=token;place(+b.dataset.pos);}});
+  el('p-custom-input').addEventListener('input',event=>{p().custom=M.cleanSet(event.target.value,c());persist(true);});
+  el('p-range').addEventListener('input',event=>sampleMove(+event.target.value,true));
+  for(const [id,key]of [['p-group-a','a'],['p-group-b','b'],['p-group-total','total']])el(id).addEventListener('input',event=>{w().groupInputs[key]=event.target.value.replace(/[\u0000-\u001f]/g,'').slice(0,20);w().groupChecked=false;el('p-group-feedback').hidden=true;el('p-groups').hidden=true;el('p-group-formula').hidden=true;persist(true);});
+  el('p-group-form').addEventListener('submit',event=>{event.preventDefault();w().groupChecked=true;renderGroups();persist();});
+  el('p-repair-count').addEventListener('input',event=>{w().repairCount=event.target.value.slice(0,2);w().repairChecked=false;el('p-repair-feedback').hidden=true;persist(true);});
+  el('p-repair-reason').addEventListener('change',event=>{w().repairReason=event.target.value;w().repairChecked=false;el('p-repair-feedback').hidden=true;persist();});
+  el('p-repair-form').addEventListener('submit',event=>{event.preventDefault();w().repairChecked=true;renderRepair();persist();});
+ }
+ function showFeedback(text,ok=false,extra=''){
+  el('p-feedback').hidden=false;el('p-feedback').className='sb-quiz-feedback '+(ok?'is-success':'is-error');el('p-feedback').innerHTML=html(text)+extra;
+ }
+ function renderBuilder(){
+  const focusedPalette=document.activeElement?.dataset?.paction==='palette'?document.activeElement.dataset.token:null;
+  const palette=c().palette;
+  el('p-palette').innerHTML=palette.map(t=>'<button type="button" class="p-palette-btn" draggable="true" data-paction="palette" data-token="'+t+'" aria-pressed="'+(p().palette===t)+'"><strong>'+html(t)+'</strong><span>'+label(t)+'</span></button>').join('');
+  el('p-custom-input').value=p().custom;el('p-custom-hint').textContent='Алфавит задачи: '+c().alphabet.split('').join(', ')+'. '+(p().palette.startsWith('set:')?'Выбран набор ['+p().palette.slice(4)+']. Нажмите на нужную позицию.':'Можно задать более узкий набор, например 246 или АУ.');
+  el('p-builder').innerHTML=templateMarkup(w().draft,true);
+  el('p-block-note').textContent=c().rule==='ay'?'Блок АЙ занимает две позиции. «*» — одна из букв С, Л, У, Ч, А (без Й).':c().rule==='odd'?'При выбранной Н соседние с другой Н позиции заблокированы. Для переноса сначала уберите старую Н карточкой «?».':'Карточка «?» очищает позицию. «*» разрешает любой символ; в первой цифре ноль исключается по условию.';
+  if(feedback){showFeedback(feedback.text,feedback.ok,feedback.extra||'');}else if(w().checkRequested){const a=M.analyze(w().draft,c());analysisFeedback(a);}else el('p-feedback').hidden=true;
+  if(focusedPalette!==null)el('p-palette').querySelectorAll('[data-token]').forEach(b=>{if(b.dataset.token===focusedPalette)b.focus({preventScroll:true});});
+  if(focusPosition!==null){el('p-builder').querySelector('[data-pos="'+focusPosition+'"]')?.focus({preventScroll:true});focusPosition=null;}
+ }
+ function analysisFeedback(a){
+  let text=a.message,extra='';
+  if(a.complete&&a.counterexample){text+=' Например, '+a.counterexample+': '+a.violation.message;extra='<div class="p-witness" aria-label="Пример, нарушающий условие">'+[...a.counterexample].map((ch,i)=>'<span class="'+(a.violation.positions.includes(i)?'is-error':'')+'">'+html(ch)+'</span>').join('')+'</div>';}
+  if(a.valid)text+=' Этот шаблон описывает '+format(a.total)+' вариантов. Добавьте его в коллекцию или изучите заполнение по шагам.';
+  showFeedback(text,a.valid,extra);
+ }
+ function place(index){
+  const t=p().palette;if(t==='Н'&&c().rule==='odd'&&[w().draft[index-1],w().draft[index+1]].includes('Н')){feedback={text:'Здесь Н недоступна: рядом уже стоит нечётная цифра. Уберите соседнюю Н или выберите Ч.',ok:false};renderBuilder();return;}
+  stop(false);const d=w().draft.slice();
+  function detach(i){if(d[i]==='АЙ'){d[i]='?';if(i+1<d.length)d[i+1]='?';}else if(d[i]==='↳'){d[i]='?';if(i>0)d[i-1]='?';}}
+  if(t==='АЙ'&&index===d.length-1){feedback={text:'Блоку АЙ нужны две позиции. Последняя позиция не подходит для его начала.',ok:false};renderBuilder();return;}
+  detach(index);if(t==='АЙ'){detach(index+1);d[index]='АЙ';d[index+1]='↳';}else d[index]=t;
+  w().draft=d;w().checkRequested=false;p().selected=index;feedback=null;focusPosition=index;renderBuilder();persist();
+ }
+ function setSample(tokens){if(!tokens)return;stop(false);w().sample=tokens.slice();w().sampleStep=0;p().selected=0;}
+ function check(add){
+  stop(false);w().checkRequested=true;const a=M.analyze(w().draft,c());feedback=null;
+  if(a.valid){
+   if(add){
+    const same=collectionView().patterns.find(t=>M.intersection(t,w().draft,c()));
+    if(same){const witness=M.intersection(same,w().draft,c());feedback={text:'Пересечение с уже найденным шаблоном '+M.notation(same)+'. Слово '+witness+' попало бы в сумму дважды. Шаблон не добавлен.',ok:false};}
+    else{const saved=w().draft.slice();w().collection.push(saved);setSample(saved);w().draft=M.blank(c());w().checkRequested=false;w().coverageRequested=false;feedback={text:'Шаблон '+M.notation(saved)+' добавлен: '+format(a.total)+' вариантов. Поле очищено — соберите следующий случай.',ok:true};}
+   }else setSample(w().draft);
+  }
+  renderBuilder();renderSample();renderCollection();persist();
+ }
+ function renderCollection(){
+  const view=collectionView();el('p-collection-summary').innerHTML='<span>Непересекающихся шаблонов: <b>'+view.patterns.length+'</b></span><span>По найденным случаям: <b>'+format(view.total)+'</b></span>';
+  el('p-collection').innerHTML=view.patterns.length?view.patterns.map((t,i)=>{
+   const a=M.analyze(t,c()),own=w().collection.findIndex(x=>M.notation(x)===M.notation(t));
+   return '<article class="p-collection-item"><button type="button" class="p-collection-select" data-paction="sample-select" data-index="'+i+'" aria-label="Исследовать шаблон '+html(M.notation(t))+'"><span class="p-mini-pattern">'+templateMarkup(t)+'</span><span>'+format(a.total)+' вариантов</span></button>'+(own>=0?'<button type="button" class="sb-btn sb-btn--icon" data-paction="remove" data-index="'+own+'" aria-label="Удалить шаблон '+html(M.notation(t))+'">×</button>':'<span class="p-demo-label">Показан в разборе</span>')+'</article>';
+  }).join(''):'<p class="sb-empty">Пока нет найденных шаблонов. Соберите один, проверьте и добавьте в коллекцию.</p>';
+  el('p-coverage').hidden=!w().coverageRequested;
+  if(w().coverageRequested){el('p-coverage').className='sb-quiz-feedback '+(view.uncovered?'':'is-success');el('p-coverage').textContent=view.uncovered?'Ещё есть неучтённый случай. Например, '+view.uncovered+' выполняет условие, но не описан вашей коллекцией. Соберите для него новый шаблон.':'Все случаи учтены без пересечений. Всего '+format(view.total)+' подходящих вариантов. Именно поэтому результаты шаблонов можно сложить.';}
+  el('p-generate').textContent=tickKind==='generate'?'Ⅱ Пауза показа':'Показать остальные по шагам';
+  el('p-generate').disabled=!view.uncovered&&tickKind!=='generate';
+  el('p-generation-note').textContent=w().generated?'Автоматически показано '+w().generated+' схем. Они отмечены как разбор; ваши собственные шаблоны сохранены отдельно.':'Полный ответ не показывается до проверки полноты коллекции или вашего запуска разбора.';
+ }
+ function renderSample(){
+  const a=w().sample?M.analyze(w().sample,c()):null;el('p-sample-card').hidden=!a?.valid||p().phase==='repair';if(!a?.valid)return;
+  const step=w().sampleStep,L=c().length,reveal=Math.min(L,Math.max(1,step)),ready=step>=L+1,rank=Math.max(0,step-(L+2));
+  el('p-sample-pattern').innerHTML=templateMarkup(w().sample);
+  el('p-sample-status').textContent=ready?'Заполняем шаблон':'Разбираем позиции';
+  el('p-factor-slots').innerHTML=w().sample.map((t,i)=>'<button type="button" class="p-factor-slot '+(p().selected===i?'is-selected':'')+'" data-paction="sample-position" data-pos="'+i+'" aria-label="Допустимые символы на позиции '+(i+1)+'"><span class="slot-index">'+(i+1)+'</span><strong>'+html(t==='↳'?'Й':t==='АЙ'?'А':t.startsWith('set:')?'Набор':t)+'</strong><span>'+(i<reveal?(i===0&&step===0&&c().kind==='parity'&&a.domains[0].length?rawFirst(w().sample).length:a.factors[i])+' вар.':'…')+'</span></button>').join('');
+  const pos=p().selected< L?p().selected:0,domain=a.domains[pos];
+  const raw=pos===0&&c().kind==='parity'?rawFirst(w().sample):domain;
+  el('p-domain-detail').innerHTML='<div class="sb-h3">Позиция '+(pos+1)+': допустимые символы</div><div class="p-digit-list">'+raw.map(ch=>'<span class="'+(!domain.includes(ch)?'is-excluded':'')+'">'+html(ch)+'</span>').join('')+'</div><p class="sb-caption">'+(pos===0&&raw.includes('0')?'0 исключён: число не может начинаться с нуля. Остаётся '+domain.length+' вариантов.':domain.length+' допустимых символов на этой позиции.')+'</p>';
+  if(!step&&c().kind==='parity'&&p().selected===0&&raw.includes('0'))el('p-domain-detail').innerHTML='<div class="sb-h3">Сначала перечислим все цифры нужного типа</div><div class="p-digit-list">'+raw.map(ch=>'<span>'+ch+'</span>').join('')+'</div><p class="sb-caption">На следующем шаге учтём запрет нуля в начале числа.</p>';
+  el('p-product').textContent=ready?a.factors.join(' × ')+' = '+format(a.total):'Раскрывайте позиции: '+a.factors.map((v,i)=>i<reveal?(i===0&&step===0&&c().kind==='parity'?rawFirst(w().sample).length:v):'?').join(' × ');
+  el('p-real-word').textContent=ready?M.wordAt(w().sample,c(),rank):'…';
+  el('p-example-caption').textContent=ready?'Реальный вариант '+format(rank+1)+' из '+format(a.total):'После раскрытия позиций появятся реальные слова / числа';
+  const max=L+1+a.total;el('p-range').max=max;el('p-range').value=step;el('p-counter').textContent=format(step+1)+' / '+format(max+1);
+  el('p-play').textContent=tickKind==='sample'?'Ⅱ Пауза':'▶ Запуск';el('p-forward').disabled=step>=max;
+  el('pattern-lab').querySelector('[data-paction="sample-back"]').disabled=step===0;
+  el('pattern-lab').querySelector('[data-paction="sample-next"]').disabled=step>=max;
+  el('pattern-lab').querySelectorAll('[data-pspeed]').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.pspeed===state.speed)));
+  let text;
+  if(step===0)text=c().kind==='parity'?'Сначала выписываем все цифры нужной чётности для первой позиции.':'Смотрим, какие буквы разрешены в первой позиции.';
+  else if(step===1)text=c().kind==='parity'?'Из первой позиции убираем ноль, если он есть. На остальных позициях ноль допустим.':'На первой позиции '+a.factors[0]+' допустимых букв.';
+  else if(step<=L)text='Позиция '+step+': '+a.domains[step-1].join(', ')+'. Здесь '+a.factors[step-1]+' вариантов.';
+  else if(step===L+1)text='Выборы по позициям независимы, поэтому перемножаем '+a.factors.join(' × ')+'. Получаем '+format(a.total)+' вариантов внутри одного шаблона.';
+  else{const prev=rank?M.wordAt(w().sample,c(),rank-1):'',current=M.wordAt(w().sample,c(),rank);text='Вариант '+format(rank+1)+': '+current+'. '+(prev?'Меняем правую доступную позицию; при переполнении переносим изменение влево.':'Начинаем с первого разрешённого символа в каждой позиции.');}
+  el('p-sample-explain').textContent=text;el('p-sample-explain').setAttribute('aria-live',ticking?'off':'polite');
+ }
+ function rawFirst(tokens){const copy={...c(),kind:'letters'};return M.domains(tokens,copy)?.[0]||[];}
+ function sampleMove(step,debounce=false){stop(false);const a=M.analyze(w().sample,c());w().sampleStep=Math.max(0,Math.min(c().length+1+a.total,step));p().selected=Math.min(c().length-1,Math.max(0,w().sampleStep-1));renderSample();persist(debounce);}
+ function startSample(){
+  stop(false);const a=w().sample?M.analyze(w().sample,c()):null;if(!a?.valid)return;const max=c().length+1+a.total;if(w().sampleStep>=max)w().sampleStep=0;
+  tickKind='sample';ticking=setInterval(()=>{if(w().sampleStep>=max){stop();renderSample();return;}w().sampleStep++;p().selected=Math.min(c().length-1,Math.max(0,w().sampleStep-1));renderSample();},700/state.speed);renderSample();persist();
+ }
+ function startGeneration(){
+  stop(false);const all=M.canonical(c());w().coverageRequested=false;
+  function next(){while(w().generated<all.length){const t=all[w().generated++];const rest=M.remaining(c(),w().collection,[t]);if(rest.length){setSampleWithoutStopping(rest[0]);break;}}
+   renderCollection();renderSample();if(w().generated>=all.length){stop();w().coverageRequested=true;renderCollection();persist();}}
+  if(w().generated>=all.length)return;tickKind='generate';ticking=setInterval(next,600/state.speed);next();persist();
+ }
+ function setSampleWithoutStopping(t){w().sample=t.slice();w().sampleStep=c().length+1;p().selected=0;}
+ function groupData(){
+  const all=M.canonical(c()),groups=[];
+  if(c().kind==='parity')for(const first of ['Ч','Н']){const ps=all.filter(t=>t[0]===first);if(ps.length)groups.push({name:'Начинаются с '+first,n:ps.length,each:M.analyze(ps[0],c()).total,factors:M.analyze(ps[0],c()).factors});}
+  else groups.push({name:c().rule==='ay'?'Положения блока АЙ':'Один общий шаблон',n:all.length,each:M.analyze(all[0],c()).total,factors:M.analyze(all[0],c()).factors});
+  return {groups,total:groups.reduce((s,g)=>s+g.n*g.each,0),a:c().kind==='parity'?groups.find(g=>g.name.endsWith('Ч'))?.n||0:groups[0].n,b:c().kind==='parity'?groups.find(g=>g.name.endsWith('Н'))?.n||0:groups[0].each};
+ }
+ function compactFactors(factors){const counts=new Map();for(const n of factors)if(n!==1)counts.set(n,(counts.get(n)||0)+1);return [...counts].map(([n,k])=>n+(k>1?'^'+k:'')).join(' × ')||'1';}
+ function renderGroups(){
+  const visible=p().phase==='group'||w().groupRequested;el('p-groups-card').hidden=!visible||p().phase==='repair';if(!visible)return;
+  const data=groupData(),inputs=w().groupInputs;
+  el('p-group-task').textContent=c().kind==='parity'?'Разделите все допустимые шаблоны на две группы по первой цифре. Внутри каждой группы число вариантов одинаково. Определите размеры групп и общий ответ.':'Все схемы этой задачи описывают одинаковое количество вариантов. Сначала определите число схем, затем число слов внутри одной схемы.';
+  el('p-group-label-a').textContent=c().kind==='parity'?'Шаблонов с первой Ч':'Количество шаблонов';el('p-group-label-b').textContent=c().kind==='parity'?'Шаблонов с первой Н':'Вариантов внутри шаблона';
+  for(const key of ['a','b','total'])el('p-group-'+key).value=inputs[key];
+  el('p-group-feedback').hidden=!w().groupChecked;el('p-groups').hidden=!w().groupChecked;el('p-group-formula').hidden=!w().groupChecked;
+  if(w().groupChecked){const parse=s=>/^\d+$/.test(s.replace(/\s/g,''))?Number(s.replace(/\s/g,'')):NaN;const ok=parse(inputs.a)===data.a&&parse(inputs.b)===data.b&&parse(inputs.total)===data.total;
+   el('p-group-feedback').className='sb-quiz-feedback '+(ok?'is-success':'is-error');el('p-group-feedback').textContent=(ok?'Верно! ':'Есть отличие. ')+'Для этой задачи нужны '+data.a+' и '+data.b+'; общий ответ '+format(data.total)+'. Ниже — группировка и формула.';
+   el('p-groups').innerHTML=data.groups.map(g=>'<div class="sb-surface"><h3 class="sb-h3">'+g.name+'</h3><strong>'+g.n+' шаблонов</strong><p class="sb-caption">Каждый: '+g.factors.join(' × ')+' = '+format(g.each)+' вариантов.</p></div>').join('');
+   el('p-group-formula').textContent=data.groups.map(g=>g.n+' × ('+compactFactors(g.factors)+')').join(' + ')+' = '+format(data.total);
+  }
+ }
+ function renderRepair(){
+  const visible=p().phase==='repair';el('p-repair-card').hidden=!visible;if(!visible)return;
+  const factors=[4,3,4,3,4,3],tokens=['Ч','Н','Ч','Н','Ч','Н'];
+  el('p-repair-slots').innerHTML=factors.map((n,i)=>'<button type="button" class="p-factor-slot '+(w().repairPosition===i?'is-selected':'')+'" data-paction="repair-position" data-pos="'+i+'" aria-pressed="'+(w().repairPosition===i)+'" aria-label="Проверить множитель на позиции '+(i+1)+'"><span class="slot-index">'+(i+1)+'</span><strong>'+tokens[i]+'</strong><span>'+n+' варианта</span></button>').join('');
+  el('p-repair-count').value=w().repairCount;el('p-repair-reason').value=w().repairReason;el('p-repair-feedback').hidden=!w().repairChecked;
+  if(w().repairChecked){const ok=w().repairPosition===0&&Number(w().repairCount)===3&&w().repairReason==='zero';el('p-repair-feedback').className='sb-quiz-feedback '+(ok?'is-success':'is-error');el('p-repair-feedback').textContent=ok?'Верно. На первой позиции допустимы 2, 4, 6: три цифры. Ноль исключён. 3 × 3 × 4 × 3 × 4 × 3 = 1 296.':w().repairPosition!==0?'Проверьте, одинаковы ли правила для первой и последующих позиций. Укажите позицию с ошибкой.':'Подумайте, может ли многозначное число начинаться с 0. В первой позиции нужны 3 варианта и объяснение про ведущий ноль.';}
+ }
+ function render(resetFeedback=false){
+  if(resetFeedback)feedback=null;
+  if(!el('p-builder'))return;
+  el('p-title').textContent='Собери шаблон';el('p-task').textContent=c().task;el('p-status').textContent=['Сборка','Коллекция','Формула','Поиск ошибки'][['build','collect','group','repair'].indexOf(p().phase)];
+  el('p-phase-note').textContent={build:'Начните с одного шаблона: проверьте его и раскройте допустимые символы на каждой позиции.',collect:'Один верный шаблон может описывать только часть ответа. Найдите все непересекающиеся случаи.',group:'Собранные схемы помогают увидеть группы с одинаковым количеством слов. Составьте общую формулу.',repair:'Найдите не ошибку в схеме, а неверный множитель. Затем объясните причину.'}[p().phase];
+  el('p-build-card').hidden=p().phase==='repair';el('p-collection-card').hidden=p().phase==='repair';
+  renderBuilder();renderSample();renderCollection();renderGroups();renderRepair();
+  el('p-lessons').innerHTML=[['Идея','Внутри независимого шаблона перемножаем варианты по позициям. Между непересекающимися шаблонами складываем результаты.'],['Что попробовать','Соберите более узкий шаблон через собственный набор символов. Затем проверьте, пересекается ли он с уже добавленным.'],['Типичная ошибка','Правильный отдельный шаблон ещё не означает, что найдены все случаи. А пересекающиеся схемы нельзя просто сложить.']].map(([title,text])=>'<section class="sb-card"><h3 class="sb-h3">'+title+'</h3><p class="sb-caption">'+text+'</p></section>').join('');
+ }
+ function handleSettings(event){
+  const e=event.target;if(!e.matches('[data-pfield]'))return;stop(false);feedback=null;
+  if(e.dataset.pfield==='caseId'){p().caseId=e.value;if(p().phase==='repair'&&e.value!=='alternate')p().phase='build';p().palette=c().palette[0];p().selected=0;p().custom='';}
+  else {p().phase=e.value;if(e.value==='repair'){p().caseId='alternate';p().palette='Ч';}}
+  render();el('fields').innerHTML=settings();el('fields').querySelector('[data-pfield="'+e.dataset.pfield+'"]').focus({preventScroll:true});persist();
+ }
+ function settingsAction(button){
+  const a=button.dataset.paction;if(!a)return;
+  if(a==='restart')el('p-restart-confirm').hidden=false;
+  if(a==='restart-cancel')el('p-restart-confirm').hidden=true;
+  if(a==='restart-confirm'){stop(false);const d=M.initial();p().work[p().caseId]=d.work[p().caseId];feedback=null;render();el('fields').innerHTML=settings();persist();}
+ }
+ return {boot,settings,render,stop,handleSettings,settingsAction};
+})();
+
 </script>
 <script>
 'use strict';
 const $=id=>document.getElementById(id), C=Combinatorics;
-const MODES=[['basics','Как считать варианты'],['numbers','Слова и числа'],['rules','Ограничения и шаблоны'],['perms','Перестановки букв'],['order','Алфавитный порядок']];
-const INITIAL=()=>({version:1,mode:'numbers',speed:1,codeOpen:true,tablePage:0,filter:'all',
+const MODES=[['basics','Как считать варианты'],['patterns','Собери шаблон'],['numbers','Слова и числа'],['rules','Ограничения и шаблоны'],['perms','Перестановки букв'],['order','Алфавитный порядок']];
+const INITIAL=()=>({version:2,mode:'patterns',speed:1,codeOpen:true,tablePage:0,filter:'all',
  basics:{kind:'rep',n:4,k:3},numbers:{base:8,length:5,noZero:true,noRepeat:false,alternate:false},
  rules:{preset:'ay',length:7,base:8,oddCount:5},perms:{word:'МОЛОДЕЖЬ',forbidFirst:'Ь'},
  order:{alphabet:'АПРСУ',length:5,maxU:1,noAA:true},
- steps:{basics:0,numbers:0,rules:0,perms:0,order:0},practice:{},answers:{},checked:{}});
+ patterns:TemplateMath.initial(),steps:{basics:0,numbers:0,rules:0,perms:0,order:0},practice:{},answers:{},checked:{}});
 let state=INITIAL(),model,timer=null,canSave=false,loading=true,saveTimer,dirty=false,saving=false,lastSave=0,epoch=0;
 const fmt=n=>new Intl.NumberFormat('ru-RU').format(n), esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function int(v,min,max,fallback){return Number.isInteger(v)&&v>=min&&v<=max?v:fallback;}
 function normalize(s){
- const d=INITIAL();if(!s||s.version!==1||typeof s!=='object')return d;
+ const d=INITIAL();if(!s||![1,2].includes(s.version)||typeof s!=='object')return d;
+ d.patterns=TemplateMath.normalize(s.patterns);
  if(MODES.some(x=>x[0]===s.mode))d.mode=s.mode;
  if([.5,1,2].includes(s.speed))d.speed=s.speed;d.codeOpen=typeof s.codeOpen==='boolean'?s.codeOpen:true;
  for(const m of MODES.map(x=>x[0])){
@@ -682,7 +1061,7 @@ function config(){
  if(m==='perms')return {inventory:state.perms.word,forbidFirst:state.perms.forbidFirst};
  const o=state.order;return {alphabet:C.unique(o.alphabet).sort((a,b)=>a.localeCompare(b,'ru')).join(''),length:o.length,target:'У',targetCount:o.maxU,countMode:'max',noAdjacent:o.noAA?'А':undefined};
 }
-const TITLES={basics:['Шесть способов считать','Определите, важен ли порядок и разрешены ли повторения. Сравните формулу с небольшими примерами.'],numbers:['Слова, числа и выбор позиции','Меняйте основание и длину записи. Наблюдайте, как ограничения отсеивают варианты и меняют ответ.'],rules:['Ограничения превращаются в шаблоны','Объединяйте буквы в блоки и заменяйте цифры их чётностью. Считайте большие наборы без полного перебора.'],perms:['Одинаковые буквы — разные позиции','Переставляйте все буквы слова и разбирайтесь, почему одинаковые буквы не создают новые слова.'],order:['У каждого слова есть номер','Сопоставляйте алфавитный список с системой счисления. Найдите первое слово, удовлетворяющее условиям.']};
+const TITLES={patterns:['Собери шаблон — найди все случаи','Постройте схему по условию, заполните её реальными символами и выведите формулу подсчёта.'],basics:['Шесть способов считать','Определите, важен ли порядок и разрешены ли повторения. Сравните формулу с небольшими примерами.'],numbers:['Слова, числа и выбор позиции','Меняйте основание и длину записи. Наблюдайте, как ограничения отсеивают варианты и меняют ответ.'],rules:['Ограничения превращаются в шаблоны','Объединяйте буквы в блоки и заменяйте цифры их чётностью. Считайте большие наборы без полного перебора.'],perms:['Одинаковые буквы — разные позиции','Переставляйте все буквы слова и разбирайтесь, почему одинаковые буквы не создают новые слова.'],order:['У каждого слова есть номер','Сопоставляйте алфавитный список с системой счисления. Найдите первое слово, удовлетворяющее условиям.']};
 function button(text,action,extra=''){return '<button type="button" class="sb-btn" data-action="'+action+'" '+extra+'>'+text+'</button>';}
 function field(label,input,hint=''){return '<div class="sb-field"><label>'+label+input+'</label>'+(hint?'<span class="sb-caption">'+hint+'</span>':'')+'</div>';}
 function numberField(label,key,value,min,max){return field(label,'<input type="number" data-key="'+key+'" value="'+value+'" min="'+min+'" max="'+max+'" required>');}
@@ -690,7 +1069,8 @@ function selectField(label,key,value,options){return field(label,'<select aria-l
 function toggle(label,key,value){return '<label class="sb-toggle"><input type="checkbox" data-key="'+key+'" '+(value?'checked':'')+'><span>'+label+'</span></label>';}
 function buildSettings(){
  let html='',m=state.mode;
- if(m==='basics'){
+ if(m==='patterns')html=PatternUI.settings();
+ else if(m==='basics'){
   const b=state.basics;
   html+=selectField('Способ подсчёта','kind',b.kind,[['rep','Размещения с повторениями'],['arr','Размещения без повторений'],['perm','Перестановки без повторений'],['multi','Перестановки одинаковых букв'],['comb','Сочетания без повторений'],['combRep','Сочетания с повторениями']]);
   if(b.kind==='multi')html+='<p class="sb-callout">Пример «МАШИНА»: две одинаковые буквы А. Изменять слово можно в разделе «Перестановки букв».</p>';
@@ -719,7 +1099,7 @@ function buildSettings(){
   html+=numberField('Длина слова','length',o.length,1,8)+numberField('Букв У не более','maxU',o.maxU,0,o.length)+toggle('Запретить соседние АА','noAA',o.noAA);
   html+=button('Вернуть пример «ПАРУС»','preset-order');
  }
- $('fields').innerHTML=html;$('apply').hidden=m==='basics';$('settings-description').textContent=m==='basics'?'Настройки применяются сразу. Сравнивайте способы подсчёта при одних и тех же n и k.':'Измените настройки и нажмите «Применить». Новый опыт начнётся с первого варианта.';$('field-error').hidden=true;
+ $('fields').innerHTML=html;$('apply').hidden=m==='basics'||m==='patterns';$('practice-settings').hidden=m==='patterns';$('settings-description').textContent=m==='patterns'?'Собирайте схемы и сохраняйте найденные случаи. Настройки применяются сразу.':m==='basics'?'Настройки применяются сразу. Сравнивайте способы подсчёта при одних и тех же n и k.':'Измените настройки и нажмите «Применить». Новый опыт начнётся с первого варианта.';$('field-error').hidden=true;
  $('practice-toggle').checked=!!state.practice[m];
 }
 function render(){
@@ -727,6 +1107,9 @@ function render(){
  $('title').textContent=TITLES[m][0];$('description').textContent=TITLES[m][1];
  $('basics-scene').hidden=m!=='basics';$('explorer').hidden=m==='basics';$('analysis').hidden=m==='basics';$('results-card').hidden=m==='basics';
  $('mode-name').textContent=MODES.find(x=>x[0]===m)[1];buildSettings();
+ $('pattern-lab').hidden=m!=='patterns';
+ if(m==='patterns'){$('basics-scene').hidden=true;$('explorer').hidden=true;$('analysis').hidden=true;$('results-card').hidden=true;$('practice-card').hidden=true;$('lesson-cards').hidden=true;PatternUI.render(true);return;}
+ $('lesson-cards').hidden=false;
  if(m==='basics')renderBasics();else{
   model=C.createModel(config());
   state.steps[m]=Math.min(state.steps[m],Math.max(0,totalSteps()-1));state.tablePage=0;renderFrame();renderTable();
@@ -869,7 +1252,7 @@ function renderLessons(){
  const texts={basics:['Сначала три вопроса: важен ли порядок, есть ли повторения, используем ли все элементы?','При n = 4 и k = 3 сравните размещения и сочетания. Объясните, откуда берётся деление на 3!.','Повторение выбора элемента и одинаковые элементы в исходном слове — разные ситуации.'],numbers:['Независимые варианты перемножаются. Несовместимые случаи складываются.','Включите чередование чётности. Сравните 5-значные восьмеричные и 6-значные семиричные числа.','Ноль — чётная цифра. Внутри числа он допустим, а в первой позиции многозначного числа — нет.'],rules:['Сначала считаем расположения типов символов. Затем заполняем каждую позицию допустимыми буквами или цифрами.','В примере «СЛУЧАЙ» увеличьте длину на 1. Для нечётных цифр сравните шаблоны с разной первой позицией.','«Ровно одна» и «не более одной» — разные условия. «Сразу после» требует соседства.'],perms:['Для одинаковых букв делим n! на факториалы их количеств. Запрещённое начало удобно вычесть из общего числа.','Сравните «МЕЧТА», «МАШИНА» и «МОЛОДЕЖЬ». Запретите первую букву, которая повторяется.','permutations() различает позиции одинаковых букв. Без устранения дублей счётчик завысит ответ.'],order:['Цифра буквы — её индекс в отсортированном алфавите. Номер слова равен значению записи плюс 1.','Нажмите «Первое подходящее». Для АПАПА получится запись 01010 в основании 5 и номер 131.','Счётчик номера увеличивается для каждого слова, а не только для подходящих. Не забудьте прибавить 1.']};
  $('lesson-cards').innerHTML=texts[state.mode].map((t,i)=>'<section class="sb-card"><h3 class="sb-h3">'+['Идея и формула','Что попробовать','Типичная ошибка'][i]+'</h3><p class="sb-caption">'+t+'</p></section>').join('');
 }
-function stop(save=true){if(timer){clearInterval(timer);timer=null;if(save)persist();}if($('play'))$('play').textContent='▶ Запуск';}
+function stop(save=true){PatternUI.stop(save);if(timer){clearInterval(timer);timer=null;if(save)persist();}if($('play'))$('play').textContent='▶ Запуск';}
 function move(step,user=true){if(user)stop(false);state.steps[state.mode]=Math.max(0,Math.min(totalSteps()-1,step));renderFrame();if(user)persist();}
 function resetExperience(){stop(false);state.steps[state.mode]=0;state.checked[state.mode]=false;state.tablePage=0;render();persist();}
 function applySettings(){
@@ -892,6 +1275,7 @@ function applySettings(){
 $('settings-form').addEventListener('submit',e=>{e.preventDefault();applySettings();});
 $('app').addEventListener('click',e=>{
  const b=e.target.closest('button');if(!b||loading)return;
+ if(b.dataset.paction){PatternUI.settingsAction(b);return;}
  if(b.dataset.mode){state.mode=b.dataset.mode;state.filter='all';render();persist();return;}
  if(b.dataset.speed){state.speed=+b.dataset.speed;const playing=!!timer;stop(false);if(playing)play();else renderFrame();persist();return;}
  if(b.dataset.rank!==undefined){move(+b.dataset.rank*(model.length+model.checks.length+1));return;}
@@ -922,9 +1306,9 @@ $('rank-form').addEventListener('submit',e=>{e.preventDefault();const w=$('rank-
 $('practice-toggle').addEventListener('change',e=>{state.practice[state.mode]=e.target.checked;state.checked[state.mode]=false;stop(false);if(state.mode==='basics')renderBasics();else renderFrame();renderPractice();persist();});
 $('prediction').addEventListener('input',e=>{state.answers[state.mode]=e.target.value.slice(0,20);state.checked[state.mode]=false;$('feedback').hidden=true;renderPractice();persist(true);});
 $('prediction-form').addEventListener('submit',e=>{e.preventDefault();const v=(state.answers[state.mode]||'').replace(/\s/g,'');if(!/^\d+$/.test(v)){$('feedback').hidden=false;$('feedback').className='sb-quiz-feedback is-error';$('feedback').textContent='Введите целое неотрицательное число.';return;}state.checked[state.mode]=true;renderPractice();if(state.mode==='basics')renderBasics();else renderFrame();persist();});
-$('fields').addEventListener('change',e=>{if(state.mode==='basics'&&e.target.matches('[data-key]'))applySettings();});
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&timer){stop();renderFrame();}});
-render();loadProgress();
+$('fields').addEventListener('change',e=>{if(state.mode==='patterns'){PatternUI.handleSettings(e);return;}if(state.mode==='basics'&&e.target.matches('[data-key]'))applySettings();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&state.mode==='patterns'){PatternUI.stop();PatternUI.render();}if(document.hidden&&timer){stop();renderFrame();}});
+PatternUI.boot();render();loadProgress();
 
 </script>
 </body></html>
