@@ -1,0 +1,930 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Задание №8 — Лаборатория комбинаторики · Школково</title>
+<script src="https://3.shkolkovo.online/js/sandbox-client.v1.js"></script>
+<style>
+/* ШКОЛКОВО — унифицированный визуальный слой HTML-песочниц.
+   Версия 2.4 · 2026-11-04. Не содержит SDK/JS; AGENTS.md применяется отдельно.
+   Селекторы sb-* предназначены для новых страниц. Нельзя автоматически подменять
+   этими правилами логику старых исходников без миграции их DOM и состояний. */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Onest:wght@400;500;600;700;800;900&display=swap');
+:root {
+  color-scheme: light dark;
+  --sb-bg: #F6F3FC;
+  --sb-card: #FFFFFF;
+  --sb-surface: #F0EAFB;
+  --sb-surface-2: #E9E0FB;
+  --sb-text: #211633;
+  --sb-muted: #786B92;
+  --sb-border: #DED5EE;
+  --sb-accent: #8B5CF6;
+  --sb-accent-text: #6D28D9;
+  --sb-action: #6D28D9;
+  --sb-action-text: #FFFFFF;
+  --sb-success: #21966C;
+  --sb-error: #DC5275;
+  --sb-warning: #BB861B;
+  --sb-success-text: #166147;
+  --sb-error-text: #A8244B;
+  --sb-warning-text: #73520E;
+  --sb-success-surface: #E9F8F2;
+  --sb-error-surface: #FFF0F5;
+  --sb-warning-surface: #FFF8E7;
+  --sb-code: #F0EAFB;
+  --sb-shadow: 0 8px 30px #32185B0C;
+  --sb-radius-card: 16px;
+  --sb-radius-hero: 18px;
+  --sb-radius-inner: 12px;
+  --sb-radius-control: 10px;
+  --sb-gap-page: 20px;
+  --sb-gap-card: 16px;
+  --sb-card-padding: 20px;
+  --sb-card-padding-mobile: 15px;
+  --sb-hero-padding-block: 22px;
+  --sb-hero-padding-inline: 24px;
+  --sb-hero-padding-mobile: 16px;
+  --sb-gap-playback-controls: 8px;
+  --sb-gap-playback-internal: 12px;
+  --sb-nav-width: 248px;
+  --sb-right-width: 310px;
+  --sb-max-width: 1880px;
+  --sb-font: Onest, Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --sb-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  --sb-net: #7652C9;
+  --sb-host: #DCCFF7;
+  --sb-host-ink: #38235F;
+  --sb-plot-shadow: 0 3px 10px #00000015;
+  --sb-player-one: #3B91DF;
+  --sb-player-two: #D45B80;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sb-bg: #0D0916;
+    --sb-card: #150F26;
+    --sb-surface: #1D1535;
+    --sb-surface-2: #2C1C50;
+    --sb-text: #F3EEFF;
+    --sb-muted: #A398CB;
+    --sb-border: #35264E;
+    --sb-accent: #8B5CF6;
+    --sb-accent-text: #C4A9FF;
+    --sb-action: #6D28D9;
+    --sb-action-text: #FFFFFF;
+    --sb-success: #5BDB9F;
+    --sb-error: #FF779C;
+    --sb-warning: #EAC36C;
+    --sb-success-text: #5BDB9F;
+    --sb-error-text: #FF779C;
+    --sb-warning-text: #EAC36C;
+    --sb-success-surface: #153B35;
+    --sb-error-surface: #382036;
+    --sb-warning-surface: #44351D;
+    --sb-code: #100A1F;
+    --sb-shadow: 0 8px 30px #0002;
+    --sb-net: #7652C9;
+    --sb-host: #554276;
+    --sb-host-ink: #F3EEFF;
+    --sb-plot-shadow: 0 4px 16px #00000044;
+    --sb-player-one: #80BDFF;
+    --sb-player-two: #FF91B2;
+  }
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { min-width: 0; }
+body { margin: 0; min-width: 0; font: 400 14px/1.5 var(--sb-font); background: var(--sb-bg); color: var(--sb-text); }
+button, input, select, textarea { font: inherit; color: inherit; }
+button, [role="button"] { cursor: pointer; }
+/* Глобальные минимумы гарантируют AGENTS.md даже вне типовых sb-компонентов. */
+button { min-width: 44px; min-height: 44px; }
+input:not([type=checkbox]):not([type=radio]):not([type=range]), select, textarea { font-size: 16px; min-height: 44px; }
+input[type=range] { min-height: 44px; }
+button:disabled, [aria-disabled="true"] { opacity: .52; cursor: not-allowed; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible,
+textarea:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--sb-accent); outline-offset: 3px;
+}
+[hidden] { display: none !important; }
+.sb-app { display: grid; grid-template-columns: var(--sb-nav-width) minmax(0,1fr) var(--sb-right-width);
+  gap: var(--sb-gap-page); align-items: start; width: 100%; max-width: var(--sb-max-width);
+  padding: 20px; margin-inline: auto; }
+.sb-nav, .sb-main, .sb-params { min-width: 0; }
+.sb-nav { position: sticky; top: 20px; }
+.sb-params { position: sticky; top: 20px; max-height: calc(100dvh - 40px); overflow-y: auto; }
+.sb-main { display: grid; gap: var(--sb-gap-card); }
+.sb-card { min-width: 0; padding: var(--sb-card-padding); background: var(--sb-card);
+  border: 1px solid var(--sb-border); border-radius: var(--sb-radius-card); box-shadow: var(--sb-shadow); }
+/* D2: вложенный уровень не создаёт ещё одну белую карточку с тенью. */
+.sb-card .sb-card { background: var(--sb-surface); box-shadow: none; }
+.sb-hero { border-radius: var(--sb-radius-hero); padding: var(--sb-hero-padding-block) var(--sb-hero-padding-inline); }
+.sb-nav.sb-card { padding: 18px; }
+.sb-logo { display: block; width: 100%; max-width: 100%; height: auto; object-fit: contain; }
+/* Исходный логотип содержит тёмно-фиолетовые знаки: на тёмной теме даём светлую подложку без перекраски логотипа. */
+/* D19-B: логотип прозрачный; тёмная/светлая версия задаётся <picture>. */
+.sb-brand-picture { display:block; width:100%; max-width:100%; background:transparent; }
+.sb-brand-picture .sb-logo { display:block; background:transparent; padding:0; border:0; border-radius:0; box-shadow:none; }
+.sb-section-nav { display: grid; grid-template-columns: minmax(0,1fr); gap: 8px; margin-top: 20px; }
+/* Нет реальных разделов — ничего не отрисовывать под логотипом. */
+.sb-section-nav:empty { display: none; margin-top: 0; }
+.sb-section-btn { display: flex; align-items: center; justify-content: center; text-align: center;
+  width: 100%; min-width: 44px; min-height: 44px; padding: 11px 12px;
+  border: 1px solid var(--sb-border); border-radius: 10px; background: var(--sb-surface);
+  color: var(--sb-text); font-size: 14px; font-weight: 750; line-height: 1.35; }
+.sb-section-btn[aria-pressed="true"], .sb-section-btn[aria-selected="true"],
+.sb-section-btn.is-active { border-color: var(--sb-action); background: var(--sb-action); color: var(--sb-action-text); }
+.sb-section-btn:not(:disabled):hover { border-color: var(--sb-accent); }
+.sb-eyebrow { color: var(--sb-accent-text); font-size: 11px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; }
+.sb-hero h1 { font-size: clamp(24px, 2.3vw, 36px); letter-spacing: -.8px; line-height: 1.15; font-weight: 850; margin: 6px 0 10px; }
+.sb-hero p { margin: 0; color: var(--sb-muted); font-size: 14px; line-height: 1.6; }
+.sb-h2 { margin: 0 0 12px; font-size: 17px; line-height: 1.35; font-weight: 800; }
+.sb-h3 { margin: 0 0 8px; font-size: 14px; font-weight: 750; }
+.sb-muted, .sb-caption { color: var(--sb-muted); }
+.sb-caption { margin: 5px 0 0; font-size: 12px; line-height: 1.55; }
+.sb-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+.sb-between { justify-content: space-between; }
+.sb-grid-2, .sb-grid-3, .sb-grid-4 { display: grid; gap: 12px; min-width: 0; }
+.sb-grid-2 { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.sb-grid-3 { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.sb-grid-4 { grid-template-columns: repeat(4,minmax(0,1fr)); }
+.sb-surface { border: 1px solid var(--sb-border); border-radius: var(--sb-radius-inner);
+  background: var(--sb-surface); padding: 12px; min-width: 0; }
+.sb-stat { padding: 12px; background: var(--sb-surface); border-radius: 11px; min-width: 0; }
+.sb-stat-label { color: var(--sb-muted); display: block; font-size: 11px; font-weight: 700; }
+.sb-stat-value { display: block; font-size: clamp(16px, 1.7vw, 24px); font-weight: 850;
+  font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.sb-status { display: inline-flex; align-items: center; min-height: 26px; padding: 3px 9px;
+  border-radius: 16px; font-size: 12px; font-weight: 750; color: var(--sb-accent-text); background: var(--sb-surface-2); }
+.sb-status.is-success { color: var(--sb-success-text); background: var(--sb-success-surface); }
+.sb-status.is-error { color: var(--sb-error-text); background: var(--sb-error-surface); }
+.sb-status.is-warning { color: var(--sb-warning-text); background: var(--sb-warning-surface); }
+.sb-btn { appearance: none; display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; min-height: 44px; min-width: 44px; max-width: 100%; padding: 9px 12px;
+  border: 1px solid var(--sb-border); border-radius: var(--sb-radius-control);
+  background: var(--sb-surface); color: var(--sb-text); font-size: 14px; font-weight: 700;
+  line-height: 1.35; text-align: center; }
+.sb-btn:hover:not(:disabled) { border-color: var(--sb-accent); }
+.sb-btn--primary { background: var(--sb-action); color: var(--sb-action-text); border-color: var(--sb-action); }
+.sb-btn--danger { background: var(--sb-error-surface); color: var(--sb-error-text); border-color: var(--sb-error); }
+.sb-btn--quiet { background: transparent; }
+.sb-btn--dashed { border-style: dashed; }
+.sb-btn--selected { outline: 2px solid var(--sb-accent); outline-offset: 1px; }
+.sb-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.sb-btn--icon { width: 44px; height: 44px; padding: 8px; flex: 0 0 44px; }
+/* D9–D13: единая панель воспроизведения (только для сценариев с анимацией).
+   DOM и tab order: timeline-head -> range -> actions [back, play, forward, stage, reset]
+   -> speed [0.5x, 1x, 2x]. Расстояния и размеры ниже нормативные. */
+.sb-playback {
+  display: grid; gap: var(--sb-gap-playback-internal); min-width: 0;
+  padding: 12px; border: 1px solid var(--sb-border);
+  border-radius: var(--sb-radius-inner); background: var(--sb-surface); box-shadow: none;
+}
+.sb-timeline-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  flex-wrap: wrap; column-gap: 12px; row-gap: 4px; min-width: 0;
+}
+.sb-timeline-title { margin: 0; color: var(--sb-text); font-size: 14px; font-weight: 800; line-height: 1.4; }
+.sb-timeline-counter { margin: 0 0 0 auto; color: var(--sb-muted); font: 700 13px/1.4 var(--sb-mono);
+  font-variant-numeric: tabular-nums; white-space: nowrap; }
+.sb-playback-range { display: block; width: 100%; min-width: 0; min-height: 44px;
+  margin: 0; accent-color: var(--sb-accent); cursor: pointer; }
+.sb-playback-range:disabled { opacity: .5; cursor: not-allowed; }
+.sb-playback-toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: var(--sb-gap-playback-internal); min-width: 0; }
+.sb-playback-actions { display: flex; align-items: center; flex-wrap: wrap;
+  gap: var(--sb-gap-playback-controls); min-width: 0; }
+.sb-playback-actions .sb-btn { flex: 0 0 auto; white-space: normal; min-height: 44px; }
+.sb-playback-speed { display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
+  margin-inline-start: 0; min-width: 0; }
+.sb-speed-label { color: var(--sb-muted); font-size: 13px; font-weight: 750; }
+.sb-speed-segment { display: flex; flex-wrap: nowrap; gap: 4px; padding: 4px;
+  border: 1px solid var(--sb-border); border-radius: 11px;
+  background: var(--sb-surface-2); }
+.sb-speed-btn { display: inline-flex; align-items: center; justify-content: center;
+  min-width: 44px; min-height: 44px; padding: 8px 12px; border: 1px solid transparent;
+  border-radius: 8px; background: transparent; color: var(--sb-text);
+  font-size: 14px; line-height: 1.35; font-weight: 700; cursor: pointer; }
+.sb-speed-btn[aria-pressed="true"], .sb-speed-btn.is-active {
+  background: var(--sb-action); color: var(--sb-action-text); border-color: var(--sb-action);
+}
+.sb-speed-btn:hover:not(:disabled) { border-color: var(--sb-accent); }
+.sb-speed-btn:disabled { opacity: .52; cursor: not-allowed; }
+.sb-speed-btn:focus-visible, .sb-playback-range:focus-visible {
+  outline: 2px solid var(--sb-accent); outline-offset: 2px;
+}
+.sb-playback-explain { margin: 0; line-height: 1.55; color: var(--sb-muted);
+  font-size: 12px; overflow-wrap: anywhere; }
+/* Перенос скорости отдельно сохраняет порядок DOM и крупные зоны касания. */
+@media (max-width: 1180px) {
+  .sb-playback-speed { margin-inline-start: 0; }
+}
+@media (max-width: 640px) {
+  .sb-playback-toolbar { align-items: stretch; }
+  .sb-playback-speed { flex: 1 1 100%; justify-content: flex-start; }
+  .sb-playback-actions { width: 100%; }
+  .sb-playback-actions .sb-btn { flex: 1 1 auto; }
+}
+.sb-field { display: grid; gap: 6px; margin-block: 12px; min-width: 0; }
+.sb-field>label, .sb-field-legend { color: var(--sb-muted); font-size: 12px; font-weight: 700; }
+.sb-field input:not([type=range]):not([type=checkbox]):not([type=radio]),
+.sb-field select, .sb-field textarea { width: 100%; max-width: 100%; min-width: 0;
+  min-height: 44px; padding: 9px 12px; border: 1px solid var(--sb-border);
+  border-radius: var(--sb-radius-control); background: var(--sb-surface); color: var(--sb-text);
+  font-size: 16px; line-height: 1.4; }
+.sb-field textarea { min-height: 88px; resize: vertical; }
+.sb-field input[aria-invalid="true"], .sb-field select[aria-invalid="true"] { border-color: var(--sb-error); }
+.sb-field-error { font-size: 12px; color: var(--sb-error-text); }
+.sb-field input[type=range], .sb-range { width: 100%; accent-color: var(--sb-accent); min-height: 44px; }
+.sb-segment { display: flex; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: 11px;
+  background: var(--sb-surface); border: 1px solid var(--sb-border); }
+.sb-segment .sb-btn { flex: 1 1 auto; background: transparent; border-color: transparent; }
+.sb-segment .sb-btn[aria-pressed="true"], .sb-segment .sb-btn.is-active { background: var(--sb-action); color: white; }
+.sb-toggle { min-height: 44px; display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.sb-toggle input { width: 24px; height: 24px; accent-color: var(--sb-accent); flex: 0 0 auto; }
+.sb-progress { min-height: 12px; background: var(--sb-surface); border-radius: 999px; overflow: hidden; }
+.sb-progress>span { display: block; width: 0; height: 12px; background: var(--sb-accent); }
+.sb-progress.is-error>span { background: var(--sb-error); }
+.sb-callout { border-left: 3px solid var(--sb-accent); background: var(--sb-surface);
+  padding: 12px 14px; border-radius: 0 9px 9px 0; line-height: 1.6; }
+.sb-callout--success { border-left-color: var(--sb-success); }
+.sb-callout--error { border-left-color: var(--sb-error); }
+.sb-callout--warning { border-left-color: var(--sb-warning); }
+.sb-code { background: var(--sb-code); border-radius: 10px; padding: 10px; min-width: 0;
+  font: 12px/1.8 var(--sb-mono); overflow-wrap: anywhere; white-space: pre-wrap; }
+.sb-code-line { display: grid; grid-template-columns: 28px minmax(0,1fr); gap: 10px;
+  min-width: 0; padding: 2px 6px; border-radius: 5px; }
+.sb-code-line>span:first-child { color: var(--sb-muted); text-align: right; user-select: none; }
+.sb-code-line.is-current { box-shadow: inset 3px 0 var(--sb-accent); background: var(--sb-surface-2); }
+.sb-data-table { border-collapse: collapse; width: 100%; font-size: 12px; font-variant-numeric: tabular-nums; }
+.sb-data-table th, .sb-data-table td { padding: 9px 6px; border-bottom: 1px solid var(--sb-border); }
+.sb-data-table th { text-align: left; font-weight: 700; color: var(--sb-muted); }
+.sb-data-table td:last-child { text-align: right; }
+.sb-numeric { font-family: var(--sb-mono); font-variant-numeric: tabular-nums; }
+.sb-data-table button { min-width: 44px; min-height: 44px; }
+.sb-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 12px; color: var(--sb-muted); }
+.sb-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; }
+.sb-viewport { background: var(--sb-surface); border: 1px solid var(--sb-border); border-radius: 12px;
+  min-height: 250px; min-width: 0; padding: 12px; }
+.sb-viewport canvas, .sb-viewport svg { max-width: 100%; }
+.sb-palette-strip { display: flex; width: 100%; height: 28px; overflow: hidden; border-radius: 7px; }
+.sb-wave-canvas { width: 100%; height: 122px; display: block; background: var(--sb-card);
+  border: 1px solid var(--sb-border); border-radius: 8px; }
+/* D8: 11 ячеек в DOM, окно вокруг головки: 11 / 9 / 7 / 5 по ширине iframe.
+   Внутренние символьные ячейки нумеруются 1..11 в текущем окне. */
+.sb-tape { display: grid; grid-template-columns: repeat(11,minmax(0,1fr)); gap: 4px; min-width: 0; }
+.sb-tape-cell { position: relative; min-width: 0; min-height: 50px; padding: 6px 2px;
+  border: 1px solid var(--sb-border); border-radius: 8px; background: var(--sb-card);
+  text-align: center; font: 700 16px/1.35 var(--sb-mono); }
+.sb-tape-cell.is-current { background: var(--sb-surface-2); outline: 2px solid var(--sb-accent); outline-offset: -2px; }
+.sb-tape-cell.is-changed { box-shadow: inset 0 -3px var(--sb-success); }
+.sb-tape-cell[role=button], button.sb-tape-cell { min-width: 44px; min-height: 44px; }
+.sb-tape-index { color: var(--sb-muted); font: 10px/1.3 var(--sb-mono); }
+.sb-edit-cell { display: inline-flex; align-items: center; justify-content: center; padding: 5px;
+  min-width: 44px; min-height: 44px; border: 1px dashed var(--sb-border); border-radius: 7px;
+  background: var(--sb-surface); font: 12px/1.3 var(--sb-mono); }
+.sb-edit-cell.is-filled { border-style: solid; border-color: var(--sb-accent); }
+.sb-edit-cell.is-selected { outline: 2px solid var(--sb-accent); outline-offset: 1px; }
+.sb-bit-grid { display: grid; grid-template-columns: repeat(8,minmax(0,1fr)); gap: 3px; }
+.sb-bit { display: grid; place-items: center; min-height: 36px; border-radius: 5px;
+  background: var(--sb-host); color: var(--sb-host-ink); font: 700 12px var(--sb-mono); }
+.sb-bit.is-network { background: var(--sb-net); color: white; }
+.sb-bit.is-current { outline: 2px solid var(--sb-warning); outline-offset: -2px; }
+.sb-bit.is-interactive { min-width: 44px; min-height: 44px; cursor: pointer; }
+.sb-bit.is-good { box-shadow: inset 0 -3px var(--sb-success); }
+.sb-bit.is-error { box-shadow: inset 0 -3px var(--sb-error); }
+.sb-game-node { border: 1px solid var(--sb-border); border-radius: 10px; background: var(--sb-surface); padding: 10px;
+  color: var(--sb-text); text-align: center; min-width: 44px; min-height: 44px; }
+.sb-game-node.is-first-player { border-color: var(--sb-player-one); }
+.sb-game-node.is-second-player { border-color: var(--sb-player-two); }
+.sb-game-node.is-selected { outline: 2px solid var(--sb-accent); }
+.sb-choice-card { display: flex; flex-direction: column; gap: 6px; min-height: 110px;
+  padding: 12px; border: 1px solid var(--sb-border); border-radius: 12px;
+  background: var(--sb-surface); text-align: left; }
+.sb-choice-card[aria-pressed="true"], .sb-choice-card.is-selected { border-color: var(--sb-accent);
+  box-shadow: inset 0 0 0 1px var(--sb-accent); background: var(--sb-surface-2); }
+.sb-lane { border: 1px dashed var(--sb-border); border-radius: 12px; padding: 10px; background: var(--sb-surface); min-height: 100px; }
+.sb-machine { display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between;
+  gap: 7px; padding: 10px; border-radius: 10px; border: 1px solid var(--sb-border);
+  background: var(--sb-surface); min-height: 44px; }
+.sb-machine.is-selected { border-color: var(--sb-accent); outline: 2px solid var(--sb-accent); }
+.sb-machine.is-correct { border-color: var(--sb-success); }
+.sb-machine.is-incorrect { border-color: var(--sb-error); }
+.sb-float-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.sb-invalid { color: var(--sb-error-text); }
+.sb-empty { border: 1px dashed var(--sb-border); border-radius: 10px; padding: 18px;
+  color: var(--sb-muted); text-align: center; }
+/* D8: показываем только середину одиннадцатиячеечного окна, без переноса ленты в строки.
+   renderer обязан держать головку в центральной видимой части окна. */
+@media (max-width: 1399px) {
+  .sb-tape { grid-template-columns: repeat(9,minmax(0,1fr)); }
+  .sb-tape > .sb-tape-cell:nth-child(1),
+  .sb-tape > .sb-tape-cell:nth-child(11) { display: none; }
+}
+@media (max-width: 959px) {
+  .sb-tape { grid-template-columns: repeat(7,minmax(0,1fr)); }
+  .sb-tape > .sb-tape-cell:nth-child(2),
+  .sb-tape > .sb-tape-cell:nth-child(10) { display: none; }
+}
+@media (max-width: 420px) {
+  .sb-tape { grid-template-columns: repeat(5,minmax(0,1fr)); }
+  .sb-tape > .sb-tape-cell:nth-child(3),
+  .sb-tape > .sb-tape-cell:nth-child(9) { display: none; }
+}
+@media (max-width: 1180px) {
+  .sb-app { grid-template-columns: var(--sb-nav-width) minmax(0,1fr); }
+  .sb-params { grid-column: 2; position: static; max-height: none; overflow: visible; }
+  .sb-grid-3 { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 768px) {
+  .sb-app { grid-template-columns: minmax(0,1fr); padding: 12px; gap: 12px; }
+  .sb-nav, .sb-main, .sb-params { grid-column: 1; position: static; max-height: none; }
+  .sb-nav.sb-card, .sb-card { padding: var(--sb-card-padding-mobile); }
+  .sb-hero { padding: var(--sb-hero-padding-mobile); }
+  .sb-grid-2, .sb-grid-3 { grid-template-columns: minmax(0,1fr); }
+  .sb-grid-4 { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .sb-controls .sb-btn { flex: 1 1 auto; }
+  .sb-logo { max-width: 360px; }
+  .sb-section-nav { grid-template-columns: minmax(0,1fr); }
+}
+@media (max-width: 420px) {
+  .sb-app { padding: 12px; }
+  .sb-grid-4 { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  /* Если биты кликабельны, 8 штук по 44px не помещаются в iframe 320px. */
+  .sb-bit-grid:has(.sb-bit.is-interactive) { grid-template-columns: repeat(4,minmax(0,1fr)); }
+  .sb-section-btn { justify-content: center; }
+  .sb-stat { padding: 9px; }
+  .sb-code { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+
+/* === Design System 2.4: утверждённые D14–D21 и компоненты лаборатории №27 ===
+   Не изменяет платформенную логику SDK. Действует только если компоненты присутствуют.
+   D14-B: Заголовок «Временная шкала» либо «Ход алгоритма» задаётся текстом HTML.
+   D15-B: Только две шаговые кнопки могут быть без текста, но с aria-label.
+   D16-B: Белые плавающие информационные плашки — исключение только внутри графика.
+   D17-A: Метрики на телефоне 2 в ряд, подписи 11–12px.
+   D18-B: Инструменты масштаба и статус справа в заголовке сцены.
+   D19-B: <picture> с прозрачными light/dark логотипами, без подложки.
+   D20-B: Код может сворачиваться в ходе воспроизведения (JS обязан синхронизировать).
+   D21-B: Активный шаг с полной 2px рамкой и левой 5px полосой.
+*/
+
+/* Заголовок рабочей сцены и контролы масштаба: D18-B */
+.sb-scene-head { display:flex; align-items:flex-start; justify-content:space-between;
+  flex-wrap:wrap; gap:12px; margin-bottom:16px; min-width:0; }
+.sb-scene-head > :first-child { min-width:0; flex:1 1 220px; }
+.sb-scene-right { display:flex; flex-direction:column; align-items:flex-end;
+  gap:9px; min-width:0; max-width:100%; margin-inline-start:auto; }
+.sb-view-zoom { display:flex; flex-wrap:nowrap; align-items:center; gap:5px; max-width:100%; }
+.sb-view-zoom .sb-btn { flex:0 0 auto; min-width:44px; min-height:44px;
+  border-radius:9px; padding:8px; font-size:14px; }
+.sb-view-zoom .sb-view-fit { min-width:74px; padding-inline:10px; }
+@media (max-width:640px) { .sb-scene-right{gap:6px;} .sb-view-zoom{gap:4px;} }
+@media (max-width:390px) { .sb-scene-right { width:100%; align-items:flex-end; } }
+
+/* D15-B: стрелки только для back и forward. Доступное имя обеспечивает aria-label. */
+.sb-playback-actions .sb-btn[data-action="back"].sb-btn--icon,
+.sb-playback-actions .sb-btn[data-action="forward"].sb-btn--icon {
+  min-width:44px; min-height:44px; width:44px; padding:8px; flex:0 0 44px;
+}
+@media (max-width:640px) {
+  .sb-playback-actions .sb-btn[data-action="back"].sb-btn--icon,
+  .sb-playback-actions .sb-btn[data-action="forward"].sb-btn--icon { flex:0 0 44px; }
+}
+
+/* D16-B: исключительно перекрывающие график подписи/легенды, остальные L2 — сиреневые. */
+.sb-plot-stage { position:relative; min-width:0; }
+.sb-plot-overlay { position:absolute; z-index:2; inset:12px auto auto 12px;
+  display:flex; flex-wrap:wrap; align-items:flex-start; gap:8px; max-width:calc(100% - 24px); pointer-events:none; }
+.sb-plot-overlay--right { left:auto; right:12px; justify-content:flex-end; }
+.sb-plot-badge { display:inline-flex; align-items:center; gap:7px; min-width:0; max-width:100%;
+  padding:6px 9px; border:1px solid var(--sb-border); border-left:4px solid var(--sb-data-color,var(--sb-accent));
+  border-radius:9px; background:var(--sb-card); color:var(--sb-text); box-shadow:var(--sb-plot-shadow);
+  font:700 13px/1.4 var(--sb-font); overflow-wrap:anywhere; white-space:normal; }
+.sb-plot-badge:not([aria-disabled="true"]):is(button,[role="button"]){ pointer-events:auto; min-width:44px; min-height:44px; }
+@media (max-width:420px) {
+  .sb-plot-overlay{inset:9px auto auto 9px; max-width:calc(100% - 18px); gap:5px; }
+  .sb-plot-overlay--right{left:auto;right:9px;}
+  .sb-plot-badge{font-size:11px; padding:4px 7px;}
+}
+
+/* D17-A: единый компонент метрик; на телефоне не уменьшать подписи до 10px. */
+.sb-metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;min-width:0;}
+.sb-metric{min-width:0;padding:10px 8px;border-radius:11px;background:var(--sb-surface);}
+.sb-metric-value{display:block;font-size:clamp(17px,1.8vw,25px);font-weight:850;
+ line-height:1.15;overflow-wrap:anywhere;font-variant-numeric:tabular-nums;}
+.sb-metric-label{display:block;font-size:11px;line-height:1.35;font-weight:700;color:var(--sb-muted);margin-top:5px;}
+@media (max-width:768px) {
+ .sb-metric-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;}
+ .sb-metric-label,.sb-stat-label{font-size:11px;}
+}
+
+/* D20-B: сворачиваемая панель кода. Само состояние и кадр обслуживает JS. */
+.sb-fold{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;
+ min-width:44px;min-height:44px;padding:6px 0;margin:0 0 12px;border:0;background:transparent;
+ color:var(--sb-text);font:800 17px/1.35 var(--sb-font);text-align:left;}
+.sb-fold-label{font-size:12px;font-weight:750;color:var(--sb-accent-text);white-space:nowrap;}
+.sb-fold-body[hidden]{display:none!important;}
+.sb-fold[aria-expanded="false"]{margin-bottom:0;}
+
+/* D21-B: только текущий анимационный шаг; нейтральные callout остаются по D2. */
+.sb-step-spotlight{border:2px solid var(--sb-accent);border-left:5px solid var(--sb-action);
+ border-radius:12px;background:var(--sb-surface-2);padding:12px 14px;
+ color:var(--sb-text);font-size:14px;line-height:1.65;overflow-wrap:anywhere;}
+.sb-step-spotlight-label{display:block;font-weight:850;font-size:11px;
+ letter-spacing:1px;color:var(--sb-accent-text);margin-bottom:4px;}
+
+/* Новые предметные компоненты №27. Зафиксированы только повторяемые стили. */
+.sb-graph { display:block;width:100%;height:auto;max-width:100%;aspect-ratio:720/430;touch-action:none;user-select:none; }
+.sb-graph .sb-point { cursor:pointer; }
+.sb-graph:focus-visible{outline:2px solid var(--sb-accent);outline-offset:2px;}
+.sb-plot-caption { display:flex;align-items:center;justify-content:space-between;
+ flex-wrap:wrap;gap:9px;margin-top:10px;font-size:12px;color:var(--sb-muted);}
+.sb-energy-axis { margin-top:12px; padding:12px; border:1px solid var(--sb-border);
+ background:var(--sb-surface);border-radius:12px;box-shadow:none;min-width:0; }
+.sb-energy-objects{display:grid;grid-template-columns:repeat(auto-fill,minmax(82px,1fr));gap:7px;margin-top:13px;}
+.sb-energy-objects > button{min-height:44px;min-width:44px;max-width:100%;border:1px solid var(--sb-border);
+ border-left:4px solid var(--sb-data-color,var(--sb-accent));background:var(--sb-surface);
+ color:var(--sb-text);border-radius:9px;padding:8px 6px;font-size:12px;}
+@media (max-width:768px) { .sb-energy-axis{padding:10px;} }
+@media (max-width:420px) {
+  .sb-energy-objects{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .sb-plot-caption{align-items:flex-start;flex-direction:column;}
+}
+.sb-quiz-feedback{border-left:4px solid var(--sb-warning);border-radius:0 9px 9px 0;
+ padding:12px 14px;background:var(--sb-warning-surface);color:var(--sb-warning-text);
+ font-size:13px;line-height:1.55;overflow-wrap:anywhere;}
+.sb-quiz-feedback.is-success{border-left-color:var(--sb-success);background:var(--sb-success-surface);color:var(--sb-success-text);}
+.sb-quiz-feedback.is-error{border-left-color:var(--sb-error);background:var(--sb-error-surface);color:var(--sb-error-text);}
+
+/* Предметные компоненты №8. Общие токены и геометрия — из стандарта 2.4. */
+.sb-brand-picture{margin:0}.sb-section-btn{text-align:left;justify-content:flex-start}.sb-main>*,.sb-params>*{min-width:0}
+.storage-note{max-width:1840px;margin:16px auto 0;padding:10px 16px;background:var(--sb-warning-surface);color:var(--sb-warning-text);border:1px solid var(--sb-border);border-radius:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px}.storage-note[hidden]{display:none}.storage-note.is-error{background:var(--sb-error-surface);color:var(--sb-error-text)}
+.sb-app[aria-busy=true]{opacity:.65}.sb-hero{position:relative;overflow:hidden}.hero-bottom{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.hero-chip{font-size:11px;font-weight:700;border:1px solid var(--sb-border);border-radius:7px;padding:4px 8px;color:var(--sb-muted);background:var(--sb-surface)}
+.scene-stack{display:grid;gap:16px}.scene-topline{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px}.scene-kicker{font:700 12px var(--sb-mono);color:var(--sb-muted)}
+.alphabet{display:flex;flex-wrap:wrap;gap:6px}.alphabet-char{display:grid;place-items:center;min-width:28px;height:28px;background:var(--sb-surface-2);border-radius:6px;font:700 13px var(--sb-mono)}
+.word-stage{padding:18px 12px;border:1px solid var(--sb-border);border-radius:12px;background:var(--sb-surface)}
+.word-slots{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;min-height:100px;align-items:center;padding:14px 0}
+.symbol-slot{display:flex;flex-direction:column;justify-content:center;align-items:center;min-width:44px;width:clamp(44px,5vw,58px);min-height:82px;border:1px dashed var(--sb-border);border-radius:10px;color:var(--sb-muted);background:var(--sb-surface)}
+.symbol-slot.is-filled{border-style:solid;background:var(--sb-card);color:var(--sb-text)}.symbol-slot.is-current{outline:2px solid var(--sb-accent);outline-offset:2px;background:var(--sb-surface-2)}.symbol-slot strong{font:800 25px/1.35 var(--sb-mono)}.slot-index{font:11px var(--sb-mono);color:var(--sb-muted)}.slot-caption{font:10px var(--sb-font);color:var(--sb-muted);min-height:15px}
+.stage-foot{font-size:11px;color:var(--sb-muted);text-align:center;margin:4px 0 0}.check-list{display:grid;gap:6px}.check-row{display:grid;grid-template-columns:24px minmax(0,1fr) auto;align-items:center;gap:8px;padding:9px 10px;border:1px solid var(--sb-border);border-radius:9px;background:var(--sb-surface);font-size:12px}.check-mark{font-size:17px;text-align:center}.check-row b{font-size:11px;font-weight:700;color:var(--sb-muted)}.check-row.is-good{border-left:3px solid var(--sb-success)}.check-row.is-good .check-mark,.check-row.is-good b{color:var(--sb-success-text)}.check-row.is-bad{border-left:3px solid var(--sb-error)}.check-row.is-bad .check-mark,.check-row.is-bad b{color:var(--sb-error-text)}
+.explore-tools{display:flex;flex-wrap:wrap;gap:8px}.explore-tools .sb-btn{font-size:12px}.jump-form{display:flex;flex-wrap:wrap;align-items:end;gap:8px}.jump-form label{flex:1 1 150px;font-size:12px;font-weight:700;color:var(--sb-muted)}.jump-form input{display:block;width:100%;min-width:0;max-width:100%;font-size:16px;min-height:44px;background:var(--sb-card);border:1px solid var(--sb-border);padding:8px 10px;border-radius:9px;margin-top:6px;color:var(--sb-text)}
+#analysis{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}.calc-formula{font:700 17px/1.65 var(--sb-mono);overflow-wrap:anywhere;padding:14px;border:1px solid var(--sb-border);border-radius:12px;background:var(--sb-surface);margin:12px 0}.calc-result{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid var(--sb-border)}.calc-result strong{font-size:clamp(22px,2vw,30px);font-weight:850;color:var(--sb-accent-text);overflow-wrap:anywhere}.calc-result span{font-size:12px;color:var(--sb-muted)}
+.sb-code{max-height:320px;overflow-y:auto;padding:12px}.sb-code-line{grid-template-columns:24px minmax(0,1fr);gap:8px}.sb-code-line.is-current{box-shadow:inset 4px 0 var(--sb-accent)}.sb-code-line>span:last-child{white-space:pre-wrap;overflow-wrap:anywhere;min-width:0}
+.result-row{width:100%;display:grid;grid-template-columns:90px minmax(0,1fr) 95px;gap:10px;align-items:center;min-height:52px;padding:9px 10px;text-align:left;background:var(--sb-surface);border:1px solid var(--sb-border);border-radius:9px}.result-row:hover{border-color:var(--sb-accent)}.result-num{font:11px var(--sb-mono);color:var(--sb-muted);overflow-wrap:anywhere}.result-row strong{font:700 14px var(--sb-mono);letter-spacing:1px;overflow-wrap:anywhere}.result-verdict{font-size:11px;text-align:right}.good{color:var(--sb-success-text)}.bad{color:var(--sb-error-text)}.results{display:grid;gap:6px;margin:12px 0}.table-footer{display:flex;align-items:center;gap:8px;justify-content:space-between}.table-footer output{font:11px var(--sb-mono);color:var(--sb-muted);text-align:center}.result-filter{display:flex;flex-wrap:wrap;gap:6px}.result-filter .sb-btn{font-size:12px}.result-filter [aria-pressed=true]{background:var(--sb-action);border-color:var(--sb-action);color:var(--sb-action-text)}
+#lesson-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.preset-row{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0}.preset-row .sb-btn{font-size:12px;flex:1 1 110px}.sb-field label{display:grid;gap:6px}.sb-params .sb-toggle{font-size:12px;line-height:1.5;margin:4px 0}.sb-params .sb-toggle input{min-width:24px}.settings-actions{display:grid;gap:10px;margin-top:16px}.params-divider{height:1px;background:var(--sb-border);margin:20px 0}.field-error{font-size:12px;color:var(--sb-error-text);line-height:1.6}.practice-form{display:flex;flex-wrap:wrap;gap:8px;align-items:end}.practice-form .sb-field{flex:1 1 150px;margin:0}.practice-form input{background:var(--sb-surface)}.practice-tag{font-size:11px;color:var(--sb-accent-text);font-weight:800;letter-spacing:1px}.sb-quiz-feedback{margin-top:12px}
+.decision-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:16px 0}.decision{padding:12px;background:var(--sb-surface);border-radius:12px;display:grid;gap:6px}.decision span{font-size:11px;color:var(--sb-muted)}.decision b{font-size:13px}.basic-formula{font:800 clamp(22px,3vw,34px)/1.5 var(--sb-mono);color:var(--sb-accent-text);overflow-wrap:anywhere}.basic-examples{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:16px}.example-word{font:700 14px var(--sb-mono);text-align:center;overflow-wrap:anywhere;background:var(--sb-surface);border:1px solid var(--sb-border);border-radius:9px;padding:12px 5px}.template-list{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.template-chip{padding:7px 9px;background:var(--sb-surface-2);border-radius:7px;font:700 12px var(--sb-mono);overflow-wrap:anywhere;max-width:100%}.rank-panel{border:1px solid var(--sb-border);border-radius:12px;padding:12px;background:var(--sb-surface)}.rank-map{font:700 12px/1.8 var(--sb-mono);color:var(--sb-accent-text);overflow-wrap:anywhere}.rank-formula{font:12px/1.8 var(--sb-mono);overflow-wrap:anywhere}.endnote{font-size:11px;color:var(--sb-muted);margin:0;text-align:center}
+@media(min-width:1600px){#analysis{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}}
+@media(max-width:1180px){#lesson-cards{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:768px){.storage-note{margin:12px 12px 0}.word-stage{padding:12px 8px}.word-slots{gap:6px}.symbol-slot{width:44px;min-height:76px}#lesson-cards{gap:12px}.sb-playback-speed{flex-basis:100%}.hero-bottom{margin-top:12px}.decision-grid{grid-template-columns:minmax(0,1fr)}.decision{display:flex;justify-content:space-between}.basic-examples{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.result-row{grid-template-columns:70px minmax(0,1fr);gap:6px}.result-verdict{grid-column:2;text-align:left}.result-row strong{font-size:13px;letter-spacing:0}.check-row{grid-template-columns:20px minmax(0,1fr);gap:6px}.check-row b{grid-column:2}.sb-metric-value{font-size:19px}.scene-kicker{font-size:11px}.sb-timeline-counter{font-size:11px}}
+input,select,textarea{font-size:16px}
+.result-row[aria-pressed="true"]{border-color:var(--sb-accent);box-shadow:inset 3px 0 var(--sb-accent);background:var(--sb-surface-2)}
+
+</style>
+</head>
+<body>
+<div id="storage" class="storage-note" role="status" aria-live="polite">Загружаем прогресс…</div>
+<div class="sb-app" id="app" aria-busy="true" inert>
+<aside class="sb-nav sb-card" aria-label="Разделы лаборатории">
+<picture class="sb-brand-picture"><source media="(prefers-color-scheme: dark)" srcset="data:image/png;base64,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"><img class="sb-logo" src="data:image/png;base64,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" width="419" height="89" alt="Школково"></picture>
+<nav class="sb-section-nav" aria-label="Режимы задания №8">
+<button type="button" class="sb-section-btn" data-mode="basics" aria-pressed="false">Как считать варианты</button>
+<button type="button" class="sb-section-btn" data-mode="numbers" aria-pressed="true">Слова и числа</button>
+<button type="button" class="sb-section-btn" data-mode="rules" aria-pressed="false">Ограничения и шаблоны</button>
+<button type="button" class="sb-section-btn" data-mode="perms" aria-pressed="false">Перестановки букв</button>
+<button type="button" class="sb-section-btn" data-mode="order" aria-pressed="false">Алфавитный порядок</button>
+</nav></aside>
+<main class="sb-main">
+<header class="sb-card sb-hero"><div class="sb-eyebrow">Задание №8 · Комбинаторика</div><h1 id="title">Слова, числа и выбор позиции</h1><p id="description">Исследуйте варианты и условия, сравнивайте перебор и подсчёт по формуле.</p><div class="hero-bottom"><span class="hero-chip">Выбор → проверка → подсчёт</span><span class="hero-chip">Примеры из методички</span></div></header>
+<section class="sb-card" id="practice-card" hidden aria-labelledby="practice-title"><span class="practice-tag">ПРОВЕРЬ СЕБЯ</span><h2 class="sb-h2" id="practice-title">Сначала ваш прогноз</h2><p id="question" class="sb-caption"></p><form id="prediction-form" class="practice-form"><div class="sb-field"><label for="prediction">Ваш ответ</label><input id="prediction" type="text" inputmode="numeric" maxlength="20" autocomplete="off"></div><button class="sb-btn sb-btn--primary" type="submit">Проверить ответ</button></form><div id="feedback" class="sb-quiz-feedback" role="status" hidden></div></section>
+<section class="sb-card" id="basics-scene" hidden><div class="sb-eyebrow">Выбираем способ подсчёта</div><h2 class="sb-h2" id="basic-title"></h2><div id="basic-decisions" class="decision-grid"></div><div class="sb-surface"><div class="basic-formula" id="basic-formula"></div><p id="basic-substitution" class="sb-numeric"></p><p class="sb-caption" id="basic-explanation"></p></div><h3 class="sb-h3" style="margin-top:20px">Как выглядят варианты</h3><div id="basic-examples" class="basic-examples"></div><p id="basic-count-label" class="sb-caption"></p></section>
+<section class="sb-card" id="explorer" aria-labelledby="scene-title">
+<div class="sb-scene-head"><div><div class="sb-eyebrow" id="mode-name">Слова и числа</div><h2 class="sb-h2" id="scene-title">Собираем и проверяем вариант</h2></div><span class="sb-status" id="scene-status">Исследование</span></div>
+<div class="scene-stack">
+<div class="sb-metric-grid" id="metrics"></div>
+<div class="word-stage"><div class="scene-topline"><span class="scene-kicker" id="candidate-number"></span><span class="sb-caption">Доступные символы</span></div><div class="alphabet" id="alphabet" aria-label="Алфавит"></div><div class="word-slots" id="slots" aria-label="Текущий вариант"></div><p class="stage-foot">Позиции слева направо · правый символ меняется быстрее</p></div>
+<div><h3 class="sb-h3">Проверка условий</h3><div class="check-list" id="checks"></div></div>
+<div class="rank-panel" id="rank-panel" hidden><h3 class="sb-h3">Буквы становятся цифрами</h3><div id="rank-map" class="rank-map"></div><p id="rank-formula" class="rank-formula"></p><form id="rank-form" class="jump-form"><label>Найти слово в списке<input type="text" id="rank-word" maxlength="8" autocomplete="off" spellcheck="false"></label><button type="submit" class="sb-btn">Найти номер</button></form><p id="rank-error" class="field-error" role="status" hidden>Длина или буквы слова не соответствуют алфавиту.</p></div>
+<section class="sb-playback" aria-label="Управление перебором">
+<div class="sb-timeline-head"><h3 class="sb-timeline-title" id="timeline-title">Ход алгоритма</h3><output class="sb-timeline-counter" id="counter" for="timeline">0 / 0</output></div>
+<input type="range" id="timeline" class="sb-playback-range" min="0" max="0" value="0" aria-labelledby="timeline-title">
+<div class="sb-playback-toolbar"><div class="sb-playback-actions" role="group" aria-label="Шаги выполнения">
+<button type="button" class="sb-btn sb-btn--icon" id="back" data-action="back" aria-label="Назад">←</button><button type="button" class="sb-btn sb-btn--primary" id="play" data-action="play">▶ Запуск</button><button type="button" class="sb-btn sb-btn--icon" id="forward" data-action="forward" aria-label="Вперёд">→</button><button type="button" class="sb-btn" id="stage" data-action="stage">Следующий вариант</button><button type="button" class="sb-btn" data-action="reset">↺ Сброс</button>
+</div><div class="sb-playback-speed" role="group" aria-label="Скорость воспроизведения"><span class="sb-speed-label">Скорость</span><div class="sb-speed-segment"><button type="button" class="sb-speed-btn" data-speed="0.5" aria-pressed="false">0,5×</button><button type="button" class="sb-speed-btn" data-speed="1" aria-pressed="true">1×</button><button type="button" class="sb-speed-btn" data-speed="2" aria-pressed="false">2×</button></div></div></div>
+<div class="sb-step-spotlight"><span class="sb-step-spotlight-label">ТЕКУЩИЙ ШАГ</span><span id="step-text" role="status" aria-live="polite"></span></div>
+</section>
+<div class="explore-tools"><button type="button" class="sb-btn" data-action="first-valid">Первое подходящее</button><button type="button" class="sb-btn" data-action="end">К итогу перебора</button></div>
+<form class="jump-form" id="jump-form"><label>Перейти к варианту №<input type="number" id="jump-index" min="1" value="1" required></label><button type="submit" class="sb-btn">Перейти</button></form>
+<p class="sb-caption">Шкала охватывает весь набор. Для точного перехода к далёкому варианту введите его номер. Пропущенные варианты учитываются математически.</p>
+</div></section>
+<div id="analysis">
+<section class="sb-card"><div class="sb-eyebrow">Математический разбор</div><h2 class="sb-h2" id="calc-title"></h2><div class="calc-formula" id="calc-formula"></div><p class="sb-caption" id="calc-text"></p><div id="templates" hidden><h3 class="sb-h3" style="margin-top:16px">Шаблоны чётности</h3><div class="template-list" id="template-list"></div><p class="sb-caption" id="template-note"></p></div><div class="calc-result"><span id="calc-answer-label"></span><strong id="calc-answer"></strong></div></section>
+<section class="sb-card"><button class="sb-fold" type="button" id="code-toggle" data-action="code" aria-expanded="true" aria-controls="code-body"><span>Алгоритм на Python</span><span class="sb-fold-label" id="fold-label">Свернуть</span></button><div id="code-body"><div class="sb-code" id="code" aria-label="Python-код текущего примера"></div><p class="sb-caption" id="code-note"></p></div></section>
+</div>
+<section class="sb-card" id="results-card"><div class="sb-eyebrow">Исследуем список</div><h2 class="sb-h2">Варианты и результаты проверки</h2><p class="sb-caption">Нажмите на строку, чтобы разобрать её по шагам. Номера относятся к полному списку уникальных вариантов.</p><div class="result-filter" style="margin-top:12px"><button type="button" class="sb-btn" id="filter-all" data-action="filter-all" aria-pressed="true">Все варианты</button><button type="button" class="sb-btn" id="filter-valid" data-action="filter-valid" aria-pressed="false">Только подходящие</button></div><div class="results" id="rows"></div><div class="table-footer"><button type="button" class="sb-btn sb-btn--icon" id="table-prev" data-action="table-prev" aria-label="Предыдущая страница вариантов">←</button><output id="table-counter"></output><button type="button" class="sb-btn sb-btn--icon" id="table-next" data-action="table-next" aria-label="Следующая страница вариантов">→</button></div></section>
+<div id="lesson-cards"></div><p class="endnote">Все вычисления выполняются внутри песочницы. Ответы предназначены для самопроверки.</p>
+</main>
+<aside class="sb-card sb-params" aria-labelledby="params-title"><h2 class="sb-h2" id="params-title">Параметры</h2><p class="sb-caption" id="settings-description">Измените настройки и нажмите «Применить». Новый опыт начнётся с первого варианта.</p><form id="settings-form"><div id="fields"></div><p class="field-error" id="field-error" role="status" hidden></p><div class="settings-actions"><button type="submit" class="sb-btn sb-btn--primary" id="apply">Применить</button></div></form><div class="params-divider"></div><label class="sb-toggle"><input type="checkbox" id="practice-toggle"><span><b>Проверь себя</b><br>Сначала предложить свой ответ</span></label><p class="sb-caption">Итоговый ответ и разбор появятся после проверки. Все разделы доступны в любой момент.</p></aside>
+</div>
+<script>
+/* Математика лаборатории: точный подсчёт по префиксам, без полного перебора. */
+(function(root){
+'use strict';
+const factorial=n=>{let r=1;for(let i=2;i<=n;i++)r*=i;return r;};
+const choose=(n,k)=>{if(k<0||k>n)return 0;k=Math.min(k,n-k);let r=1;for(let i=1;i<=k;i++)r=r*(n-k+i)/i;return Math.round(r);};
+const unique=s=>[...new Set([...s])];
+function createModel(config){
+ const chars=config.inventory?unique(config.inventory).sort((a,b)=>a.localeCompare(b,'ru')):unique(config.alphabet);
+ const length=config.inventory?[...config.inventory].length:config.length;
+ const inventory=config.inventory?chars.map(c=>[...config.inventory].filter(x=>x===c).length):null;
+ const initial=inventory||chars.map(()=>config.noRepeat?1:length);
+ const checks=[{name:config.noZero?'Первая цифра не ноль':config.forbidFirst?'Первая буква не «'+config.forbidFirst+'»':'Первая позиция без ограничений',test:s=>!s.length||(!config.noZero||s[0]!=='0')&&(!config.forbidFirst||s[0]!==config.forbidFirst)}];
+ if(config.noRepeat)checks.push({name:'Все символы различны',test:s=>new Set([...s]).size===[...s].length});
+ if(config.alternate)checks.push({name:'Чётность соседних цифр различается',test:s=>[...s].every((c,i)=>!i||Number(c)%2!==Number(s[i-1])%2)});
+ if(config.target)checks.push({name:(config.target==='odd'?'Нечётных цифр':'Букв «'+config.target+'»')+': '+(config.countMode==='max'?'не более ':'ровно ')+config.targetCount,test:s=>{let n=[...s].filter(c=>config.target==='odd'?Number(c)%2===1:c===config.target).length;return config.countMode==='max'?n<=config.targetCount:n===config.targetCount;}});
+ if(config.predecessor)checks.push({name:'«'+config.target+'» только сразу после «'+config.predecessor+'»',test:s=>[...s].every((c,i)=>c!==config.target||i>0&&s[i-1]===config.predecessor)});
+ if(config.noAdjacent)checks.push({name:config.noAdjacent==='odd'?'Нечётные цифры не стоят рядом':'Нет соседних букв «'+config.noAdjacent+'»',test:s=>[...s].every((c,i)=>!i||!(isTarget(c,config.noAdjacent)&&isTarget(s[i-1],config.noAdjacent)))});
+ function isTarget(c,t){return t==='odd'?Number(c)%2===1:c===t;}
+ function allowed(c,pos,last,count){
+  if(!pos&&(config.noZero&&c==='0'||config.forbidFirst===c))return false;
+  if(pos&&config.alternate&&Number(c)%2===Number(last)%2)return false;
+  if(config.predecessor&&c===config.target&&last!==config.predecessor)return false;
+  if(pos&&config.noAdjacent&&isTarget(c,config.noAdjacent)&&isTarget(last,config.noAdjacent))return false;
+  if(config.target&&count+Number(isTarget(c,config.target))>config.targetCount)return false;
+  return true;
+ }
+ const memo=new Map(),rawMemo=new Map();
+ function walk(pos,last,count,remaining,filtered){
+  if(pos===length)return !filtered||!config.target||config.countMode==='max'||count===config.targetCount?1:0;
+  const key=pos+'|'+last+'|'+count+'|'+((inventory||config.noRepeat)?remaining.join(','):'');
+  const cache=filtered?memo:rawMemo;if(cache.has(key))return cache.get(key);
+  let n=0;
+  chars.forEach((c,i)=>{if(remaining[i]&&(!filtered||allowed(c,pos,last,count))){let next=remaining.slice();if(inventory||config.noRepeat)next[i]--;n+=walk(pos+1,c,config.target?count+Number(isTarget(c,config.target)):0,next,filtered);}});
+  cache.set(key,n);return n;
+ }
+ const rawTotal=walk(0,'',0,initial,false),validTotal=walk(0,'',0,initial,true);
+ function wordAt(rank,filtered=false){
+  rank=Math.max(0,Math.min((filtered?validTotal:rawTotal)-1,Math.floor(rank)));
+  if(!(filtered?validTotal:rawTotal))return '';
+  let word='',remaining=initial.slice(),count=0;
+  for(let pos=0;pos<length;pos++)for(let i=0;i<chars.length;i++){
+   const c=chars[i];if(!remaining[i]||filtered&&!allowed(c,pos,word.at(-1)||'',count))continue;
+   const next=remaining.slice();if(inventory||config.noRepeat)next[i]--;
+   const nextCount=config.target?count+Number(isTarget(c,config.target)):0;
+   const block=walk(pos+1,c,nextCount,next,filtered);
+   if(rank>=block)rank-=block;else{word+=c;remaining=next;count=nextCount;break;}
+  }
+  return word;
+ }
+ function rankOf(word){
+  if([...word].length!==length)return null;
+  let rank=0,remaining=initial.slice();
+  for(let pos=0;pos<length;pos++){
+   const idx=chars.indexOf(word[pos]);if(idx<0||!remaining[idx])return null;
+   for(let i=0;i<idx;i++)if(remaining[i]){const next=remaining.slice();if(inventory||config.noRepeat)next[i]--;rank+=walk(pos+1,chars[i],0,next,false);}
+   if(inventory||config.noRepeat)remaining[idx]--;
+  }return rank;
+ }
+ function validBefore(rank){
+  if(rank<=0)return 0;if(rank>=rawTotal)return validTotal;
+  const word=wordAt(rank);let n=0,count=0,remaining=initial.slice(),last='';
+  for(let pos=0;pos<length;pos++){
+   const idx=chars.indexOf(word[pos]);
+   for(let i=0;i<idx;i++)if(remaining[i]&&allowed(chars[i],pos,last,count)){
+    const next=remaining.slice();if(inventory||config.noRepeat)next[i]--;
+    n+=walk(pos+1,chars[i],config.target?count+Number(isTarget(chars[i],config.target)):0,next,true);
+   }
+   if(!allowed(word[pos],pos,last,count))return n;
+   if(inventory||config.noRepeat)remaining[idx]--;
+   count+=config.target?Number(isTarget(word[pos],config.target)):0;last=word[pos];
+  }return n;
+ }
+ return {chars,length,checks,rawTotal,validTotal,wordAt,rankOf,validBefore,isValid:w=>checks.every(c=>c.test(w))};
+}
+const api={factorial,choose,unique,createModel};
+if(typeof module!=='undefined')module.exports=api;else root.Combinatorics=api;
+})(typeof window==='undefined'?globalThis:window);
+
+</script>
+<script>
+'use strict';
+const $=id=>document.getElementById(id), C=Combinatorics;
+const MODES=[['basics','Как считать варианты'],['numbers','Слова и числа'],['rules','Ограничения и шаблоны'],['perms','Перестановки букв'],['order','Алфавитный порядок']];
+const INITIAL=()=>({version:1,mode:'numbers',speed:1,codeOpen:true,tablePage:0,filter:'all',
+ basics:{kind:'rep',n:4,k:3},numbers:{base:8,length:5,noZero:true,noRepeat:false,alternate:false},
+ rules:{preset:'ay',length:7,base:8,oddCount:5},perms:{word:'МОЛОДЕЖЬ',forbidFirst:'Ь'},
+ order:{alphabet:'АПРСУ',length:5,maxU:1,noAA:true},
+ steps:{basics:0,numbers:0,rules:0,perms:0,order:0},practice:{},answers:{},checked:{}});
+let state=INITIAL(),model,timer=null,canSave=false,loading=true,saveTimer,dirty=false,saving=false,lastSave=0,epoch=0;
+const fmt=n=>new Intl.NumberFormat('ru-RU').format(n), esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function int(v,min,max,fallback){return Number.isInteger(v)&&v>=min&&v<=max?v:fallback;}
+function normalize(s){
+ const d=INITIAL();if(!s||s.version!==1||typeof s!=='object')return d;
+ if(MODES.some(x=>x[0]===s.mode))d.mode=s.mode;
+ if([.5,1,2].includes(s.speed))d.speed=s.speed;d.codeOpen=typeof s.codeOpen==='boolean'?s.codeOpen:true;
+ for(const m of MODES.map(x=>x[0])){
+  d.steps[m]=int(s.steps?.[m],0,1e15,0);
+  d.practice[m]=s.practice?.[m]===true;
+  d.answers[m]=typeof s.answers?.[m]==='string'?s.answers[m].replace(/[\u0000-\u001f]/g,'').slice(0,20):'';
+  d.checked[m]=s.checked?.[m]===true;
+ }
+ const b=s.basics||{};d.basics={kind:['rep','arr','perm','multi','comb','combRep'].includes(b.kind)?b.kind:'rep',n:int(b.n,2,8,4),k:int(b.k,1,6,3)};
+ const n=s.numbers||{};d.numbers={base:int(n.base,2,10,8),length:int(n.length,1,12,5),noZero:n.noZero!==false,noRepeat:n.noRepeat===true,alternate:n.alternate===true};
+ const r=s.rules||{};d.rules={preset:['ay','odd','letter'].includes(r.preset)?r.preset:'ay',length:int(r.length,2,12,7),base:int(r.base,2,10,8),oddCount:int(r.oddCount,0,12,5)};
+ const p=s.perms||{};d.perms={word:typeof p.word==='string'&&/^[А-ЯЁA-Z]{1,9}$/u.test(p.word)?p.word:'МОЛОДЕЖЬ',forbidFirst:typeof p.forbidFirst==='string'&&p.forbidFirst.length<=1?p.forbidFirst:'Ь'};
+ const o=s.order||{};d.order={alphabet:typeof o.alphabet==='string'&&/^[А-ЯЁA-Z]{2,8}$/u.test(o.alphabet)&&C.unique(o.alphabet).length>=2?o.alphabet:'АПРСУ',length:int(o.length,1,8,5),maxU:int(o.maxU,0,8,1),noAA:o.noAA!==false};
+ return d;
+}
+function notify(text,error=false,retry){
+ const el=$('storage');el.replaceChildren();el.hidden=!text;el.classList.toggle('is-error',error);
+ const span=document.createElement('span');span.textContent=text;el.append(span);
+ if(retry){const b=document.createElement('button');b.className='sb-btn';b.textContent='Повторить';b.onclick=retry;el.append(b);}
+}
+async function loadProgress(note='',syncAttempts=0){
+ const myEpoch=++epoch;stop(false);canSave=false;loading=true;clearTimeout(saveTimer);dirty=false;$('app').inert=true;$('app').setAttribute('aria-busy','true');notify('Загружаем прогресс…');
+ try{
+  if(!window.Sandbox)throw {code:'NO_SDK'};
+  const saved=await Sandbox.load();if(myEpoch!==epoch)return;state=normalize(saved);canSave=true;notify(note);
+ }catch(e){
+  if(myEpoch!==epoch)return;
+  if(['AUTH_CHANGED','SYNC_REQUIRED'].includes(e.code)&&syncAttempts<2)return loadProgress('Прогресс обновлён. Повторите последнее действие.',syncAttempts+1);
+  const ordinary=['NO_SDK','NOT_EMBEDDED','STORAGE_ERROR'].includes(e.code);
+  notify(ordinary?'Прогресс не сохраняется: можно исследовать все примеры в этой сессии.':'Не удалось загрузить прогресс ('+(e.code||'сбой связи')+'). Можно работать без сохранения. Повтор загрузки заменит текущие изменения.',!ordinary,ordinary?null:()=>loadProgress());
+ }finally{if(myEpoch===epoch){loading=false;$('app').inert=false;$('app').setAttribute('aria-busy','false');render();}}
+}
+function persist(debounce=false){
+ if(!canSave||loading)return;dirty=true;clearTimeout(saveTimer);
+ const wait=debounce?700:Math.max(0,550-(Date.now()-lastSave));saveTimer=setTimeout(flush,wait);
+}
+async function flush(){
+ if(!canSave||loading||!dirty||saving)return;
+ saving=true;dirty=false;lastSave=Date.now();const myEpoch=epoch;
+ try{await Sandbox.save(JSON.parse(JSON.stringify(state)));if(myEpoch===epoch)notify('');}
+ catch(e){if(myEpoch!==epoch)return;
+  if(['AUTH_CHANGED','SYNC_REQUIRED'].includes(e.code)){await loadProgress('Прогресс обновлён. Повторите последнее действие.');}
+  else{dirty=true;notify('Изменения не сохранены ('+(e.status===413?'слишком большой объём данных':e.status===429?'слишком частые запросы':e.code||'сбой связи')+').',true,()=>persist());}
+ }finally{saving=false;if(dirty&&canSave&&myEpoch===epoch&&!$('storage').classList.contains('is-error'))persist();}
+}
+function config(){
+ const m=state.mode;
+ if(m==='numbers'){const n=state.numbers;return {alphabet:'0123456789'.slice(0,n.base),...n};}
+ if(m==='rules'){
+  const r=state.rules;
+  if(r.preset==='odd')return {alphabet:'0123456789'.slice(0,r.base),length:r.length,noZero:true,target:'odd',targetCount:r.oddCount,noAdjacent:'odd'};
+  if(r.preset==='letter')return {alphabet:'АСУ',length:r.length,target:'У',targetCount:1,noAdjacent:'У'};
+  return {alphabet:'СЛУЧАЙ',length:r.length,target:'Й',targetCount:1,predecessor:'А'};
+ }
+ if(m==='perms')return {inventory:state.perms.word,forbidFirst:state.perms.forbidFirst};
+ const o=state.order;return {alphabet:C.unique(o.alphabet).sort((a,b)=>a.localeCompare(b,'ru')).join(''),length:o.length,target:'У',targetCount:o.maxU,countMode:'max',noAdjacent:o.noAA?'А':undefined};
+}
+const TITLES={basics:['Шесть способов считать','Определите, важен ли порядок и разрешены ли повторения. Сравните формулу с небольшими примерами.'],numbers:['Слова, числа и выбор позиции','Меняйте основание и длину записи. Наблюдайте, как ограничения отсеивают варианты и меняют ответ.'],rules:['Ограничения превращаются в шаблоны','Объединяйте буквы в блоки и заменяйте цифры их чётностью. Считайте большие наборы без полного перебора.'],perms:['Одинаковые буквы — разные позиции','Переставляйте все буквы слова и разбирайтесь, почему одинаковые буквы не создают новые слова.'],order:['У каждого слова есть номер','Сопоставляйте алфавитный список с системой счисления. Найдите первое слово, удовлетворяющее условиям.']};
+function button(text,action,extra=''){return '<button type="button" class="sb-btn" data-action="'+action+'" '+extra+'>'+text+'</button>';}
+function field(label,input,hint=''){return '<div class="sb-field"><label>'+label+input+'</label>'+(hint?'<span class="sb-caption">'+hint+'</span>':'')+'</div>';}
+function numberField(label,key,value,min,max){return field(label,'<input type="number" data-key="'+key+'" value="'+value+'" min="'+min+'" max="'+max+'" required>');}
+function selectField(label,key,value,options){return field(label,'<select aria-label="'+label+'" data-key="'+key+'">'+options.map(([v,t])=>'<option value="'+esc(v)+'" '+(String(value)===String(v)?'selected':'')+'>'+t+'</option>').join('')+'</select>');}
+function toggle(label,key,value){return '<label class="sb-toggle"><input type="checkbox" data-key="'+key+'" '+(value?'checked':'')+'><span>'+label+'</span></label>';}
+function buildSettings(){
+ let html='',m=state.mode;
+ if(m==='basics'){
+  const b=state.basics;
+  html+=selectField('Способ подсчёта','kind',b.kind,[['rep','Размещения с повторениями'],['arr','Размещения без повторений'],['perm','Перестановки без повторений'],['multi','Перестановки одинаковых букв'],['comb','Сочетания без повторений'],['combRep','Сочетания с повторениями']]);
+  if(b.kind==='multi')html+='<p class="sb-callout">Пример «МАШИНА»: две одинаковые буквы А. Изменять слово можно в разделе «Перестановки букв».</p>';
+  else{html+=numberField('Количество элементов n','n',b.n,2,8);if(b.kind!=='perm')html+=numberField('Выбираем элементов k','k',b.k,1,6);}
+ }else if(m==='numbers'){
+  const n=state.numbers;
+  html+='<div class="preset-row">'+button('Восьмеричные · 5 знаков','preset-number')+button('Чередование · 6 знаков','preset-alternate')+'</div>';
+  html+=numberField('Основание системы','base',n.base,2,10)+numberField('Количество позиций','length',n.length,1,12);
+  html+=toggle('Запретить ноль в начале','noZero',n.noZero)+toggle('Цифры не повторяются','noRepeat',n.noRepeat)+toggle('Чередовать чётность','alternate',n.alternate);
+  html+='<p class="sb-caption">При разрешённом нуле в начале считаем кодовые слова, а не многозначные числа.</p>';
+ }else if(m==='rules'){
+  const r=state.rules;
+  html+=selectField('Пример из методички','preset',r.preset,[['ay','СЛУЧАЙ: ровно одна Й после А'],['odd','Цифры: нечётные не соседствуют'],['letter','АСУ: ровно одна У']]);
+  html+=numberField('Количество позиций','length',r.length,2,12);
+  if(r.preset==='odd')html+=numberField('Основание системы','base',r.base,2,10)+numberField('Нечётных цифр ровно','oddCount',r.oddCount,0,r.length);
+  if(r.preset==='ay')html+='<p class="sb-caption">«После А» в этом примере означает непосредственно после А: блок «АЙ».</p>';
+  html+=button('Вернуть пример методички','preset-rule');
+ }else if(m==='perms'){
+  const p=state.perms;
+  html+='<div class="preset-row">'+['МОЛОДЕЖЬ','МАШИНА','МЕЧТА'].map(w=>button(w,'preset-word','data-word="'+w+'"')).join('')+'</div>';
+  html+=field('Исходное слово','<input type="text" data-key="word" value="'+esc(p.word)+'" maxlength="9" required autocomplete="off" spellcheck="false">','От 1 до 9 букв. Все буквы исходного слова используются ровно по одному разу.');
+  html+=selectField('Не может стоять первой','forbidFirst',p.forbidFirst,[['','Нет запрета'],...C.unique(p.word).map(c=>[c,c])]);
+ }else{
+  const o=state.order;
+  html+=field('Буквы алфавита','<input type="text" data-key="alphabet" value="'+esc(o.alphabet)+'" maxlength="8" required autocomplete="off" spellcheck="false">','Буквы будут упорядочены по русскому алфавиту; повторяющиеся удаляются.');
+  html+=numberField('Длина слова','length',o.length,1,8)+numberField('Букв У не более','maxU',o.maxU,0,o.length)+toggle('Запретить соседние АА','noAA',o.noAA);
+  html+=button('Вернуть пример «ПАРУС»','preset-order');
+ }
+ $('fields').innerHTML=html;$('apply').hidden=m==='basics';$('settings-description').textContent=m==='basics'?'Настройки применяются сразу. Сравнивайте способы подсчёта при одних и тех же n и k.':'Измените настройки и нажмите «Применить». Новый опыт начнётся с первого варианта.';$('field-error').hidden=true;
+ $('practice-toggle').checked=!!state.practice[m];
+}
+function render(){
+ stop(false);const m=state.mode;document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===m)));
+ $('title').textContent=TITLES[m][0];$('description').textContent=TITLES[m][1];
+ $('basics-scene').hidden=m!=='basics';$('explorer').hidden=m==='basics';$('analysis').hidden=m==='basics';$('results-card').hidden=m==='basics';
+ $('mode-name').textContent=MODES.find(x=>x[0]===m)[1];buildSettings();
+ if(m==='basics')renderBasics();else{
+  model=C.createModel(config());
+  state.steps[m]=Math.min(state.steps[m],Math.max(0,totalSteps()-1));state.tablePage=0;renderFrame();renderTable();
+ }
+ renderPractice();renderLessons();
+}
+function hiddenAnswer(){return !!state.practice[state.mode]&&!state.checked[state.mode];}
+function totalSteps(){return model.rawTotal*(model.length+model.checks.length+1);}
+function frame(){const span=model.length+model.checks.length+1,step=state.steps[state.mode];return {span,rank:Math.floor(step/span),phase:step%span,word:model.wordAt(Math.floor(step/span))};}
+function metric(label,value){return '<div class="sb-metric"><span class="sb-metric-value">'+value+'</span><span class="sb-metric-label">'+label+'</span></div>';}
+function renderFrame(){
+ const f=frame(),m=state.mode,hidden=hiddenAnswer(),built=Math.min(model.length,f.phase+1),checkStage=f.phase-model.length;
+ const evaluations=model.checks.map(c=>c.test(f.word)),accepted=evaluations.every(Boolean),finished=f.phase===f.span-1;
+ $('scene-title').textContent=m==='order'?'Алфавитный список':m==='perms'?'Уникальные перестановки':'Собираем и проверяем вариант';
+ $('scene-status').textContent=timer?'Воспроизведение':!model.rawTotal?'Нет вариантов':finished?(accepted?'Принят':'Отклонён'):'Исследование';
+ $('scene-status').className='sb-status'+(finished?' '+(accepted?'is-success':'is-error'):'');
+ $('slots').innerHTML=[...f.word].map((c,i)=>'<div class="symbol-slot '+(i<built?'is-filled':'')+' '+(i===built-1&&f.phase<model.length?'is-current':'')+'"><span class="slot-index">'+(i+1)+'</span><strong>'+(i<built?esc(c):'·')+'</strong>'+(m==='numbers'||config().target==='odd'?'<span class="slot-caption">'+(i<built?(Number(c)%2?'нечёт.':'чёт.'):'')+'</span>':'')+'</div>').join('');
+ if(!model.rawTotal)$('slots').innerHTML='<p class="sb-caption">Не хватает разных символов для заданной длины. Разрешите повторения или уменьшите длину.</p>';
+ $('alphabet').innerHTML=model.chars.map(c=>'<span class="alphabet-char">'+esc(c)+'</span>').join('');
+ $('candidate-number').textContent=model.rawTotal?'Вариант '+fmt(f.rank+1)+' из '+fmt(model.rawTotal):'Нет вариантов';
+ $('checks').innerHTML=model.checks.map((c,i)=>{const tested=checkStage>=i;return '<div class="check-row '+(tested?(evaluations[i]?'is-good':'is-bad'):'')+'"><span class="check-mark">'+(tested?(evaluations[i]?'✓':'×'):'·')+'</span><span>'+esc(c.name)+'</span><b>'+(tested?(evaluations[i]?'Да':'Нет'):'Ожидает')+'</b></div>';}).join('');
+ const count=model.validBefore(f.rank)+(finished&&accepted?1:0);
+ $('metrics').innerHTML=metric('Всего уникальных вариантов',fmt(model.rawTotal))+metric('Подходят всем условиям',hidden?'?':fmt(model.validTotal))+metric('Проверено до текущего',fmt(f.rank+(finished?1:0)))+metric('Принято до текущего',fmt(count));
+ $('counter').textContent=fmt(model.rawTotal?state.steps[m]+1:0)+' / '+fmt(totalSteps());
+ $('timeline').max=Math.max(0,totalSteps()-1);$('timeline').value=state.steps[m];$('timeline').disabled=!model.rawTotal;
+ $('back').disabled=state.steps[m]===0;$('forward').disabled=!model.rawTotal||state.steps[m]>=totalSteps()-1;$('play').disabled=!model.rawTotal;$('stage').disabled=!model.rawTotal||state.steps[m]>=totalSteps()-1;
+ $('play').textContent=timer?'Ⅱ Пауза':'▶ Запуск';
+ document.querySelectorAll('[data-speed]').forEach(b=>b.setAttribute('aria-pressed',String(state.speed===+b.dataset.speed)));
+ let text=f.phase<model.length?'Позиция '+(f.phase+1)+': выбираем «'+f.word[f.phase]+'». Правые позиции меняются быстрее левых. Так строится последовательный перебор.':checkStage<model.checks.length?'Проверяем условие: '+model.checks[checkStage].name+'. '+(evaluations[checkStage]?'Условие выполнено.':'Вариант будет отклонён.'):(accepted?'Все условия выполнены: прибавляем 1 к числу подходящих вариантов.':'Хотя бы одно условие нарушено: счётчик подходящих вариантов не изменяется.');
+ if(!model.rawTotal)text='С такой длиной и запретом повторений вариантов нет.';
+ $('step-text').textContent=text;$('step-text').setAttribute('aria-live',timer?'off':'polite');
+ document.querySelectorAll('[data-rank]').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.rank===f.rank)));
+ renderCode(f);renderCalculation();renderRank(f);
+ $('code-toggle').setAttribute('aria-expanded',String(state.codeOpen));$('code-body').hidden=!state.codeOpen;$('fold-label').textContent=state.codeOpen?'Свернуть':'Развернуть';
+ $('jump-index').max=Math.max(1,model.rawTotal);$('jump-index').value=f.rank+1;
+}
+function codeLines(){
+ const cf=config(),m=state.mode,a=model.chars.join('');
+ if(m==='perms')return ["from itertools import permutations","words = set(permutations('"+state.perms.word+"'))","count = 0","for letters in sorted(words):","    s = ''.join(letters)","    if "+(cf.forbidFirst?"s[0] != '"+cf.forbidFirst+"'":'True')+":","        count += 1","print(count)"];
+ if(m==='rules'&&cf.target==='odd'){
+  const L=model.length,q=cf.targetCount,E=Math.ceil(model.chars.length/2),O=Math.floor(model.chars.length/2);
+  return ['from itertools import product','count = 0',"for letters in product('ЧН', repeat="+L+'):',"    s = ''.join(letters)","    if s.count('Н') == "+q+" and 'НН' not in s:","        if s[0] == 'Ч':",'            count += '+(E-1)+' * '+E+' ** '+Math.max(0,L-q-1)+' * '+O+' ** '+q,'        else:','            count += '+E+' ** '+(L-q)+' * '+O+' ** '+q,'print(count)'];
+ }
+ const conditions=[];
+ if(cf.noZero)conditions.push("s[0] != '0'");
+ 
+ if(cf.alternate)conditions.push('all(int(s[i]) % 2 != int(s[i+1]) % 2 for i in range(len(s)-1))');
+ if(cf.target)conditions.push(cf.target==='odd'?"sum(int(c) % 2 for c in s) == "+cf.targetCount:"s.count('"+cf.target+"') "+(cf.countMode==='max'?'<=':'==')+' '+cf.targetCount);
+ if(cf.predecessor)conditions.push("all(c != 'Й' or (i > 0 and s[i-1] == 'А') for i, c in enumerate(s))");
+ if(cf.noAdjacent)conditions.push(cf.noAdjacent==='odd'?"all(not (int(s[i]) % 2 and int(s[i+1]) % 2) for i in range(len(s)-1))":"'"+cf.noAdjacent+cf.noAdjacent+"' not in s");
+ return ['from itertools import '+(cf.noRepeat?'permutations':'product'),'count = 0',...(m==='order'?['number = 0']:[]),"for letters in "+(cf.noRepeat?"permutations('"+a+"', "+model.length+'):':"product('"+a+"', repeat="+model.length+'):'),"    s = ''.join(letters)",...(m==='order'?['    number += 1']:[]),'    if ('+(conditions.join('\n        and ')||'True')+'):',m==='order'?'        print(number, s)':'        count += 1',m==='order'?'        break':'print(count)'];
+}
+function renderCode(f){
+ const lines=codeLines(),prefix=f.phase<model.length,checks=f.phase<model.length+model.checks.length;
+ const active=prefix?lines.findIndex(l=>l.includes("s =")):checks?lines.findIndex(l=>l.includes('    if')):lines.findIndex(l=>l.includes('count +=')||l.includes('print(number'));
+ $('code').innerHTML=lines.map((l,i)=>'<div class="sb-code-line '+(i===active?'is-current':'')+'"><span>'+(i+1)+'</span><span>'+esc(l)+'</span></div>').join('');
+ $('code-note').textContent=state.mode==='rules'&&config().target==='odd'?'Гибридное решение: перебираем только '+fmt(2**model.length)+' шаблонов Ч/Н, а цифры учитываем множителями.':'Python показывает способ решения. Песочница считает по префиксам: даже большой пример не требует полного перебора.';
+}
+function calculation(){
+ const cf=config(),m=state.mode,L=model.length,n=model.chars.length;
+ if(m==='numbers'){
+  if(cf.noRepeat||cf.alternate)return {title:cf.alternate?'Разбиваем по чётности':'Выбираем без повторений',formula:cf.alternate?'ЧНЧН… или НЧНЧ…':'n · (n − 1) · … · (n − k + 1)',text:cf.alternate?'У каждого шаблона перемножаем число допустимых цифр по позициям, затем складываем результаты. В первой позиции ноль исключён.':'Каждый использованный символ убираем из доступных. Если ноль запрещён в начале, сначала выбираем одну из '+(n-1)+' ненулевых цифр, а затем остальные без повторений.'};
+  return {title:'Правило произведения',formula:(cf.noZero?'('+n+' − 1) × '+n+'^'+(L-1):n+'^'+L),text:'Для каждой позиции считаем число независимых вариантов. '+(cf.noZero?'В первой позиции '+(n-1)+' цифр; в каждой следующей — '+n+'.':'В каждой из '+L+' позиций — '+n+' символов.')};
+ }
+ if(m==='rules'&&cf.predecessor)return {title:'Склеиваем «АЙ» в один блок',formula:(L-1)+' × 5^'+(L-2),text:'Начало блока «АЙ» можно выбрать '+(L-1)+' способами. В остальных '+(L-2)+' позициях доступны С, Л, У, Ч, А. Й уже использована ровно один раз.'};
+ if(m==='rules'&&cf.target==='odd'){
+  const q=state.rules.oddCount,E=Math.ceil(n/2),O=Math.floor(n/2),startsEven=C.choose(L-q,q),startsOdd=q?C.choose(L-q,q-1):0;
+  return {title:'Сначала шаблоны, затем цифры',formula:fmt(startsEven)+' × '+(E-1)+' × '+E+'^'+Math.max(0,L-q-1)+' × '+O+'^'+q+' + '+fmt(startsOdd)+' × '+E+'^'+(L-q)+' × '+O+'^'+q,text:'Шаблонов с первой чётной: '+fmt(startsEven)+'; с первой нечётной: '+fmt(startsOdd)+'. Ноль считается чётным, но не может стоять первым. Невозможные группы дают 0 вариантов.'};
+ }
+ if(m==='rules')return {title:'Выбираем место для У',formula:L+' × 2^'+(L-1),text:'Ровно одну У ставим на одно из '+L+' мест. Каждое другое место заполняем А или С. При одной У запрет соседства выполняется автоматически.'};
+ if(m==='perms'){
+  const w=state.perms.word,counts=model.chars.map(c=>[...w].filter(x=>x===c).length),den=counts.filter(x=>x>1).map(x=>x+'!').join(' × ')||'1';
+  return {title:'Убираем повторный подсчёт',formula:L+'! / ('+den+')'+(cf.forbidFirst?' − варианты с «'+cf.forbidFirst+'» в начале':''),text:'Одинаковые буквы неразличимы. Сначала считаем все уникальные перестановки: '+fmt(model.rawTotal)+'. '+(cf.forbidFirst?'Затем вычитаем '+fmt(model.rawTotal-model.validTotal)+' вариантов, начинающихся с запрещённой буквы.':'Ограничения первой буквы нет.')};
+ }
+ const first=model.validTotal?model.wordAt(0,true):'';
+ return {title:'Номер = значение записи + 1',formula:first?first+' → '+[...first].map(c=>model.chars.indexOf(c)).join('')+' в основании '+n+' → №'+fmt(model.rankOf(first)+1):'Подходящих слов нет',text:'Это первое подходящее слово. Номер определяется среди ВСЕХ слов списка, включая не прошедшие условия. Нумерация начинается с 1.'};
+}
+function renderCalculation(){
+ const a=calculation();$('calc-title').textContent=a.title;$('calc-formula').textContent=hiddenAnswer()?'Сначала предложите свой ответ':a.formula;$('calc-text').textContent=hiddenAnswer()?'Введите ответ в блоке «Проверь себя». После проверки появятся формула и точный результат.':a.text;
+ $('calc-answer').textContent=hiddenAnswer()?'?':fmt(expected());$('calc-answer-label').textContent=state.mode==='order'?'Номер первого подходящего слова':'Подходящих вариантов';
+ const cf=config();$('templates').hidden=!(state.mode==='rules'&&cf.target==='odd'||state.mode==='numbers'&&cf.alternate);
+ if(!$('templates').hidden){
+  const templateModel=C.createModel({alphabet:'ЧН',length:model.length,target:'Н',targetCount:state.mode==='rules'?state.rules.oddCount:undefined,noAdjacent:state.mode==='rules'?'Н':undefined});
+  let templates=[];
+  if(state.mode==='numbers')templates=[Array.from({length:model.length},(_,i)=>i%2?'Н':'Ч').join(''),Array.from({length:model.length},(_,i)=>i%2?'Ч':'Н').join('')];
+  else for(let i=0;i<Math.min(6,templateModel.validTotal);i++)templates.push(templateModel.wordAt(i,true));
+  $('template-list').innerHTML=templates.map(t=>'<span class="template-chip">'+t+'</span>').join('');
+  $('template-note').textContent='Ч — чётная, Н — нечётная цифра. '+(state.mode==='rules'?'Показаны первые '+Math.min(6,templateModel.validTotal)+' из '+fmt(templateModel.validTotal)+' допустимых шаблонов.':'Два возможных шаблона чередования.');
+ }
+}
+function renderRank(f){
+ $('rank-panel').hidden=state.mode!=='order';if(state.mode!=='order')return;
+ const digits=[...f.word].map(c=>model.chars.indexOf(c));
+ $('rank-map').textContent=model.chars.map((c,i)=>c+' = '+i).join(' · ');
+ $('rank-formula').textContent=digits.map((d,i)=>d+' × '+model.chars.length+'^'+(model.length-i-1)).join(' + ')+' + 1 = '+fmt(f.rank+1);
+ $('rank-word').value=f.word;
+}
+function renderTable(){
+ const pageSize=6,filtered=state.filter==='valid',total=filtered?model.validTotal:model.rawTotal;
+ state.tablePage=Math.max(0,Math.min(state.tablePage,Math.max(0,Math.ceil(total/pageSize)-1)));
+ const start=state.tablePage*pageSize;let html='';
+ for(let i=start;i<Math.min(start+pageSize,total);i++){
+  const word=model.wordAt(i,filtered),rank=filtered?model.rankOf(word):i,valid=model.isValid(word);
+  html+='<button type="button" class="result-row" data-rank="'+rank+'" aria-pressed="'+(frame().rank===rank)+'"><span class="result-num">№'+fmt(rank+1)+'</span><strong>'+esc(word)+'</strong><span class="result-verdict '+(valid?'good':'bad')+'">'+(valid?'✓ Подходит':'× Отклонён')+'</span></button>';
+ }
+ $('rows').innerHTML=html||'<p class="sb-empty">Подходящих вариантов нет. Измените параметры.</p>';
+ $('table-counter').textContent=total?fmt(start+1)+'–'+fmt(Math.min(start+pageSize,total))+' из '+fmt(total):'0 вариантов';
+ $('table-prev').disabled=state.tablePage===0;$('table-next').disabled=start+pageSize>=total;
+ $('filter-all').setAttribute('aria-pressed',String(!filtered));$('filter-valid').setAttribute('aria-pressed',String(filtered));
+}
+function basicResult(){const b=state.basics,n=b.n,k=b.k;return b.kind==='rep'?n**k:b.kind==='arr'?(k>n?0:C.factorial(n)/C.factorial(n-k)):b.kind==='perm'?C.factorial(n):b.kind==='multi'?360:b.kind==='comb'?C.choose(n,k):C.choose(n+k-1,k);}
+function renderBasics(){
+ const b=state.basics,n=b.n,k=b.k;
+ const dict={rep:['Размещения с повторениями','nᵏ',n+'^'+k,'Порядок важен. Каждый символ можно использовать снова.'],arr:['Размещения без повторений','n! / (n − k)!',n+'! / ('+n+' − '+k+')!','Порядок важен. Выбранный символ больше недоступен.'],perm:['Перестановки без повторений','n!',n+'!','Используем все различные элементы, изменяя их порядок.'],multi:['Перестановки с повторяющимися элементами','n! / (n₁! · n₂! · …)','6! / 2!','В слове «МАШИНА» две одинаковые А. Обмен этих А не создаёт нового слова.'],comb:['Сочетания без повторений','n! / (k! · (n − k)!)',n+'! / ('+k+'! × '+(n-k)+'!)','Порядок не важен. АБ и БА — один выбор. Повторений нет.'],combRep:['Сочетания с повторениями','(n + k − 1)! / (k! · (n − 1)!)',(n+k-1)+'! / ('+k+'! × '+(n-1)+'!)','Порядок не важен. Один тип элемента можно выбирать несколько раз.']};
+ const [name,formula,sub,text]=dict[b.kind];$('basic-title').textContent=name;$('basic-formula').textContent=formula;$('basic-substitution').textContent=hiddenAnswer()?'Сначала предложите свой ответ':sub+' = '+fmt(basicResult());$('basic-explanation').textContent=text;
+ const isComb=b.kind.startsWith('comb'),repeats=['rep','multi','combRep'].includes(b.kind),all=['perm','multi'].includes(b.kind);
+ $('basic-decisions').innerHTML=[['Порядок',isComb?'Не важен':'Важен'],['Повторения',repeats?'Есть / разрешены':'Нет'],['Используем',all?'Все элементы':'Часть или заданное число']].map(([a,v])=>'<div class="decision"><span>'+a+'</span><b>'+v+'</b></div>').join('');
+ let examples=[];
+ if(b.kind==='multi')examples=['МАШИНА','МАШИАН','АМАШИН','ААМШИН'];
+ else{
+  const chars='АБВГДЕЖЗ'.slice(0,n),len=all?n:k;
+  if(len<=n||repeats){
+   function visit(prefix,start){if(examples.length>=8)return;if(prefix.length===len){examples.push(prefix);return;}for(let i=isComb?start:0;i<n;i++){if(!repeats&&prefix.includes(chars[i]))continue;visit(prefix+chars[i],isComb?(repeats?i:i+1):0);if(examples.length>=8)return;}}
+   visit('',0);
+  }
+ }
+ $('basic-examples').innerHTML=examples.map(w=>'<div class="example-word">'+esc(w)+'</div>').join('')||'<p class="sb-caption">Выбрать '+k+' различных элементов из '+n+' невозможно: ответ 0.</p>';
+ $('basic-count-label').textContent='Показано '+examples.length+' примеров из '+(hiddenAnswer()?'?':fmt(basicResult()))+'. '+(isComb?'В сочетаниях буквы показаны в одном порядке, чтобы не считать один выбор повторно.':'Меняя порядок букв, получаем другой вариант.');
+}
+function expected(){if(state.mode==='basics')return basicResult();if(state.mode==='order')return model.validTotal?model.rankOf(model.wordAt(0,true))+1:0;return model.validTotal;}
+function renderPractice(){
+ const concealed=hiddenAnswer();
+ $('explorer').hidden=state.mode==='basics'||concealed;$('basics-scene').hidden=state.mode!=='basics'||concealed;$('analysis').hidden=state.mode==='basics'||concealed;$('results-card').hidden=state.mode==='basics'||concealed;$('lesson-cards').hidden=concealed;
+ const m=state.mode;$('practice-card').hidden=!state.practice[m];$('prediction').value=state.answers[m]||'';
+ $('question').textContent=m==='order'?'Под каким номером находится первое подходящее слово? Если таких слов нет, введите 0.':'Сколько различных вариантов получится при текущих параметрах?';
+ $('feedback').hidden=!state.checked[m];
+ if(state.checked[m]){const ok=Number((state.answers[m]||'').replace(/\s/g,''))===expected();$('feedback').className='sb-quiz-feedback '+(ok?'is-success':'is-error');$('feedback').textContent=(ok?'Верно! ':'Ответ отличается. ')+'Правильный ответ: '+fmt(expected())+'. Сравните свой ход решения с разбором.';}
+}
+function renderLessons(){
+ const texts={basics:['Сначала три вопроса: важен ли порядок, есть ли повторения, используем ли все элементы?','При n = 4 и k = 3 сравните размещения и сочетания. Объясните, откуда берётся деление на 3!.','Повторение выбора элемента и одинаковые элементы в исходном слове — разные ситуации.'],numbers:['Независимые варианты перемножаются. Несовместимые случаи складываются.','Включите чередование чётности. Сравните 5-значные восьмеричные и 6-значные семиричные числа.','Ноль — чётная цифра. Внутри числа он допустим, а в первой позиции многозначного числа — нет.'],rules:['Сначала считаем расположения типов символов. Затем заполняем каждую позицию допустимыми буквами или цифрами.','В примере «СЛУЧАЙ» увеличьте длину на 1. Для нечётных цифр сравните шаблоны с разной первой позицией.','«Ровно одна» и «не более одной» — разные условия. «Сразу после» требует соседства.'],perms:['Для одинаковых букв делим n! на факториалы их количеств. Запрещённое начало удобно вычесть из общего числа.','Сравните «МЕЧТА», «МАШИНА» и «МОЛОДЕЖЬ». Запретите первую букву, которая повторяется.','permutations() различает позиции одинаковых букв. Без устранения дублей счётчик завысит ответ.'],order:['Цифра буквы — её индекс в отсортированном алфавите. Номер слова равен значению записи плюс 1.','Нажмите «Первое подходящее». Для АПАПА получится запись 01010 в основании 5 и номер 131.','Счётчик номера увеличивается для каждого слова, а не только для подходящих. Не забудьте прибавить 1.']};
+ $('lesson-cards').innerHTML=texts[state.mode].map((t,i)=>'<section class="sb-card"><h3 class="sb-h3">'+['Идея и формула','Что попробовать','Типичная ошибка'][i]+'</h3><p class="sb-caption">'+t+'</p></section>').join('');
+}
+function stop(save=true){if(timer){clearInterval(timer);timer=null;if(save)persist();}if($('play'))$('play').textContent='▶ Запуск';}
+function move(step,user=true){if(user)stop(false);state.steps[state.mode]=Math.max(0,Math.min(totalSteps()-1,step));renderFrame();if(user)persist();}
+function resetExperience(){stop(false);state.steps[state.mode]=0;state.checked[state.mode]=false;state.tablePage=0;render();persist();}
+function applySettings(){
+ const m=state.mode;const candidate={...state[m]};
+ $('fields').querySelectorAll('[data-key]').forEach(el=>{candidate[el.dataset.key]=el.type==='checkbox'?el.checked:el.type==='number'?Number(el.value):el.tagName==='SELECT'?el.value:el.value.trim().toUpperCase();});
+ let error='';
+ $('fields').querySelectorAll('input[type=number]').forEach(el=>{if(!Number.isInteger(+el.value)||el.value===''||+el.value<+el.min||+el.value>+el.max)error='Поле «'+el.closest('label').firstChild.textContent+'»: введите целое число от '+el.min+' до '+el.max+'.';});
+ if(m==='perms'&&!/^[А-ЯЁA-Z]{1,9}$/u.test(candidate.word))error='Введите от 1 до 9 букв без пробелов и знаков.';
+ if(m==='order'){
+  if(!/^[А-ЯЁA-Z]{2,8}$/u.test(candidate.alphabet)||C.unique(candidate.alphabet).length<2)error='Алфавит должен содержать от 2 до 8 букв, хотя бы две различные.';
+  candidate.alphabet=C.unique(candidate.alphabet).sort((a,b)=>a.localeCompare(b,'ru')).join('');
+  if(candidate.maxU>candidate.length)error='Число букв У не может превышать длину слова.';
+ }
+ if(m==='rules'&&candidate.preset==='odd'&&candidate.oddCount>candidate.length)error='Нечётных цифр не может быть больше, чем позиций.';
+ if(error){$('field-error').textContent=error;$('field-error').hidden=false;return;}
+ if(m==='perms'&&!candidate.word.includes(candidate.forbidFirst))candidate.forbidFirst='';
+ if(m==='rules'&&candidate.preset!==state.rules.preset){if(candidate.preset==='odd'){candidate.length=12;candidate.base=8;candidate.oddCount=5;}else candidate.length=candidate.preset==='ay'?7:5;}
+ state[m]=candidate;resetExperience();
+}
+$('settings-form').addEventListener('submit',e=>{e.preventDefault();applySettings();});
+$('app').addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b||loading)return;
+ if(b.dataset.mode){state.mode=b.dataset.mode;state.filter='all';render();persist();return;}
+ if(b.dataset.speed){state.speed=+b.dataset.speed;const playing=!!timer;stop(false);if(playing)play();else renderFrame();persist();return;}
+ if(b.dataset.rank!==undefined){move(+b.dataset.rank*(model.length+model.checks.length+1));return;}
+ const a=b.dataset.action;if(!a)return;
+ if(a==='back')move(state.steps[state.mode]-1);
+ if(a==='forward')move(state.steps[state.mode]+1);
+ if(a==='stage'){const f=frame();move((f.rank+1)*f.span);}
+ if(a==='reset')move(0);
+ if(a==='play'){if(timer){stop();renderFrame();}else play();}
+ if(a==='end'){move(totalSteps()-1);}
+ if(a==='first-valid'){if(model.validTotal)move(model.rankOf(model.wordAt(0,true))*(model.length+model.checks.length+1));}
+ if(a==='code'){state.codeOpen=!state.codeOpen;renderFrame();persist();}
+ if(a==='table-prev'||a==='table-next'){state.tablePage+=a==='table-next'?1:-1;renderTable();}
+ if(a==='filter-all'||a==='filter-valid'){state.filter=a==='filter-valid'?'valid':'all';state.tablePage=0;renderTable();}
+ if(a==='preset-number'){state.numbers={base:8,length:5,noZero:true,noRepeat:false,alternate:false};resetExperience();}
+ if(a==='preset-alternate'){state.numbers={base:7,length:6,noZero:true,noRepeat:false,alternate:true};resetExperience();}
+ if(a==='preset-rule'){state.rules=state.rules.preset==='odd'?{preset:'odd',length:12,base:8,oddCount:5}:state.rules.preset==='letter'?{preset:'letter',length:5,base:8,oddCount:1}:{preset:'ay',length:7,base:8,oddCount:5};resetExperience();}
+ if(a==='preset-word'){state.perms={word:b.dataset.word,forbidFirst:b.dataset.word==='МОЛОДЕЖЬ'?'Ь':''};resetExperience();}
+ if(a==='preset-order'){state.order={alphabet:'АПРСУ',length:5,maxU:1,noAA:true};resetExperience();}
+});
+function play(){
+ if(state.steps[state.mode]>=totalSteps()-1)state.steps[state.mode]=0;
+ timer=setInterval(()=>{if(state.steps[state.mode]>=totalSteps()-1){stop();renderFrame();return;}move(state.steps[state.mode]+1,false);},650/state.speed);renderFrame();persist();
+}
+$('timeline').addEventListener('input',e=>{stop(false);state.steps[state.mode]=+e.target.value;renderFrame();persist(true);});
+$('jump-form').addEventListener('submit',e=>{e.preventDefault();const v=Number($('jump-index').value);if(Number.isInteger(v)&&v>=1&&v<=model.rawTotal)move((v-1)*(model.length+model.checks.length+1));});
+$('rank-form').addEventListener('submit',e=>{e.preventDefault();const w=$('rank-word').value.trim().toUpperCase(),r=model.rankOf(w);$('rank-error').hidden=r!==null;if(r!==null)move(r*(model.length+model.checks.length+1));});
+$('practice-toggle').addEventListener('change',e=>{state.practice[state.mode]=e.target.checked;state.checked[state.mode]=false;stop(false);if(state.mode==='basics')renderBasics();else renderFrame();renderPractice();persist();});
+$('prediction').addEventListener('input',e=>{state.answers[state.mode]=e.target.value.slice(0,20);state.checked[state.mode]=false;$('feedback').hidden=true;renderPractice();persist(true);});
+$('prediction-form').addEventListener('submit',e=>{e.preventDefault();const v=(state.answers[state.mode]||'').replace(/\s/g,'');if(!/^\d+$/.test(v)){$('feedback').hidden=false;$('feedback').className='sb-quiz-feedback is-error';$('feedback').textContent='Введите целое неотрицательное число.';return;}state.checked[state.mode]=true;renderPractice();if(state.mode==='basics')renderBasics();else renderFrame();persist();});
+$('fields').addEventListener('change',e=>{if(state.mode==='basics'&&e.target.matches('[data-key]'))applySettings();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&timer){stop();renderFrame();}});
+render();loadProgress();
+
+</script>
+</body></html>
