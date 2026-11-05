@@ -503,6 +503,7 @@ input,select,textarea{font-size:16px}
 .p-lesson-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 @media(max-width:1180px){.p-lesson-grid{grid-template-columns:minmax(0,1fr)}.p-group-inputs{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:768px){.p-builder{padding:14px 8px;gap:7px}.p-slot{flex-basis:52px}.p-slot.is-block{flex-basis:111px}.p-lesson-grid{gap:12px}.p-actions>.sb-btn{flex:1 1 140px}.p-groups{grid-template-columns:minmax(0,1fr)}}
+.p-condition-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:0 0 12px}.p-condition-toolbar .sb-btn{font-size:13px}
 
 </style>
 </head>
@@ -640,6 +641,43 @@ const CASES={
  ay:{id:'ay',name:'СЛУЧАЙ: обязательный блок АЙ',kind:'letters',length:7,alphabet:'СЛУЧАЙ',task:'Из букв СЛУЧАЙ составляют семибуквенные слова. В каждом слове ровно одна Й, которая стоит непосредственно после А. Сколько слов можно составить?',palette:['АЙ','*','А','?'],rule:'ay'},
  vowels:{id:'vowels',name:'Гласная в начале, согласная в конце',kind:'letters',length:5,alphabet:'АСУ',task:'Из букв А, С, У составляют слова длиной 5. Слово начинается с гласной и заканчивается согласной. Буквы могут повторяться. Сколько различных слов получится?',palette:['Г','С','*','А','У','?'],rule:'vowels'}
 };
+// У каждого условия свой id: сборка и коллекция не смешиваются при переключении.
+const VARIANTS=[
+ {id:'alternate-4b4',family:'alternate',length:4,alphabet:'0123',name:'4 знака · основание 4'},
+ {id:'alternate-5b5',family:'alternate',length:5,alphabet:'01234',name:'5 знаков · основание 5'},
+ {id:'alternate-7b8',family:'alternate',length:7,alphabet:'01234567',name:'7 знаков · основание 8'},
+ {id:'alternate-6b10',family:'alternate',length:6,alphabet:'0123456789',name:'6 знаков · основание 10'},
+ {id:'alternate-8b6',family:'alternate',length:8,alphabet:'012345',name:'8 знаков · основание 6'},
+ {id:'odd-6b5',family:'odd',length:6,alphabet:'01234',count:2,name:'2 нечётные · 6 знаков'},
+ {id:'odd-8b6',family:'odd',length:8,alphabet:'012345',count:3,name:'3 нечётные · 8 знаков'},
+ {id:'odd-even-6b7',family:'odd',length:6,alphabet:'0123456',count:2,parity:'even',name:'2 чётные · 6 знаков'},
+ {id:'odd-even-7b8',family:'odd',length:7,alphabet:'01234567',count:3,parity:'even',name:'3 чётные · 7 знаков'},
+ {id:'odd-any-5b6',family:'odd',length:5,alphabet:'012345',count:2,allowAdjacent:true,name:'2 нечётные · соседство разрешено'},
+ {id:'ay-5',family:'ay',length:5,name:'СЛУЧАЙ · 5 букв'},
+ {id:'ay-6',family:'ay',length:6,name:'СЛУЧАЙ · 6 букв'},
+ {id:'ay-8',family:'ay',length:8,name:'СЛУЧАЙ · 8 букв'},
+ {id:'ay-kray',family:'ay',length:6,alphabet:'КРАЙ',name:'КРАЙ · 6 букв'},
+ {id:'ay-may',family:'ay',length:7,alphabet:'МАЙ',name:'МАЙ · 7 букв'},
+ {id:'vowels-4',family:'vowels',length:4,name:'АСУ · 4 буквы'},
+ {id:'vowels-6',family:'vowels',length:6,name:'АСУ · 6 букв'},
+ {id:'vowels-reverse',family:'vowels',length:5,start:'С',end:'Г',name:'Согласная → гласная'},
+ {id:'vowels-both',family:'vowels',length:6,start:'Г',end:'Г',name:'Гласные на обоих краях'},
+ {id:'vowels-kot',family:'vowels',length:5,alphabet:'КОТ',name:'КОТ · 5 букв'}
+];
+for(const id of Object.keys(CASES))CASES[id].family=id;
+for(const variant of VARIANTS){const c={...CASES[variant.family],...variant};
+ if(c.rule==='alternate')c.task='Сколько существует чисел длиной '+c.length+' знаков в системе счисления с основанием '+c.alphabet.length+', в которых чётные и нечётные цифры чередуются? Первая цифра не ноль. Цифры могут повторяться.';
+ if(c.rule==='odd'){const kind=c.parity==='even'?'чётных':'нечётных';c.task='Запись числа в системе счисления с основанием '+c.alphabet.length+' содержит '+c.length+' знаков. Количество '+kind+' цифр — ровно '+c.count+'. '+(c.allowAdjacent?'Ограничений на соседство цифр нет.':'Никакие две '+kind.replace('ых','ые')+' цифры не стоят рядом.')+' Первая цифра не ноль. Цифры могут повторяться. Сколько таких чисел?';}
+ if(c.rule==='ay')c.task='Из букв '+c.alphabet+' составляют слова длиной '+c.length+'. В каждом слове ровно одна Й, которая стоит непосредственно после А. Остальные буквы могут повторяться. Сколько различных слов можно составить?';
+ if(c.rule==='vowels')c.palette=[...new Set(['Г','С','*',...c.alphabet,'?'])];
+ if(c.rule==='vowels')c.task='Из букв '+c.alphabet+' составляют слова длиной '+c.length+'. Слово начинается с '+((c.start||'Г')==='Г'?'гласной':'согласной')+' и заканчивается '+((c.end||'С')==='Г'?'гласной':'согласной')+'. Буквы могут повторяться. Сколько различных слов получится?';
+ CASES[c.id]=c;
+}
+const familyCases=id=>Object.values(CASES).filter(c=>c.family===(CASES[id]?.family||id));
+const nextCase=id=>{const list=familyCases(id),i=list.findIndex(c=>c.id===id);return list[(i+1)%list.length].id;};
+const markToken=c=>c.parity==='even'?'Ч':'Н';
+const marked=(ch,c)=>Number(ch)%2===(c.parity==='even'?0:1);
+const isVowel=ch=>'АЕЁИОУЫЭЮЯ'.includes(ch);
 const tokensFor=c=>[...c.palette,'↳'];
 const cleanSet=(s,c)=>[...new Set([...String(s).toUpperCase()].filter(x=>c.alphabet.includes(x)))].join('');
 function blank(c){return Array(c.length).fill('?');}
@@ -656,7 +694,7 @@ function domains(tokens,c){
   else if(t==='Н')chars=[...c.alphabet].filter(x=>Number(x)%2===1).join('');
   else if(t==='≠0')chars=c.alphabet.replace('0','');
   else if(t==='Г')chars=[...c.alphabet].filter(x=>'АЕЁИОУЫЭЮЯ'.includes(x)).join('');
-  else if(t==='С'&&c.rule==='vowels')chars='С';
+  else if(t==='С'&&c.rule==='vowels')chars=[...c.alphabet].filter(x=>!isVowel(x)).join('');
   else if(t.startsWith('set:'))chars=cleanSet(t.slice(4),c);
   else if(c.alphabet.includes(t)&&t.length===1)chars=t;
   else return null;
@@ -669,25 +707,25 @@ function reason(word,c){
  if(c.kind==='parity'&&word[0]==='0')return {message:'Число не может начинаться с нуля.',positions:[0]};
  if(c.rule==='alternate')for(let i=1;i<word.length;i++)if(Number(word[i])%2===Number(word[i-1])%2)return {message:'В позициях '+i+' и '+(i+1)+' стоят цифры одной чётности.',positions:[i-1,i]};
  if(c.rule==='odd'){
-  const n=[...word].filter(x=>Number(x)%2===1).length;
-  if(n!==c.count)return {message:'Нечётных цифр '+n+', а должно быть ровно '+c.count+'.',positions:[]};
-  for(let i=1;i<word.length;i++)if(Number(word[i])%2&&Number(word[i-1])%2)return {message:'Нечётные цифры в позициях '+i+' и '+(i+1)+' стоят рядом.',positions:[i-1,i]};
+  const n=[...word].filter(x=>marked(x,c)).length;
+  if(n!==c.count)return {message:(c.parity==='even'?'Чётных':'Нечётных')+' цифр '+n+', а должно быть ровно '+c.count+'.',positions:[]};
+  for(let i=1;i<word.length;i++)if(!c.allowAdjacent&&marked(word[i],c)&&marked(word[i-1],c))return {message:(c.parity==='even'?'Чётные':'Нечётные')+' цифры в позициях '+i+' и '+(i+1)+' стоят рядом.',positions:[i-1,i]};
  }
  if(c.rule==='ay'){
   if([...word].filter(x=>x==='Й').length!==1)return {message:'Буква Й должна встречаться ровно один раз.',positions:[]};
   const i=word.indexOf('Й');if(!i||word[i-1]!=='А')return {message:'Перед Й должна непосредственно стоять А.',positions:[i]};
  }
  if(c.rule==='vowels'){
-  if(!'АУ'.includes(word[0]))return {message:'Первая буква должна быть гласной.',positions:[0]};
-  if(word.at(-1)!=='С')return {message:'Последняя буква должна быть согласной С.',positions:[c.length-1]};
+  if(isVowel(word[0])!==((c.start||'Г')==='Г'))return {message:'Первая буква должна быть '+((c.start||'Г')==='Г'?'гласной.':'согласной.'),positions:[0]};
+  if(isVowel(word.at(-1))!==((c.end||'С')==='Г'))return {message:'Последняя буква должна быть '+((c.end||'С')==='Г'?'гласной.':'согласной.'),positions:[c.length-1]};
  }
  return null;
 }
 function transition(c,pos,last,count,bad,ch){
  if(c.rule==='alternate'&&pos&&Number(ch)%2===Number(last)%2)bad=true;
- if(c.rule==='odd'){if(pos&&Number(ch)%2&&Number(last)%2)bad=true;count+=Number(ch)%2;}
+ if(c.rule==='odd'){if(!c.allowAdjacent&&pos&&marked(ch,c)&&marked(last,c))bad=true;count+=Number(marked(ch,c));}
  if(c.rule==='ay'){if(ch==='Й'){count++;if(last!=='А')bad=true;}}
- if(c.rule==='vowels'&&(!pos&&!'АУ'.includes(ch)||pos===c.length-1&&ch!=='С'))bad=true;
+ if(c.rule==='vowels'&&(!pos&&isVowel(ch)!==((c.start||'Г')==='Г')||pos===c.length-1&&isVowel(ch)!==((c.end||'С')==='Г')))bad=true;
  return {count,bad};
 }
 function analyze(tokens,c){
@@ -716,8 +754,8 @@ function analyze(tokens,c){
 function canonical(c){
  if(c.rule==='alternate')return [Array.from({length:c.length},(_,i)=>i%2?'Н':'Ч'),Array.from({length:c.length},(_,i)=>i%2?'Ч':'Н')];
  if(c.rule==='ay')return Array.from({length:c.length-1},(_,i)=>{const p=Array(c.length).fill('*');p[i]='АЙ';p[i+1]='↳';return p;});
- if(c.rule==='vowels')return [['Г','*','*','*','С']];
- const out=[];function visit(s,n){if(s.length===c.length){if(n===c.count)out.push([...s]);return;}visit(s+'Ч',n);if(n<c.count&&s.at(-1)!=='Н')visit(s+'Н',n+1);}visit('',0);return out;
+ if(c.rule==='vowels'){const p=Array(c.length).fill('*');p[0]=c.start||'Г';p[c.length-1]=c.end||'С';return [p];}
+ const out=[];function visit(s,n){if(s.length===c.length){if(n===c.count)out.push([...s]);return;}for(const t of ['Ч','Н']){const match=t===markToken(c);if(match&&(n>=c.count||!c.allowAdjacent&&s.at(-1)===t))continue;visit(s+t,n+Number(match));}}visit('',0);return out;
 }
 function intersection(a,b,c){const da=domains(a,c),db=domains(b,c);if(!da||!db)return null;let word='';for(let i=0;i<c.length;i++){const common=da[i].find(ch=>db[i].includes(ch));if(!common)return null;word+=common;}return word;}
 function findUncovered(c,patterns){
@@ -772,7 +810,7 @@ function normalize(saved){
  }
  return d;
 }
-const api={CASES,blank,cleanSet,domains,analyze,reason,canonical,intersection,findUncovered,collection,remaining,wordAt,notation,initial,normalize};
+const api={CASES,familyCases,nextCase,markToken,blank,cleanSet,domains,analyze,reason,canonical,intersection,findUncovered,collection,remaining,wordAt,notation,initial,normalize};
 if(typeof module!=='undefined')module.exports=api;else root.TemplateMath=api;
 })(typeof window==='undefined'?globalThis:window);
 
@@ -787,7 +825,7 @@ const PatternUI=(()=>{
  function stop(save=true){if(ticking){clearInterval(ticking);ticking=null;tickKind='';if(save)persist();}}
  function settings(){
   const selector=(label,key,value,options)=>'<div class="sb-field"><label>'+label+'<select data-pfield="'+key+'" aria-label="'+label+'">'+options.map(([v,t])=>'<option value="'+v+'" '+(v===value?'selected':'')+'>'+t+'</option>').join('')+'</select></label></div>';
-  return selector('Задача конструктора','caseId',p().caseId,Object.values(M.CASES).map(x=>[x.id,({alternate:'Чередование чётности',odd:'5 нечётных без соседства',ay:'СЛУЧАЙ: блок АЙ',vowels:'Гласная → согласная'})[x.id]]))+selector('Учебный этап','phase',p().phase,[['build','1. Соберите один шаблон'],['collect','2. Найдите все шаблоны'],['group','3. Выведите общую формулу'],['repair','Найдите ошибку в подсчёте']])+'<p class="sb-caption">Выбор задачи и этапа применяется сразу. Результаты каждой задачи сохраняются отдельно.</p><div class="params-divider"></div><h3 class="sb-h3">Как работать</h3><p class="sb-caption">Выберите карточку из палитры, затем нажмите на позицию. Для замены блока сначала уберите его карточкой «?».</p>'+action('Начать эту задачу заново','restart')+'<div id="p-restart-confirm" hidden><p class="sb-caption">Очистить вашу коллекцию и сборку только для этой задачи?</p>'+action('Да, очистить','restart-confirm')+action('Оставить','restart-cancel')+'</div>';
+  return selector('Тип условия','family',c().family,[['alternate','Чередование чётности'],['odd','Количество и соседство'],['ay','Блок АЙ'],['vowels','Гласные и согласные']])+selector('Вариант условия','caseId',p().caseId,M.familyCases(p().caseId).map(x=>[x.id,x.id===x.family?'Пример из методички':x.name]))+selector('Учебный этап','phase',p().phase,[['build','1. Соберите один шаблон'],['collect','2. Найдите все шаблоны'],['group','3. Выведите общую формулу'],['repair','Найдите ошибку в подсчёте']])+'<p class="sb-caption">Выбор задачи и этапа применяется сразу. Результаты каждой задачи сохраняются отдельно.</p><div class="params-divider"></div><h3 class="sb-h3">Как работать</h3><p class="sb-caption">Выберите карточку из палитры, затем нажмите на позицию. Для замены блока сначала уберите его карточкой «?».</p>'+action('Начать эту задачу заново','restart')+'<div id="p-restart-confirm" hidden><p class="sb-caption">Очистить вашу коллекцию и сборку только для этой задачи?</p>'+action('Да, очистить','restart-confirm')+action('Оставить','restart-cancel')+'</div>';
  }
  function collectionView(){
   const list=w().collection.map(x=>x.slice());
@@ -798,14 +836,14 @@ const PatternUI=(()=>{
  function templateMarkup(tokens,interactive=false){
   return tokens.map((t,i)=>{
    if(t==='↳')return '';
-   const blocked=c().rule==='odd'&&p().palette==='Н'&&[tokens[i-1],tokens[i+1]].includes('Н');
+   const blocked=c().rule==='odd'&&!c().allowAdjacent&&p().palette===M.markToken(c())&&[tokens[i-1],tokens[i+1]].includes(M.markToken(c()));
    const classes='p-slot '+(t==='?'?'is-empty':'')+(t==='АЙ'?' is-block':'')+(p().selected===i&&interactive?' is-selected':'')+(blocked?' is-blocked':'');
-   return interactive?'<button type="button" class="'+classes+'" data-paction="place" data-pos="'+i+'" aria-label="Позиция '+(i+1)+(t==='АЙ'?' и '+(i+2):'')+': '+html(t.startsWith('set:')?t.slice(4):t)+(blocked?'. Нечётная здесь недоступна из-за соседней Н':'')+'" aria-disabled="'+blocked+'"><span class="slot-index">'+(i+1)+(t==='АЙ'?'–'+(i+2):'')+'</span><strong>'+html(t.startsWith('set:')?'['+t.slice(4)+']':t)+'</strong><span class="p-slot-caption">'+(t==='?'?'Выберите':label(t))+'</span></button>':'<span class="p-mini-token '+(t==='АЙ'?'is-block':'')+'">'+html(t.startsWith('set:')?'['+t.slice(4)+']':t)+'</span>';
+   return interactive?'<button type="button" class="'+classes+'" data-paction="place" data-pos="'+i+'" aria-label="Позиция '+(i+1)+(t==='АЙ'?' и '+(i+2):'')+': '+html(t.startsWith('set:')?t.slice(4):t)+(blocked?'. Здесь недоступна цифра той же чётности, что и соседняя':'')+'" aria-disabled="'+blocked+'"><span class="slot-index">'+(i+1)+(t==='АЙ'?'–'+(i+2):'')+'</span><strong>'+html(t.startsWith('set:')?'['+t.slice(4)+']':t)+'</strong><span class="p-slot-caption">'+(t==='?'?'Выберите':label(t))+'</span></button>':'<span class="p-mini-token '+(t==='АЙ'?'is-block':'')+'">'+html(t.startsWith('set:')?'['+t.slice(4)+']':t)+'</span>';
   }).join('');
  }
  function boot(){
   el('pattern-lab').innerHTML=`
-<section class="sb-card" aria-labelledby="p-title"><div class="sb-scene-head"><div><div class="sb-eyebrow">Соберите → посмотрите → посчитайте</div><h2 class="sb-h2" id="p-title">Собери шаблон</h2></div><span class="sb-status" id="p-status">Конструктор</span></div><p class="p-task" id="p-task"></p><div class="p-roadmap" aria-label="Этапы работы"><span>01 · Соберите</span><span>02 · Найдите все</span><span>03 · Обобщите</span></div><p class="sb-caption" id="p-phase-note"></p></section>
+<section class="sb-card" aria-labelledby="p-title"><div class="sb-scene-head"><div><div class="sb-eyebrow">Соберите → посмотрите → посчитайте</div><h2 class="sb-h2" id="p-title">Собери шаблон</h2></div><span class="sb-status" id="p-status">Конструктор</span></div><div class="p-condition-toolbar"><span id="p-condition-number" class="sb-caption"></span><button type="button" class="sb-btn" data-paction="new-condition">Новое условие →</button></div><p class="p-task" id="p-task"></p><div class="p-roadmap" aria-label="Этапы работы"><span>01 · Соберите</span><span>02 · Найдите все</span><span>03 · Обобщите</span></div><p class="sb-caption" id="p-phase-note"></p></section>
 <section class="sb-card" id="p-build-card" aria-labelledby="p-build-title"><div class="sb-eyebrow">Ваша математическая модель</div><h2 class="sb-h2" id="p-build-title">Заполните позиции по условию</h2><p class="sb-caption">Сначала выберите карточку, затем нажмите на ячейку. Проверка учитывает все слова, которые описывает собранная схема.</p><div class="p-palette" id="p-palette" role="group" aria-label="Карточки шаблона"></div><div class="p-custom"><label for="p-custom-input">Свой набор символов для одной позиции</label><div class="p-custom-row"><input id="p-custom-input" type="text" maxlength="12" autocomplete="off" spellcheck="false"><button type="button" class="sb-btn" data-paction="custom">Выбрать набор</button></div><p class="sb-caption" id="p-custom-hint"></p></div><div class="p-builder" id="p-builder" role="group" aria-label="Позиции шаблона"></div><p class="sb-caption" id="p-block-note"></p><div class="p-actions"><button type="button" class="sb-btn sb-btn--primary" data-paction="check">Проверить шаблон</button><button type="button" class="sb-btn" data-paction="add">Добавить шаблон</button><button type="button" class="sb-btn" data-paction="clear">Очистить поле</button></div><div id="p-feedback" class="sb-quiz-feedback" role="status" aria-live="polite" hidden></div></section>
 <section class="sb-card" id="p-sample-card" aria-labelledby="p-sample-title" hidden><div class="sb-scene-head"><div><div class="sb-eyebrow">От обозначений к реальным символам</div><h2 class="sb-h2" id="p-sample-title">Что описывает шаблон</h2></div><span class="sb-status" id="p-sample-status"></span></div><div class="p-mini-pattern" id="p-sample-pattern"></div><div id="p-factor-slots" class="p-factor-slots" role="group" aria-label="Число вариантов по позициям"></div><div id="p-domain-detail" class="sb-surface"></div><div class="p-formula" id="p-product"></div><div class="p-example-stage"><span class="sb-caption" id="p-example-caption"></span><div class="p-real-word" id="p-real-word"></div></div><section class="sb-playback" aria-label="Управление заполнением шаблона"><div class="sb-timeline-head"><h3 class="sb-timeline-title" id="p-timeline-title">Ход алгоритма</h3><output id="p-counter" class="sb-timeline-counter" for="p-range"></output></div><input class="sb-playback-range" type="range" id="p-range" min="0" max="1" value="0" aria-labelledby="p-timeline-title"><div class="sb-playback-toolbar"><div class="sb-playback-actions"><button type="button" class="sb-btn sb-btn--icon" data-paction="sample-back" aria-label="Назад по заполнению шаблона">←</button><button type="button" class="sb-btn sb-btn--primary" id="p-play" data-paction="sample-play">▶ Запуск</button><button type="button" class="sb-btn sb-btn--icon" id="p-forward" data-paction="sample-forward" aria-label="Вперёд по заполнению шаблона">→</button><button type="button" class="sb-btn" data-paction="sample-next">Следующее слово</button><button type="button" class="sb-btn" data-paction="sample-reset">↺ Сброс</button></div><div class="sb-playback-speed" role="group" aria-label="Скорость заполнения шаблона"><span class="sb-speed-label">Скорость</span><div class="sb-speed-segment"><button type="button" class="sb-speed-btn" data-pspeed="0.5" aria-pressed="false">0,5×</button><button type="button" class="sb-speed-btn" data-pspeed="1" aria-pressed="true">1×</button><button type="button" class="sb-speed-btn" data-pspeed="2" aria-pressed="false">2×</button></div></div></div><div class="sb-step-spotlight"><span class="sb-step-spotlight-label">ТЕКУЩИЙ ШАГ</span><span id="p-sample-explain" role="status"></span></div></section></section>
 <section class="sb-card" id="p-collection-card" aria-labelledby="p-collection-title"><div class="sb-eyebrow">Складываем только непересекающиеся случаи</div><h2 class="sb-h2" id="p-collection-title">Коллекция найденных шаблонов</h2><div class="p-collection-summary" id="p-collection-summary"></div><div id="p-collection" class="p-collection"></div><div class="p-actions"><button type="button" class="sb-btn sb-btn--primary" data-paction="coverage">Все ли случаи учтены?</button><button type="button" class="sb-btn" id="p-generate" data-paction="generate">Показать остальные по шагам</button><button type="button" class="sb-btn" data-paction="groups">Перейти к общей формуле</button></div><div id="p-coverage" class="sb-quiz-feedback" role="status" aria-live="polite" hidden></div><p id="p-generation-note" class="sb-caption"></p></section>
@@ -816,6 +854,7 @@ const PatternUI=(()=>{
    const b=event.target.closest('button');if(!b||loading)return;
    if(b.dataset.pspeed){const play=tickKind;stop(false);state.speed=+b.dataset.pspeed;if(play==='sample')startSample();else if(play==='generate')startGeneration();renderSample();persist();return;}
    const a=b.dataset.paction;if(!a)return;
+   if(a==='new-condition'){changeCase(M.nextCase(p().caseId));render();el('fields').innerHTML=settings();persist();return;}
    if(a==='palette'){p().palette=b.dataset.token;feedback=null;renderBuilder();persist();}
    if(a==='place')place(+b.dataset.pos);
    if(a==='custom'){const chars=M.cleanSet(p().custom,c());if(!chars){showFeedback('Выберите хотя бы один символ из алфавита задачи.',false);return;}p().palette='set:'+chars;renderBuilder();persist();}
@@ -855,7 +894,7 @@ const PatternUI=(()=>{
   el('p-palette').innerHTML=palette.map(t=>'<button type="button" class="p-palette-btn" draggable="true" data-paction="palette" data-token="'+t+'" aria-pressed="'+(p().palette===t)+'"><strong>'+html(t)+'</strong><span>'+label(t)+'</span></button>').join('');
   el('p-custom-input').value=p().custom;el('p-custom-hint').textContent='Алфавит задачи: '+c().alphabet.split('').join(', ')+'. '+(p().palette.startsWith('set:')?'Выбран набор ['+p().palette.slice(4)+']. Нажмите на нужную позицию.':'Можно задать более узкий набор, например 246 или АУ.');
   el('p-builder').innerHTML=templateMarkup(w().draft,true);
-  el('p-block-note').textContent=c().rule==='ay'?'Блок АЙ занимает две позиции. «*» — одна из букв С, Л, У, Ч, А (без Й).':c().rule==='odd'?'При выбранной Н соседние с другой Н позиции заблокированы. Для переноса сначала уберите старую Н карточкой «?».':'Карточка «?» очищает позицию. «*» разрешает любой символ; в первой цифре ноль исключается по условию.';
+  el('p-block-note').textContent=c().rule==='ay'?'Блок АЙ занимает две позиции. «*» — одна из букв '+c().alphabet.replace('Й','').split('').join(', ')+' (без Й).':c().rule==='odd'&&!c().allowAdjacent?'При выбранной '+M.markToken(c())+' соседние с другой '+M.markToken(c())+' позиции заблокированы. Для переноса сначала уберите старую карточкой «?».':'Карточка «?» очищает позицию. «*» разрешает любой символ.'+(c().kind==='parity'?' В первой позиции ноль исключается по условию.':'');
   if(feedback){showFeedback(feedback.text,feedback.ok,feedback.extra||'');}else if(w().checkRequested){const a=M.analyze(w().draft,c());analysisFeedback(a);}else el('p-feedback').hidden=true;
   if(focusedPalette!==null)el('p-palette').querySelectorAll('[data-token]').forEach(b=>{if(b.dataset.token===focusedPalette)b.focus({preventScroll:true});});
   if(focusPosition!==null){el('p-builder').querySelector('[data-pos="'+focusPosition+'"]')?.focus({preventScroll:true});focusPosition=null;}
@@ -867,7 +906,7 @@ const PatternUI=(()=>{
   showFeedback(text,a.valid,extra);
  }
  function place(index){
-  const t=p().palette;if(t==='Н'&&c().rule==='odd'&&[w().draft[index-1],w().draft[index+1]].includes('Н')){feedback={text:'Здесь Н недоступна: рядом уже стоит нечётная цифра. Уберите соседнюю Н или выберите Ч.',ok:false};renderBuilder();return;}
+  const t=p().palette;if(c().rule==='odd'&&!c().allowAdjacent&&t===M.markToken(c())&&[w().draft[index-1],w().draft[index+1]].includes(t)){feedback={text:'Эта карточка недоступна: рядом уже стоит цифра той же чётности. Уберите соседнюю карточку или выберите другую чётность.',ok:false};renderBuilder();return;}
   stop(false);const d=w().draft.slice();
   function detach(i){if(d[i]==='АЙ'){d[i]='?';if(i+1<d.length)d[i+1]='?';}else if(d[i]==='↳'){d[i]='?';if(i>0)d[i-1]='?';}}
   if(t==='АЙ'&&index===d.length-1){feedback={text:'Блоку АЙ нужны две позиции. Последняя позиция не подходит для его начала.',ok:false};renderBuilder();return;}
@@ -967,15 +1006,17 @@ const PatternUI=(()=>{
  function render(resetFeedback=false){
   if(resetFeedback)feedback=null;
   if(!el('p-builder'))return;
+  const siblings=M.familyCases(p().caseId);el('p-condition-number').textContent='Условие '+(siblings.findIndex(x=>x.id===p().caseId)+1)+' из '+siblings.length+' в этом типе';
   el('p-title').textContent='Собери шаблон';el('p-task').textContent=c().task;el('p-status').textContent=['Сборка','Коллекция','Формула','Поиск ошибки'][['build','collect','group','repair'].indexOf(p().phase)];
   el('p-phase-note').textContent={build:'Начните с одного шаблона: проверьте его и раскройте допустимые символы на каждой позиции.',collect:'Один верный шаблон может описывать только часть ответа. Найдите все непересекающиеся случаи.',group:'Собранные схемы помогают увидеть группы с одинаковым количеством слов. Составьте общую формулу.',repair:'Найдите не ошибку в схеме, а неверный множитель. Затем объясните причину.'}[p().phase];
   el('p-build-card').hidden=p().phase==='repair';el('p-collection-card').hidden=p().phase==='repair';
   renderBuilder();renderSample();renderCollection();renderGroups();renderRepair();
   el('p-lessons').innerHTML=[['Идея','Внутри независимого шаблона перемножаем варианты по позициям. Между непересекающимися шаблонами складываем результаты.'],['Что попробовать','Соберите более узкий шаблон через собственный набор символов. Затем проверьте, пересекается ли он с уже добавленным.'],['Типичная ошибка','Правильный отдельный шаблон ещё не означает, что найдены все случаи. А пересекающиеся схемы нельзя просто сложить.']].map(([title,text])=>'<section class="sb-card"><h3 class="sb-h3">'+title+'</h3><p class="sb-caption">'+text+'</p></section>').join('');
  }
+ function changeCase(id){stop(false);feedback=null;p().caseId=id;if(p().phase==='repair'&&id!=='alternate')p().phase='build';p().palette=c().palette[0];p().selected=0;p().custom='';}
  function handleSettings(event){
   const e=event.target;if(!e.matches('[data-pfield]'))return;stop(false);feedback=null;
-  if(e.dataset.pfield==='caseId'){p().caseId=e.value;if(p().phase==='repair'&&e.value!=='alternate')p().phase='build';p().palette=c().palette[0];p().selected=0;p().custom='';}
+  if(e.dataset.pfield==='caseId'||e.dataset.pfield==='family'){changeCase(e.value);}
   else {p().phase=e.value;if(e.value==='repair'){p().caseId='alternate';p().palette='Ч';}}
   render();el('fields').innerHTML=settings();el('fields').querySelector('[data-pfield="'+e.dataset.pfield+'"]').focus({preventScroll:true});persist();
  }
