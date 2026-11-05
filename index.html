@@ -498,7 +498,6 @@ input,select,textarea{font-size:16px}
 .p-factor-slots{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:16px 0}.p-factor-slot{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-width:52px;min-height:80px;max-width:100%;flex:0 1 66px;padding:8px 5px;border:1px solid var(--sb-border);border-radius:10px;background:var(--sb-surface);color:var(--sb-text)}.p-factor-slot strong{font:800 20px var(--sb-mono);overflow-wrap:anywhere}.p-factor-slot>span:last-child{font-size:11px}.p-factor-slot.is-selected{outline:2px solid var(--sb-accent);outline-offset:2px;background:var(--sb-surface-2)}
 .p-digit-list{display:flex;flex-wrap:wrap;gap:6px}.p-digit-list span{display:grid;place-items:center;min-width:32px;min-height:32px;border:1px solid var(--sb-border);border-radius:7px;background:var(--sb-card);font:700 15px var(--sb-mono)}.p-digit-list span.is-excluded{text-decoration:line-through;color:var(--sb-error-text);border-style:dashed;background:var(--sb-error-surface)}
 .p-formula{padding:14px;margin:14px 0;border:1px solid var(--sb-border);border-radius:12px;background:var(--sb-surface-2);font:700 16px/1.7 var(--sb-mono);color:var(--sb-accent-text);overflow-wrap:anywhere}.p-example-stage{padding:12px;text-align:center;background:var(--sb-surface);border-radius:12px;margin-bottom:16px}.p-real-word{font:800 clamp(18px,3vw,29px)/1.6 var(--sb-mono);letter-spacing:2px;overflow-wrap:anywhere;padding-top:8px}
-.p-collection-summary{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;margin:12px 0;font-size:12px;color:var(--sb-muted)}.p-collection-summary b{font-variant-numeric:tabular-nums;color:var(--sb-text)}.p-collection{display:grid;gap:8px;max-height:360px;overflow-y:auto;padding:3px;min-width:0}.p-collection-item{display:flex;align-items:center;gap:6px;padding:7px;border:1px solid var(--sb-border);border-radius:10px;background:var(--sb-surface);min-width:0}.p-collection-select{display:grid;gap:7px;flex:1;min-width:44px;min-height:44px;text-align:left;padding:6px;background:transparent;color:var(--sb-text);border:0;border-radius:7px}.p-collection-select>span:last-child{font-size:12px;font-weight:750}.p-demo-label{font-size:10px;color:var(--sb-muted);max-width:65px;overflow-wrap:anywhere}
 .p-group-inputs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}.p-group-inputs label{display:grid;gap:6px;align-content:end;font-size:12px;color:var(--sb-muted);font-weight:700;min-width:0}.p-group-inputs input{width:100%;min-width:0;min-height:44px;background:var(--sb-surface);border:1px solid var(--sb-border);border-radius:10px;padding:8px 10px;font-size:16px;color:var(--sb-text)}.p-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}.p-groups strong{color:var(--sb-accent-text);font-size:19px}
 .p-lesson-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 @media(max-width:1180px){.p-lesson-grid{grid-template-columns:minmax(0,1fr)}.p-group-inputs{grid-template-columns:minmax(0,1fr)}}
@@ -793,6 +792,7 @@ function initial(){return {caseId:'alternate',phase:'build',palette:'Ч',custom:
 function normalize(saved){
  const d=initial();if(!saved||typeof saved!=='object')return d;
  if(CASES[saved.caseId])d.caseId=saved.caseId;if(['build','collect','group','repair'].includes(saved.phase))d.phase=saved.phase;
+ if(saved.phase==='collect')d.phase='build';
  if(saved.phase==='repair')d.caseId='alternate';
  const cur=CASES[d.caseId];d.custom=typeof saved.custom==='string'?cleanSet(saved.custom,cur):'';
  d.palette=typeof saved.palette==='string'&&((tokensFor(cur).includes(saved.palette)&&saved.palette!=='↳')||(saved.palette.startsWith('set:')&&cleanSet(saved.palette.slice(4),cur)))?saved.palette:'?';d.selected=Number.isInteger(saved.selected)?Math.max(0,Math.min(cur.length-1,saved.selected)):0;
@@ -825,12 +825,7 @@ const PatternUI=(()=>{
  function stop(save=true){if(ticking){clearInterval(ticking);ticking=null;tickKind='';if(save)persist();}}
  function settings(){
   const selector=(label,key,value,options)=>'<div class="sb-field"><label>'+label+'<select data-pfield="'+key+'" aria-label="'+label+'">'+options.map(([v,t])=>'<option value="'+v+'" '+(v===value?'selected':'')+'>'+t+'</option>').join('')+'</select></label></div>';
-  return selector('Тип условия','family',c().family,[['alternate','Чередование чётности'],['odd','Количество и соседство'],['ay','Блок АЙ'],['vowels','Гласные и согласные']])+selector('Вариант условия','caseId',p().caseId,M.familyCases(p().caseId).map(x=>[x.id,x.id===x.family?'Пример из методички':x.name]))+selector('Учебный этап','phase',p().phase,[['build','1. Соберите один шаблон'],['collect','2. Найдите все шаблоны'],['group','3. Выведите общую формулу'],['repair','Найдите ошибку в подсчёте']])+'<p class="sb-caption">Выбор задачи и этапа применяется сразу. Результаты каждой задачи сохраняются отдельно.</p><div class="params-divider"></div><h3 class="sb-h3">Как работать</h3><p class="sb-caption">Выберите карточку из палитры, затем нажмите на позицию. Для замены блока сначала уберите его карточкой «?».</p>'+action('Начать эту задачу заново','restart')+'<div id="p-restart-confirm" hidden><p class="sb-caption">Очистить вашу коллекцию и сборку только для этой задачи?</p>'+action('Да, очистить','restart-confirm')+action('Оставить','restart-cancel')+'</div>';
- }
- function collectionView(){
-  const list=w().collection.map(x=>x.slice());
-  list.push(...M.remaining(c(),w().collection,M.canonical(c()).slice(0,w().generated)));
-  return M.collection(c(),list);
+  return selector('Тип условия','family',c().family,[['alternate','Чередование чётности'],['odd','Количество и соседство'],['ay','Блок АЙ'],['vowels','Гласные и согласные']])+selector('Вариант условия','caseId',p().caseId,M.familyCases(p().caseId).map(x=>[x.id,x.id===x.family?'Пример из методички':x.name]))+selector('Учебный этап','phase',p().phase,[['build','1. Соберите один шаблон'],['group','2. Выведите общую формулу'],['repair','Найдите ошибку в подсчёте']])+'<p class="sb-caption">Выбор задачи и этапа применяется сразу. Результаты каждой задачи сохраняются отдельно.</p><div class="params-divider"></div><h3 class="sb-h3">Как работать</h3><p class="sb-caption">Выберите карточку из палитры, затем нажмите на позицию. Для замены блока сначала уберите его карточкой «?».</p>'+action('Начать эту задачу заново','restart')+'<div id="p-restart-confirm" hidden><p class="sb-caption">Очистить сборку и шаги только для этого условия?</p>'+action('Да, очистить','restart-confirm')+action('Оставить','restart-cancel')+'</div>';
  }
  function label(t){return t==='*'?'Любой':t==='?'?'Убрать':t==='Г'?'Гласная':t==='С'&&c().rule==='vowels'?'Согласная':t==='Ч'?'Чётная':t==='Н'?'Нечётная':t==='≠0'?'Без нуля':t==='АЙ'?'Блок из 2 букв':t.startsWith('set:')?'Свой набор':'Буква';}
  function templateMarkup(tokens,interactive=false){
@@ -843,29 +838,22 @@ const PatternUI=(()=>{
  }
  function boot(){
   el('pattern-lab').innerHTML=`
-<section class="sb-card" aria-labelledby="p-title"><div class="sb-scene-head"><div><div class="sb-eyebrow">Соберите → посмотрите → посчитайте</div><h2 class="sb-h2" id="p-title">Собери шаблон</h2></div><span class="sb-status" id="p-status">Конструктор</span></div><div class="p-condition-toolbar"><span id="p-condition-number" class="sb-caption"></span><button type="button" class="sb-btn" data-paction="new-condition">Новое условие →</button></div><p class="p-task" id="p-task"></p><div class="p-roadmap" aria-label="Этапы работы"><span>01 · Соберите</span><span>02 · Найдите все</span><span>03 · Обобщите</span></div><p class="sb-caption" id="p-phase-note"></p></section>
-<section class="sb-card" id="p-build-card" aria-labelledby="p-build-title"><div class="sb-eyebrow">Ваша математическая модель</div><h2 class="sb-h2" id="p-build-title">Заполните позиции по условию</h2><p class="sb-caption">Сначала выберите карточку, затем нажмите на ячейку. Проверка учитывает все слова, которые описывает собранная схема.</p><div class="p-palette" id="p-palette" role="group" aria-label="Карточки шаблона"></div><div class="p-custom"><label for="p-custom-input">Свой набор символов для одной позиции</label><div class="p-custom-row"><input id="p-custom-input" type="text" maxlength="12" autocomplete="off" spellcheck="false"><button type="button" class="sb-btn" data-paction="custom">Выбрать набор</button></div><p class="sb-caption" id="p-custom-hint"></p></div><div class="p-builder" id="p-builder" role="group" aria-label="Позиции шаблона"></div><p class="sb-caption" id="p-block-note"></p><div class="p-actions"><button type="button" class="sb-btn sb-btn--primary" data-paction="check">Проверить шаблон</button><button type="button" class="sb-btn" data-paction="add">Добавить шаблон</button><button type="button" class="sb-btn" data-paction="clear">Очистить поле</button></div><div id="p-feedback" class="sb-quiz-feedback" role="status" aria-live="polite" hidden></div></section>
+<section class="sb-card" aria-labelledby="p-title"><div class="sb-scene-head"><div><div class="sb-eyebrow">Соберите → посмотрите → посчитайте</div><h2 class="sb-h2" id="p-title">Собери шаблон</h2></div><span class="sb-status" id="p-status">Конструктор</span></div><div class="p-condition-toolbar"><span id="p-condition-number" class="sb-caption"></span><button type="button" class="sb-btn" data-paction="new-condition">Новое условие →</button></div><p class="p-task" id="p-task"></p><div class="p-roadmap" aria-label="Этапы работы"><span>01 · Соберите</span><span>02 · Посмотрите</span><span>03 · Посчитайте</span></div><p class="sb-caption" id="p-phase-note"></p></section>
+<section class="sb-card" id="p-build-card" aria-labelledby="p-build-title"><div class="sb-eyebrow">Ваша математическая модель</div><h2 class="sb-h2" id="p-build-title">Заполните позиции по условию</h2><p class="sb-caption">Сначала выберите карточку, затем нажмите на ячейку. Проверка учитывает все слова, которые описывает собранная схема.</p><div class="p-palette" id="p-palette" role="group" aria-label="Карточки шаблона"></div><div class="p-custom"><label for="p-custom-input">Свой набор символов для одной позиции</label><div class="p-custom-row"><input id="p-custom-input" type="text" maxlength="12" autocomplete="off" spellcheck="false"><button type="button" class="sb-btn" data-paction="custom">Выбрать набор</button></div><p class="sb-caption" id="p-custom-hint"></p></div><div class="p-builder" id="p-builder" role="group" aria-label="Позиции шаблона"></div><p class="sb-caption" id="p-block-note"></p><div class="p-actions"><button type="button" class="sb-btn sb-btn--primary" data-paction="check">Проверить шаблон</button><button type="button" class="sb-btn" data-paction="clear">Очистить поле</button></div><div id="p-feedback" class="sb-quiz-feedback" role="status" aria-live="polite" hidden></div></section>
 <section class="sb-card" id="p-sample-card" aria-labelledby="p-sample-title" hidden><div class="sb-scene-head"><div><div class="sb-eyebrow">От обозначений к реальным символам</div><h2 class="sb-h2" id="p-sample-title">Что описывает шаблон</h2></div><span class="sb-status" id="p-sample-status"></span></div><div class="p-mini-pattern" id="p-sample-pattern"></div><div id="p-factor-slots" class="p-factor-slots" role="group" aria-label="Число вариантов по позициям"></div><div id="p-domain-detail" class="sb-surface"></div><div class="p-formula" id="p-product"></div><div class="p-example-stage"><span class="sb-caption" id="p-example-caption"></span><div class="p-real-word" id="p-real-word"></div></div><section class="sb-playback" aria-label="Управление заполнением шаблона"><div class="sb-timeline-head"><h3 class="sb-timeline-title" id="p-timeline-title">Ход алгоритма</h3><output id="p-counter" class="sb-timeline-counter" for="p-range"></output></div><input class="sb-playback-range" type="range" id="p-range" min="0" max="1" value="0" aria-labelledby="p-timeline-title"><div class="sb-playback-toolbar"><div class="sb-playback-actions"><button type="button" class="sb-btn sb-btn--icon" data-paction="sample-back" aria-label="Назад по заполнению шаблона">←</button><button type="button" class="sb-btn sb-btn--primary" id="p-play" data-paction="sample-play">▶ Запуск</button><button type="button" class="sb-btn sb-btn--icon" id="p-forward" data-paction="sample-forward" aria-label="Вперёд по заполнению шаблона">→</button><button type="button" class="sb-btn" data-paction="sample-next">Следующее слово</button><button type="button" class="sb-btn" data-paction="sample-reset">↺ Сброс</button></div><div class="sb-playback-speed" role="group" aria-label="Скорость заполнения шаблона"><span class="sb-speed-label">Скорость</span><div class="sb-speed-segment"><button type="button" class="sb-speed-btn" data-pspeed="0.5" aria-pressed="false">0,5×</button><button type="button" class="sb-speed-btn" data-pspeed="1" aria-pressed="true">1×</button><button type="button" class="sb-speed-btn" data-pspeed="2" aria-pressed="false">2×</button></div></div></div><div class="sb-step-spotlight"><span class="sb-step-spotlight-label">ТЕКУЩИЙ ШАГ</span><span id="p-sample-explain" role="status"></span></div></section></section>
-<section class="sb-card" id="p-collection-card" aria-labelledby="p-collection-title"><div class="sb-eyebrow">Складываем только непересекающиеся случаи</div><h2 class="sb-h2" id="p-collection-title">Коллекция найденных шаблонов</h2><div class="p-collection-summary" id="p-collection-summary"></div><div id="p-collection" class="p-collection"></div><div class="p-actions"><button type="button" class="sb-btn sb-btn--primary" data-paction="coverage">Все ли случаи учтены?</button><button type="button" class="sb-btn" id="p-generate" data-paction="generate">Показать остальные по шагам</button><button type="button" class="sb-btn" data-paction="groups">Перейти к общей формуле</button></div><div id="p-coverage" class="sb-quiz-feedback" role="status" aria-live="polite" hidden></div><p id="p-generation-note" class="sb-caption"></p></section>
 <section class="sb-card" id="p-groups-card" hidden aria-labelledby="p-groups-title"><div class="sb-eyebrow">От отдельных схем к семействам</div><h2 class="sb-h2" id="p-groups-title">Выведите общую формулу</h2><p class="sb-caption" id="p-group-task"></p><form id="p-group-form"><div class="p-group-inputs"><label><span id="p-group-label-a"></span><input type="text" inputmode="numeric" id="p-group-a" maxlength="20" required></label><label><span id="p-group-label-b"></span><input type="text" inputmode="numeric" id="p-group-b" maxlength="20" required></label><label>Всего подходящих слов / чисел<input type="text" inputmode="numeric" id="p-group-total" maxlength="20" required></label></div><button type="submit" class="sb-btn sb-btn--primary">Проверить формулу</button></form><div id="p-group-feedback" class="sb-quiz-feedback" role="status" hidden></div><div id="p-groups" class="p-groups" hidden></div><div id="p-group-formula" class="p-formula" hidden></div></section>
 <section class="sb-card" id="p-repair-card" hidden aria-labelledby="p-repair-title"><div class="sb-eyebrow">Найдите и объясните ошибку</div><h2 class="sb-h2" id="p-repair-title">Верный шаблон, неверный множитель</h2><p class="sb-caption">Шаблон ЧНЧНЧН подходит условию. Но в одном из множителей подсчёта допущена ошибка. Нажмите на эту позицию.</p><div id="p-repair-slots" class="p-factor-slots"></div><form id="p-repair-form"><div class="sb-field"><label for="p-repair-count">Сколько цифр на выбранной позиции?</label><input id="p-repair-count" type="number" min="0" max="7" required></div><div class="sb-field"><label for="p-repair-reason">Почему нужен другой множитель?</label><select id="p-repair-reason" required><option value="">Выберите объяснение</option><option value="zero">Ноль не может быть первой цифрой числа</option><option value="repeat">Все использованные цифры надо убрать</option><option value="parity">Ноль является нечётной цифрой</option></select></div><button type="submit" class="sb-btn sb-btn--primary">Проверить исправление</button></form><div class="sb-quiz-feedback" id="p-repair-feedback" role="status" hidden></div></section>
 <div class="p-lesson-grid" id="p-lessons"></div>`;
   el('pattern-lab').addEventListener('click',event=>{
    const b=event.target.closest('button');if(!b||loading)return;
-   if(b.dataset.pspeed){const play=tickKind;stop(false);state.speed=+b.dataset.pspeed;if(play==='sample')startSample();else if(play==='generate')startGeneration();renderSample();persist();return;}
+   if(b.dataset.pspeed){const play=tickKind;stop(false);state.speed=+b.dataset.pspeed;if(play==='sample')startSample();renderSample();persist();return;}
    const a=b.dataset.paction;if(!a)return;
    if(a==='new-condition'){changeCase(M.nextCase(p().caseId));render();el('fields').innerHTML=settings();persist();return;}
    if(a==='palette'){p().palette=b.dataset.token;feedback=null;renderBuilder();persist();}
    if(a==='place')place(+b.dataset.pos);
    if(a==='custom'){const chars=M.cleanSet(p().custom,c());if(!chars){showFeedback('Выберите хотя бы один символ из алфавита задачи.',false);return;}p().palette='set:'+chars;renderBuilder();persist();}
    if(a==='clear'){stop(false);w().draft=M.blank(c());w().checkRequested=false;feedback=null;renderBuilder();persist();}
-   if(a==='check')check(false);
-   if(a==='add')check(true);
-   if(a==='sample-select'){const all=collectionView().patterns;setSample(all[+b.dataset.index]);renderSample();persist();}
-   if(a==='remove'){stop(false);const index=+b.dataset.index;w().collection.splice(index,1);w().coverageRequested=false;feedback=null;renderCollection();persist();}
-   if(a==='coverage'){w().coverageRequested=true;renderCollection();persist();}
-   if(a==='generate'){if(tickKind==='generate'){stop();renderCollection();}else startGeneration();}
-   if(a==='groups'){stop(false);p().phase='group';w().groupRequested=true;render();$('fields').innerHTML=settings();el('p-group-a').focus();persist();}
+   if(a==='check')check();
    if(a==='sample-position'){p().selected=+b.dataset.pos;renderSample();persist();}
    if(a==='sample-back')sampleMove(w().sampleStep-1);
    if(a==='sample-forward')sampleMove(w().sampleStep+1);
@@ -902,7 +890,7 @@ const PatternUI=(()=>{
  function analysisFeedback(a){
   let text=a.message,extra='';
   if(a.complete&&a.counterexample){text+=' Например, '+a.counterexample+': '+a.violation.message;extra='<div class="p-witness" aria-label="Пример, нарушающий условие">'+[...a.counterexample].map((ch,i)=>'<span class="'+(a.violation.positions.includes(i)?'is-error':'')+'">'+html(ch)+'</span>').join('')+'</div>';}
-  if(a.valid)text+=' Этот шаблон описывает '+format(a.total)+' вариантов. Добавьте его в коллекцию или изучите заполнение по шагам.';
+  if(a.valid)text+=' Этот шаблон описывает '+format(a.total)+' вариантов. Ниже можно изучить заполнение по шагам.';
   showFeedback(text,a.valid,extra);
  }
  function place(index){
@@ -914,28 +902,10 @@ const PatternUI=(()=>{
   w().draft=d;w().checkRequested=false;p().selected=index;feedback=null;focusPosition=index;renderBuilder();persist();
  }
  function setSample(tokens){if(!tokens)return;stop(false);w().sample=tokens.slice();w().sampleStep=0;p().selected=0;}
- function check(add){
+ function check(){
   stop(false);w().checkRequested=true;const a=M.analyze(w().draft,c());feedback=null;
-  if(a.valid){
-   if(add){
-    const same=collectionView().patterns.find(t=>M.intersection(t,w().draft,c()));
-    if(same){const witness=M.intersection(same,w().draft,c());feedback={text:'Пересечение с уже найденным шаблоном '+M.notation(same)+'. Слово '+witness+' попало бы в сумму дважды. Шаблон не добавлен.',ok:false};}
-    else{const saved=w().draft.slice();w().collection.push(saved);setSample(saved);w().draft=M.blank(c());w().checkRequested=false;w().coverageRequested=false;feedback={text:'Шаблон '+M.notation(saved)+' добавлен: '+format(a.total)+' вариантов. Поле очищено — соберите следующий случай.',ok:true};}
-   }else setSample(w().draft);
-  }
-  renderBuilder();renderSample();renderCollection();persist();
- }
- function renderCollection(){
-  const view=collectionView();el('p-collection-summary').innerHTML='<span>Непересекающихся шаблонов: <b>'+view.patterns.length+'</b></span><span>По найденным случаям: <b>'+format(view.total)+'</b></span>';
-  el('p-collection').innerHTML=view.patterns.length?view.patterns.map((t,i)=>{
-   const a=M.analyze(t,c()),own=w().collection.findIndex(x=>M.notation(x)===M.notation(t));
-   return '<article class="p-collection-item"><button type="button" class="p-collection-select" data-paction="sample-select" data-index="'+i+'" aria-label="Исследовать шаблон '+html(M.notation(t))+'"><span class="p-mini-pattern">'+templateMarkup(t)+'</span><span>'+format(a.total)+' вариантов</span></button>'+(own>=0?'<button type="button" class="sb-btn sb-btn--icon" data-paction="remove" data-index="'+own+'" aria-label="Удалить шаблон '+html(M.notation(t))+'">×</button>':'<span class="p-demo-label">Показан в разборе</span>')+'</article>';
-  }).join(''):'<p class="sb-empty">Пока нет найденных шаблонов. Соберите один, проверьте и добавьте в коллекцию.</p>';
-  el('p-coverage').hidden=!w().coverageRequested;
-  if(w().coverageRequested){el('p-coverage').className='sb-quiz-feedback '+(view.uncovered?'':'is-success');el('p-coverage').textContent=view.uncovered?'Ещё есть неучтённый случай. Например, '+view.uncovered+' выполняет условие, но не описан вашей коллекцией. Соберите для него новый шаблон.':'Все случаи учтены без пересечений. Всего '+format(view.total)+' подходящих вариантов. Именно поэтому результаты шаблонов можно сложить.';}
-  el('p-generate').textContent=tickKind==='generate'?'Ⅱ Пауза показа':'Показать остальные по шагам';
-  el('p-generate').disabled=!view.uncovered&&tickKind!=='generate';
-  el('p-generation-note').textContent=w().generated?'Автоматически показано '+w().generated+' схем. Они отмечены как разбор; ваши собственные шаблоны сохранены отдельно.':'Полный ответ не показывается до проверки полноты коллекции или вашего запуска разбора.';
+  if(a.valid)setSample(w().draft);
+  renderBuilder();renderSample();persist();
  }
  function renderSample(){
   const a=w().sample?M.analyze(w().sample,c()):null;el('p-sample-card').hidden=!a?.valid||p().phase==='repair';if(!a?.valid)return;
@@ -969,13 +939,6 @@ const PatternUI=(()=>{
   stop(false);const a=w().sample?M.analyze(w().sample,c()):null;if(!a?.valid)return;const max=c().length+1+a.total;if(w().sampleStep>=max)w().sampleStep=0;
   tickKind='sample';ticking=setInterval(()=>{if(w().sampleStep>=max){stop();renderSample();return;}w().sampleStep++;p().selected=Math.min(c().length-1,Math.max(0,w().sampleStep-1));renderSample();},700/state.speed);renderSample();persist();
  }
- function startGeneration(){
-  stop(false);const all=M.canonical(c());w().coverageRequested=false;
-  function next(){while(w().generated<all.length){const t=all[w().generated++];const rest=M.remaining(c(),w().collection,[t]);if(rest.length){setSampleWithoutStopping(rest[0]);break;}}
-   renderCollection();renderSample();if(w().generated>=all.length){stop();w().coverageRequested=true;renderCollection();persist();}}
-  if(w().generated>=all.length)return;tickKind='generate';ticking=setInterval(next,600/state.speed);next();persist();
- }
- function setSampleWithoutStopping(t){w().sample=t.slice();w().sampleStep=c().length+1;p().selected=0;}
  function groupData(){
   const all=M.canonical(c()),groups=[];
   if(c().kind==='parity')for(const first of ['Ч','Н']){const ps=all.filter(t=>t[0]===first);if(ps.length)groups.push({name:'Начинаются с '+first,n:ps.length,each:M.analyze(ps[0],c()).total,factors:M.analyze(ps[0],c()).factors});}
@@ -1007,11 +970,11 @@ const PatternUI=(()=>{
   if(resetFeedback)feedback=null;
   if(!el('p-builder'))return;
   const siblings=M.familyCases(p().caseId);el('p-condition-number').textContent='Условие '+(siblings.findIndex(x=>x.id===p().caseId)+1)+' из '+siblings.length+' в этом типе';
-  el('p-title').textContent='Собери шаблон';el('p-task').textContent=c().task;el('p-status').textContent=['Сборка','Коллекция','Формула','Поиск ошибки'][['build','collect','group','repair'].indexOf(p().phase)];
-  el('p-phase-note').textContent={build:'Начните с одного шаблона: проверьте его и раскройте допустимые символы на каждой позиции.',collect:'Один верный шаблон может описывать только часть ответа. Найдите все непересекающиеся случаи.',group:'Собранные схемы помогают увидеть группы с одинаковым количеством слов. Составьте общую формулу.',repair:'Найдите не ошибку в схеме, а неверный множитель. Затем объясните причину.'}[p().phase];
-  el('p-build-card').hidden=p().phase==='repair';el('p-collection-card').hidden=p().phase==='repair';
-  renderBuilder();renderSample();renderCollection();renderGroups();renderRepair();
-  el('p-lessons').innerHTML=[['Идея','Внутри независимого шаблона перемножаем варианты по позициям. Между непересекающимися шаблонами складываем результаты.'],['Что попробовать','Соберите более узкий шаблон через собственный набор символов. Затем проверьте, пересекается ли он с уже добавленным.'],['Типичная ошибка','Правильный отдельный шаблон ещё не означает, что найдены все случаи. А пересекающиеся схемы нельзя просто сложить.']].map(([title,text])=>'<section class="sb-card"><h3 class="sb-h3">'+title+'</h3><p class="sb-caption">'+text+'</p></section>').join('');
+  el('p-title').textContent='Собери шаблон';el('p-task').textContent=c().task;el('p-status').textContent=['Сборка','Формула','Поиск ошибки'][['build','group','repair'].indexOf(p().phase)];
+  el('p-phase-note').textContent={build:'Начните с одного шаблона: проверьте его и раскройте допустимые символы на каждой позиции.',group:'Разные схемы можно объединить в группы с одинаковым количеством слов. Составьте общую формулу.',repair:'Найдите не ошибку в схеме, а неверный множитель. Затем объясните причину.'}[p().phase];
+  el('p-build-card').hidden=p().phase==='repair';
+  renderBuilder();renderSample();renderGroups();renderRepair();
+  el('p-lessons').innerHTML=[['Идея','Внутри независимого шаблона перемножаем варианты по позициям. Между непересекающимися шаблонами складываем результаты.'],['Что попробовать','Соберите более узкий шаблон через собственный набор символов. Сравните число вариантов в узкой и в более общей схеме.'],['Типичная ошибка','Правильный отдельный шаблон ещё не означает, что найдены все случаи. А пересекающиеся схемы нельзя просто сложить.']].map(([title,text])=>'<section class="sb-card"><h3 class="sb-h3">'+title+'</h3><p class="sb-caption">'+text+'</p></section>').join('');
  }
  function changeCase(id){stop(false);feedback=null;p().caseId=id;if(p().phase==='repair'&&id!=='alternate')p().phase='build';p().palette=c().palette[0];p().selected=0;p().custom='';}
  function handleSettings(event){
@@ -1140,7 +1103,7 @@ function buildSettings(){
   html+=numberField('Длина слова','length',o.length,1,8)+numberField('Букв У не более','maxU',o.maxU,0,o.length)+toggle('Запретить соседние АА','noAA',o.noAA);
   html+=button('Вернуть пример «ПАРУС»','preset-order');
  }
- $('fields').innerHTML=html;$('apply').hidden=m==='basics'||m==='patterns';$('practice-settings').hidden=m==='patterns';$('settings-description').textContent=m==='patterns'?'Собирайте схемы и сохраняйте найденные случаи. Настройки применяются сразу.':m==='basics'?'Настройки применяются сразу. Сравнивайте способы подсчёта при одних и тех же n и k.':'Измените настройки и нажмите «Применить». Новый опыт начнётся с первого варианта.';$('field-error').hidden=true;
+ $('fields').innerHTML=html;$('apply').hidden=m==='basics'||m==='patterns';$('practice-settings').hidden=m==='patterns';$('settings-description').textContent=m==='patterns'?'Выберите условие, соберите схему и проверьте её. Настройки применяются сразу.':m==='basics'?'Настройки применяются сразу. Сравнивайте способы подсчёта при одних и тех же n и k.':'Измените настройки и нажмите «Применить». Новый опыт начнётся с первого варианта.';$('field-error').hidden=true;
  $('practice-toggle').checked=!!state.practice[m];
 }
 function render(){
