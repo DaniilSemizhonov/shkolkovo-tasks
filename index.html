@@ -719,7 +719,7 @@ function highlightCode(source){
  const pattern=/#[^\n]*|\b(?:for|in|from|import)\b|\b(?:forward|back|right|left|penup|pendown|range|setheading|tracer|goto|dot|update|done)\b|\b\d+(?:\.\d+)?\b|[()[\]:]|\b(?:Повтори|Вперёд|Вперед|Назад|Направо|Налево|Поднять|Опустить)\b/gu;
  let result='',last=0;for(const match of source.matchAll(pattern)){const token=match[0];const kind=token.startsWith('#')?'comment':/^(for|in|from|import)$/.test(token)?'keyword':/^\d/.test(token)?'number':/^[()[\]:]$/.test(token)?'punctuation':'function';result+=esc(source.slice(last,match.index))+'<span class="syntax-'+kind+'">'+esc(token)+'</span>';last=match.index+token.length;}return result+esc(source.slice(last));
 }
-function editorMarkup(source){return '<div class="code-editor-shell"><pre id="program-colors" class="code-editor-highlight" aria-hidden="true">'+highlightCode(source)+'\n</pre><textarea id="program" class="code-editor" maxlength="5000" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" wrap="off">'+esc(source)+'</textarea></div>';}
+function editorMarkup(source){return '<div class="code-editor-shell"><pre id="program-colors" class="code-editor-highlight" aria-hidden="true">'+highlightCode(source)+'\n</pre><textarea id="program" aria-describedby="editor-keys" class="code-editor" maxlength="5000" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" wrap="off">'+esc(source)+'</textarea></div><p id="editor-keys" class="sb-caption">Tab — отступ, Shift+Tab — убрать отступ. Чтобы выйти из поля, нажмите Escape, затем Tab.</p>';}
 function codeMarkup(source,line){return source.split('\n').map((s,i)=>'<div class="code-line '+(i+1===line?'active':'')+'"><span>'+(i+1)+'</span><span>'+highlightCode(s)+'</span></div>').join('');}
 function renderTurtle(){
  const t=state.turtle,sim=M.simulate(t.source,t.heading);t.step=Math.min(t.step,sim.frames.length-1);const f=sim.frames[t.step];
@@ -839,6 +839,30 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden&&playTimer)
 render();load();
 
 $('app').addEventListener('scroll',event=>{if(event.target.id==='program'&&$('program-colors')){$('program-colors').scrollTop=event.target.scrollTop;$('program-colors').scrollLeft=event.target.scrollLeft;}},true);
+
+$('app').addEventListener('keydown',event=>{
+ const el=event.target;if(el.id!=='program'||loading)return;
+ if(event.key==='Escape'){el.dataset.tabExit='true';return;}
+ if(event.key!=='Tab'){delete el.dataset.tabExit;return;}
+ if(el.dataset.tabExit){delete el.dataset.tabExit;return;}
+ event.preventDefault();
+ const value=el.value,start=el.selectionStart,end=el.selectionEnd;
+ if(!event.shiftKey&&start===end){if(value.length+4>el.maxLength)return;el.setRangeText('    ',start,end,'end');}
+ else{
+  const first=start===0?0:value.lastIndexOf('\n',start-1)+1;
+  const lastPoint=end>start&&value[end-1]==='\n'?end-1:end;
+  const newline=value.indexOf('\n',lastPoint),last=newline<0?value.length:newline;
+  const block=value.slice(first,last),lines=block.split('\n');let changed,selStart,selEnd;
+  if(!event.shiftKey){changed=lines.map(line=>'    '+line).join('\n');if(value.length+4*lines.length>el.maxLength)return;selStart=start+4;selEnd=end+4*lines.length;}
+  else{
+   let offset=first,removedStart=0,removedEnd=0;
+   changed=lines.map(line=>{const n=Math.min(4,line.match(/^ */)[0].length);removedStart+=Math.max(0,Math.min(n,start-offset));removedEnd+=Math.max(0,Math.min(n,end-offset));offset+=line.length+1;return line.slice(n);}).join('\n');
+   selStart=start-removedStart;selEnd=end-removedEnd;
+  }
+  el.setRangeText(changed,first,last,'preserve');el.setSelectionRange(selStart,selEnd);
+ }
+ el.dispatchEvent(new Event('input',{bubbles:true}));
+});
 
 </script>
 </body></html>
