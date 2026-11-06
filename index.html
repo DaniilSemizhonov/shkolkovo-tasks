@@ -1,8 +1,4 @@
-<!doctype html>
-<html lang="ru">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Задание №8 — Лаборатория комбинаторики · Школково</title>
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>№6 · Геометрия Черепахи · Школково</title>
 <script src="https://3.shkolkovo.online/js/sandbox-client.v1.js"></script>
 <style>
 /* ШКОЛКОВО — унифицированный визуальный слой HTML-песочниц.
@@ -461,858 +457,354 @@ textarea:focus-visible, [tabindex]:focus-visible {
 .sb-quiz-feedback.is-success{border-left-color:var(--sb-success);background:var(--sb-success-surface);color:var(--sb-success-text);}
 .sb-quiz-feedback.is-error{border-left-color:var(--sb-error);background:var(--sb-error-surface);color:var(--sb-error-text);}
 
-/* Предметные компоненты №8. Общие токены и геометрия — из стандарта 2.4. */
-.sb-brand-picture{margin:0}.sb-section-btn{text-align:left;justify-content:flex-start}.sb-main>*,.sb-params>*{min-width:0}
-.storage-note{max-width:1840px;margin:16px auto 0;padding:10px 16px;background:var(--sb-warning-surface);color:var(--sb-warning-text);border:1px solid var(--sb-border);border-radius:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px}.storage-note[hidden]{display:none}.storage-note.is-error{background:var(--sb-error-surface);color:var(--sb-error-text)}
-.sb-app[aria-busy=true]{opacity:.65}.sb-hero{position:relative;overflow:hidden}.hero-bottom{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.hero-chip{font-size:11px;font-weight:700;border:1px solid var(--sb-border);border-radius:7px;padding:4px 8px;color:var(--sb-muted);background:var(--sb-surface)}
-.scene-stack{display:grid;gap:16px}.scene-topline{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px}.scene-kicker{font:700 12px var(--sb-mono);color:var(--sb-muted)}
-.alphabet{display:flex;flex-wrap:wrap;gap:6px}.alphabet-char{display:grid;place-items:center;min-width:28px;height:28px;background:var(--sb-surface-2);border-radius:6px;font:700 13px var(--sb-mono)}
-.word-stage{padding:18px 12px;border:1px solid var(--sb-border);border-radius:12px;background:var(--sb-surface)}
-.word-slots{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;min-height:100px;align-items:center;padding:14px 0}
-.symbol-slot{display:flex;flex-direction:column;justify-content:center;align-items:center;min-width:44px;width:clamp(44px,5vw,58px);min-height:82px;border:1px dashed var(--sb-border);border-radius:10px;color:var(--sb-muted);background:var(--sb-surface)}
-.symbol-slot.is-filled{border-style:solid;background:var(--sb-card);color:var(--sb-text)}.symbol-slot.is-current{outline:2px solid var(--sb-accent);outline-offset:2px;background:var(--sb-surface-2)}.symbol-slot strong{font:800 25px/1.35 var(--sb-mono)}.slot-index{font:11px var(--sb-mono);color:var(--sb-muted)}.slot-caption{font:10px var(--sb-font);color:var(--sb-muted);min-height:15px}
-.stage-foot{font-size:11px;color:var(--sb-muted);text-align:center;margin:4px 0 0}.check-list{display:grid;gap:6px}.check-row{display:grid;grid-template-columns:24px minmax(0,1fr) auto;align-items:center;gap:8px;padding:9px 10px;border:1px solid var(--sb-border);border-radius:9px;background:var(--sb-surface);font-size:12px}.check-mark{font-size:17px;text-align:center}.check-row b{font-size:11px;font-weight:700;color:var(--sb-muted)}.check-row.is-good{border-left:3px solid var(--sb-success)}.check-row.is-good .check-mark,.check-row.is-good b{color:var(--sb-success-text)}.check-row.is-bad{border-left:3px solid var(--sb-error)}.check-row.is-bad .check-mark,.check-row.is-bad b{color:var(--sb-error-text)}
-.explore-tools{display:flex;flex-wrap:wrap;gap:8px}.explore-tools .sb-btn{font-size:12px}.jump-form{display:flex;flex-wrap:wrap;align-items:end;gap:8px}.jump-form label{flex:1 1 150px;font-size:12px;font-weight:700;color:var(--sb-muted)}.jump-form input{display:block;width:100%;min-width:0;max-width:100%;font-size:16px;min-height:44px;background:var(--sb-card);border:1px solid var(--sb-border);padding:8px 10px;border-radius:9px;margin-top:6px;color:var(--sb-text)}
-#analysis{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}.calc-formula{font:700 17px/1.65 var(--sb-mono);overflow-wrap:anywhere;padding:14px;border:1px solid var(--sb-border);border-radius:12px;background:var(--sb-surface);margin:12px 0}.calc-result{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid var(--sb-border)}.calc-result strong{font-size:clamp(22px,2vw,30px);font-weight:850;color:var(--sb-accent-text);overflow-wrap:anywhere}.calc-result span{font-size:12px;color:var(--sb-muted)}
-.sb-code{max-height:320px;overflow-y:auto;padding:12px}.sb-code-line{grid-template-columns:24px minmax(0,1fr);gap:8px}.sb-code-line.is-current{box-shadow:inset 4px 0 var(--sb-accent)}.sb-code-line>span:last-child{white-space:pre-wrap;overflow-wrap:anywhere;min-width:0}
-.result-row{width:100%;display:grid;grid-template-columns:90px minmax(0,1fr) 95px;gap:10px;align-items:center;min-height:52px;padding:9px 10px;text-align:left;background:var(--sb-surface);border:1px solid var(--sb-border);border-radius:9px}.result-row:hover{border-color:var(--sb-accent)}.result-num{font:11px var(--sb-mono);color:var(--sb-muted);overflow-wrap:anywhere}.result-row strong{font:700 14px var(--sb-mono);letter-spacing:1px;overflow-wrap:anywhere}.result-verdict{font-size:11px;text-align:right}.good{color:var(--sb-success-text)}.bad{color:var(--sb-error-text)}.results{display:grid;gap:6px;margin:12px 0}.table-footer{display:flex;align-items:center;gap:8px;justify-content:space-between}.table-footer output{font:11px var(--sb-mono);color:var(--sb-muted);text-align:center}.result-filter{display:flex;flex-wrap:wrap;gap:6px}.result-filter .sb-btn{font-size:12px}.result-filter [aria-pressed=true]{background:var(--sb-action);border-color:var(--sb-action);color:var(--sb-action-text)}
-#lesson-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.preset-row{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0}.preset-row .sb-btn{font-size:12px;flex:1 1 110px}.sb-field label{display:grid;gap:6px}.sb-params .sb-toggle{font-size:12px;line-height:1.5;margin:4px 0}.sb-params .sb-toggle input{min-width:24px}.settings-actions{display:grid;gap:10px;margin-top:16px}.params-divider{height:1px;background:var(--sb-border);margin:20px 0}.field-error{font-size:12px;color:var(--sb-error-text);line-height:1.6}.practice-form{display:flex;flex-wrap:wrap;gap:8px;align-items:end}.practice-form .sb-field{flex:1 1 150px;margin:0}.practice-form input{background:var(--sb-surface)}.practice-tag{font-size:11px;color:var(--sb-accent-text);font-weight:800;letter-spacing:1px}.sb-quiz-feedback{margin-top:12px}
-.decision-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:16px 0}.decision{padding:12px;background:var(--sb-surface);border-radius:12px;display:grid;gap:6px}.decision span{font-size:11px;color:var(--sb-muted)}.decision b{font-size:13px}.basic-formula{font:800 clamp(22px,3vw,34px)/1.5 var(--sb-mono);color:var(--sb-accent-text);overflow-wrap:anywhere}.basic-examples{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:16px}.example-word{font:700 14px var(--sb-mono);text-align:center;overflow-wrap:anywhere;background:var(--sb-surface);border:1px solid var(--sb-border);border-radius:9px;padding:12px 5px}.template-list{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.template-chip{padding:7px 9px;background:var(--sb-surface-2);border-radius:7px;font:700 12px var(--sb-mono);overflow-wrap:anywhere;max-width:100%}.rank-panel{border:1px solid var(--sb-border);border-radius:12px;padding:12px;background:var(--sb-surface)}.rank-map{font:700 12px/1.8 var(--sb-mono);color:var(--sb-accent-text);overflow-wrap:anywhere}.rank-formula{font:12px/1.8 var(--sb-mono);overflow-wrap:anywhere}.endnote{font-size:11px;color:var(--sb-muted);margin:0;text-align:center}
-@media(min-width:1600px){#analysis{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}}
-@media(max-width:1180px){#lesson-cards{grid-template-columns:minmax(0,1fr)}}
-@media(max-width:768px){.storage-note{margin:12px 12px 0}.word-stage{padding:12px 8px}.word-slots{gap:6px}.symbol-slot{width:44px;min-height:76px}#lesson-cards{gap:12px}.sb-playback-speed{flex-basis:100%}.hero-bottom{margin-top:12px}.decision-grid{grid-template-columns:minmax(0,1fr)}.decision{display:flex;justify-content:space-between}.basic-examples{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:420px){.result-row{grid-template-columns:70px minmax(0,1fr);gap:6px}.result-verdict{grid-column:2;text-align:left}.result-row strong{font-size:13px;letter-spacing:0}.check-row{grid-template-columns:20px minmax(0,1fr);gap:6px}.check-row b{grid-column:2}.sb-metric-value{font-size:19px}.scene-kicker{font-size:11px}.sb-timeline-counter{font-size:11px}}
-input,select,textarea{font-size:16px}
-.result-row[aria-pressed="true"]{border-color:var(--sb-accent);box-shadow:inset 3px 0 var(--sb-accent);background:var(--sb-surface-2)}
-/* Самостоятельная сборка шаблонов. Все действия доступны нажатием и с клавиатуры. */
-#pattern-lab{display:grid;gap:var(--sb-gap-card);min-width:0}
-.p-task{font-size:14px;line-height:1.7;margin:0;padding:14px;border-radius:12px;background:var(--sb-surface);border-left:3px solid var(--sb-accent)}
-.p-roadmap{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 8px}.p-roadmap span{padding:6px 9px;background:var(--sb-surface-2);border-radius:7px;color:var(--sb-accent-text);font-size:11px;font-weight:750}
-.p-palette{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.p-palette-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:64px;min-height:68px;padding:9px 12px;border:1px solid var(--sb-border);border-radius:10px;background:var(--sb-surface);color:var(--sb-text)}.p-palette-btn strong{font:800 20px var(--sb-mono)}.p-palette-btn span{font-size:11px}.p-palette-btn[aria-pressed=true]{background:var(--sb-action);color:var(--sb-action-text);border-color:var(--sb-action)}
-.p-custom{padding:12px;border:1px solid var(--sb-border);border-radius:12px;background:var(--sb-surface)}.p-custom>label{display:block;font-size:12px;font-weight:750;color:var(--sb-muted);margin-bottom:6px}.p-custom-row{display:flex;flex-wrap:wrap;gap:8px}.p-custom-row input{flex:1 1 110px;width:100%;min-width:0;min-height:44px;padding:8px 12px;border:1px solid var(--sb-border);border-radius:10px;background:var(--sb-card);font-size:16px}
-.p-builder{display:flex;flex-wrap:wrap;gap:8px;padding:18px 12px;margin:16px 0;background:var(--sb-surface);border:1px solid var(--sb-border);border-radius:12px;min-height:120px;align-content:center;justify-content:center}
-.p-slot{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;min-height:88px;min-width:52px;max-width:100%;flex:0 1 64px;padding:8px 5px;border:1px solid var(--sb-border);border-radius:10px;background:var(--sb-card);color:var(--sb-text)}.p-slot.is-block{flex-basis:136px;border-left:4px solid var(--sb-accent)}.p-slot strong{font:800 22px var(--sb-mono);overflow-wrap:anywhere;max-width:100%}.p-slot-caption{font-size:10px;line-height:1.4;overflow-wrap:anywhere}.p-slot.is-empty{border-style:dashed;background:var(--sb-surface)}.p-slot.is-selected{outline:2px solid var(--sb-accent);outline-offset:2px}.p-slot.is-blocked{opacity:.45;border-style:dashed;cursor:not-allowed}
-.p-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.p-actions>.sb-btn{font-size:13px}
-.p-witness{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px}.p-witness span{font:750 16px var(--sb-mono);padding:7px;min-width:26px;text-align:center;border-radius:6px;background:var(--sb-surface)}.p-witness .is-error{outline:2px solid var(--sb-error);color:var(--sb-error-text)}
-.p-mini-pattern{display:flex;flex-wrap:wrap;gap:4px;max-width:100%}.p-mini-token{padding:4px 7px;background:var(--sb-surface-2);border:1px solid var(--sb-border);border-radius:6px;font:700 12px var(--sb-mono);overflow-wrap:anywhere;max-width:100%}.p-mini-token.is-block{border-color:var(--sb-accent)}
-.p-factor-slots{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:16px 0}.p-factor-slot{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-width:52px;min-height:80px;max-width:100%;flex:0 1 66px;padding:8px 5px;border:1px solid var(--sb-border);border-radius:10px;background:var(--sb-surface);color:var(--sb-text)}.p-factor-slot strong{font:800 20px var(--sb-mono);overflow-wrap:anywhere}.p-factor-slot>span:last-child{font-size:11px}.p-factor-slot.is-selected{outline:2px solid var(--sb-accent);outline-offset:2px;background:var(--sb-surface-2)}
-.p-digit-list{display:flex;flex-wrap:wrap;gap:6px}.p-digit-list span{display:grid;place-items:center;min-width:32px;min-height:32px;border:1px solid var(--sb-border);border-radius:7px;background:var(--sb-card);font:700 15px var(--sb-mono)}.p-digit-list span.is-excluded{text-decoration:line-through;color:var(--sb-error-text);border-style:dashed;background:var(--sb-error-surface)}
-.p-formula{padding:14px;margin:14px 0;border:1px solid var(--sb-border);border-radius:12px;background:var(--sb-surface-2);font:700 16px/1.7 var(--sb-mono);color:var(--sb-accent-text);overflow-wrap:anywhere}.p-example-stage{padding:12px;text-align:center;background:var(--sb-surface);border-radius:12px;margin-bottom:16px}.p-real-word{font:800 clamp(18px,3vw,29px)/1.6 var(--sb-mono);letter-spacing:2px;overflow-wrap:anywhere;padding-top:8px}
-.p-group-inputs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}.p-group-inputs label{display:grid;gap:6px;align-content:end;font-size:12px;color:var(--sb-muted);font-weight:700;min-width:0}.p-group-inputs input{width:100%;min-width:0;min-height:44px;background:var(--sb-surface);border:1px solid var(--sb-border);border-radius:10px;padding:8px 10px;font-size:16px;color:var(--sb-text)}.p-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}.p-groups strong{color:var(--sb-accent-text);font-size:19px}
-.p-lesson-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-@media(max-width:1180px){.p-lesson-grid{grid-template-columns:minmax(0,1fr)}.p-group-inputs{grid-template-columns:minmax(0,1fr)}}
-@media(max-width:768px){.p-builder{padding:14px 8px;gap:7px}.p-slot{flex-basis:52px}.p-slot.is-block{flex-basis:111px}.p-lesson-grid{gap:12px}.p-actions>.sb-btn{flex:1 1 140px}.p-groups{grid-template-columns:minmax(0,1fr)}}
-.p-condition-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:0 0 12px}.p-condition-toolbar .sb-btn{font-size:13px}
+:root{--shape-a:#8B5CF6;--shape-b:#EA9847;--shape-result:#21966C}
+.storage-note{max-width:1840px;margin:14px auto 0;padding:10px 16px;border:1px solid var(--sb-border);border-radius:12px;background:var(--sb-warning-surface);color:var(--sb-warning-text);font-size:12px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}.storage-note.is-error{background:var(--sb-error-surface);color:var(--sb-error-text)}
+.sb-app[aria-busy=true]{opacity:.6}.sb-main>*{min-width:0}.sb-section-btn{text-align:left;justify-content:flex-start}.nav-footer{border-top:1px solid var(--sb-border);padding-top:18px;margin-top:20px}.hero-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}.hero-tags span{background:var(--sb-surface);color:var(--sb-accent-text);padding:5px 8px;border-radius:7px;font-size:11px;font-weight:700}
+.lead{font-size:15px;line-height:1.75;margin:8px 0}.formula{font:700 clamp(17px,2vw,23px)/1.6 var(--sb-mono);color:var(--sb-accent-text);overflow-wrap:anywhere;margin:12px 0}.sb-params .sb-field label{display:grid;gap:6px}.sb-params select{width:100%;min-width:0}.sb-params .sb-caption{overflow-wrap:anywhere}.params-divider{height:1px;background:var(--sb-border);margin:20px 0}.sb-toggle{font-size:13px;margin:8px 0}.sb-field{min-width:0}.sb-field label{display:grid;gap:6px}.sb-field input,.sb-field select,.sb-field textarea{display:block;width:100%;min-width:0}.scene-tools{display:flex;gap:6px;flex-wrap:wrap}.scene-tools .sb-btn{padding:8px;font-size:12px}.legend{display:flex;flex-wrap:wrap;gap:14px;color:var(--sb-muted);font-size:11px;margin:4px 0 12px}.legend span{display:flex;gap:6px;align-items:center}.legend i{width:9px;height:9px;border-radius:50%}.dot-a{background:var(--shape-a)}.dot-b{background:var(--shape-b)}.dot-result{background:var(--shape-result)}
+.plot{width:100%;aspect-ratio:1.4;min-height:260px;max-height:540px;border:1px solid var(--sb-border);background:var(--sb-surface);border-radius:12px;position:relative;overflow:hidden;touch-action:pan-y}.plot svg{width:100%;height:100%;display:block;user-select:none}.plot text{font-family:var(--sb-mono);fill:var(--sb-muted)}.plot .grid{stroke:var(--sb-border);stroke-width:1}.plot .axis{stroke:var(--sb-muted);stroke-width:1.5}.plot .shape-a{stroke:var(--shape-a);fill:var(--shape-a);fill-opacity:.10;stroke-width:2}.plot .shape-b{stroke:var(--shape-b);fill:var(--shape-b);fill-opacity:.10;stroke-width:2}.plot .result{fill:var(--shape-result);fill-opacity:.28;stroke:var(--shape-result);stroke-width:2.5}.plot .selected-cell{fill:var(--shape-result);fill-opacity:.38}.plot .trace{fill:none;stroke:var(--shape-a);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.plot .travel{stroke:var(--shape-b);stroke-width:2;stroke-dasharray:7 5}.plot .point{fill:var(--sb-muted);opacity:.5}.plot .point.chosen{fill:var(--shape-result);opacity:1}.plot .point.wrong{fill:var(--sb-error);opacity:1}.plot .point.boundary{fill:var(--shape-b);opacity:1}.plot .focus-point{fill:none;stroke:var(--sb-text);stroke-width:2}.plot .turtle{fill:var(--shape-result);stroke:var(--sb-card);stroke-width:1.5}.plot .face-mark{fill:var(--shape-result);fill-opacity:.45;stroke:var(--shape-result);stroke-width:1.5}.plot .edge-label{font-size:13px;font-weight:800;fill:var(--sb-text);paint-order:stroke;stroke:var(--sb-surface);stroke-width:5;stroke-linejoin:round}
+#metrics{margin-top:16px;grid-template-columns:repeat(3,minmax(0,1fr))}.sb-metric-value{font-size:clamp(16px,1.8vw,24px)}#controls:not(:empty){margin-top:16px}.sb-playback-actions{gap:7px}.sb-playback-actions .sb-btn{font-size:12px}.sb-playback-actions .sb-btn--icon{flex:0 0 44px}.sb-step-spotlight{margin-top:12px}.operation-row{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}.operation-row .sb-btn[aria-pressed=true]{background:var(--sb-action);border-color:var(--sb-action);color:white}.feedback{margin-top:12px}.code-editor{width:100%;min-height:210px;padding:12px;border:1px solid var(--sb-border);border-radius:10px;background:var(--sb-code);color:var(--sb-text);font:16px/1.65 var(--sb-mono);resize:vertical}.code-view{white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.8 var(--sb-mono);background:var(--sb-code);padding:12px;border-radius:12px;max-height:400px;overflow-y:auto}.code-line{display:grid;grid-template-columns:25px minmax(0,1fr);gap:6px;padding:3px 6px;border-radius:5px}.code-line span:first-child{color:var(--sb-muted);user-select:none}.code-line.active{background:var(--sb-surface-2);box-shadow:inset 3px 0 var(--sb-accent)}.form-row{display:flex;flex-wrap:wrap;align-items:end;gap:10px}.form-row .sb-field{flex:1 1 100px;margin:0}.form-row .sb-field input{width:100%}.form-row>.sb-btn{flex:0 1 auto}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.actions .sb-btn{font-size:13px}.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.lesson-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.lesson-cards .sb-card{box-shadow:none}.lesson-cards h3{font-size:14px;margin:0 0 8px}.next-card{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding:10px 0}.row-table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}.row-table th,.row-table td{padding:8px;border-bottom:1px solid var(--sb-border);text-align:left}.row-table th{color:var(--sb-muted)}details{min-width:0}summary{min-height:44px;display:flex;align-items:center;cursor:pointer;font-weight:750;color:var(--sb-accent-text)}details[open] summary{margin-bottom:10px}.boundary-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.boundary-tags span{background:var(--sb-surface);border:1px solid var(--sb-border);padding:8px 12px;border-radius:8px;font:12px var(--sb-mono)}.hint{background:var(--sb-surface);border-left:3px solid var(--sb-accent);padding:12px;border-radius:0 10px 10px 0;font-size:13px;line-height:1.65;margin-top:12px}.sb-quiz-feedback{margin-top:12px}.section-number{margin-left:auto;opacity:.65;font:11px var(--sb-mono)}
+@media(prefers-color-scheme:dark){:root{--shape-b:#F3AB66;--shape-result:#5BDB9F}}@media(max-width:1180px){.lesson-cards{grid-template-columns:minmax(0,1fr)}}@media(max-width:768px){.storage-note{margin:12px 12px 0}.plot{min-height:270px;aspect-ratio:1.05}.two-col{grid-template-columns:minmax(0,1fr)}#metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.form-row .sb-btn{flex:1 1 100%}.lesson-cards{gap:12px}.nav-footer{display:none}.sb-metric-label{font-size:11px}.sb-scene-head{margin-bottom:12px}}@media(max-width:380px){.plot{min-height:245px}.sb-playback-actions .sb-btn{padding:8px}.formula{font-size:16px}}
+
+.plot .wrong-cell{fill:var(--sb-error);fill-opacity:.45}
 
 </style>
-</head>
-<body>
-<div id="storage" class="storage-note" role="status" aria-live="polite">Загружаем прогресс…</div>
-<div class="sb-app" id="app" aria-busy="true" inert>
-<aside class="sb-nav sb-card" aria-label="Разделы лаборатории">
-<picture class="sb-brand-picture"><source media="(prefers-color-scheme: dark)" srcset="data:image/png;base64,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"><img class="sb-logo" src="data:image/png;base64,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" width="419" height="89" alt="Школково"></picture>
-<nav class="sb-section-nav" aria-label="Режимы задания №8">
-<button type="button" class="sb-section-btn" data-mode="basics" aria-pressed="false">Как считать варианты</button>
-<button type="button" class="sb-section-btn" data-mode="patterns" aria-pressed="false">Собери шаблон</button>
-<button type="button" class="sb-section-btn" data-mode="numbers" aria-pressed="true">Слова и числа</button>
-<button type="button" class="sb-section-btn" data-mode="rules" aria-pressed="false">Ограничения и шаблоны</button>
-<button type="button" class="sb-section-btn" data-mode="perms" aria-pressed="false">Перестановки букв</button>
-<button type="button" class="sb-section-btn" data-mode="order" aria-pressed="false">Алфавитный порядок</button>
-</nav></aside>
-<main class="sb-main">
-<header class="sb-card sb-hero"><div class="sb-eyebrow">Задание №8 · Комбинаторика</div><h1 id="title">Слова, числа и выбор позиции</h1><p id="description">Исследуйте варианты и условия, сравнивайте перебор и подсчёт по формуле.</p><div class="hero-bottom"><span class="hero-chip">Выбор → проверка → подсчёт</span><span class="hero-chip">Примеры из методички</span></div></header>
-<div id="pattern-lab" hidden></div>
-<section class="sb-card" id="practice-card" hidden aria-labelledby="practice-title"><span class="practice-tag">ПРОВЕРЬ СЕБЯ</span><h2 class="sb-h2" id="practice-title">Сначала ваш прогноз</h2><p id="question" class="sb-caption"></p><form id="prediction-form" class="practice-form"><div class="sb-field"><label for="prediction">Ваш ответ</label><input id="prediction" type="text" inputmode="numeric" maxlength="20" autocomplete="off"></div><button class="sb-btn sb-btn--primary" type="submit">Проверить ответ</button></form><div id="feedback" class="sb-quiz-feedback" role="status" hidden></div></section>
-<section class="sb-card" id="basics-scene" hidden><div class="sb-eyebrow">Выбираем способ подсчёта</div><h2 class="sb-h2" id="basic-title"></h2><div id="basic-decisions" class="decision-grid"></div><div class="sb-surface"><div class="basic-formula" id="basic-formula"></div><p id="basic-substitution" class="sb-numeric"></p><p class="sb-caption" id="basic-explanation"></p></div><h3 class="sb-h3" style="margin-top:20px">Как выглядят варианты</h3><div id="basic-examples" class="basic-examples"></div><p id="basic-count-label" class="sb-caption"></p></section>
-<section class="sb-card" id="explorer" aria-labelledby="scene-title">
-<div class="sb-scene-head"><div><div class="sb-eyebrow" id="mode-name">Слова и числа</div><h2 class="sb-h2" id="scene-title">Собираем и проверяем вариант</h2></div><span class="sb-status" id="scene-status">Исследование</span></div>
-<div class="scene-stack">
-<div class="sb-metric-grid" id="metrics"></div>
-<div class="word-stage"><div class="scene-topline"><span class="scene-kicker" id="candidate-number"></span><span class="sb-caption">Доступные символы</span></div><div class="alphabet" id="alphabet" aria-label="Алфавит"></div><div class="word-slots" id="slots" aria-label="Текущий вариант"></div><p class="stage-foot">Позиции слева направо · правый символ меняется быстрее</p></div>
-<div><h3 class="sb-h3">Проверка условий</h3><div class="check-list" id="checks"></div></div>
-<div class="rank-panel" id="rank-panel" hidden><h3 class="sb-h3">Буквы становятся цифрами</h3><div id="rank-map" class="rank-map"></div><p id="rank-formula" class="rank-formula"></p><form id="rank-form" class="jump-form"><label>Найти слово в списке<input type="text" id="rank-word" maxlength="8" autocomplete="off" spellcheck="false"></label><button type="submit" class="sb-btn">Найти номер</button></form><p id="rank-error" class="field-error" role="status" hidden>Длина или буквы слова не соответствуют алфавиту.</p></div>
-<section class="sb-playback" aria-label="Управление перебором">
-<div class="sb-timeline-head"><h3 class="sb-timeline-title" id="timeline-title">Ход алгоритма</h3><output class="sb-timeline-counter" id="counter" for="timeline">0 / 0</output></div>
-<input type="range" id="timeline" class="sb-playback-range" min="0" max="0" value="0" aria-labelledby="timeline-title">
-<div class="sb-playback-toolbar"><div class="sb-playback-actions" role="group" aria-label="Шаги выполнения">
-<button type="button" class="sb-btn sb-btn--icon" id="back" data-action="back" aria-label="Назад">←</button><button type="button" class="sb-btn sb-btn--primary" id="play" data-action="play">▶ Запуск</button><button type="button" class="sb-btn sb-btn--icon" id="forward" data-action="forward" aria-label="Вперёд">→</button><button type="button" class="sb-btn" id="stage" data-action="stage">Следующий вариант</button><button type="button" class="sb-btn" data-action="reset">↺ Сброс</button>
-</div><div class="sb-playback-speed" role="group" aria-label="Скорость воспроизведения"><span class="sb-speed-label">Скорость</span><div class="sb-speed-segment"><button type="button" class="sb-speed-btn" data-speed="0.5" aria-pressed="false">0,5×</button><button type="button" class="sb-speed-btn" data-speed="1" aria-pressed="true">1×</button><button type="button" class="sb-speed-btn" data-speed="2" aria-pressed="false">2×</button></div></div></div>
-<div class="sb-step-spotlight"><span class="sb-step-spotlight-label">ТЕКУЩИЙ ШАГ</span><span id="step-text" role="status" aria-live="polite"></span></div>
-</section>
-<div class="explore-tools"><button type="button" class="sb-btn" data-action="first-valid">Первое подходящее</button><button type="button" class="sb-btn" data-action="end">К итогу перебора</button></div>
-<form class="jump-form" id="jump-form"><label>Перейти к варианту №<input type="number" id="jump-index" min="1" value="1" required></label><button type="submit" class="sb-btn">Перейти</button></form>
-<p class="sb-caption">Шкала охватывает весь набор. Для точного перехода к далёкому варианту введите его номер. Пропущенные варианты учитываются математически.</p>
-</div></section>
-<div id="analysis">
-<section class="sb-card"><div class="sb-eyebrow">Математический разбор</div><h2 class="sb-h2" id="calc-title"></h2><div class="calc-formula" id="calc-formula"></div><p class="sb-caption" id="calc-text"></p><div id="templates" hidden><h3 class="sb-h3" style="margin-top:16px">Шаблоны чётности</h3><div class="template-list" id="template-list"></div><p class="sb-caption" id="template-note"></p></div><div class="calc-result"><span id="calc-answer-label"></span><strong id="calc-answer"></strong></div></section>
-<section class="sb-card"><button class="sb-fold" type="button" id="code-toggle" data-action="code" aria-expanded="true" aria-controls="code-body"><span>Алгоритм на Python</span><span class="sb-fold-label" id="fold-label">Свернуть</span></button><div id="code-body"><div class="sb-code" id="code" aria-label="Python-код текущего примера"></div><p class="sb-caption" id="code-note"></p></div></section>
-</div>
-<section class="sb-card" id="results-card"><div class="sb-eyebrow">Исследуем список</div><h2 class="sb-h2">Варианты и результаты проверки</h2><p class="sb-caption">Нажмите на строку, чтобы разобрать её по шагам. Номера относятся к полному списку уникальных вариантов.</p><div class="result-filter" style="margin-top:12px"><button type="button" class="sb-btn" id="filter-all" data-action="filter-all" aria-pressed="true">Все варианты</button><button type="button" class="sb-btn" id="filter-valid" data-action="filter-valid" aria-pressed="false">Только подходящие</button></div><div class="results" id="rows"></div><div class="table-footer"><button type="button" class="sb-btn sb-btn--icon" id="table-prev" data-action="table-prev" aria-label="Предыдущая страница вариантов">←</button><output id="table-counter"></output><button type="button" class="sb-btn sb-btn--icon" id="table-next" data-action="table-next" aria-label="Следующая страница вариантов">→</button></div></section>
-<div id="lesson-cards"></div><p class="endnote">Все вычисления выполняются внутри песочницы. Ответы предназначены для самопроверки.</p>
-</main>
-<aside class="sb-card sb-params" aria-labelledby="params-title"><h2 class="sb-h2" id="params-title">Параметры</h2><p class="sb-caption" id="settings-description">Измените настройки и нажмите «Применить». Новый опыт начнётся с первого варианта.</p><form id="settings-form"><div id="fields"></div><p class="field-error" id="field-error" role="status" hidden></p><div class="settings-actions"><button type="submit" class="sb-btn sb-btn--primary" id="apply">Применить</button></div></form><div id="practice-settings"><div class="params-divider"></div><label class="sb-toggle"><input type="checkbox" id="practice-toggle"><span><b>Проверь себя</b><br>Сначала предложить свой ответ</span></label><p class="sb-caption">Итоговый ответ и разбор появятся после проверки. Все разделы доступны в любой момент.</p></div></aside>
-</div>
+</head><body><div id="storage" class="storage-note" role="status" aria-live="polite">Загружаем прогресс…</div>
+<div id="app" class="sb-app" aria-busy="true" inert>
+<aside class="sb-card sb-nav"><picture class="sb-brand-picture"><source media="(prefers-color-scheme:dark)" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaMAAABZCAYAAACT60s/AAAOU0lEQVR42u2dMYzkVhnH/162ghPnSKBIBJG5BujirWhGymyHSJG9Ak2DtDMNDYoyWyDK3S0RxewpQkhpZk5KY1HcpADSrQ+ZhuaMhCJCc3MFKBekaE4nBXQXYgq/Ic5k/N6z37P9PPP/SVvc3ZzX873n93vf8+dnD4I4TAMA5wDG/aG3gkPEYZpu/FXUH3rHcJA4TEcA0B96cxBCCNHiICeiawAnAK7jMPUZmsoimgGYraVECCFEQ0Y5Ea0FFFBIRiJaQyERQkiJzCgvIlBIVkSUF9IJI0QIIWoZnRX8G4VkJiIASABEjBIhhChkJG60jymkWkR07FoxCCGEuJoZgUKiiAghpHUZUUgUESGEOCEjCokiIoQQJ2REIVFEhBDihIwoJIqIEEKckBGFRBERQogTMtIU0mBP4jSliAghpD4OVR/oD715HKbYkhmM+0Nv0dB5bm6K2vTgf4wv71RBERFCiCU83Q9uLFWN921X6o09/CgiQghpQ0Y5Ie3t6xFcfs0GIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIQZ4XThJsQfeCMCryB46XQK4v6/POxFCCGXUvIhOkO384G/55wTZA6gJm5IQQiijukQ0QvFu2WtWyLbmoZAIIaSjHHRcRBAZ07XYqocQQghl1LiIKCRCCNkBnFumqyCiPCtwyW4znlNk757aRtIfemcaxwhQ/E4nADjTiblo29Mq56I6h/7QO64QmwGyjW+LuFu2SEYU2wyQFdsEAHri5wvfVfTV+wCi/tCLGmxzK6jiHYfptWl/2RLXe5KPaPXlgj6wbi9/S9yW4ifJtdfKwhh3aqEZ7ot+FNU55jUVo0M4hKGI8hkShfQ5AcxfgugrjuFrHqdncC4+LL7MUQxusy2iyF9gi5IX7Cmyqk+dNoH4PudxmK4AzAHc6Q+9pSNtboqN/pJnpjjmWYm26gF4U7SVr9Fn1/12Iv7/XExUqk4iepbaZ5D7Tlb7UBsxcmaZzoKINoUUgJBiziUiAjRfExKHaU9kAdeaIirqsxMAD+MwvRCiNL0Gdim7PwFwIvnIpWZm7ous8aGId9U4jcQYc08M2i6w7kMP4jCdmEzS2orRgSOdzZaIKCSim8XILtgrnRmd6LcPLGch52JAMem7wQ61la8YG5L+0LvQOE4g2mpi8fRORFuNHAqZD2AqhFI21q3G6MCBzmZbRBQSMRrcAFxqHGeG4uffTOk5OMi1hSzGKwDjEpOGOrIYH8BM9AeXmIiMssw43GqMDloeGOoSEYVECi9SGC7PiYuqCVHM9llIIoOVDajK5bkGxpg1I4tCihQ/S83jTDXj7ESMDlvsaE0FYC0kFjUwKwogr57TGdwmJUUUiWzrifjzy8iW0XQnSNM4TBNLfXcO4K7mZ0/RjHCrZrBRf+hdabR3mTEmET+PxJ9volwxyCgOU+NtynQqQ3PVpbJz68Vh2pMVNLgUo8OWOlpTIqKQyBcyDdlFprr3oFHivmaJbKlvUZRliZu6I2QVS76i796Lw/TItKQYwCPd6iaRlbSJrMBkBcXynEYpeP5YdwDMiwZtcawTqIte1tlsUvc4I45/LIpnpEIqyqRci1Hjy3QVRbSy8KvXQgpA9jErulBkI2ONw+iIaA7gqD/05jJ59IfeUsjvlsieoBhQJnvUVgPF973UKF+eaAyKiWirC9nx+kNvJdrzFoArS/3EFqpMd9CVGB003MmqZkTHFBIx6HcBzJfnBhpLEWf9oTcuk8GIi/hYSEzGmzol3xbKwttuKx/my3O+yDhlLPpD76jsMzniwVrVxGXQYGapOv+oKzE6aLCTVRXR/1NSColUxLg0WPPCvTI4xzMxC5X125HGcbrer42W5wQjyJc+l5rHKRqP5jqTB0fiuepKjBqRkY17RBQSqdj3JjBcnsuth8NwkJRmSFDvImC6hczK8bYKYL48pxOnsYX7b2eKeJ40lKXKvutSkvE7F6ODBjqYsYhqFlKPQ/bOiqgH+fKc7h5pA8W/zy1cuBDFBbLzCQwHuMTxJpuZZp4iPoEiE44stNVKY+Y/qLl/TxTZ8lmXYnRYc7CsiSgvpDhMj5Ftv2I68/DF+R2DdF082zbm7En6SFRiWU2VQd+1+FXuKn5fAHXBg+tMxV5qm9diYCHzbLqtJopzWVToyxeKj7wsBvGeYoK06FKMDmscHKyLqCYhDeIwDTT3tgoq/L6lpc0vib1ZaJnBDQBe0cjYbaE61i7IKCj5+TJLRoFhfMuOQ5X7jYRzw1O7Uuxg7mSMalmme/pxOnrv7ce1PkdkeclOdyCbCgGW+RnRE85xWXKCIJuARJb7dWRwLkA927m0yUIywy8dH9uv61C0v99CvM40XqXhZIysy+jpx1lG9Ivfvoj33n5s45DLBoTkg+wTr+7wd9s1GQVdL1dvmGkcpp0szrIqo7WI1n+2JKRlAxnSkn14rzgps4nkrlDDjLcpuZ6zy5ZigA5utGtNRpsisiwk1UVmKqSI/XfvmJWYcS8VF741NB6WVE2cXtnBtpqUeIh0aRjfKgO/7UlupPGTaPbxUVdiZKWAoUhEeSH98seP8cOfvmjjYvVRfAPuEuW34piXuH+QVDhlZl3NsO21D69L+oov+opOIcMjRZ8MLBYxBIb9qUiwK4faar4lpq9A/izXDNnWSabXW2Br8qmxFPao4uT6WPP3+8juSZ9L2n0ah+nmHolOxshYRioRWRDSIA7TtKaLIkGJ1xVr3BgkLbFtFwXx6uOHkv82isNU59XIEeRLRaewV4F0qvieqnMdWJxI1cXWmMdh+hDF97x6cZheqHbL6A+9SFG9dQq9vdOM2wo1r7gIwVzFYZogK5YqmpyM8t/Z1RgZLdPpiigvpD/85kNXLogEwLGNhxWJs4JaQv2iPOVynRg4Vwqp+RZmkQNFZrQwmIV2oZ+rstRzzRvzsjgFNpahcllJYbybuken8bD0612IUWUZlRURAHzw5//C//ZN/P7X/6SISJMZk+xC7UHvBrns4vVh+EyduHBVS8zvVsyKAOAvHWirSGNGrhNnVZxmFiYPU8ircBcNh2+l6OPOx6iSjKqK6PqdZwCAF77zQptCooj2D9WMW+cGuSrDOhHbs5hcuLJZ/1LjpW1vKvp9F7iE/J5GoNqhQMRpqRicK08eRFHAyLC/NEmvCzEqLSNTEa1pSUgU0X5mR4npjFss+alkMI3DtNSMMg7TntjKyGhwEyLsdV1GmhvGnmvsKakzeXhQZm/KOEz9OEynGuPfvIVdV6q0vVMxKiUjWyJqSUgU0X6jmnH3NPYEU+1CDCGVB3GYSu8jCQldAHgAdXl4tJkVrY8tLv4LyJf4OrUlldhxYWE4eZhDXUAQiLa6kA24IsYj0Vaq7FdHplYR7S8TxrILMdKuprMtok0h/ehn36KIWkjfNQZgINuYUcap5g3P1nY+6A+9VRymYxRXHa1n3IuiMm1xjNuKY+SXOGZxmEai/z3JxTKA/v5sKwC3t/z9vRI3mRcd7JtjIekioQ/iMJ0oNru9jayaUpap+sjuGZ6LqrQEn5cb3xTtNChx3rebGGfEZGSArFrtRPHxd7sQIy0Z1SWihoREEckHTRtPt486MuOO4jC9UszcZgCOFMcYl7geBqj+YOzKUt+907WOmZs83NOYPCwlxyizoXKZScJWgdqooLP8KMtKNhlxKUbKZbq6RbQpJIqI1Mwl5EttujfIx6i3XHop+m5ieJxFV3eNF8t1kWLGrlquS5DtzlJnDFZikJ27mGGqxj9XYnTggohqEhJFRLbOBKH3PEtPQ0jHqKcwYAHgSCGiQHMA6PqD2irpD1R7sIk4HqGe5cr1OOOqiBaa10XrMTpwRUSWhUQREdWMW3XRzXQu4P7QO4JeYUOZbEjnvoPOksq46+/S0nxwearx4PKqP/RuW8wAVshe13Bk+X1Wtgb/o7KCbDtGBy6JyJKQKCJia8Y90byIr5DtmzaumCktkN3UvWXpqf211Ba70FAivpFCzDPNY0X9oXcL2Y37KvFJRDvfKvGm4CZY5fqRkSDbitGhayJac+ObN/C7t/6B1954iSIy4y6A+x04z6XGv1t7kDB3gzywdTxkzyHNc5VOAbLqud6WfvoEWcl2Vflc4svViQmA+5YkZCrFS4O23sYZFFVjcZj6utd+PjsWVYkDfF4Ztnmuj0RsI0tjS2TxuomQbatjPTtrOkaeiyJ6/u/nePzBR/js089w4xtf0xUSRUQIIR3lKy6LCACeffIcj/76H3z3B1+niAghZJdl5KqI1iiERBERQkjXZeS6iBRCoogIIWQH8J5+nAbQKxMFAPwxfO6//6dPZ2X+j6mI8uTuIVFEhBCyKzKq8p9+9ZNPAuhvH2FNRDkhJa+98RJFRAgh+ywjW0KqIqJ1RvTW375HERFCyI5Q+U2vP3/nqwmyJ3UrSYEiIoQQYiwjEyFRRIQQQqzJqIqQKCJCCCHWZVRGSBQRIYSQ2mSkIySKiBBCSBGe7QNuq7LbFRGJDTCnyLZFpyAJIcS1zKgoQ9oxEV0je8X2ter9KYQQQlrMjPIZ0rNPnl1/9Pd/+TskomDzPJkhEUKIg5lRPkP68P3Hd3bkHtGmiCD+zAyJEEJsyCgO08CRc3FVRABwp+DvKSRCCLGUGV07ICSXRQTxLvkxhUQIIfXJyG9ZSE6LiEIihJBmZIQWhdQJEVFIhBDSjIzaEFKnREQhEUJIMzJqUkidFBGFRAghzcioCSF1WkQUEiGENCOjOoW0EyKikAghpBkZ1SGknRJRCSGN2M0IIaS6jGwKaSdFpCGkeX/oXbGbEUKImYxsCGmnRSQR0rw/9MbsYoQQosaLw/Ra87MrAOMyG4O+8f0PBgCSfXofURymIwCvUkSEEKLP/wAZCcYcwXX75AAAAABJRU5ErkJggg=="><img class="sb-logo" src="data:image/png;base64,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" width="419" height="89" alt="Школково"></picture><nav class="sb-section-nav" aria-label="Учебные разделы" id="navigation"></nav><div class="nav-footer"><span class="sb-eyebrow">№6 · Черепаха</span><p class="sb-caption">Фигуры, команды и точки на сетке.</p></div></aside>
+<main class="sb-main"><header class="sb-card sb-hero"><div class="sb-eyebrow" id="eyebrow"></div><h1 id="title"></h1><p id="description"></p><div class="hero-tags"><span>Фигуры на сетке</span><span>Команды по шагам</span><span>Задачи с проверкой</span></div></header>
+<section class="sb-card" id="instruction"></section>
+<section class="sb-card scene-card"><div class="sb-scene-head"><div><div class="sb-eyebrow" id="scene-kicker">Координатная плоскость</div><h2 class="sb-h2" id="scene-title"></h2></div><div class="scene-tools"><button type="button" class="sb-btn" data-action="zoom-out" aria-label="Уменьшить рисунок">−</button><button type="button" class="sb-btn" data-action="zoom-in" aria-label="Увеличить рисунок">+</button><button type="button" class="sb-btn" data-action="fit">Вписать</button></div></div><div class="legend"><span><i class="dot-a"></i>Фигура A</span><span><i class="dot-b"></i>Фигура B</span><span><i class="dot-result"></i>Нужная область</span></div><div id="plot" class="plot" tabindex="0" aria-label="Координатный рисунок. Точку можно выбрать в форме под рисунком."></div><p id="plot-note" class="sb-caption"></p><div id="metrics" class="sb-metric-grid"></div><div id="controls"></div></section>
+<section class="sb-card" id="activity"></section><section class="sb-card" id="explanation"></section><div class="lesson-cards" id="lessons"></div>
+<div class="next-card"><span class="sb-caption" id="next-note"></span><button type="button" class="sb-btn sb-btn--primary" data-action="next-section">Дальше →</button></div>
+</main><aside class="sb-card sb-params"><h2 class="sb-h2">Параметры опыта</h2><div id="settings"></div><div class="params-divider"></div><h3 class="sb-h3">Главный вопрос</h3><p class="sb-caption" id="key-question"></p><div class="params-divider"></div><button type="button" class="sb-btn" data-action="reset">Начать раздел заново</button><div id="reset-confirm" hidden><p class="sb-caption">Очистить действия только в этом разделе?</p><button type="button" class="sb-btn sb-btn--danger" data-action="reset-yes">Да, очистить</button><button type="button" class="sb-btn" data-action="reset-no">Оставить</button></div></aside></div>
 <script>
-/* Математика лаборатории: точный подсчёт по префиксам, без полного перебора. */
+/* Геометрия и исполнитель. Угол 0 — вправо, 90 — вверх. */
 (function(root){
 'use strict';
-const factorial=n=>{let r=1;for(let i=2;i<=n;i++)r*=i;return r;};
-const choose=(n,k)=>{if(k<0||k>n)return 0;k=Math.min(k,n-k);let r=1;for(let i=1;i<=k;i++)r=r*(n-k+i)/i;return Math.round(r);};
-const unique=s=>[...new Set([...s])];
-function createModel(config){
- const chars=config.inventory?unique(config.inventory).sort((a,b)=>a.localeCompare(b,'ru')):unique(config.alphabet);
- const length=config.inventory?[...config.inventory].length:config.length;
- const inventory=config.inventory?chars.map(c=>[...config.inventory].filter(x=>x===c).length):null;
- const initial=inventory||chars.map(()=>config.noRepeat?1:length);
- const checks=[{name:config.noZero?'Первая цифра не ноль':config.forbidFirst?'Первая буква не «'+config.forbidFirst+'»':'Первая позиция без ограничений',test:s=>!s.length||(!config.noZero||s[0]!=='0')&&(!config.forbidFirst||s[0]!==config.forbidFirst)}];
- if(config.noRepeat)checks.push({name:'Все символы различны',test:s=>new Set([...s]).size===[...s].length});
- if(config.alternate)checks.push({name:'Чётность соседних цифр различается',test:s=>[...s].every((c,i)=>!i||Number(c)%2!==Number(s[i-1])%2)});
- if(config.target)checks.push({name:(config.target==='odd'?'Нечётных цифр':'Букв «'+config.target+'»')+': '+(config.countMode==='max'?'не более ':'ровно ')+config.targetCount,test:s=>{let n=[...s].filter(c=>config.target==='odd'?Number(c)%2===1:c===config.target).length;return config.countMode==='max'?n<=config.targetCount:n===config.targetCount;}});
- if(config.predecessor)checks.push({name:'«'+config.target+'» только сразу после «'+config.predecessor+'»',test:s=>[...s].every((c,i)=>c!==config.target||i>0&&s[i-1]===config.predecessor)});
- if(config.noAdjacent)checks.push({name:config.noAdjacent==='odd'?'Нечётные цифры не стоят рядом':'Нет соседних букв «'+config.noAdjacent+'»',test:s=>[...s].every((c,i)=>!i||!(isTarget(c,config.noAdjacent)&&isTarget(s[i-1],config.noAdjacent)))});
- function isTarget(c,t){return t==='odd'?Number(c)%2===1:c===t;}
- function allowed(c,pos,last,count){
-  if(!pos&&(config.noZero&&c==='0'||config.forbidFirst===c))return false;
-  if(pos&&config.alternate&&Number(c)%2===Number(last)%2)return false;
-  if(config.predecessor&&c===config.target&&last!==config.predecessor)return false;
-  if(pos&&config.noAdjacent&&isTarget(c,config.noAdjacent)&&isTarget(last,config.noAdjacent))return false;
-  if(config.target&&count+Number(isTarget(c,config.target))>config.targetCount)return false;
-  return true;
- }
- const memo=new Map(),rawMemo=new Map();
- function walk(pos,last,count,remaining,filtered){
-  if(pos===length)return !filtered||!config.target||config.countMode==='max'||count===config.targetCount?1:0;
-  const key=pos+'|'+last+'|'+count+'|'+((inventory||config.noRepeat)?remaining.join(','):'');
-  const cache=filtered?memo:rawMemo;if(cache.has(key))return cache.get(key);
-  let n=0;
-  chars.forEach((c,i)=>{if(remaining[i]&&(!filtered||allowed(c,pos,last,count))){let next=remaining.slice();if(inventory||config.noRepeat)next[i]--;n+=walk(pos+1,c,config.target?count+Number(isTarget(c,config.target)):0,next,filtered);}});
-  cache.set(key,n);return n;
- }
- const rawTotal=walk(0,'',0,initial,false),validTotal=walk(0,'',0,initial,true);
- function wordAt(rank,filtered=false){
-  rank=Math.max(0,Math.min((filtered?validTotal:rawTotal)-1,Math.floor(rank)));
-  if(!(filtered?validTotal:rawTotal))return '';
-  let word='',remaining=initial.slice(),count=0;
-  for(let pos=0;pos<length;pos++)for(let i=0;i<chars.length;i++){
-   const c=chars[i];if(!remaining[i]||filtered&&!allowed(c,pos,word.at(-1)||'',count))continue;
-   const next=remaining.slice();if(inventory||config.noRepeat)next[i]--;
-   const nextCount=config.target?count+Number(isTarget(c,config.target)):0;
-   const block=walk(pos+1,c,nextCount,next,filtered);
-   if(rank>=block)rank-=block;else{word+=c;remaining=next;count=nextCount;break;}
-  }
-  return word;
- }
- function rankOf(word){
-  if([...word].length!==length)return null;
-  let rank=0,remaining=initial.slice();
-  for(let pos=0;pos<length;pos++){
-   const idx=chars.indexOf(word[pos]);if(idx<0||!remaining[idx])return null;
-   for(let i=0;i<idx;i++)if(remaining[i]){const next=remaining.slice();if(inventory||config.noRepeat)next[i]--;rank+=walk(pos+1,chars[i],0,next,false);}
-   if(inventory||config.noRepeat)remaining[idx]--;
-  }return rank;
- }
- function validBefore(rank){
-  if(rank<=0)return 0;if(rank>=rawTotal)return validTotal;
-  const word=wordAt(rank);let n=0,count=0,remaining=initial.slice(),last='';
-  for(let pos=0;pos<length;pos++){
-   const idx=chars.indexOf(word[pos]);
-   for(let i=0;i<idx;i++)if(remaining[i]&&allowed(chars[i],pos,last,count)){
-    const next=remaining.slice();if(inventory||config.noRepeat)next[i]--;
-    n+=walk(pos+1,chars[i],config.target?count+Number(isTarget(chars[i],config.target)):0,next,true);
-   }
-   if(!allowed(word[pos],pos,last,count))return n;
-   if(inventory||config.noRepeat)remaining[idx]--;
-   count+=config.target?Number(isTarget(word[pos],config.target)):0;last=word[pos];
-  }return n;
- }
- return {chars,length,checks,rawTotal,validTotal,wordAt,rankOf,validBefore,isValid:w=>checks.every(c=>c.test(w))};
+const EPS=1e-7, cross=(a,b)=>a.x*b.y-a.y*b.x,sub=(a,b)=>({x:a.x-b.x,y:a.y-b.y}),dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
+const near=(a,b)=>dist(a,b)<EPS;
+const signed=p=>p.reduce((s,a,i)=>s+cross(a,p[(i+1)%p.length]),0)/2;
+const area=p=>Math.abs(signed(p)),perimeter=p=>p.length<3?0:p.reduce((s,a,i)=>s+dist(a,p[(i+1)%p.length]),0);
+const rect=(x,y,w,h)=>[{x,y},{x:x+w,y},{x:x+w,y:y+h},{x,y:y+h}];
+function onSegment(p,a,b){return Math.abs(cross(sub(p,a),sub(b,a)))<EPS*Math.max(1,dist(a,b))&&p.x>=Math.min(a.x,b.x)-EPS&&p.x<=Math.max(a.x,b.x)+EPS&&p.y>=Math.min(a.y,b.y)-EPS&&p.y<=Math.max(a.y,b.y)+EPS;}
+function locate(p,poly){
+ if(poly.length<3||area(poly)<EPS)return 'outside';
+ let inside=false;for(let i=0,j=poly.length-1;i<poly.length;j=i++){
+  const a=poly[j],b=poly[i];if(onSegment(p,a,b))return 'boundary';
+  if((a.y>p.y)!==(b.y>p.y)&&p.x<(b.x-a.x)*(p.y-a.y)/(b.y-a.y)+a.x)inside=!inside;
+ }return inside?'inside':'outside';
 }
-const api={factorial,choose,unique,createModel};
-if(typeof module!=='undefined')module.exports=api;else root.Combinatorics=api;
-})(typeof window==='undefined'?globalThis:window);
-
-/* Конструктор шаблонов: декартовы произведения, проверка всех слов и покрытие. */
-(function(root){
-'use strict';
-const CASES={
- alternate:{id:'alternate',name:'Чередование чётности',kind:'parity',length:6,alphabet:'0123456',task:'Сколько существует шестизначных семиричных чисел, в которых чётные и нечётные цифры чередуются? Цифры могут повторяться.',palette:['Ч','Н','*','≠0','?'],rule:'alternate'},
- odd:{id:'odd',name:'Пять нечётных без соседства',kind:'parity',length:12,alphabet:'01234567',task:'Восьмеричная запись числа содержит 12 знаков и ровно пять нечётных цифр. Никакие две нечётные цифры не стоят рядом. Сколько таких чисел?',palette:['Ч','Н','*','≠0','?'],rule:'odd',count:5},
- ay:{id:'ay',name:'СЛУЧАЙ: обязательный блок АЙ',kind:'letters',length:7,alphabet:'СЛУЧАЙ',task:'Из букв СЛУЧАЙ составляют семибуквенные слова. В каждом слове ровно одна Й, которая стоит непосредственно после А. Сколько слов можно составить?',palette:['АЙ','*','А','?'],rule:'ay'},
- vowels:{id:'vowels',name:'Гласная в начале, согласная в конце',kind:'letters',length:5,alphabet:'АСУ',task:'Из букв А, С, У составляют слова длиной 5. Слово начинается с гласной и заканчивается согласной. Буквы могут повторяться. Сколько различных слов получится?',palette:['Г','С','*','А','У','?'],rule:'vowels'}
+function clip(subject,other){
+ let out=subject.slice();const poly=signed(other)<0?other.slice().reverse():other;
+ for(let i=0;i<poly.length&&out.length;i++){
+  const a=poly[i],b=poly[(i+1)%poly.length],edge=sub(b,a),input=out;out=[];
+  for(let j=0;j<input.length;j++){
+   const s=input[j],e=input[(j+1)%input.length],cs=cross(edge,sub(s,a)),ce=cross(edge,sub(e,a));
+   if(cs>=-EPS&&ce>=-EPS)out.push(e);
+   else if((cs>=-EPS)!==(ce>=-EPS)){const t=cs/(cs-ce);out.push({x:s.x+t*(e.x-s.x),y:s.y+t*(e.y-s.y)});if(ce>=-EPS)out.push(e);}
+  }
+ }
+ out=out.filter((p,i)=>!i||!near(p,out[i-1]));if(out.length>1&&near(out[0],out.at(-1)))out.pop();
+ return out.length>=3&&area(out)>EPS?out:[];
+}
+function bounds(polys){const ps=polys.flat();if(!ps.length)return {x0:-2,x1:10,y0:-2,y1:10};return {x0:Math.floor(Math.min(...ps.map(p=>p.x)))-1,x1:Math.ceil(Math.max(...ps.map(p=>p.x)))+1,y0:Math.floor(Math.min(...ps.map(p=>p.y)))-1,y1:Math.ceil(Math.max(...ps.map(p=>p.y)))+1};}
+function belongs(p,polys,op='intersection',boundary=false){
+ const v=polys.map(poly=>{const k=locate(p,poly);return k==='inside'||boundary&&k==='boundary';});
+ return op==='intersection'?v.every(Boolean):op==='union'?v.some(Boolean):op==='difference'?v[0]&&!v[1]:v[0]!==v[1];
+}
+function lattice(polys,op='intersection',boundary=false){const b=bounds(polys),out=[];if((b.x1-b.x0)*(b.y1-b.y0)>20000)return out;for(let y=b.y0;y<=b.y1;y++)for(let x=b.x0;x<=b.x1;x++)if(belongs({x,y},polys,op,boundary))out.push({x,y});return out;}
+function parse(source){
+ const aliases={'вперёд':'forward','вперед':'forward','назад':'back','направо':'right','налево':'left','повтори':'repeat','поднять':'up','опустить':'down'};
+ const re=/\s+|#[^\n]*|[\p{L}_]+|-?\d+(?:\.\d+)?|[\[\]]/gu;let m,last=0,tokens=[];
+ while((m=re.exec(source))){if(source.slice(last,m.index).trim())throw Error('Неизвестный символ рядом с «'+source.slice(last,m.index+8)+'».');last=re.lastIndex;if(/^\s|^#/.test(m[0]))continue;tokens.push({s:m[0].toLowerCase(),line:source.slice(0,m.index).split('\n').length});}
+ if(source.slice(last).trim())throw Error('В конце программы есть неизвестные символы.');
+ let pos=0;function block(depth=0){if(depth>5)throw Error('Допустимо не больше пяти вложенных циклов.');const out=[];
+  while(pos<tokens.length&&tokens[pos].s!==']'){
+   const t=tokens[pos++],kind=aliases[t.s];if(!kind)throw Error('Строка '+t.line+': неизвестная команда «'+t.s+'».');
+   if(kind==='up'||kind==='down'){if(tokens[pos]?.s==='хвост')pos++;out.push({kind,line:t.line});continue;}
+   const n=Number(tokens[pos++]?.s);if(!Number.isFinite(n))throw Error('Строка '+t.line+': после команды нужно число.');
+   if(kind==='repeat'){
+    if(!Number.isInteger(n)||n<1||n>30)throw Error('Число повторений должно быть целым от 1 до 30.');
+    if(tokens[pos++]?.s!=='[')throw Error('После числа повторений нужна открывающая скобка [.');
+    const children=block(depth+1);if(tokens[pos++]?.s!==']')throw Error('Не хватает закрывающей скобки ].');if(!children.length)throw Error('Внутри цикла нужна хотя бы одна команда.');out.push({kind,n,children,line:t.line});
+   }else{if(Math.abs(n)>360)throw Error('Число в команде должно быть от −360 до 360.');out.push({kind,n,line:t.line});}
+  }return out;
+ }
+ const tree=block();if(pos!==tokens.length)throw Error('Лишняя закрывающая скобка ].');if(!tree.length)throw Error('Добавьте хотя бы одну команду.');
+ const atoms=[];function expand(nodes,context=[]){for(const n of nodes){if(n.kind==='repeat')for(let i=1;i<=n.n;i++)expand(n.children,[...context,i+' / '+n.n]);else atoms.push({...n,context});if(atoms.length>600)throw Error('Слишком длинный опыт: не больше 600 простых команд.');}}
+ expand(tree);return {tree,atoms};
+}
+function simulate(source,heading=90){
+ const {tree,atoms}=parse(source);let x=0,y=0,angle=heading,pen=true,path=[{x,y}],polygons=[],segments=[],frames=[{x,y,angle,pen,line:0,context:[]}];
+ for(const a of atoms){
+  if(a.kind==='right')angle-=a.n;if(a.kind==='left')angle+=a.n;
+  if(a.kind==='up'){pen=false;path=[{x,y}];}if(a.kind==='down'){pen=true;path=[{x,y}];}
+  if(a.kind==='forward'||a.kind==='back'){
+   const from={x,y},n=a.n*(a.kind==='back'?-1:1);x+=n*Math.cos(angle*Math.PI/180);y+=n*Math.sin(angle*Math.PI/180);if(Math.abs(x)<EPS)x=0;if(Math.abs(y)<EPS)y=0;
+   if(Math.abs(x)>600||Math.abs(y)>600)throw Error('Рисунок вышел за пределы опыта: уменьшите длины или число повторений.');
+   const to={x,y};segments.push({a:from,b:to,pen,step:frames.length});
+   if(pen){const index=path.findIndex(p=>near(p,to));if(index>=0){const poly=path.slice(index);if(poly.length>=3&&area(poly)>EPS&&!polygons.some(old=>samePoly(old,poly)))polygons.push(poly);path=path.slice(0,index+1);}else path.push(to);}else path=[to];
+  }
+  angle=((angle%360)+360)%360;frames.push({x,y,angle,pen,line:a.line,context:a.context,kind:a.kind,n:a.n});
+ }
+ return {tree,atoms,frames,segments,polygons};
+}
+function samePoly(a,b){return a.length===b.length&&a.every(p=>b.some(q=>near(p,q)));}
+function python(tree,heading=90){
+ const out=['from turtle import *','tracer(0)','scale = 20','setheading('+heading+')  # направление из условия'];
+ function emit(nodes,depth=0){for(const n of nodes){const pad='    '.repeat(depth);if(n.kind==='repeat'){out.push(pad+'for i'+depth+' in range('+n.n+'):');emit(n.children,depth+1);}else out.push(pad+({up:'penup()',down:'pendown()'}[n.kind]||n.kind+'('+n.n+(['forward','back'].includes(n.kind)?' * scale':'')+')'));}}
+ emit(tree);out.push('penup()','# Границы сетки подберите по своему рисунку.','for x in range(-30, 61):','    for y in range(-30, 61):','        goto(x * scale, y * scale)','        dot(3)','update()','done()');return out.join('\n');
+}
+/* Разбиение следа на элементарные ограниченные области. Повторные рёбра удаляются. */
+function faces(segments){
+ const lines=[];for(const s of segments.filter(s=>s.pen&&dist(s.a,s.b)>EPS))if(!lines.some(t=>near(s.a,t.a)&&near(s.b,t.b)||near(s.a,t.b)&&near(s.b,t.a)))lines.push(s);
+ const cuts=lines.map(s=>[s.a,s.b]);
+ for(let i=0;i<lines.length;i++)for(let j=0;j<i;j++){
+  const a=lines[i],b=lines[j],r=sub(a.b,a.a),s=sub(b.b,b.a),den=cross(r,s);
+  if(Math.abs(den)<EPS){for(const p of [a.a,a.b])if(onSegment(p,b.a,b.b))cuts[j].push(p);for(const p of [b.a,b.b])if(onSegment(p,a.a,a.b))cuts[i].push(p);continue;}
+  const d=sub(b.a,a.a),t=cross(d,s)/den,u=cross(d,r)/den;if(t>=-EPS&&t<=1+EPS&&u>=-EPS&&u<=1+EPS){const p={x:a.a.x+t*r.x,y:a.a.y+t*r.y};cuts[i].push(p);cuts[j].push(p);}
+ }
+ const vertices=[],adj=[];function id(p){let k=vertices.findIndex(q=>near(p,q));if(k<0){k=vertices.length;vertices.push(p);adj.push(new Set());}return k;}
+ cuts.forEach((ps,i)=>{ps.sort((p,q)=>dist(p,lines[i].a)-dist(q,lines[i].a));for(let j=1;j<ps.length;j++){const a=id(ps[j-1]),b=id(ps[j]);if(a!==b){adj[a].add(b);adj[b].add(a);}}});
+ const lists=adj.map((ns,i)=>[...ns].sort((a,b)=>Math.atan2(vertices[a].y-vertices[i].y,vertices[a].x-vertices[i].x)-Math.atan2(vertices[b].y-vertices[i].y,vertices[b].x-vertices[i].x)));
+ const seen=new Set(),out=[];for(let a=0;a<vertices.length;a++)for(const b of lists[a]){
+  if(seen.has(a+','+b))continue;let u=a,v=b,poly=[],guard=0;
+  do{seen.add(u+','+v);poly.push(vertices[u]);const ns=lists[v],w=ns[(ns.indexOf(u)-1+ns.length)%ns.length];u=v;v=w;}while((u!==a||v!==b)&&++guard<3000);
+  if(poly.length>=3&&signed(poly)>EPS)out.push(poly);
+ }return out;
+}
+const PRESETS={
+ square:{name:'Квадрат и поворот',heading:90,source:'Повтори 4 [\n  Вперёд 6\n  Направо 90\n]'},
+ triangle:{name:'Треугольник · 10 повторений',heading:90,source:'Повтори 10 [\n  Вперёд 8\n  Направо 120\n]'},
+ pen:{name:'Две фигуры и поднятый хвост',heading:90,source:'Повтори 4 [Вперёд 5 Направо 90]\nПоднять хвост\nНаправо 90 Вперёд 3 Налево 90\nОпустить хвост\nПовтори 4 [Вперёд 5 Направо 90]'},
+ star:{name:'Пересекающиеся отрезки',heading:0,source:'Повтори 20 [\n  Направо 225\n  Вперёд 7\n]'},
+ perimeter:{name:'Периметр пересечения',heading:270,source:'Повтори 2 [\n  Налево 90\n  Повтори 12 [Вперёд 13 Направо 30]\n  Вперёд 5\n]'},
+ union:{name:'Площадь объединения · по условию',heading:90,source:'Повтори 3 [Вперёд 12 Направо 90 Вперёд 6 Направо 90]\nПоднять хвост\nВперёд 5 Направо 90 Вперёд 1 Налево 90\nОпустить хвост\nПовтори 5 [Вперёд 10 Направо 90 Вперёд 14 Направо 90]'},
+ unionFixed:{name:'Площадь объединения · исправленный пример',heading:90,source:'Повтори 3 [Вперёд 12 Направо 90 Вперёд 6 Направо 90]\nПоднять хвост\nВперёд 5 Направо 90 Вперёд 1 Налево 90\nОпустить хвост\nПовтори 5 [Вперёд 5 Направо 90 Вперёд 10 Направо 90]'},
+ overlap:{name:'Точки: треугольник и квадрат',heading:90,source:'Повтори 3 [Вперёд 12 Направо 120]\nПоднять хвост\nВперёд 10 Направо 90 Вперёд 3\nОпустить хвост\nПовтори 4 [Вперёд 5 Направо 90]'},
+ rhombus:{name:'Ромб · вложенный цикл',heading:90,source:'Повтори 10 [\n  Повтори 2 [Вперёд 6 Направо 45]\n  Направо 90\n]'}
 };
-// У каждого условия свой id: сборка и коллекция не смешиваются при переключении.
-const VARIANTS=[
- {id:'alternate-4b4',family:'alternate',length:4,alphabet:'0123',name:'4 знака · основание 4'},
- {id:'alternate-5b5',family:'alternate',length:5,alphabet:'01234',name:'5 знаков · основание 5'},
- {id:'alternate-7b8',family:'alternate',length:7,alphabet:'01234567',name:'7 знаков · основание 8'},
- {id:'alternate-6b10',family:'alternate',length:6,alphabet:'0123456789',name:'6 знаков · основание 10'},
- {id:'alternate-8b6',family:'alternate',length:8,alphabet:'012345',name:'8 знаков · основание 6'},
- {id:'odd-6b5',family:'odd',length:6,alphabet:'01234',count:2,name:'2 нечётные · 6 знаков'},
- {id:'odd-8b6',family:'odd',length:8,alphabet:'012345',count:3,name:'3 нечётные · 8 знаков'},
- {id:'odd-even-6b7',family:'odd',length:6,alphabet:'0123456',count:2,parity:'even',name:'2 чётные · 6 знаков'},
- {id:'odd-even-7b8',family:'odd',length:7,alphabet:'01234567',count:3,parity:'even',name:'3 чётные · 7 знаков'},
- {id:'odd-any-5b6',family:'odd',length:5,alphabet:'012345',count:2,allowAdjacent:true,name:'2 нечётные · соседство разрешено'},
- {id:'ay-5',family:'ay',length:5,name:'СЛУЧАЙ · 5 букв'},
- {id:'ay-6',family:'ay',length:6,name:'СЛУЧАЙ · 6 букв'},
- {id:'ay-8',family:'ay',length:8,name:'СЛУЧАЙ · 8 букв'},
- {id:'ay-kray',family:'ay',length:6,alphabet:'КРАЙ',name:'КРАЙ · 6 букв'},
- {id:'ay-may',family:'ay',length:7,alphabet:'МАЙ',name:'МАЙ · 7 букв'},
- {id:'vowels-4',family:'vowels',length:4,name:'АСУ · 4 буквы'},
- {id:'vowels-6',family:'vowels',length:6,name:'АСУ · 6 букв'},
- {id:'vowels-reverse',family:'vowels',length:5,start:'С',end:'Г',name:'Согласная → гласная'},
- {id:'vowels-both',family:'vowels',length:6,start:'Г',end:'Г',name:'Гласные на обоих краях'},
- {id:'vowels-kot',family:'vowels',length:5,alphabet:'КОТ',name:'КОТ · 5 букв'}
-];
-for(const id of Object.keys(CASES))CASES[id].family=id;
-for(const variant of VARIANTS){const c={...CASES[variant.family],...variant};
- if(c.rule==='alternate')c.task='Сколько существует чисел длиной '+c.length+' знаков в системе счисления с основанием '+c.alphabet.length+', в которых чётные и нечётные цифры чередуются? Первая цифра не ноль. Цифры могут повторяться.';
- if(c.rule==='odd'){const kind=c.parity==='even'?'чётных':'нечётных';c.task='Запись числа в системе счисления с основанием '+c.alphabet.length+' содержит '+c.length+' знаков. Количество '+kind+' цифр — ровно '+c.count+'. '+(c.allowAdjacent?'Ограничений на соседство цифр нет.':'Никакие две '+kind.replace('ых','ые')+' цифры не стоят рядом.')+' Первая цифра не ноль. Цифры могут повторяться. Сколько таких чисел?';}
- if(c.rule==='ay')c.task='Из букв '+c.alphabet+' составляют слова длиной '+c.length+'. В каждом слове ровно одна Й, которая стоит непосредственно после А. Остальные буквы могут повторяться. Сколько различных слов можно составить?';
- if(c.rule==='vowels')c.palette=[...new Set(['Г','С','*',...c.alphabet,'?'])];
- if(c.rule==='vowels')c.task='Из букв '+c.alphabet+' составляют слова длиной '+c.length+'. Слово начинается с '+((c.start||'Г')==='Г'?'гласной':'согласной')+' и заканчивается '+((c.end||'С')==='Г'?'гласной':'согласной')+'. Буквы могут повторяться. Сколько различных слов получится?';
- CASES[c.id]=c;
-}
-const familyCases=id=>Object.values(CASES).filter(c=>c.family===(CASES[id]?.family||id));
-const nextCase=id=>{const list=familyCases(id),i=list.findIndex(c=>c.id===id);return list[(i+1)%list.length].id;};
-const markToken=c=>c.parity==='even'?'Ч':'Н';
-const marked=(ch,c)=>Number(ch)%2===(c.parity==='even'?0:1);
-const isVowel=ch=>'АЕЁИОУЫЭЮЯ'.includes(ch);
-const tokensFor=c=>[...c.palette,'↳'];
-const cleanSet=(s,c)=>[...new Set([...String(s).toUpperCase()].filter(x=>c.alphabet.includes(x)))].join('');
-function blank(c){return Array(c.length).fill('?');}
-function domains(tokens,c){
- if(!Array.isArray(tokens)||tokens.length!==c.length)return null;
- const result=[];
- for(let i=0;i<c.length;i++){
-  const t=tokens[i];let chars='';
-  if(t==='?'||!t)return null;
-  if(t==='АЙ'){if(c.rule!=='ay'||tokens[i+1]!=='↳')return null;chars='А';}
-  else if(t==='↳'){if(c.rule!=='ay'||tokens[i-1]!=='АЙ')return null;chars='Й';}
-  else if(t==='*')chars=c.rule==='ay'?c.alphabet.replace('Й',''):c.alphabet;
-  else if(t==='Ч')chars=[...c.alphabet].filter(x=>Number(x)%2===0).join('');
-  else if(t==='Н')chars=[...c.alphabet].filter(x=>Number(x)%2===1).join('');
-  else if(t==='≠0')chars=c.alphabet.replace('0','');
-  else if(t==='Г')chars=[...c.alphabet].filter(x=>'АЕЁИОУЫЭЮЯ'.includes(x)).join('');
-  else if(t==='С'&&c.rule==='vowels')chars=[...c.alphabet].filter(x=>!isVowel(x)).join('');
-  else if(t.startsWith('set:'))chars=cleanSet(t.slice(4),c);
-  else if(c.alphabet.includes(t)&&t.length===1)chars=t;
-  else return null;
-  if(!i&&c.kind==='parity')chars=chars.replace('0','');
-  result.push([...chars]);
- }
- return result;
-}
-function reason(word,c){
- if(c.kind==='parity'&&word[0]==='0')return {message:'Число не может начинаться с нуля.',positions:[0]};
- if(c.rule==='alternate')for(let i=1;i<word.length;i++)if(Number(word[i])%2===Number(word[i-1])%2)return {message:'В позициях '+i+' и '+(i+1)+' стоят цифры одной чётности.',positions:[i-1,i]};
- if(c.rule==='odd'){
-  const n=[...word].filter(x=>marked(x,c)).length;
-  if(n!==c.count)return {message:(c.parity==='even'?'Чётных':'Нечётных')+' цифр '+n+', а должно быть ровно '+c.count+'.',positions:[]};
-  for(let i=1;i<word.length;i++)if(!c.allowAdjacent&&marked(word[i],c)&&marked(word[i-1],c))return {message:(c.parity==='even'?'Чётные':'Нечётные')+' цифры в позициях '+i+' и '+(i+1)+' стоят рядом.',positions:[i-1,i]};
- }
- if(c.rule==='ay'){
-  if([...word].filter(x=>x==='Й').length!==1)return {message:'Буква Й должна встречаться ровно один раз.',positions:[]};
-  const i=word.indexOf('Й');if(!i||word[i-1]!=='А')return {message:'Перед Й должна непосредственно стоять А.',positions:[i]};
- }
- if(c.rule==='vowels'){
-  if(isVowel(word[0])!==((c.start||'Г')==='Г'))return {message:'Первая буква должна быть '+((c.start||'Г')==='Г'?'гласной.':'согласной.'),positions:[0]};
-  if(isVowel(word.at(-1))!==((c.end||'С')==='Г'))return {message:'Последняя буква должна быть '+((c.end||'С')==='Г'?'гласной.':'согласной.'),positions:[c.length-1]};
- }
- return null;
-}
-function transition(c,pos,last,count,bad,ch){
- if(c.rule==='alternate'&&pos&&Number(ch)%2===Number(last)%2)bad=true;
- if(c.rule==='odd'){if(!c.allowAdjacent&&pos&&marked(ch,c)&&marked(last,c))bad=true;count+=Number(marked(ch,c));}
- if(c.rule==='ay'){if(ch==='Й'){count++;if(last!=='А')bad=true;}}
- if(c.rule==='vowels'&&(!pos&&isVowel(ch)!==((c.start||'Г')==='Г')||pos===c.length-1&&isVowel(ch)!==((c.end||'С')==='Г')))bad=true;
- return {count,bad};
-}
-function analyze(tokens,c){
- const ds=domains(tokens,c);
- if(!ds)return {complete:false,valid:false,message:'Заполните все позиции. Блок АЙ занимает две соседние ячейки.'};
- const total=ds.reduce((r,d)=>r*d.length,1),memo=new Map();
- function walk(pos,last,count,bad){
-  if(pos===c.length){const ok=!bad&&(c.rule!=='odd'||count===c.count)&&(c.rule!=='ay'||count===1);return ok?1:0;}
-  const key=[pos,last,count,+bad].join('|');if(memo.has(key))return memo.get(key);
-  let n=0;for(const ch of ds[pos]){const next=transition(c,pos,last,count,bad,ch);n+=walk(pos+1,ch,next.count,next.bad);}memo.set(key,n);return n;
- }
- const validCount=walk(0,'',0,false);
- function find(valid){
-  let word='',count=0,bad=false;
-  for(let pos=0;pos<c.length;pos++){
-   let chosen=false;
-   for(const ch of ds[pos]){const next=transition(c,pos,word.at(-1)||'',count,bad,ch),good=walk(pos+1,ch,next.count,next.bad),raw=ds.slice(pos+1).reduce((r,d)=>r*d.length,1);
-    if(valid?good>0:raw>good){word+=ch;count=next.count;bad=next.bad;chosen=true;break;}}
-   if(!chosen)return null;
-  }
-  return word;
- }
- const counterexample=validCount<total?find(false):null;
- return {complete:true,valid:total>0&&validCount===total,total,validCount,domains:ds,factors:ds.map(d=>d.length),example:validCount?find(true):null,counterexample,violation:counterexample?reason(counterexample,c):null,message:!total?'В одной из позиций нет допустимых символов.':validCount===total?'Все слова этого шаблона выполняют условие.':'Шаблон допускает слова, нарушающие условие.'};
-}
-function canonical(c){
- if(c.rule==='alternate')return [Array.from({length:c.length},(_,i)=>i%2?'Н':'Ч'),Array.from({length:c.length},(_,i)=>i%2?'Ч':'Н')];
- if(c.rule==='ay')return Array.from({length:c.length-1},(_,i)=>{const p=Array(c.length).fill('*');p[i]='АЙ';p[i+1]='↳';return p;});
- if(c.rule==='vowels'){const p=Array(c.length).fill('*');p[0]=c.start||'Г';p[c.length-1]=c.end||'С';return [p];}
- const out=[];function visit(s,n){if(s.length===c.length){if(n===c.count)out.push([...s]);return;}for(const t of ['Ч','Н']){const match=t===markToken(c);if(match&&(n>=c.count||!c.allowAdjacent&&s.at(-1)===t))continue;visit(s+t,n+Number(match));}}visit('',0);return out;
-}
-function intersection(a,b,c){const da=domains(a,c),db=domains(b,c);if(!da||!db)return null;let word='';for(let i=0;i<c.length;i++){const common=da[i].find(ch=>db[i].includes(ch));if(!common)return null;word+=common;}return word;}
-function findUncovered(c,patterns){
- const boxes=patterns.map(p=>domains(p,c)).filter(Boolean);
- function outside(ds,active,pos,prefix){
-  if(active.some(box=>ds.slice(pos).every((d,j)=>d.every(ch=>box[pos+j].includes(ch)))))return null;
-  if(pos===ds.length)return prefix;
-  if(!active.length)return prefix+ds.slice(pos).map(d=>d[0]).join('');
-  for(const ch of ds[pos]){const found=outside(ds,active.filter(box=>box[pos].includes(ch)),pos+1,prefix+ch);if(found)return found;}
-  return null;
- }
- for(const p of canonical(c)){const found=outside(domains(p,c),boxes,0,'');if(found)return found;}return null;
-}
-function collection(c,patterns){
- let total=0;const accepted=[];
- for(const p of patterns){const a=analyze(p,c);if(!a.valid)continue;if(accepted.some(other=>intersection(p,other,c)))continue;accepted.push(p);total+=a.total;}
- return {patterns:accepted,total,uncovered:findUncovered(c,accepted)};
-}
-function remaining(c,covered,bases=canonical(c)){
- const cuts=covered.map(t=>domains(t,c)).filter(Boolean),out=[];
- function subtract(box,cut){
-  const shared=box.map((d,i)=>d.filter(ch=>cut[i].includes(ch)));
-  if(shared.some(d=>!d.length))return [box];
-  const pieces=[],core=box.map(d=>d.slice());
-  for(let i=0;i<box.length;i++){const diff=core[i].filter(ch=>!cut[i].includes(ch));if(diff.length){const piece=core.map(d=>d.slice());piece[i]=diff;pieces.push(piece);}core[i]=shared[i];}
-  return pieces;
- }
- for(const base of bases){let pieces=[domains(base,c)];for(const cut of cuts)pieces=pieces.flatMap(box=>subtract(box,cut));for(const box of pieces)out.push(box.every((d,i)=>d.join('')===domains(base,c)[i].join(''))?base.slice():box.map(d=>'set:'+d.join('')));}
- return out;
-}
-function wordAt(tokens,c,index){const ds=domains(tokens,c);if(!ds||ds.some(d=>!d.length))return '';let s='';for(let i=ds.length-1;i>=0;i--){s=ds[i][index%ds[i].length]+s;index=Math.floor(index/ds[i].length);}return s;}
-function notation(p){return p.map(t=>t==='↳'?'':t.startsWith('set:')?'['+t.slice(4)+']':t).join('');}
-function newWork(c){return {draft:blank(c),collection:[],sample:null,sampleStep:0,generated:0,checkRequested:false,coverageRequested:false,groupRequested:false,groupInputs:{a:'',b:'',total:''},groupChecked:false,repairPosition:-1,repairCount:'',repairReason:'',repairChecked:false};}
-function initial(){return {caseId:'alternate',phase:'build',palette:'Ч',custom:'',selected:0,work:Object.fromEntries(Object.values(CASES).map(c=>[c.id,newWork(c)]))};}
-function normalize(saved){
- const d=initial();if(!saved||typeof saved!=='object')return d;
- if(CASES[saved.caseId])d.caseId=saved.caseId;if(['build','collect','group','repair'].includes(saved.phase))d.phase=saved.phase;
- if(saved.phase==='collect')d.phase='build';
- if(saved.phase==='repair')d.caseId='alternate';
- const cur=CASES[d.caseId];d.custom=typeof saved.custom==='string'?cleanSet(saved.custom,cur):'';
- d.palette=typeof saved.palette==='string'&&((tokensFor(cur).includes(saved.palette)&&saved.palette!=='↳')||(saved.palette.startsWith('set:')&&cleanSet(saved.palette.slice(4),cur)))?saved.palette:'?';d.selected=Number.isInteger(saved.selected)?Math.max(0,Math.min(cur.length-1,saved.selected)):0;
- function pattern(p,c){return Array.isArray(p)&&p.length===c.length&&p.every(t=>typeof t==='string'&&(tokensFor(c).includes(t)||t.startsWith('set:')&&t.length<=20))?p.slice():null;}
- for(const c of Object.values(CASES)){
-  const s=saved.work?.[c.id];if(!s||typeof s!=='object')continue;const w=d.work[c.id];w.draft=pattern(s.draft,c)||blank(c);w.sample=pattern(s.sample,c);
-  const candidates=Array.isArray(s.collection)?s.collection.slice(0,80).map(p=>pattern(p,c)).filter(Boolean):[];w.collection=collection(c,candidates).patterns;
-  w.generated=Number.isInteger(s.generated)?Math.max(0,Math.min(canonical(c).length,s.generated)):0;
-  const a=w.sample?analyze(w.sample,c):null;if(!a?.valid)w.sample=null;
-  w.sampleStep=a?.valid&&Number.isInteger(s.sampleStep)?Math.max(0,Math.min(c.length+1+a.total,s.sampleStep)):0;
-  for(const flag of ['checkRequested','coverageRequested','groupRequested','groupChecked','repairChecked'])w[flag]=s[flag]===true;
-  for(const k of ['a','b','total'])w.groupInputs[k]=typeof s.groupInputs?.[k]==='string'?s.groupInputs[k].replace(/[^0-9 ]/g,'').slice(0,20):'';
-  w.repairPosition=Number.isInteger(s.repairPosition)?Math.max(-1,Math.min(5,s.repairPosition)):-1;
-  w.repairCount=typeof s.repairCount==='string'?s.repairCount.replace(/\D/g,'').slice(0,2):'';w.repairReason=['zero','repeat','parity'].includes(s.repairReason)?s.repairReason:'';
- }
- return d;
-}
-const api={CASES,familyCases,nextCase,markToken,blank,cleanSet,domains,analyze,reason,canonical,intersection,findUncovered,collection,remaining,wordAt,notation,initial,normalize};
-if(typeof module!=='undefined')module.exports=api;else root.TemplateMath=api;
+const api={EPS,near,dist,area,perimeter,rect,locate,clip,bounds,belongs,lattice,parse,simulate,python,faces,PRESETS};
+if(typeof module!=='undefined')module.exports=api;else root.TurtleMath=api;
 })(typeof window==='undefined'?globalThis:window);
-
-/* UI самостоятельного конструирования. В состоянии — действия ученика, не готовые ответы. */
-const PatternUI=(()=>{
- const M=TemplateMath;
- let ticking=null,tickKind='',feedback=null,focusPosition=null;
- const p=()=>state.patterns,c=()=>M.CASES[p().caseId],w=()=>p().work[p().caseId];
- const el=id=>document.getElementById(id),format=n=>new Intl.NumberFormat('ru-RU').format(n);
- const html=s=>String(s).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
- const action=(label,name,attrs='')=>'<button type="button" class="sb-btn" data-paction="'+name+'" '+attrs+'>'+label+'</button>';
- function stop(save=true){if(ticking){clearInterval(ticking);ticking=null;tickKind='';if(save)persist();}}
- function settings(){
-  const selector=(label,key,value,options)=>'<div class="sb-field"><label>'+label+'<select data-pfield="'+key+'" aria-label="'+label+'">'+options.map(([v,t])=>'<option value="'+v+'" '+(v===value?'selected':'')+'>'+t+'</option>').join('')+'</select></label></div>';
-  return selector('Тип условия','family',c().family,[['alternate','Чередование чётности'],['odd','Количество и соседство'],['ay','Блок АЙ'],['vowels','Гласные и согласные']])+selector('Вариант условия','caseId',p().caseId,M.familyCases(p().caseId).map(x=>[x.id,x.id===x.family?'Пример из методички':x.name]))+selector('Учебный этап','phase',p().phase,[['build','1. Соберите один шаблон'],['group','2. Выведите общую формулу'],['repair','Найдите ошибку в подсчёте']])+'<p class="sb-caption">Выбор задачи и этапа применяется сразу. Результаты каждой задачи сохраняются отдельно.</p><div class="params-divider"></div><h3 class="sb-h3">Как работать</h3><p class="sb-caption">Выберите карточку из палитры, затем нажмите на позицию. Для замены блока сначала уберите его карточкой «?».</p>'+action('Начать эту задачу заново','restart')+'<div id="p-restart-confirm" hidden><p class="sb-caption">Очистить сборку и шаги только для этого условия?</p>'+action('Да, очистить','restart-confirm')+action('Оставить','restart-cancel')+'</div>';
- }
- function label(t){return t==='*'?'Любой':t==='?'?'Убрать':t==='Г'?'Гласная':t==='С'&&c().rule==='vowels'?'Согласная':t==='Ч'?'Чётная':t==='Н'?'Нечётная':t==='≠0'?'Без нуля':t==='АЙ'?'Блок из 2 букв':t.startsWith('set:')?'Свой набор':'Буква';}
- function templateMarkup(tokens,interactive=false){
-  return tokens.map((t,i)=>{
-   if(t==='↳')return '';
-   const blocked=c().rule==='odd'&&!c().allowAdjacent&&p().palette===M.markToken(c())&&[tokens[i-1],tokens[i+1]].includes(M.markToken(c()));
-   const classes='p-slot '+(t==='?'?'is-empty':'')+(t==='АЙ'?' is-block':'')+(p().selected===i&&interactive?' is-selected':'')+(blocked?' is-blocked':'');
-   return interactive?'<button type="button" class="'+classes+'" data-paction="place" data-pos="'+i+'" aria-label="Позиция '+(i+1)+(t==='АЙ'?' и '+(i+2):'')+': '+html(t.startsWith('set:')?t.slice(4):t)+(blocked?'. Здесь недоступна цифра той же чётности, что и соседняя':'')+'" aria-disabled="'+blocked+'"><span class="slot-index">'+(i+1)+(t==='АЙ'?'–'+(i+2):'')+'</span><strong>'+html(t.startsWith('set:')?'['+t.slice(4)+']':t)+'</strong><span class="p-slot-caption">'+(t==='?'?'Выберите':label(t))+'</span></button>':'<span class="p-mini-token '+(t==='АЙ'?'is-block':'')+'">'+html(t.startsWith('set:')?'['+t.slice(4)+']':t)+'</span>';
-  }).join('');
- }
- function boot(){
-  el('pattern-lab').innerHTML=`
-<section class="sb-card" aria-labelledby="p-title"><div class="sb-scene-head"><div><div class="sb-eyebrow">Соберите → посмотрите → посчитайте</div><h2 class="sb-h2" id="p-title">Собери шаблон</h2></div><span class="sb-status" id="p-status">Конструктор</span></div><div class="p-condition-toolbar"><span id="p-condition-number" class="sb-caption"></span><button type="button" class="sb-btn" data-paction="new-condition">Новое условие →</button></div><p class="p-task" id="p-task"></p><div class="p-roadmap" aria-label="Этапы работы"><span>01 · Соберите</span><span>02 · Посмотрите</span><span>03 · Посчитайте</span></div><p class="sb-caption" id="p-phase-note"></p></section>
-<section class="sb-card" id="p-build-card" aria-labelledby="p-build-title"><div class="sb-eyebrow">Ваша математическая модель</div><h2 class="sb-h2" id="p-build-title">Заполните позиции по условию</h2><p class="sb-caption">Сначала выберите карточку, затем нажмите на ячейку. Проверка учитывает все слова, которые описывает собранная схема.</p><div class="p-palette" id="p-palette" role="group" aria-label="Карточки шаблона"></div><div class="p-custom"><label for="p-custom-input">Свой набор символов для одной позиции</label><div class="p-custom-row"><input id="p-custom-input" type="text" maxlength="12" autocomplete="off" spellcheck="false"><button type="button" class="sb-btn" data-paction="custom">Выбрать набор</button></div><p class="sb-caption" id="p-custom-hint"></p></div><div class="p-builder" id="p-builder" role="group" aria-label="Позиции шаблона"></div><p class="sb-caption" id="p-block-note"></p><div class="p-actions"><button type="button" class="sb-btn sb-btn--primary" data-paction="check">Проверить шаблон</button><button type="button" class="sb-btn" data-paction="clear">Очистить поле</button></div><div id="p-feedback" class="sb-quiz-feedback" role="status" aria-live="polite" hidden></div></section>
-<section class="sb-card" id="p-sample-card" aria-labelledby="p-sample-title" hidden><div class="sb-scene-head"><div><div class="sb-eyebrow">От обозначений к реальным символам</div><h2 class="sb-h2" id="p-sample-title">Что описывает шаблон</h2></div><span class="sb-status" id="p-sample-status"></span></div><div class="p-mini-pattern" id="p-sample-pattern"></div><div id="p-factor-slots" class="p-factor-slots" role="group" aria-label="Число вариантов по позициям"></div><div id="p-domain-detail" class="sb-surface"></div><div class="p-formula" id="p-product"></div><div class="p-example-stage"><span class="sb-caption" id="p-example-caption"></span><div class="p-real-word" id="p-real-word"></div></div><section class="sb-playback" aria-label="Управление заполнением шаблона"><div class="sb-timeline-head"><h3 class="sb-timeline-title" id="p-timeline-title">Ход алгоритма</h3><output id="p-counter" class="sb-timeline-counter" for="p-range"></output></div><input class="sb-playback-range" type="range" id="p-range" min="0" max="1" value="0" aria-labelledby="p-timeline-title"><div class="sb-playback-toolbar"><div class="sb-playback-actions"><button type="button" class="sb-btn sb-btn--icon" data-paction="sample-back" aria-label="Назад по заполнению шаблона">←</button><button type="button" class="sb-btn sb-btn--primary" id="p-play" data-paction="sample-play">▶ Запуск</button><button type="button" class="sb-btn sb-btn--icon" id="p-forward" data-paction="sample-forward" aria-label="Вперёд по заполнению шаблона">→</button><button type="button" class="sb-btn" data-paction="sample-next">Следующее слово</button><button type="button" class="sb-btn" data-paction="sample-reset">↺ Сброс</button></div><div class="sb-playback-speed" role="group" aria-label="Скорость заполнения шаблона"><span class="sb-speed-label">Скорость</span><div class="sb-speed-segment"><button type="button" class="sb-speed-btn" data-pspeed="0.5" aria-pressed="false">0,5×</button><button type="button" class="sb-speed-btn" data-pspeed="1" aria-pressed="true">1×</button><button type="button" class="sb-speed-btn" data-pspeed="2" aria-pressed="false">2×</button></div></div></div><div class="sb-step-spotlight"><span class="sb-step-spotlight-label">ТЕКУЩИЙ ШАГ</span><span id="p-sample-explain" role="status"></span></div></section></section>
-<section class="sb-card" id="p-groups-card" hidden aria-labelledby="p-groups-title"><div class="sb-eyebrow">От отдельных схем к семействам</div><h2 class="sb-h2" id="p-groups-title">Выведите общую формулу</h2><p class="sb-caption" id="p-group-task"></p><form id="p-group-form"><div class="p-group-inputs"><label><span id="p-group-label-a"></span><input type="text" inputmode="numeric" id="p-group-a" maxlength="20" required></label><label><span id="p-group-label-b"></span><input type="text" inputmode="numeric" id="p-group-b" maxlength="20" required></label><label>Всего подходящих слов / чисел<input type="text" inputmode="numeric" id="p-group-total" maxlength="20" required></label></div><button type="submit" class="sb-btn sb-btn--primary">Проверить формулу</button></form><div id="p-group-feedback" class="sb-quiz-feedback" role="status" hidden></div><div id="p-groups" class="p-groups" hidden></div><div id="p-group-formula" class="p-formula" hidden></div></section>
-<section class="sb-card" id="p-repair-card" hidden aria-labelledby="p-repair-title"><div class="sb-eyebrow">Найдите и объясните ошибку</div><h2 class="sb-h2" id="p-repair-title">Верный шаблон, неверный множитель</h2><p class="sb-caption">Шаблон ЧНЧНЧН подходит условию. Но в одном из множителей подсчёта допущена ошибка. Нажмите на эту позицию.</p><div id="p-repair-slots" class="p-factor-slots"></div><form id="p-repair-form"><div class="sb-field"><label for="p-repair-count">Сколько цифр на выбранной позиции?</label><input id="p-repair-count" type="number" min="0" max="7" required></div><div class="sb-field"><label for="p-repair-reason">Почему нужен другой множитель?</label><select id="p-repair-reason" required><option value="">Выберите объяснение</option><option value="zero">Ноль не может быть первой цифрой числа</option><option value="repeat">Все использованные цифры надо убрать</option><option value="parity">Ноль является нечётной цифрой</option></select></div><button type="submit" class="sb-btn sb-btn--primary">Проверить исправление</button></form><div class="sb-quiz-feedback" id="p-repair-feedback" role="status" hidden></div></section>
-<div class="p-lesson-grid" id="p-lessons"></div>`;
-  el('pattern-lab').addEventListener('click',event=>{
-   const b=event.target.closest('button');if(!b||loading)return;
-   if(b.dataset.pspeed){const play=tickKind;stop(false);state.speed=+b.dataset.pspeed;if(play==='sample')startSample();renderSample();persist();return;}
-   const a=b.dataset.paction;if(!a)return;
-   if(a==='new-condition'){changeCase(M.nextCase(p().caseId));render();el('fields').innerHTML=settings();persist();return;}
-   if(a==='palette'){p().palette=b.dataset.token;feedback=null;renderBuilder();persist();}
-   if(a==='place')place(+b.dataset.pos);
-   if(a==='custom'){const chars=M.cleanSet(p().custom,c());if(!chars){showFeedback('Выберите хотя бы один символ из алфавита задачи.',false);return;}p().palette='set:'+chars;renderBuilder();persist();}
-   if(a==='clear'){stop(false);w().draft=M.blank(c());w().checkRequested=false;feedback=null;renderBuilder();persist();}
-   if(a==='check')check();
-   if(a==='sample-position'){p().selected=+b.dataset.pos;renderSample();persist();}
-   if(a==='sample-back')sampleMove(w().sampleStep-1);
-   if(a==='sample-forward')sampleMove(w().sampleStep+1);
-   if(a==='sample-next')sampleMove(Math.max(c().length+2,w().sampleStep+1));
-   if(a==='sample-reset')sampleMove(0);
-   if(a==='sample-play'){if(tickKind==='sample'){stop();renderSample();}else startSample();}
-   if(a==='repair-position'){w().repairPosition=+b.dataset.pos;w().repairChecked=false;renderRepair();persist();}
-  });
-  el('p-palette').addEventListener('dragstart',event=>{const b=event.target.closest('[data-token]');if(b){event.dataTransfer.setData('application/x-task8-token',b.dataset.token);event.dataTransfer.effectAllowed='copy';}});
-  el('p-builder').addEventListener('dragover',event=>{if([...event.dataTransfer.types].includes('application/x-task8-token')){event.preventDefault();event.dataTransfer.dropEffect='copy';}});
-  el('p-builder').addEventListener('drop',event=>{const b=event.target.closest('[data-pos]'),token=event.dataTransfer.getData('application/x-task8-token');if(b&&c().palette.includes(token)){event.preventDefault();p().palette=token;place(+b.dataset.pos);}});
-  el('p-custom-input').addEventListener('input',event=>{p().custom=M.cleanSet(event.target.value,c());persist(true);});
-  el('p-range').addEventListener('input',event=>sampleMove(+event.target.value,true));
-  for(const [id,key]of [['p-group-a','a'],['p-group-b','b'],['p-group-total','total']])el(id).addEventListener('input',event=>{w().groupInputs[key]=event.target.value.replace(/[\u0000-\u001f]/g,'').slice(0,20);w().groupChecked=false;el('p-group-feedback').hidden=true;el('p-groups').hidden=true;el('p-group-formula').hidden=true;persist(true);});
-  el('p-group-form').addEventListener('submit',event=>{event.preventDefault();w().groupChecked=true;renderGroups();persist();});
-  el('p-repair-count').addEventListener('input',event=>{w().repairCount=event.target.value.slice(0,2);w().repairChecked=false;el('p-repair-feedback').hidden=true;persist(true);});
-  el('p-repair-reason').addEventListener('change',event=>{w().repairReason=event.target.value;w().repairChecked=false;el('p-repair-feedback').hidden=true;persist();});
-  el('p-repair-form').addEventListener('submit',event=>{event.preventDefault();w().repairChecked=true;renderRepair();persist();});
- }
- function showFeedback(text,ok=false,extra=''){
-  el('p-feedback').hidden=false;el('p-feedback').className='sb-quiz-feedback '+(ok?'is-success':'is-error');el('p-feedback').innerHTML=html(text)+extra;
- }
- function renderBuilder(){
-  const focusedPalette=document.activeElement?.dataset?.paction==='palette'?document.activeElement.dataset.token:null;
-  const palette=c().palette;
-  el('p-palette').innerHTML=palette.map(t=>'<button type="button" class="p-palette-btn" draggable="true" data-paction="palette" data-token="'+t+'" aria-pressed="'+(p().palette===t)+'"><strong>'+html(t)+'</strong><span>'+label(t)+'</span></button>').join('');
-  el('p-custom-input').value=p().custom;el('p-custom-hint').textContent='Алфавит задачи: '+c().alphabet.split('').join(', ')+'. '+(p().palette.startsWith('set:')?'Выбран набор ['+p().palette.slice(4)+']. Нажмите на нужную позицию.':'Можно задать более узкий набор, например 246 или АУ.');
-  el('p-builder').innerHTML=templateMarkup(w().draft,true);
-  el('p-block-note').textContent=c().rule==='ay'?'Блок АЙ занимает две позиции. «*» — одна из букв '+c().alphabet.replace('Й','').split('').join(', ')+' (без Й).':c().rule==='odd'&&!c().allowAdjacent?'При выбранной '+M.markToken(c())+' соседние с другой '+M.markToken(c())+' позиции заблокированы. Для переноса сначала уберите старую карточкой «?».':'Карточка «?» очищает позицию. «*» разрешает любой символ.'+(c().kind==='parity'?' В первой позиции ноль исключается по условию.':'');
-  if(feedback){showFeedback(feedback.text,feedback.ok,feedback.extra||'');}else if(w().checkRequested){const a=M.analyze(w().draft,c());analysisFeedback(a);}else el('p-feedback').hidden=true;
-  if(focusedPalette!==null)el('p-palette').querySelectorAll('[data-token]').forEach(b=>{if(b.dataset.token===focusedPalette)b.focus({preventScroll:true});});
-  if(focusPosition!==null){el('p-builder').querySelector('[data-pos="'+focusPosition+'"]')?.focus({preventScroll:true});focusPosition=null;}
- }
- function analysisFeedback(a){
-  let text=a.message,extra='';
-  if(a.complete&&a.counterexample){text+=' Например, '+a.counterexample+': '+a.violation.message;extra='<div class="p-witness" aria-label="Пример, нарушающий условие">'+[...a.counterexample].map((ch,i)=>'<span class="'+(a.violation.positions.includes(i)?'is-error':'')+'">'+html(ch)+'</span>').join('')+'</div>';}
-  if(a.valid)text+=' Этот шаблон описывает '+format(a.total)+' вариантов. Ниже можно изучить заполнение по шагам.';
-  showFeedback(text,a.valid,extra);
- }
- function place(index){
-  const t=p().palette;if(c().rule==='odd'&&!c().allowAdjacent&&t===M.markToken(c())&&[w().draft[index-1],w().draft[index+1]].includes(t)){feedback={text:'Эта карточка недоступна: рядом уже стоит цифра той же чётности. Уберите соседнюю карточку или выберите другую чётность.',ok:false};renderBuilder();return;}
-  stop(false);const d=w().draft.slice();
-  function detach(i){if(d[i]==='АЙ'){d[i]='?';if(i+1<d.length)d[i+1]='?';}else if(d[i]==='↳'){d[i]='?';if(i>0)d[i-1]='?';}}
-  if(t==='АЙ'&&index===d.length-1){feedback={text:'Блоку АЙ нужны две позиции. Последняя позиция не подходит для его начала.',ok:false};renderBuilder();return;}
-  detach(index);if(t==='АЙ'){detach(index+1);d[index]='АЙ';d[index+1]='↳';}else d[index]=t;
-  w().draft=d;w().checkRequested=false;p().selected=index;feedback=null;focusPosition=index;renderBuilder();persist();
- }
- function setSample(tokens){if(!tokens)return;stop(false);w().sample=tokens.slice();w().sampleStep=0;p().selected=0;}
- function check(){
-  stop(false);w().checkRequested=true;const a=M.analyze(w().draft,c());feedback=null;
-  if(a.valid)setSample(w().draft);
-  renderBuilder();renderSample();persist();
- }
- function renderSample(){
-  const a=w().sample?M.analyze(w().sample,c()):null;el('p-sample-card').hidden=!a?.valid||p().phase==='repair';if(!a?.valid)return;
-  const step=w().sampleStep,L=c().length,reveal=Math.min(L,Math.max(1,step)),ready=step>=L+1,rank=Math.max(0,step-(L+2));
-  el('p-sample-pattern').innerHTML=templateMarkup(w().sample);
-  el('p-sample-status').textContent=ready?'Заполняем шаблон':'Разбираем позиции';
-  el('p-factor-slots').innerHTML=w().sample.map((t,i)=>'<button type="button" class="p-factor-slot '+(p().selected===i?'is-selected':'')+'" data-paction="sample-position" data-pos="'+i+'" aria-label="Допустимые символы на позиции '+(i+1)+'"><span class="slot-index">'+(i+1)+'</span><strong>'+html(t==='↳'?'Й':t==='АЙ'?'А':t.startsWith('set:')?'Набор':t)+'</strong><span>'+(i<reveal?(i===0&&step===0&&c().kind==='parity'&&a.domains[0].length?rawFirst(w().sample).length:a.factors[i])+' вар.':'…')+'</span></button>').join('');
-  const pos=p().selected< L?p().selected:0,domain=a.domains[pos];
-  const raw=pos===0&&c().kind==='parity'?rawFirst(w().sample):domain;
-  el('p-domain-detail').innerHTML='<div class="sb-h3">Позиция '+(pos+1)+': допустимые символы</div><div class="p-digit-list">'+raw.map(ch=>'<span class="'+(!domain.includes(ch)?'is-excluded':'')+'">'+html(ch)+'</span>').join('')+'</div><p class="sb-caption">'+(pos===0&&raw.includes('0')?'0 исключён: число не может начинаться с нуля. Остаётся '+domain.length+' вариантов.':domain.length+' допустимых символов на этой позиции.')+'</p>';
-  if(!step&&c().kind==='parity'&&p().selected===0&&raw.includes('0'))el('p-domain-detail').innerHTML='<div class="sb-h3">Сначала перечислим все цифры нужного типа</div><div class="p-digit-list">'+raw.map(ch=>'<span>'+ch+'</span>').join('')+'</div><p class="sb-caption">На следующем шаге учтём запрет нуля в начале числа.</p>';
-  el('p-product').textContent=ready?a.factors.join(' × ')+' = '+format(a.total):'Раскрывайте позиции: '+a.factors.map((v,i)=>i<reveal?(i===0&&step===0&&c().kind==='parity'?rawFirst(w().sample).length:v):'?').join(' × ');
-  el('p-real-word').textContent=ready?M.wordAt(w().sample,c(),rank):'…';
-  el('p-example-caption').textContent=ready?'Реальный вариант '+format(rank+1)+' из '+format(a.total):'После раскрытия позиций появятся реальные слова / числа';
-  const max=L+1+a.total;el('p-range').max=max;el('p-range').value=step;el('p-counter').textContent=format(step+1)+' / '+format(max+1);
-  el('p-play').textContent=tickKind==='sample'?'Ⅱ Пауза':'▶ Запуск';el('p-forward').disabled=step>=max;
-  el('pattern-lab').querySelector('[data-paction="sample-back"]').disabled=step===0;
-  el('pattern-lab').querySelector('[data-paction="sample-next"]').disabled=step>=max;
-  el('pattern-lab').querySelectorAll('[data-pspeed]').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.pspeed===state.speed)));
-  let text;
-  if(step===0)text=c().kind==='parity'?'Сначала выписываем все цифры нужной чётности для первой позиции.':'Смотрим, какие буквы разрешены в первой позиции.';
-  else if(step===1)text=c().kind==='parity'?'Из первой позиции убираем ноль, если он есть. На остальных позициях ноль допустим.':'На первой позиции '+a.factors[0]+' допустимых букв.';
-  else if(step<=L)text='Позиция '+step+': '+a.domains[step-1].join(', ')+'. Здесь '+a.factors[step-1]+' вариантов.';
-  else if(step===L+1)text='Выборы по позициям независимы, поэтому перемножаем '+a.factors.join(' × ')+'. Получаем '+format(a.total)+' вариантов внутри одного шаблона.';
-  else{const prev=rank?M.wordAt(w().sample,c(),rank-1):'',current=M.wordAt(w().sample,c(),rank);text='Вариант '+format(rank+1)+': '+current+'. '+(prev?'Меняем правую доступную позицию; при переполнении переносим изменение влево.':'Начинаем с первого разрешённого символа в каждой позиции.');}
-  el('p-sample-explain').textContent=text;el('p-sample-explain').setAttribute('aria-live',ticking?'off':'polite');
- }
- function rawFirst(tokens){const copy={...c(),kind:'letters'};return M.domains(tokens,copy)?.[0]||[];}
- function sampleMove(step,debounce=false){stop(false);const a=M.analyze(w().sample,c());w().sampleStep=Math.max(0,Math.min(c().length+1+a.total,step));p().selected=Math.min(c().length-1,Math.max(0,w().sampleStep-1));renderSample();persist(debounce);}
- function startSample(){
-  stop(false);const a=w().sample?M.analyze(w().sample,c()):null;if(!a?.valid)return;const max=c().length+1+a.total;if(w().sampleStep>=max)w().sampleStep=0;
-  tickKind='sample';ticking=setInterval(()=>{if(w().sampleStep>=max){stop();renderSample();return;}w().sampleStep++;p().selected=Math.min(c().length-1,Math.max(0,w().sampleStep-1));renderSample();},700/state.speed);renderSample();persist();
- }
- function groupData(){
-  const all=M.canonical(c()),groups=[];
-  if(c().kind==='parity')for(const first of ['Ч','Н']){const ps=all.filter(t=>t[0]===first);if(ps.length)groups.push({name:'Начинаются с '+first,n:ps.length,each:M.analyze(ps[0],c()).total,factors:M.analyze(ps[0],c()).factors});}
-  else groups.push({name:c().rule==='ay'?'Положения блока АЙ':'Один общий шаблон',n:all.length,each:M.analyze(all[0],c()).total,factors:M.analyze(all[0],c()).factors});
-  return {groups,total:groups.reduce((s,g)=>s+g.n*g.each,0),a:c().kind==='parity'?groups.find(g=>g.name.endsWith('Ч'))?.n||0:groups[0].n,b:c().kind==='parity'?groups.find(g=>g.name.endsWith('Н'))?.n||0:groups[0].each};
- }
- function compactFactors(factors){const counts=new Map();for(const n of factors)if(n!==1)counts.set(n,(counts.get(n)||0)+1);return [...counts].map(([n,k])=>n+(k>1?'^'+k:'')).join(' × ')||'1';}
- function renderGroups(){
-  const visible=p().phase==='group'||w().groupRequested;el('p-groups-card').hidden=!visible||p().phase==='repair';if(!visible)return;
-  const data=groupData(),inputs=w().groupInputs;
-  el('p-group-task').textContent=c().kind==='parity'?'Разделите все допустимые шаблоны на две группы по первой цифре. Внутри каждой группы число вариантов одинаково. Определите размеры групп и общий ответ.':'Все схемы этой задачи описывают одинаковое количество вариантов. Сначала определите число схем, затем число слов внутри одной схемы.';
-  el('p-group-label-a').textContent=c().kind==='parity'?'Шаблонов с первой Ч':'Количество шаблонов';el('p-group-label-b').textContent=c().kind==='parity'?'Шаблонов с первой Н':'Вариантов внутри шаблона';
-  for(const key of ['a','b','total'])el('p-group-'+key).value=inputs[key];
-  el('p-group-feedback').hidden=!w().groupChecked;el('p-groups').hidden=!w().groupChecked;el('p-group-formula').hidden=!w().groupChecked;
-  if(w().groupChecked){const parse=s=>/^\d+$/.test(s.replace(/\s/g,''))?Number(s.replace(/\s/g,'')):NaN;const ok=parse(inputs.a)===data.a&&parse(inputs.b)===data.b&&parse(inputs.total)===data.total;
-   el('p-group-feedback').className='sb-quiz-feedback '+(ok?'is-success':'is-error');el('p-group-feedback').textContent=(ok?'Верно! ':'Есть отличие. ')+'Для этой задачи нужны '+data.a+' и '+data.b+'; общий ответ '+format(data.total)+'. Ниже — группировка и формула.';
-   el('p-groups').innerHTML=data.groups.map(g=>'<div class="sb-surface"><h3 class="sb-h3">'+g.name+'</h3><strong>'+g.n+' шаблонов</strong><p class="sb-caption">Каждый: '+g.factors.join(' × ')+' = '+format(g.each)+' вариантов.</p></div>').join('');
-   el('p-group-formula').textContent=data.groups.map(g=>g.n+' × ('+compactFactors(g.factors)+')').join(' + ')+' = '+format(data.total);
-  }
- }
- function renderRepair(){
-  const visible=p().phase==='repair';el('p-repair-card').hidden=!visible;if(!visible)return;
-  const factors=[4,3,4,3,4,3],tokens=['Ч','Н','Ч','Н','Ч','Н'];
-  el('p-repair-slots').innerHTML=factors.map((n,i)=>'<button type="button" class="p-factor-slot '+(w().repairPosition===i?'is-selected':'')+'" data-paction="repair-position" data-pos="'+i+'" aria-pressed="'+(w().repairPosition===i)+'" aria-label="Проверить множитель на позиции '+(i+1)+'"><span class="slot-index">'+(i+1)+'</span><strong>'+tokens[i]+'</strong><span>'+n+' варианта</span></button>').join('');
-  el('p-repair-count').value=w().repairCount;el('p-repair-reason').value=w().repairReason;el('p-repair-feedback').hidden=!w().repairChecked;
-  if(w().repairChecked){const ok=w().repairPosition===0&&Number(w().repairCount)===3&&w().repairReason==='zero';el('p-repair-feedback').className='sb-quiz-feedback '+(ok?'is-success':'is-error');el('p-repair-feedback').textContent=ok?'Верно. На первой позиции допустимы 2, 4, 6: три цифры. Ноль исключён. 3 × 3 × 4 × 3 × 4 × 3 = 1 296.':w().repairPosition!==0?'Проверьте, одинаковы ли правила для первой и последующих позиций. Укажите позицию с ошибкой.':'Подумайте, может ли многозначное число начинаться с 0. В первой позиции нужны 3 варианта и объяснение про ведущий ноль.';}
- }
- function render(resetFeedback=false){
-  if(resetFeedback)feedback=null;
-  if(!el('p-builder'))return;
-  const siblings=M.familyCases(p().caseId);el('p-condition-number').textContent='Условие '+(siblings.findIndex(x=>x.id===p().caseId)+1)+' из '+siblings.length+' в этом типе';
-  el('p-title').textContent='Собери шаблон';el('p-task').textContent=c().task;el('p-status').textContent=['Сборка','Формула','Поиск ошибки'][['build','group','repair'].indexOf(p().phase)];
-  el('p-phase-note').textContent={build:'Начните с одного шаблона: проверьте его и раскройте допустимые символы на каждой позиции.',group:'Разные схемы можно объединить в группы с одинаковым количеством слов. Составьте общую формулу.',repair:'Найдите не ошибку в схеме, а неверный множитель. Затем объясните причину.'}[p().phase];
-  el('p-build-card').hidden=p().phase==='repair';
-  renderBuilder();renderSample();renderGroups();renderRepair();
-  el('p-lessons').innerHTML=[['Идея','Внутри независимого шаблона перемножаем варианты по позициям. Между непересекающимися шаблонами складываем результаты.'],['Что попробовать','Соберите более узкий шаблон через собственный набор символов. Сравните число вариантов в узкой и в более общей схеме.'],['Типичная ошибка','Правильный отдельный шаблон ещё не означает, что найдены все случаи. А пересекающиеся схемы нельзя просто сложить.']].map(([title,text])=>'<section class="sb-card"><h3 class="sb-h3">'+title+'</h3><p class="sb-caption">'+text+'</p></section>').join('');
- }
- function changeCase(id){stop(false);feedback=null;p().caseId=id;if(p().phase==='repair'&&id!=='alternate')p().phase='build';p().palette=c().palette[0];p().selected=0;p().custom='';}
- function handleSettings(event){
-  const e=event.target;if(!e.matches('[data-pfield]'))return;stop(false);feedback=null;
-  if(e.dataset.pfield==='caseId'||e.dataset.pfield==='family'){changeCase(e.value);}
-  else {p().phase=e.value;if(e.value==='repair'){p().caseId='alternate';p().palette='Ч';}}
-  render();el('fields').innerHTML=settings();el('fields').querySelector('[data-pfield="'+e.dataset.pfield+'"]').focus({preventScroll:true});persist();
- }
- function settingsAction(button){
-  const a=button.dataset.paction;if(!a)return;
-  if(a==='restart')el('p-restart-confirm').hidden=false;
-  if(a==='restart-cancel')el('p-restart-confirm').hidden=true;
-  if(a==='restart-confirm'){stop(false);const d=M.initial();p().work[p().caseId]=d.work[p().caseId];feedback=null;render();el('fields').innerHTML=settings();persist();}
- }
- return {boot,settings,render,stop,handleSettings,settingsAction};
-})();
 
 </script>
 <script>
 'use strict';
-const $=id=>document.getElementById(id), C=Combinatorics;
-const MODES=[['basics','Как считать варианты'],['patterns','Собери шаблон'],['numbers','Слова и числа'],['rules','Ограничения и шаблоны'],['perms','Перестановки букв'],['order','Алфавитный порядок']];
-const INITIAL=()=>({version:2,mode:'patterns',speed:1,codeOpen:true,tablePage:0,filter:'all',
- basics:{kind:'rep',n:4,k:3},numbers:{base:8,length:5,noZero:true,noRepeat:false,alternate:false},
- rules:{preset:'ay',length:7,base:8,oddCount:5},perms:{word:'МОЛОДЕЖЬ',forbidFirst:'Ь'},
- order:{alphabet:'АПРСУ',length:5,maxU:1,noAA:true},
- patterns:TemplateMath.initial(),steps:{basics:0,numbers:0,rules:0,perms:0,order:0},practice:{},answers:{},checked:{}});
-let state=INITIAL(),model,timer=null,canSave=false,loading=true,saveTimer,dirty=false,saving=false,lastSave=0,epoch=0;
-const fmt=n=>new Intl.NumberFormat('ru-RU').format(n), esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function int(v,min,max,fallback){return Number.isInteger(v)&&v>=min&&v<=max?v:fallback;}
+const M=TurtleMath,$=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=n=>new Intl.NumberFormat('ru-RU',{maximumFractionDigits:3}).format(Math.abs(n)<1e-7?0:n);
+const own=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
+const SECTIONS=[['regions','Области и множества','Пересечение, объединение и разность','Что значит «в обеих фигурах» и почему общую часть нельзя считать дважды?'],['turtle','Команды Черепахи','Как Черепаха выполняет команды','Следите за координатами, направлением головы и хвостом. Один шаг — одна простая команда.'],['points','Точки и границы','Точка — не клетка','Отметьте узлы сетки внутри области. Проверьте, какие точки лежат на её границе.'],['measure','Площадь и периметр','Внутри или по контуру?','Найдите площадь и периметр одной области. Для каждого ответа понадобится свой способ подсчёта.'],['exam','Решаем №6','Задачи на Черепаху','Сначала прочитайте вопрос и предложите ответ. Потом проверьте себя по рисунку и разбору.']];
+const OPS={intersection:['Пересечение','A ∩ B','Общая часть A и B. Точка входит в пересечение, если принадлежит обеим фигурам.'],union:['Объединение','A ∪ B','Всё, что принадлежит хотя бы одной фигуре: A или B, включая общую часть.'],difference:['Разность','A ∖ B','Часть A, которая не принадлежит B. Порядок фигур важен.'],xor:['Без общей части','A △ B','Только одна из фигур: либо A, либо B, но не обе сразу.']};
+const INITIAL=()=>({version:1,section:'regions',speed:1,regions:{op:'intersection',bx:3,by:2,marks:[],checked:false,reveal:false},turtle:{preset:'square',source:M.PRESETS.square.source,draft:M.PRESETS.square.source,heading:90,step:0,prediction:'',checked:false},points:{preset:'rect',op:'intersection',boundary:false,marks:[],checked:false,reveal:false,probe:{x:0,y:0}},measure:{preset:'rect',op:'intersection',kind:'area',answer:'',checked:false},exam:{id:'triangle',work:{}}});
+let state=INITIAL(),loading=true,canSave=false,dirty=false,saving=false,saveTimer,lastSave=0,epoch=0,playTimer=null,view=null,zoom=1,notice='',feedback=null;
+const clean=s=>typeof s==='string'?s.replace(/[\u0000-\u001f]/g,'').slice(0,32):'';
+const validMarks=a=>Array.isArray(a)?[...new Set(a.filter(s=>typeof s==='string'&&/^-?\d{1,3},-?\d{1,3}$/.test(s)))].slice(0,1500):[];
 function normalize(s){
- const d=INITIAL();if(!s||![1,2].includes(s.version)||typeof s!=='object')return d;
- d.patterns=TemplateMath.normalize(s.patterns);
- if(MODES.some(x=>x[0]===s.mode))d.mode=s.mode;
- if([.5,1,2].includes(s.speed))d.speed=s.speed;d.codeOpen=typeof s.codeOpen==='boolean'?s.codeOpen:true;
- for(const m of MODES.map(x=>x[0])){
-  d.steps[m]=int(s.steps?.[m],0,1e15,0);
-  d.practice[m]=s.practice?.[m]===true;
-  d.answers[m]=typeof s.answers?.[m]==='string'?s.answers[m].replace(/[\u0000-\u001f]/g,'').slice(0,20):'';
-  d.checked[m]=s.checked?.[m]===true;
+ const d=INITIAL();if(!s||typeof s!=='object'||s.version!==1)return d;
+ if(SECTIONS.some(x=>x[0]===s.section))d.section=s.section;if([.5,1,2].includes(s.speed))d.speed=s.speed;
+ for(const id of ['regions','turtle','points','measure']){const t=s[id];if(!t||typeof t!=='object')continue;
+  for(const k of ['checked','reveal','boundary'])if(k in d[id])d[id][k]=t[k]===true;
+  for(const k of ['answer','prediction'])if(k in d[id])d[id][k]=clean(t[k]);
+  if(own(OPS,t.op)&&'op' in d[id])d[id].op=t.op;if('marks' in d[id])d[id].marks=validMarks(t.marks);
  }
- const b=s.basics||{};d.basics={kind:['rep','arr','perm','multi','comb','combRep'].includes(b.kind)?b.kind:'rep',n:int(b.n,2,8,4),k:int(b.k,1,6,3)};
- const n=s.numbers||{};d.numbers={base:int(n.base,2,10,8),length:int(n.length,1,12,5),noZero:n.noZero!==false,noRepeat:n.noRepeat===true,alternate:n.alternate===true};
- const r=s.rules||{};d.rules={preset:['ay','odd','letter'].includes(r.preset)?r.preset:'ay',length:int(r.length,2,12,7),base:int(r.base,2,10,8),oddCount:int(r.oddCount,0,12,5)};
- const p=s.perms||{};d.perms={word:typeof p.word==='string'&&/^[А-ЯЁA-Z]{1,9}$/u.test(p.word)?p.word:'МОЛОДЕЖЬ',forbidFirst:typeof p.forbidFirst==='string'&&p.forbidFirst.length<=1?p.forbidFirst:'Ь'};
- const o=s.order||{};d.order={alphabet:typeof o.alphabet==='string'&&/^[А-ЯЁA-Z]{2,8}$/u.test(o.alphabet)&&C.unique(o.alphabet).length>=2?o.alphabet:'АПРСУ',length:int(o.length,1,8,5),maxU:int(o.maxU,0,8,1),noAA:o.noAA!==false};
+ const r=s.regions||{};for(const k of ['bx','by'])if(Number.isInteger(r[k])&&r[k]>=-2&&r[k]<=8)d.regions[k]=r[k];
+ const t=s.turtle||{};if(own(M.PRESETS,t.preset))d.turtle.preset=t.preset;
+ if([0,90,180,270].includes(t.heading))d.turtle.heading=t.heading;
+ if(typeof t.source==='string'&&t.source.length<=5000)try{M.simulate(t.source,d.turtle.heading);d.turtle.source=t.source;}catch{}
+ d.turtle.draft=typeof t.draft==='string'?t.draft.replace(/\u0000/g,'').slice(0,5000):d.turtle.source;
+ if(Number.isInteger(t.step))d.turtle.step=Math.max(0,Math.min(600,t.step));
+ if(['rect','triangle','overlap'].includes(s.points?.preset))d.points.preset=s.points.preset;
+ for(const k of ['x','y'])if(Number.isInteger(s.points?.probe?.[k])&&Math.abs(s.points.probe[k])<=100)d.points.probe[k]=s.points.probe[k];
+ if(['rect','perimeter','rhombus'].includes(s.measure?.preset))d.measure.preset=s.measure.preset;if(['area','perimeter'].includes(s.measure?.kind))d.measure.kind=s.measure.kind;
+ if(own(EXAMS,s.exam?.id))d.exam.id=s.exam.id;
+ for(const id of Object.keys(EXAMS)){const w=s.exam?.work?.[id];if(w&&typeof w==='object')d.exam.work[id]={answer:clean(w.answer),checked:w.checked===true,step:Number.isInteger(w.step)?Math.max(0,Math.min(600,w.step)):0,marks:validMarks(w.marks),hint:Math.max(0,Math.min(3,Number.isInteger(w.hint)?w.hint:0))};}
  return d;
 }
-function notify(text,error=false,retry){
- const el=$('storage');el.replaceChildren();el.hidden=!text;el.classList.toggle('is-error',error);
- const span=document.createElement('span');span.textContent=text;el.append(span);
- if(retry){const b=document.createElement('button');b.className='sb-btn';b.textContent='Повторить';b.onclick=retry;el.append(b);}
-}
-async function loadProgress(note='',syncAttempts=0){
- const myEpoch=++epoch;stop(false);canSave=false;loading=true;clearTimeout(saveTimer);dirty=false;$('app').inert=true;$('app').setAttribute('aria-busy','true');notify('Загружаем прогресс…');
- try{
-  if(!window.Sandbox)throw {code:'NO_SDK'};
-  const saved=await Sandbox.load();if(myEpoch!==epoch)return;state=normalize(saved);canSave=true;notify(note);
- }catch(e){
-  if(myEpoch!==epoch)return;
-  if(['AUTH_CHANGED','SYNC_REQUIRED'].includes(e.code)&&syncAttempts<2)return loadProgress('Прогресс обновлён. Повторите последнее действие.',syncAttempts+1);
-  const ordinary=['NO_SDK','NOT_EMBEDDED','STORAGE_ERROR'].includes(e.code);
-  notify(ordinary?'Прогресс не сохраняется: можно исследовать все примеры в этой сессии.':'Не удалось загрузить прогресс ('+(e.code||'сбой связи')+'). Можно работать без сохранения. Повтор загрузки заменит текущие изменения.',!ordinary,ordinary?null:()=>loadProgress());
- }finally{if(myEpoch===epoch){loading=false;$('app').inert=false;$('app').setAttribute('aria-busy','false');render();}}
-}
-function persist(debounce=false){
- if(!canSave||loading)return;dirty=true;clearTimeout(saveTimer);
- const wait=debounce?700:Math.max(0,550-(Date.now()-lastSave));saveTimer=setTimeout(flush,wait);
-}
-async function flush(){
- if(!canSave||loading||!dirty||saving)return;
- saving=true;dirty=false;lastSave=Date.now();const myEpoch=epoch;
- try{await Sandbox.save(JSON.parse(JSON.stringify(state)));if(myEpoch===epoch)notify('');}
- catch(e){if(myEpoch!==epoch)return;
-  if(['AUTH_CHANGED','SYNC_REQUIRED'].includes(e.code)){await loadProgress('Прогресс обновлён. Повторите последнее действие.');}
-  else{dirty=true;notify('Изменения не сохранены ('+(e.status===413?'слишком большой объём данных':e.status===429?'слишком частые запросы':e.code||'сбой связи')+').',true,()=>persist());}
- }finally{saving=false;if(dirty&&canSave&&myEpoch===epoch&&!$('storage').classList.contains('is-error'))persist();}
-}
-function config(){
- const m=state.mode;
- if(m==='numbers'){const n=state.numbers;return {alphabet:'0123456789'.slice(0,n.base),...n};}
- if(m==='rules'){
-  const r=state.rules;
-  if(r.preset==='odd')return {alphabet:'0123456789'.slice(0,r.base),length:r.length,noZero:true,target:'odd',targetCount:r.oddCount,noAdjacent:'odd'};
-  if(r.preset==='letter')return {alphabet:'АСУ',length:r.length,target:'У',targetCount:1,noAdjacent:'У'};
-  return {alphabet:'СЛУЧАЙ',length:r.length,target:'Й',targetCount:1,predecessor:'А'};
+function status(text,error=false,retry){const e=$('storage');e.replaceChildren();e.hidden=!text;e.classList.toggle('is-error',error);const span=document.createElement('span');span.textContent=text;e.append(span);if(retry){const b=document.createElement('button');b.type='button';b.className='sb-btn';b.textContent='Повторить';b.onclick=retry;e.append(b);}}
+async function load(note='',attempt=0){const id=++epoch;stop(false);clearTimeout(saveTimer);dirty=false;canSave=false;loading=true;$('app').inert=true;$('app').setAttribute('aria-busy','true');status('Загружаем прогресс…');try{if(!window.Sandbox)throw {code:'NO_SDK'};const s=await Sandbox.load();if(id!==epoch)return;state=normalize(s);canSave=true;status(note);}catch(e){if(id!==epoch)return;if(['AUTH_CHANGED','SYNC_REQUIRED'].includes(e.code)&&attempt<2)return load('Прогресс обновлён. Повторите последнее действие.',attempt+1);const ordinary=['NO_SDK','NOT_EMBEDDED','STORAGE_ERROR'].includes(e.code);status(ordinary?'Прогресс не сохраняется. Все опыты доступны в этой сессии.':'Не удалось загрузить прогресс ('+(e.code||'сбой связи')+'). Можно работать без сохранения. Повтор загрузки заменит текущие изменения.',!ordinary,ordinary?null:()=>load());}finally{if(id===epoch){loading=false;$('app').inert=false;$('app').setAttribute('aria-busy','false');render();}}}
+function persist(debounce=false){if(!canSave||loading)return;dirty=true;clearTimeout(saveTimer);saveTimer=setTimeout(flush,debounce?700:Math.max(0,550-(Date.now()-lastSave)));}
+async function flush(){if(saving||!dirty||!canSave||loading)return;saving=true;dirty=false;lastSave=Date.now();const id=epoch;let failed=false;try{await Sandbox.save(JSON.parse(JSON.stringify(state)));if(id===epoch)status('');}catch(e){failed=true;if(id!==epoch)return;if(['AUTH_CHANGED','SYNC_REQUIRED'].includes(e.code))await load('Прогресс обновлён. Повторите последнее действие.');else{dirty=true;status('Изменения не сохранены ('+(e.status===413?'слишком большой объём данных':e.status===429?'слишком частые запросы':e.code||'сбой связи')+').',true,()=>persist());}}finally{saving=false;if(dirty&&!failed&&id===epoch)persist();}}
+const btn=(text,action,attrs='')=>'<button type="button" class="sb-btn" data-action="'+action+'" '+attrs+'>'+text+'</button>';
+const select=(label,key,value,options)=>'<div class="sb-field"><label>'+label+'<select data-key="'+key+'">'+options.map(([v,t])=>'<option value="'+v+'" '+(v===value?'selected':'')+'>'+t+'</option>').join('')+'</select></label></div>';
+const input=(label,key,value,min,max)=>'<div class="sb-field"><label>'+label+'<input type="number" data-key="'+key+'" min="'+min+'" max="'+max+'" value="'+value+'"></label></div>';
+const metric=(label,value)=>'<div class="sb-metric"><strong class="sb-metric-value">'+value+'</strong><span class="sb-metric-label">'+label+'</span></div>';
+const fb=(text,ok)=>'<div class="sb-quiz-feedback '+(ok?'is-success':'is-error')+'" role="status">'+esc(text)+'</div>';
+function operations(op){return '<div class="operation-row">'+Object.entries(OPS).map(([id,a])=>btn(a[1],'op','data-value="'+id+'" aria-label="'+a[0]+'" aria-pressed="'+(op===id)+'"')).join('')+'</div>';}
+const key=p=>Math.round(p.x)+','+Math.round(p.y);
+const pair=()=>[M.rect(0,0,6,5),M.rect(state.regions.bx,state.regions.by,5,4)];
+const learningPair=()=>[M.rect(0,0,6,5),M.rect(3,2,5,4)];
+function polygons(preset){if(preset==='rect')return learningPair();const p=M.PRESETS[preset];return M.simulate(p.source,p.heading).polygons.slice(0,2);}
+function resultArea(ps,op){const a=M.area(ps[0]||[]),b=M.area(ps[1]||[]),i=ps.length>1?M.area(M.clip(ps[0],ps[1])):a;return op==='intersection'?i:op==='union'?a+b-(ps.length>1?i:0):op==='difference'?a-i:a+b-2*i;}
+function resultPoly(ps,op){return ps.length===1?ps[0]:op==='intersection'?M.clip(ps[0],ps[1]):null;}
+function rowCounts(points){const map=new Map();for(const p of points)map.set(p.y,(map.get(p.y)||0)+1);return [...map].sort((a,b)=>b[0]-a[0]);}
+function draw({ps=[],sim=null,step=null,op='intersection',showResult=false,points=false,boundary=false,marks=[],reveal=false,cells=false,probe=null,faces=null,edgeLabels=false}={}){
+ const all=sim?sim.segments.flatMap(s=>[s.a,s.b]):ps.flat(),b=M.bounds([all]),W=$('plot').clientWidth||760,H=$('plot').clientHeight||510,pad=W<400?24:40,cx=(b.x0+b.x1)/2,cy=(b.y0+b.y1)/2,scale=Math.min((W-2*pad)/(b.x1-b.x0),(H-2*pad)/(b.y1-b.y0))*zoom;
+ const X=x=>W/2+(x-cx)*scale,Y=y=>H/2-(y-cy)*scale,poly=p=>p.map(v=>X(v.x)+','+Y(v.y)).join(' '),set=new Set(marks);view={X,Y,scale,cx,cy,W,H,b,ps,cells,points,faces,step};
+ let s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(sim?'След Черепахи и её текущее положение':'Фигуры на координатной сетке')+'"><title>Ось x направлена вправо, ось y вверх</title>';
+ const stride=Math.max(1,Math.ceil(Math.max(b.x1-b.x0,b.y1-b.y0)/Math.max(8,Math.floor(W/22))));
+ for(let x=b.x0;x<=b.x1;x++)if((x%stride===0)||x===0){s+='<line class="'+(x===0?'axis':'grid')+'" x1="'+X(x)+'" x2="'+X(x)+'" y1="'+Y(b.y0)+'" y2="'+Y(b.y1)+'"/>';if(x%(stride*2)===0)s+='<text font-size="13" x="'+(X(x)+3)+'" y="'+(Y(Math.max(b.y0,Math.min(0,b.y1)))+16)+'">'+x+'</text>';}
+ for(let y=b.y0;y<=b.y1;y++)if((y%stride===0)||y===0){s+='<line class="'+(y===0?'axis':'grid')+'" x1="'+X(b.x0)+'" x2="'+X(b.x1)+'" y1="'+Y(y)+'" y2="'+Y(y)+'"/>';if(y%(stride*2)===0&&y!==0)s+='<text font-size="13" x="'+(X(Math.max(b.x0,Math.min(0,b.x1)))+5)+'" y="'+(Y(y)-3)+'">'+y+'</text>';}
+ s+='<text font-size="16" x="'+(W-22)+'" y="'+Math.max(20,Math.min(H-10,Y(0)-8))+'">x</text><text font-size="16" x="'+Math.max(10,Math.min(W-20,X(0)+8))+'" y="22">y</text>';
+ ps.forEach((p,i)=>s+='<polygon class="shape-'+(i?'b':'a')+'" points="'+poly(p)+'"/>');
+ if(showResult&&ps.length){if(op==='intersection')s+='<polygon class="result" points="'+poly(resultPoly(ps,op)||[])+'"/>';else if(op==='union')s+='<path class="result" d="'+ps.map(p=>'M'+p.map(v=>X(v.x)+' '+Y(v.y)).join('L')+'Z').join(' ')+'" fill-rule="nonzero"/>';else if(cells||state.section==='regions'){for(let y=b.y0;y<b.y1;y++)for(let x=b.x0;x<b.x1;x++)if(M.belongs({x:x+.5,y:y+.5},ps,op))s+='<rect class="selected-cell" x="'+X(x)+'" y="'+Y(y+1)+'" width="'+scale+'" height="'+scale+'"/>';}}
+ if(cells){for(const k of set){const [x,y]=k.split(',').map(Number);s+='<rect class="selected-cell '+(showResult&&!M.belongs({x:x+.5,y:y+.5},ps,op)?'wrong-cell':'')+'" x="'+X(x)+'" y="'+Y(y+1)+'" width="'+scale+'" height="'+scale+'"/>';}}
+ if(faces)faces.forEach((p,i)=>{if(set.has(i+',0')||reveal&&p.length===3)s+='<polygon class="face-mark" points="'+poly(p)+'"/>';});
+ if(sim){const n=step===null?sim.frames.length-1:Math.min(step,sim.frames.length-1);for(const seg of sim.segments)if(seg.step<=n)s+='<line class="'+(seg.pen?'trace':'travel')+'" x1="'+X(seg.a.x)+'" y1="'+Y(seg.a.y)+'" x2="'+X(seg.b.x)+'" y2="'+Y(seg.b.y)+'"/>';const f=sim.frames[n],x=X(f.x),y=Y(f.y);s+='<path class="turtle" d="M 13 0 L -9 -8 L -5 0 L -9 8 Z" transform="translate('+x+' '+y+') rotate('+(-f.angle)+')"/>';}
+ if(points&&(b.x1-b.x0)*(b.y1-b.y0)<2200)for(let y=b.y0;y<=b.y1;y++)for(let x=b.x0;x<=b.x1;x++){
+  const p={x,y},chosen=set.has(key(p)),correct=M.belongs(p,ps,op,boundary),edge=ps.some(a=>M.locate(p,a)==='boundary');
+  s+='<circle class="point '+(chosen?'chosen ':'')+(reveal&&correct?'chosen ':reveal&&chosen&&!correct?'wrong ':reveal&&edge?'boundary ':'')+'" cx="'+X(x)+'" cy="'+Y(y)+'" r="'+(chosen||reveal&&correct?4.7:2.2)+'"/>';
  }
- if(m==='perms')return {inventory:state.perms.word,forbidFirst:state.perms.forbidFirst};
- const o=state.order;return {alphabet:C.unique(o.alphabet).sort((a,b)=>a.localeCompare(b,'ru')).join(''),length:o.length,target:'У',targetCount:o.maxU,countMode:'max',noAdjacent:o.noAA?'А':undefined};
+ if(probe)s+='<circle class="focus-point" cx="'+X(probe.x)+'" cy="'+Y(probe.y)+'" r="10"/>';
+ if(edgeLabels){const p=resultPoly(ps,op)||[];for(let i=0;i<p.length;i++){const a=p[i],b=p[(i+1)%p.length];s+='<text class="edge-label" text-anchor="middle" x="'+X((a.x+b.x)/2)+'" y="'+(Y((a.y+b.y)/2)-7)+'">'+fmt(M.dist(a,b))+'</text>';}}
+ $('plot').innerHTML=s+'</svg>';
 }
-const TITLES={patterns:['Собери шаблон — найди все случаи','Постройте схему по условию, заполните её реальными символами и выведите формулу подсчёта.'],basics:['Шесть способов считать','Определите, важен ли порядок и разрешены ли повторения. Сравните формулу с небольшими примерами.'],numbers:['Слова, числа и выбор позиции','Меняйте основание и длину записи. Наблюдайте, как ограничения отсеивают варианты и меняют ответ.'],rules:['Ограничения превращаются в шаблоны','Объединяйте буквы в блоки и заменяйте цифры их чётностью. Считайте большие наборы без полного перебора.'],perms:['Одинаковые буквы — разные позиции','Переставляйте все буквы слова и разбирайтесь, почему одинаковые буквы не создают новые слова.'],order:['У каждого слова есть номер','Сопоставляйте алфавитный список с системой счисления. Найдите первое слово, удовлетворяющее условиям.']};
-function button(text,action,extra=''){return '<button type="button" class="sb-btn" data-action="'+action+'" '+extra+'>'+text+'</button>';}
-function field(label,input,hint=''){return '<div class="sb-field"><label>'+label+input+'</label>'+(hint?'<span class="sb-caption">'+hint+'</span>':'')+'</div>';}
-function numberField(label,key,value,min,max){return field(label,'<input type="number" data-key="'+key+'" value="'+value+'" min="'+min+'" max="'+max+'" required>');}
-function selectField(label,key,value,options){return field(label,'<select aria-label="'+label+'" data-key="'+key+'">'+options.map(([v,t])=>'<option value="'+esc(v)+'" '+(String(value)===String(v)?'selected':'')+'>'+t+'</option>').join('')+'</select>');}
-function toggle(label,key,value){return '<label class="sb-toggle"><input type="checkbox" data-key="'+key+'" '+(value?'checked':'')+'><span>'+label+'</span></label>';}
-function buildSettings(){
- let html='',m=state.mode;
- if(m==='patterns')html=PatternUI.settings();
- else if(m==='basics'){
-  const b=state.basics;
-  html+=selectField('Способ подсчёта','kind',b.kind,[['rep','Размещения с повторениями'],['arr','Размещения без повторений'],['perm','Перестановки без повторений'],['multi','Перестановки одинаковых букв'],['comb','Сочетания без повторений'],['combRep','Сочетания с повторениями']]);
-  if(b.kind==='multi')html+='<p class="sb-callout">Пример «МАШИНА»: две одинаковые буквы А. Изменять слово можно в разделе «Перестановки букв».</p>';
-  else{html+=numberField('Количество элементов n','n',b.n,2,8);if(b.kind!=='perm')html+=numberField('Выбираем элементов k','k',b.k,1,6);}
- }else if(m==='numbers'){
-  const n=state.numbers;
-  html+='<div class="preset-row">'+button('Восьмеричные · 5 знаков','preset-number')+button('Чередование · 6 знаков','preset-alternate')+'</div>';
-  html+=numberField('Основание системы','base',n.base,2,10)+numberField('Количество позиций','length',n.length,1,12);
-  html+=toggle('Запретить ноль в начале','noZero',n.noZero)+toggle('Цифры не повторяются','noRepeat',n.noRepeat)+toggle('Чередовать чётность','alternate',n.alternate);
-  html+='<p class="sb-caption">При разрешённом нуле в начале считаем кодовые слова, а не многозначные числа.</p>';
- }else if(m==='rules'){
-  const r=state.rules;
-  html+=selectField('Пример из методички','preset',r.preset,[['ay','СЛУЧАЙ: ровно одна Й после А'],['odd','Цифры: нечётные не соседствуют'],['letter','АСУ: ровно одна У']]);
-  html+=numberField('Количество позиций','length',r.length,2,12);
-  if(r.preset==='odd')html+=numberField('Основание системы','base',r.base,2,10)+numberField('Нечётных цифр ровно','oddCount',r.oddCount,0,r.length);
-  if(r.preset==='ay')html+='<p class="sb-caption">«После А» в этом примере означает непосредственно после А: блок «АЙ».</p>';
-  html+=button('Вернуть пример методички','preset-rule');
- }else if(m==='perms'){
-  const p=state.perms;
-  html+='<div class="preset-row">'+['МОЛОДЕЖЬ','МАШИНА','МЕЧТА'].map(w=>button(w,'preset-word','data-word="'+w+'"')).join('')+'</div>';
-  html+=field('Исходное слово','<input type="text" data-key="word" value="'+esc(p.word)+'" maxlength="9" required autocomplete="off" spellcheck="false">','От 1 до 9 букв. Все буквы исходного слова используются ровно по одному разу.');
-  html+=selectField('Не может стоять первой','forbidFirst',p.forbidFirst,[['','Нет запрета'],...C.unique(p.word).map(c=>[c,c])]);
- }else{
-  const o=state.order;
-  html+=field('Буквы алфавита','<input type="text" data-key="alphabet" value="'+esc(o.alphabet)+'" maxlength="8" required autocomplete="off" spellcheck="false">','Буквы будут упорядочены по русскому алфавиту; повторяющиеся удаляются.');
-  html+=numberField('Длина слова','length',o.length,1,8)+numberField('Букв У не более','maxU',o.maxU,0,o.length)+toggle('Запретить соседние АА','noAA',o.noAA);
-  html+=button('Вернуть пример «ПАРУС»','preset-order');
- }
- $('fields').innerHTML=html;$('apply').hidden=m==='basics'||m==='patterns';$('practice-settings').hidden=m==='patterns';$('settings-description').textContent=m==='patterns'?'Выберите условие, соберите схему и проверьте её. Настройки применяются сразу.':m==='basics'?'Настройки применяются сразу. Сравнивайте способы подсчёта при одних и тех же n и k.':'Измените настройки и нажмите «Применить». Новый опыт начнётся с первого варианта.';$('field-error').hidden=true;
- $('practice-toggle').checked=!!state.practice[m];
-}
+function lessonCards(items){$('lessons').innerHTML=items.map(([a,b])=>'<section class="sb-card"><h3>'+a+'</h3><p class="sb-caption">'+b+'</p></section>').join('');}
 function render(){
- stop(false);const m=state.mode;document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===m)));
- $('title').textContent=TITLES[m][0];$('description').textContent=TITLES[m][1];
- $('basics-scene').hidden=m!=='basics';$('explorer').hidden=m==='basics';$('analysis').hidden=m==='basics';$('results-card').hidden=m==='basics';
- $('mode-name').textContent=MODES.find(x=>x[0]===m)[1];buildSettings();
- $('pattern-lab').hidden=m!=='patterns';
- if(m==='patterns'){$('basics-scene').hidden=true;$('explorer').hidden=true;$('analysis').hidden=true;$('results-card').hidden=true;$('practice-card').hidden=true;$('lesson-cards').hidden=true;PatternUI.render(true);return;}
- $('lesson-cards').hidden=false;
- if(m==='basics')renderBasics();else{
-  model=C.createModel(config());
-  state.steps[m]=Math.min(state.steps[m],Math.max(0,totalSteps()-1));state.tablePage=0;renderFrame();renderTable();
- }
- renderPractice();renderLessons();
+ stop(false);feedback=null;zoom=1;const i=SECTIONS.findIndex(x=>x[0]===state.section),sec=SECTIONS[i];
+ $('navigation').innerHTML=SECTIONS.map(([id,label],j)=>'<button type="button" class="sb-section-btn" data-action="section" data-value="'+id+'" aria-pressed="'+(id===state.section)+'">'+label+'<span class="section-number">0'+(j+1)+'</span></button>').join('');
+ $('eyebrow').textContent='Задание №6 · Шаг '+(i+1)+' из 5';$('title').textContent=sec[2];$('description').textContent=sec[3];$('controls').innerHTML='';$('next-note').textContent=i<4?'Следующий шаг: '+SECTIONS[i+1][1]:'Вернитесь к любому разделу и измените условия опыта.';document.querySelector('[data-action="next-section"]').textContent=i<4?'Дальше →':'К началу';$('reset-confirm').hidden=true;
+ ({regions:renderRegions,turtle:renderTurtle,points:renderPoints,measure:renderMeasure,exam:renderExam}[state.section])();
 }
-function hiddenAnswer(){return !!state.practice[state.mode]&&!state.checked[state.mode];}
-function totalSteps(){return model.rawTotal*(model.length+model.checks.length+1);}
-function frame(){const span=model.length+model.checks.length+1,step=state.steps[state.mode];return {span,rank:Math.floor(step/span),phase:step%span,word:model.wordAt(Math.floor(step/span))};}
-function metric(label,value){return '<div class="sb-metric"><span class="sb-metric-value">'+value+'</span><span class="sb-metric-label">'+label+'</span></div>';}
-function renderFrame(){
- const f=frame(),m=state.mode,hidden=hiddenAnswer(),built=Math.min(model.length,f.phase+1),checkStage=f.phase-model.length;
- const evaluations=model.checks.map(c=>c.test(f.word)),accepted=evaluations.every(Boolean),finished=f.phase===f.span-1;
- $('scene-title').textContent=m==='order'?'Алфавитный список':m==='perms'?'Уникальные перестановки':'Собираем и проверяем вариант';
- $('scene-status').textContent=timer?'Воспроизведение':!model.rawTotal?'Нет вариантов':finished?(accepted?'Принят':'Отклонён'):'Исследование';
- $('scene-status').className='sb-status'+(finished?' '+(accepted?'is-success':'is-error'):'');
- $('slots').innerHTML=[...f.word].map((c,i)=>'<div class="symbol-slot '+(i<built?'is-filled':'')+' '+(i===built-1&&f.phase<model.length?'is-current':'')+'"><span class="slot-index">'+(i+1)+'</span><strong>'+(i<built?esc(c):'·')+'</strong>'+(m==='numbers'||config().target==='odd'?'<span class="slot-caption">'+(i<built?(Number(c)%2?'нечёт.':'чёт.'):'')+'</span>':'')+'</div>').join('');
- if(!model.rawTotal)$('slots').innerHTML='<p class="sb-caption">Не хватает разных символов для заданной длины. Разрешите повторения или уменьшите длину.</p>';
- $('alphabet').innerHTML=model.chars.map(c=>'<span class="alphabet-char">'+esc(c)+'</span>').join('');
- $('candidate-number').textContent=model.rawTotal?'Вариант '+fmt(f.rank+1)+' из '+fmt(model.rawTotal):'Нет вариантов';
- $('checks').innerHTML=model.checks.map((c,i)=>{const tested=checkStage>=i;return '<div class="check-row '+(tested?(evaluations[i]?'is-good':'is-bad'):'')+'"><span class="check-mark">'+(tested?(evaluations[i]?'✓':'×'):'·')+'</span><span>'+esc(c.name)+'</span><b>'+(tested?(evaluations[i]?'Да':'Нет'):'Ожидает')+'</b></div>';}).join('');
- const count=model.validBefore(f.rank)+(finished&&accepted?1:0);
- $('metrics').innerHTML=metric('Всего уникальных вариантов',fmt(model.rawTotal))+metric('Подходят всем условиям',hidden?'?':fmt(model.validTotal))+metric('Проверено до текущего',fmt(f.rank+(finished?1:0)))+metric('Принято до текущего',fmt(count));
- $('counter').textContent=fmt(model.rawTotal?state.steps[m]+1:0)+' / '+fmt(totalSteps());
- $('timeline').max=Math.max(0,totalSteps()-1);$('timeline').value=state.steps[m];$('timeline').disabled=!model.rawTotal;
- $('back').disabled=state.steps[m]===0;$('forward').disabled=!model.rawTotal||state.steps[m]>=totalSteps()-1;$('play').disabled=!model.rawTotal;$('stage').disabled=!model.rawTotal||state.steps[m]>=totalSteps()-1;
- $('play').textContent=timer?'Ⅱ Пауза':'▶ Запуск';
- document.querySelectorAll('[data-speed]').forEach(b=>b.setAttribute('aria-pressed',String(state.speed===+b.dataset.speed)));
- let text=f.phase<model.length?'Позиция '+(f.phase+1)+': выбираем «'+f.word[f.phase]+'». Правые позиции меняются быстрее левых. Так строится последовательный перебор.':checkStage<model.checks.length?'Проверяем условие: '+model.checks[checkStage].name+'. '+(evaluations[checkStage]?'Условие выполнено.':'Вариант будет отклонён.'):(accepted?'Все условия выполнены: прибавляем 1 к числу подходящих вариантов.':'Хотя бы одно условие нарушено: счётчик подходящих вариантов не изменяется.');
- if(!model.rawTotal)text='С такой длиной и запретом повторений вариантов нет.';
- $('step-text').textContent=text;$('step-text').setAttribute('aria-live',timer?'off':'polite');
- document.querySelectorAll('[data-rank]').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.rank===f.rank)));
- renderCode(f);renderCalculation();renderRank(f);
- $('code-toggle').setAttribute('aria-expanded',String(state.codeOpen));$('code-body').hidden=!state.codeOpen;$('fold-label').textContent=state.codeOpen?'Свернуть':'Развернуть';
- $('jump-index').max=Math.max(1,model.rawTotal);$('jump-index').value=f.rank+1;
+function renderRegions(){
+ const r=state.regions,ps=pair(),op=OPS[r.op],I=M.area(M.clip(...ps)),A=M.area(ps[0]),B=M.area(ps[1]);
+ $('instruction').innerHTML='<div class="sb-eyebrow">01 · Пересечение и объединение</div><h2 class="sb-h2">'+op[0]+'</h2><div class="formula">'+op[1]+'</div><p class="lead">'+op[2]+'</p>'+operations(r.op)+'<p class="sb-caption">Выберите операцию, затем отметьте на рисунке все подходящие единичные клетки. Каждая клетка имеет площадь 1.</p>';
+ $('scene-title').textContent='Закрасьте нужную область';draw({ps,op:r.op,cells:true,marks:r.marks,showResult:r.reveal});$('plot-note').textContent='Нажимайте на клетки, чтобы закрасить или убрать их. Зелёный цвет — ваш выбор. B можно переместить параметрами справа.';
+ const wanted=[];const b=M.bounds(ps);for(let y=b.y0;y<b.y1;y++)for(let x=b.x0;x<b.x1;x++)if(M.belongs({x:x+.5,y:y+.5},ps,r.op))wanted.push(x+','+y);
+ $('metrics').innerHTML=metric('Площадь A',fmt(A))+metric('Площадь B',fmt(B))+metric('Выбрано клеток',r.marks.length);
+ $('settings').innerHTML=input('Сдвиг B по x','bx',r.bx,-2,8)+input('Сдвиг B по y','by',r.by,-2,8)+'<p class="sb-caption">Ширина A — 6, высота — 5. Ширина B — 5, высота — 4. Сдвиг меняет общую область.</p>';
+ $('key-question').textContent='Должна ли выбранная клетка лежать в обеих фигурах или достаточно одной?';
+ $('activity').innerHTML='<h2 class="sb-h2">Проверьте свою закраску</h2><p class="sb-caption">Можно отметить клетки по одной. Для выбора без рисунка используйте координаты левого нижнего угла клетки.</p>'+coordinateForm('cell','Клетка')+'<div class="actions">'+btn('Проверить область','check-regions')+btn('Показать область','reveal')+btn('Убрать закраску','clear-marks')+'</div>';
+ if(r.checked){const extra=r.marks.find(k=>!wanted.includes(k)),missing=wanted.find(k=>!r.marks.includes(k));$('activity').innerHTML+=fb(!extra&&!missing?'Верно. Все нужные клетки выделены: '+wanted.length+'.':extra?'Клетка ('+extra+') лишняя: её центр не входит в область «'+op[0].toLowerCase()+'».':'Не хватает клетки ('+missing+'): проверьте, к каким фигурам относится её центр.',!extra&&!missing);}
+ $('explanation').innerHTML='<h2 class="sb-h2">Почему общую часть вычитают?</h2><p class="lead">В сумме S(A) + S(B) общая часть учтена два раза. Для объединения одну её копию нужно убрать.</p><div class="formula">S(A ∪ B) = S(A) + S(B) − S(A ∩ B)</div>'+(r.checked||r.reveal?'<div class="sb-surface">Сейчас: '+A+' + '+B+' − '+fmt(I)+' = <b>'+fmt(A+B-I)+'</b>.<br>Для выбранной операции площадь равна <b>'+fmt(resultArea(ps,r.op))+'</b>.</div>':'<p class="sb-caption">Числа появятся после проверки или показа области.</p>');
+ lessonCards([['Если фигуры разошлись','Пересечение пустое, его площадь равна нулю. Объединение состоит из двух частей.'],['Если фигуры касаются','Общая сторона или вершина может быть пересечением, но её площадь равна нулю.'],['Проверьте порядок','A ∖ B и B ∖ A — обычно разные области. Пересечение и объединение от порядка не зависят.']]);
 }
-function codeLines(){
- const cf=config(),m=state.mode,a=model.chars.join('');
- if(m==='perms')return ["from itertools import permutations","words = set(permutations('"+state.perms.word+"'))","count = 0","for letters in sorted(words):","    s = ''.join(letters)","    if "+(cf.forbidFirst?"s[0] != '"+cf.forbidFirst+"'":'True')+":","        count += 1","print(count)"];
- if(m==='rules'&&cf.target==='odd'){
-  const L=model.length,q=cf.targetCount,E=Math.ceil(model.chars.length/2),O=Math.floor(model.chars.length/2);
-  return ['from itertools import product','count = 0',"for letters in product('ЧН', repeat="+L+'):',"    s = ''.join(letters)","    if s.count('Н') == "+q+" and 'НН' not in s:","        if s[0] == 'Ч':",'            count += '+(E-1)+' * '+E+' ** '+Math.max(0,L-q-1)+' * '+O+' ** '+q,'        else:','            count += '+E+' ** '+(L-q)+' * '+O+' ** '+q,'print(count)'];
- }
- const conditions=[];
- if(cf.noZero)conditions.push("s[0] != '0'");
- 
- if(cf.alternate)conditions.push('all(int(s[i]) % 2 != int(s[i+1]) % 2 for i in range(len(s)-1))');
- if(cf.target)conditions.push(cf.target==='odd'?"sum(int(c) % 2 for c in s) == "+cf.targetCount:"s.count('"+cf.target+"') "+(cf.countMode==='max'?'<=':'==')+' '+cf.targetCount);
- if(cf.predecessor)conditions.push("all(c != 'Й' or (i > 0 and s[i-1] == 'А') for i, c in enumerate(s))");
- if(cf.noAdjacent)conditions.push(cf.noAdjacent==='odd'?"all(not (int(s[i]) % 2 and int(s[i+1]) % 2) for i in range(len(s)-1))":"'"+cf.noAdjacent+cf.noAdjacent+"' not in s");
- return ['from itertools import '+(cf.noRepeat?'permutations':'product'),'count = 0',...(m==='order'?['number = 0']:[]),"for letters in "+(cf.noRepeat?"permutations('"+a+"', "+model.length+'):':"product('"+a+"', repeat="+model.length+'):'),"    s = ''.join(letters)",...(m==='order'?['    number += 1']:[]),'    if ('+(conditions.join('\n        and ')||'True')+'):',m==='order'?'        print(number, s)':'        count += 1',m==='order'?'        break':'print(count)'];
+function coordinateForm(id,label){return '<form id="'+id+'-form" class="form-row"><div class="sb-field"><label>'+label+': x<input name="x" type="number" min="-100" max="100" value="0" required></label></div><div class="sb-field"><label>y<input name="y" type="number" min="-100" max="100" value="0" required></label></div><button type="submit" class="sb-btn">Выбрать</button></form>';}
+function playback(sim,step){const f=sim.frames[Math.min(step,sim.frames.length-1)],max=sim.frames.length-1;return '<section class="sb-playback"><div class="sb-timeline-head"><h3 class="sb-timeline-title">Ход алгоритма</h3><output class="sb-timeline-counter">'+step+' / '+max+'</output></div><input class="sb-playback-range" id="timeline" type="range" min="0" max="'+max+'" value="'+step+'" aria-label="Шаг алгоритма"><div class="sb-playback-toolbar"><div class="sb-playback-actions">'+btn('←','back','aria-label="Предыдущая команда" '+(!step?'disabled':'')+' class="sb-btn sb-btn--icon"')+btn(playTimer?'Ⅱ Пауза':'▶ Запуск','play')+btn('→','forward','aria-label="Следующая команда" '+(step===max?'disabled':''))+btn('Следующий цикл','cycle')+btn('↺ Сброс','rewind')+'</div><div class="sb-playback-speed"><span class="sb-speed-label">Скорость</span><div class="sb-speed-segment">'+[.5,1,2].map(v=>'<button type="button" class="sb-speed-btn" data-action="speed" data-value="'+v+'" aria-pressed="'+(state.speed===v)+'">'+String(v).replace('.',',')+'×</button>').join('')+'</div></div></div></section><div class="sb-step-spotlight"><span class="sb-step-spotlight-label">ТЕКУЩИЙ ШАГ</span><span aria-live="'+(playTimer?'off':'polite')+'">'+frameText(f)+'</span></div>';}
+function frameText(f){if(!f.line)return 'Начало: координаты (0; 0). Проверьте начальное направление по условию.';const command={forward:'Вперёд',back:'Назад',right:'Направо',left:'Налево',up:'Поднять хвост',down:'Опустить хвост'}[f.kind];return command+(f.n!==undefined?' '+f.n:'')+'. '+(['right','left'].includes(f.kind)?'Повернулась только голова, координаты прежние. ':['up','down'].includes(f.kind)?'Положение и направление прежние. ':'Новое положение ('+fmt(f.x)+'; '+fmt(f.y)+'). ')+(f.context.length?'Повторение: '+f.context.join(' → ')+'. ':'')+(f.pen?'Хвост опущен.':'Хвост поднят, линия не рисуется.');}
+function codeMarkup(source,line){return source.split('\n').map((s,i)=>'<div class="code-line '+(i+1===line?'active':'')+'"><span>'+(i+1)+'</span><span>'+esc(s)+'</span></div>').join('');}
+function renderTurtle(){
+ const t=state.turtle,sim=M.simulate(t.source,t.heading);t.step=Math.min(t.step,sim.frames.length-1);const f=sim.frames[t.step];
+ $('instruction').innerHTML='<div class="sb-eyebrow">02 · Команда меняет состояние</div><h2 class="sb-h2">Поворот — на месте, движение — по направлению головы</h2><p class="lead">Вперёд — идём туда, куда смотрит Черепаха. Назад — отступаем, сохраняя направление головы. Поворот направо выполняется по часовой стрелке. Поднятый хвост не останавливает движение.</p><p class="sb-caption">Пунктир показывает перемещения без рисования. Он не становится границей фигуры.</p>';
+ $('scene-title').textContent='Проследите путь Черепахи';draw({sim,step:t.step});$('plot-note').textContent='Зелёная стрелка показывает положение и направление головы. Сетка — в единицах задачи, масштаб меняет только изображение.';
+ $('metrics').innerHTML=metric('Координаты','('+fmt(f.x)+'; '+fmt(f.y)+')')+metric('Направление',fmt(f.angle)+'°')+metric('Хвост',f.pen?'Опущен':'Поднят');$('controls').innerHTML=playback(sim,t.step);
+ $('settings').innerHTML=select('Готовый опыт','turtle-preset',t.preset,[['square','Квадрат'],['triangle','Треугольник: 10 повторений'],['pen','Поднятый хвост'],['rhombus','Вложенный цикл']])+select('Начальное направление','heading',String(t.heading),[['90','Вверх · +y'],['0','Вправо · +x'],['270','Вниз · −y'],['180','Влево · −x']]);$('key-question').textContent='Изменилась позиция, направление или только положение хвоста?';
+ $('activity').innerHTML='<h2 class="sb-h2">Измените длину, поворот или число повторений</h2><p class="sb-caption">Команды: Вперёд, Назад, Направо, Налево, Поднять хвост, Опустить хвост. Цикл: Повтори k […]. После изменения команд нажмите «Выполнить мой алгоритм».</p><label for="program" class="sb-caption">Ваш алгоритм</label><textarea id="program" class="code-editor" maxlength="5000" spellcheck="false">'+esc(t.draft)+'</textarea><div class="actions">'+btn('Выполнить мой алгоритм','apply-program')+'</div><div id="program-error" role="status"></div><h3 class="sb-h3" style="margin-top:20px">Какая строка выполняется?</h3><div class="code-view" id="running-code">'+codeMarkup(t.source,f.line)+'</div>';
+ $('explanation').innerHTML='<h2 class="sb-h2">Почему 10 повторений — не 10 треугольников?</h2><p class="lead">После трёх пар «Вперёд 8, Направо 120» Черепаха возвращается в начало и смотрит в прежнюю сторону. Дальше она обводит те же стороны. Повторно пройденная линия не создаёт новую площадь.</p><details><summary>Как это записать на Python</summary><pre class="code-view">'+esc(M.python(sim.tree,t.heading))+'</pre><p class="sb-caption">В turtle начальное направление — вправо. setheading задаёт направление явно. Длины умножают на scale, углы — нет.</p></details>';
+ lessonCards([['Внешний угол','Для равностороннего треугольника поворот равен 120°, а внутренний угол — 60°. Это разные углы.'],['Цикл не всегда рисует фигуру','Повтори 2 [Вперёд 6 Направо 90] рисует только две стороны квадрата. Проверяйте замыкание.'],['Не сбрасывайте направление','После цикла Черепаха остаётся там, куда пришла, и смотрит туда, куда повернулась. Следующая команда продолжает это состояние.']]);
 }
-function renderCode(f){
- const lines=codeLines(),prefix=f.phase<model.length,checks=f.phase<model.length+model.checks.length;
- const active=prefix?lines.findIndex(l=>l.includes("s =")):checks?lines.findIndex(l=>l.includes('    if')):lines.findIndex(l=>l.includes('count +=')||l.includes('print(number'));
- $('code').innerHTML=lines.map((l,i)=>'<div class="sb-code-line '+(i===active?'is-current':'')+'"><span>'+(i+1)+'</span><span>'+esc(l)+'</span></div>').join('');
- $('code-note').textContent=state.mode==='rules'&&config().target==='odd'?'Гибридное решение: перебираем только '+fmt(2**model.length)+' шаблонов Ч/Н, а цифры учитываем множителями.':'Python показывает способ решения. Песочница считает по префиксам: даже большой пример не требует полного перебора.';
+function pointsModel(){const p=state.points;return polygons(p.preset);}
+function renderPoints(){
+ const p=state.points,ps=pointsModel(),wanted=M.lattice(ps,p.op,p.boundary),shown=p.checked||p.reveal;
+ $('instruction').innerHTML='<div class="sb-eyebrow">03 · Считаем узлы, а не клетки</div><h2 class="sb-h2">Целочисленная точка — это пара целых координат</h2><p class="lead">У прямоугольника 6 × 5 площадь равна 30, строго внутренних точек — 5 × 4 = 20, а вместе с границей — 7 × 6 = 42. Это три разных ответа на три разных вопроса.</p><div class="two-col"><div class="sb-surface"><h3 class="sb-h3">Строго внутри</h3>Неравенства строгие: 0 &lt; x &lt; 6, 0 &lt; y &lt; 5.</div><div class="sb-surface"><h3 class="sb-h3">Вместе с границей</h3>Концы включены: 0 ≤ x ≤ 6, 0 ≤ y ≤ 5.</div></div>';
+ $('scene-title').textContent='Отметьте точки нужной области';draw({ps,op:p.op,points:true,boundary:p.boundary,marks:p.marks,reveal:shown,showResult:true,probe:p.probe});$('plot-note').textContent='Нажмите рядом с узлом сетки: точка выбирается, её координаты проверяются ниже. Оранжевые точки после проверки лежат на границах исходных фигур.';
+ $('metrics').innerHTML=metric('Отмечено точек',p.marks.length)+metric('Условие',p.boundary?'С границей':'Без границы')+metric('Нужно найти',shown?wanted.length:'?');
+ $('settings').innerHTML=select('Рисунок','point-preset',p.preset,[['rect','Два прямоугольника'],['triangle','Треугольник из пособия'],['overlap','Треугольник и квадрат']])+select('Нужная область','point-op',p.op,[['intersection','Пересечение'],['union','Объединение']])+'<label class="sb-toggle"><input type="checkbox" data-key="boundary" '+(p.boundary?'checked':'')+'>Учитывать границу</label><p class="sb-caption">Для объединения «без границы» здесь берём внутренность каждой исходной фигуры и объединяем её с другой. В этих примерах общих внутренних швов нет.</p>';
+ $('key-question').textContent='Точка лежит внутри, на линии или снаружи? Что именно разрешено условием?';
+ const probe=p.probe,positions=ps.map(poly=>M.locate(probe,poly)),names={inside:'внутри',boundary:'на границе',outside:'снаружи'};
+ $('activity').innerHTML='<h2 class="sb-h2">Проверьте конкретную точку</h2>'+coordinateForm('point','Точка')+'<div class="hint">Точка ('+probe.x+'; '+probe.y+'): '+positions.map((k,i)=>(i?'B':'A')+' — '+names[k]).join('; ')+'. <b>'+(M.belongs(probe,ps,p.op,p.boundary)?'Учитывается.':'Не учитывается.')+'</b></div><div class="actions">'+btn('Проверить все отмеченные','check-points')+btn('Показать точки и подсчёт по строкам','reveal')+btn('Убрать выбор','clear-marks')+'</div>';
+ if(p.checked){const keys=wanted.map(key),extra=p.marks.find(k=>!keys.includes(k)),missing=keys.find(k=>!p.marks.includes(k));$('activity').innerHTML+=fb(extra?'Точка ('+extra+') лишняя. Рассмотрите её положение относительно каждой фигуры.':missing?'Не хватает точки ('+missing+'). Проверьте эту строку сетки.':'Верно. Отмечены все нужные точки: '+wanted.length+'.',!extra&&!missing);}
+ $('explanation').innerHTML='<h2 class="sb-h2">Считайте по горизонтальным строкам</h2><p class="lead">Для каждого целого y найдите все подходящие целые x. Это особенно удобно при наклонной стороне: длина строки меняется.</p>'+(shown?'<table class="row-table"><thead><tr><th>Строка y</th><th>Количество точек</th></tr></thead><tbody>'+rowCounts(wanted).map(([y,n])=>'<tr><td>'+y+'</td><td>'+n+'</td></tr>').join('')+'</tbody></table><div class="formula">'+(rowCounts(wanted).map(x=>x[1]).join(' + ')||'0')+' = '+wanted.length+'</div>':'<p class="sb-caption">Таблица откроется после проверки или показа точек.</p>');
+ lessonCards([['Концы интервала','Между целыми a и b строго внутри — b − a − 1 целых чисел; с концами — b − a + 1.'],['Наклонная сторона','Точка может лежать на линии, даже если она не вершина. Проверяйте принадлежность всей стороне.'],['Общее условие','Для пересечения точка обязана пройти проверку обеих фигур. Одной подходящей фигуры недостаточно.']]);
 }
-function calculation(){
- const cf=config(),m=state.mode,L=model.length,n=model.chars.length;
- if(m==='numbers'){
-  if(cf.noRepeat||cf.alternate)return {title:cf.alternate?'Разбиваем по чётности':'Выбираем без повторений',formula:cf.alternate?'ЧНЧН… или НЧНЧ…':'n · (n − 1) · … · (n − k + 1)',text:cf.alternate?'У каждого шаблона перемножаем число допустимых цифр по позициям, затем складываем результаты. В первой позиции ноль исключён.':'Каждый использованный символ убираем из доступных. Если ноль запрещён в начале, сначала выбираем одну из '+(n-1)+' ненулевых цифр, а затем остальные без повторений.'};
-  return {title:'Правило произведения',formula:(cf.noZero?'('+n+' − 1) × '+n+'^'+(L-1):n+'^'+L),text:'Для каждой позиции считаем число независимых вариантов. '+(cf.noZero?'В первой позиции '+(n-1)+' цифр; в каждой следующей — '+n+'.':'В каждой из '+L+' позиций — '+n+' символов.')};
- }
- if(m==='rules'&&cf.predecessor)return {title:'Склеиваем «АЙ» в один блок',formula:(L-1)+' × 5^'+(L-2),text:'Начало блока «АЙ» можно выбрать '+(L-1)+' способами. В остальных '+(L-2)+' позициях доступны С, Л, У, Ч, А. Й уже использована ровно один раз.'};
- if(m==='rules'&&cf.target==='odd'){
-  const q=state.rules.oddCount,E=Math.ceil(n/2),O=Math.floor(n/2),startsEven=C.choose(L-q,q),startsOdd=q?C.choose(L-q,q-1):0;
-  return {title:'Сначала шаблоны, затем цифры',formula:fmt(startsEven)+' × '+(E-1)+' × '+E+'^'+Math.max(0,L-q-1)+' × '+O+'^'+q+' + '+fmt(startsOdd)+' × '+E+'^'+(L-q)+' × '+O+'^'+q,text:'Шаблонов с первой чётной: '+fmt(startsEven)+'; с первой нечётной: '+fmt(startsOdd)+'. Ноль считается чётным, но не может стоять первым. Невозможные группы дают 0 вариантов.'};
- }
- if(m==='rules')return {title:'Выбираем место для У',formula:L+' × 2^'+(L-1),text:'Ровно одну У ставим на одно из '+L+' мест. Каждое другое место заполняем А или С. При одной У запрет соседства выполняется автоматически.'};
- if(m==='perms'){
-  const w=state.perms.word,counts=model.chars.map(c=>[...w].filter(x=>x===c).length),den=counts.filter(x=>x>1).map(x=>x+'!').join(' × ')||'1';
-  return {title:'Убираем повторный подсчёт',formula:L+'! / ('+den+')'+(cf.forbidFirst?' − варианты с «'+cf.forbidFirst+'» в начале':''),text:'Одинаковые буквы неразличимы. Сначала считаем все уникальные перестановки: '+fmt(model.rawTotal)+'. '+(cf.forbidFirst?'Затем вычитаем '+fmt(model.rawTotal-model.validTotal)+' вариантов, начинающихся с запрещённой буквы.':'Ограничения первой буквы нет.')};
- }
- const first=model.validTotal?model.wordAt(0,true):'';
- return {title:'Номер = значение записи + 1',formula:first?first+' → '+[...first].map(c=>model.chars.indexOf(c)).join('')+' в основании '+n+' → №'+fmt(model.rankOf(first)+1):'Подходящих слов нет',text:'Это первое подходящее слово. Номер определяется среди ВСЕХ слов списка, включая не прошедшие условия. Нумерация начинается с 1.'};
+function measureModel(){const m=state.measure,ps=polygons(m.preset);const poly=resultPoly(ps,m.op);return {ps,poly,value:m.kind==='area'?resultArea(ps,m.op):M.perimeter(poly||[])};}
+function renderMeasure(){
+ const m=state.measure,{ps,poly,value}=measureModel();
+ $('instruction').innerHTML='<div class="sb-eyebrow">04 · Выбираем правильную величину</div><h2 class="sb-h2">'+(m.kind==='area'?'Площадь — сколько места занимает область':'Периметр — длина границы выбранной области')+'</h2><p class="lead">'+(m.kind==='area'?'Разбейте область на непересекающиеся части или вычтите повторно учтённую площадь. Площадь одной единичной клетки равна 1.':'Обведите контур нужной области. Линии исходных фигур, которые оказались внутри неё или вне её, в периметр не входят.')+'</p>';
+ $('scene-title').textContent=m.kind==='area'?'Площадь выбранной области':'Проследите границу';draw({ps,op:m.op,showResult:true,edgeLabels:m.checked&&m.kind==='perimeter'});$('plot-note').textContent='Сначала вычислите результат. После проверки на контуре появятся длины сторон, если выбран периметр.';
+ $('metrics').innerHTML=metric('Величина',m.kind==='area'?'S':'P')+metric('Единицы',m.kind==='area'?'кв. ед.':'единицы')+metric('Результат',m.checked?fmt(value):'?');
+ $('settings').innerHTML=select('Пример','measure-preset',m.preset,[['rect','Два прямоугольника'],['perimeter','Два 12-угольника'],['rhombus','Ромб из вложенного цикла']])+select('Что считаем','measure-kind',m.kind,[['area','Площадь'],['perimeter','Периметр']])+(m.kind==='area'&&ps.length>1?select('Нужная область','measure-op',m.op,[['intersection','Пересечение'],['union','Объединение']]):'<p class="sb-caption">'+(ps.length>1?'Периметр пересечения двух фигур.':'Изучаем одну замкнутую фигуру.')+'</p>');$('key-question').textContent='В условии просят квадратные единицы или длину контура?';
+ $('activity').innerHTML=answerForm(m.answer,'Ваш результат','Допустима десятичная дробь с точкой или запятой.')+(m.checked?fb((answerNumber(m.answer)!==null&&Math.abs(answerNumber(m.answer)-value)<.01?'Верно. ':'Пока не совпало. ')+(m.kind==='area'?'Площадь':'Периметр')+' = '+fmt(value)+(m.kind==='area'?' кв. ед.':' ед.'),answerNumber(m.answer)!==null&&Math.abs(answerNumber(m.answer)-value)<.01):'');
+ let explanation='';if(m.preset==='rect'){const i=M.area(M.clip(...ps));explanation=m.kind==='area'?(m.op==='union'?'S(A) + S(B) − S(A ∩ B) = 30 + 20 − '+i+' = '+fmt(value):'Общая часть — прямоугольник 3 × 3. S = 9.'):'Общая часть — прямоугольник 3 × 3. P = 2 × (3 + 3) = 12.';}
+ if(m.preset==='rhombus')explanation=m.kind==='area'?'Ромб: S = a² sin 45° = 36 × √2 / 2 = 18√2 ≈ 25,456. Если просят целую часть, ответ 25.':'Четыре стороны по 6: P = 4 × 6 = 24. Высота нужна для площади, но не для периметра.';
+ if(m.preset==='perimeter')explanation=m.kind==='perimeter'?'На границе пересечения четыре стороны длиной 13 и две стороны длиной 13 − 5 = 8. P = 4 × 13 + 2 × 8 = 68. Соединительный отрезок длиной 5 не является короткой стороной пересечения.':'Общая фигура — шестиугольник. Её можно разбить на простые части. Точный расчёт по координатам вершин даёт S ≈ '+fmt(value)+'.';
+ $('explanation').innerHTML='<h2 class="sb-h2">Разбор</h2>'+(m.checked?'<p class="lead">'+explanation+'</p>':'<p class="sb-caption">Предложите ответ, чтобы открыть ход решения.</p>')+'<details><summary>Формулы, которые стоит узнавать</summary><div class="boundary-tags"><span>Прямоугольник: S = ab</span><span>Треугольник: S = ah / 2</span><span>Параллелограмм: S = ah</span><span>Ромб: S = a² sin α</span><span>Трапеция: S = (a + b)h / 2</span></div><p class="sb-caption">h — перпендикулярная высота. Наклонная сторона обычно не равна высоте.</p></details>';
+ lessonCards([['Складывайте нужное','Для объединения складывают площади с вычитанием общей части. Периметры так складывать нельзя.'],['Не измеряйте по экрану','Масштаб рисунка произвольный. Длины берут из команд и геометрических связей.'],['Целая часть','Для положительного числа 25,456 целая часть равна 25. Это отбрасывание дробной части, а не округление.']]);
 }
-function renderCalculation(){
- const a=calculation();$('calc-title').textContent=a.title;$('calc-formula').textContent=hiddenAnswer()?'Сначала предложите свой ответ':a.formula;$('calc-text').textContent=hiddenAnswer()?'Введите ответ в блоке «Проверь себя». После проверки появятся формула и точный результат.':a.text;
- $('calc-answer').textContent=hiddenAnswer()?'?':fmt(expected());$('calc-answer-label').textContent=state.mode==='order'?'Номер первого подходящего слова':'Подходящих вариантов';
- const cf=config();$('templates').hidden=!(state.mode==='rules'&&cf.target==='odd'||state.mode==='numbers'&&cf.alternate);
- if(!$('templates').hidden){
-  const templateModel=C.createModel({alphabet:'ЧН',length:model.length,target:'Н',targetCount:state.mode==='rules'?state.rules.oddCount:undefined,noAdjacent:state.mode==='rules'?'Н':undefined});
-  let templates=[];
-  if(state.mode==='numbers')templates=[Array.from({length:model.length},(_,i)=>i%2?'Н':'Ч').join(''),Array.from({length:model.length},(_,i)=>i%2?'Ч':'Н').join('')];
-  else for(let i=0;i<Math.min(6,templateModel.validTotal);i++)templates.push(templateModel.wordAt(i,true));
-  $('template-list').innerHTML=templates.map(t=>'<span class="template-chip">'+t+'</span>').join('');
-  $('template-note').textContent='Ч — чётная, Н — нечётная цифра. '+(state.mode==='rules'?'Показаны первые '+Math.min(6,templateModel.validTotal)+' из '+fmt(templateModel.validTotal)+' допустимых шаблонов.':'Два возможных шаблона чередования.');
- }
+function answerNumber(s){if(!/^\s*\d+(?:[.,]\d+)?\s*$/.test(s))return null;return Number(s.trim().replace(',','.'));}
+function answerForm(value,label='Ваш ответ',hint='Введите число без единиц измерения.'){return '<h2 class="sb-h2">Сначала ваш ответ</h2><form id="answer-form" class="form-row"><div class="sb-field"><label>'+label+'<input id="answer" type="text" inputmode="decimal" maxlength="32" value="'+esc(value)+'" required autocomplete="off"></label></div><button type="submit" class="sb-btn sb-btn--primary">Проверить</button></form><p class="sb-caption">'+hint+'</p><div id="answer-error" role="status"></div>';}
+const EXAMS={
+ triangle:{preset:'triangle',question:'Повтори 10 [Вперёд 8 Направо 120]. Сколько целочисленных точек строго внутри полученной области? Начало — (0; 0), направление вверх.',kind:'points',op:'intersection',hints:['После трёх повторений контур уже замкнулся. Остальные повторения его обводят.','Получается равносторонний треугольник. Исключите вертикальную сторону x = 0.','Сумма по горизонтальным строкам: 1 + 2 + 4 + 6 + 4 + 2 + 1.'],explain:'Всего 24 точки. Угол поворота 120°, внутренний угол треугольника 60°. Десять повторений не создают десять новых областей.'},
+ overlap:{preset:'overlap',question:'Сначала строится треугольник со стороной 12, затем квадрат со стороной 5. Сколько целочисленных точек строго внутри пересечения? Начало — (0; 0), направление вверх.',kind:'points',op:'intersection',hints:['Нужны точки, лежащие строго внутри обеих фигур одновременно.','После первого цикла Черепаха в начале и смотрит вверх. Квадрат занимает 3 ≤ x ≤ 8, 5 ≤ y ≤ 10.','Проверьте строки y = 6, 7, 8, 9. Наклонная сторона треугольника отсекает часть точек.'],explain:'В строках y = 6, 7, 8, 9 находятся 4, 4, 3 и 2 точки. Всего 13. Точки на стороне квадрата или треугольника исключены.'},
+ perimeter:{preset:'perimeter',question:'Два правильных 12-угольника строятся вложенными циклами. Найдите периметр их пересечения. Начало — (0; 0), направление вниз.',kind:'perimeter',op:'intersection',hints:['Внутренний цикл рисует правильный 12-угольник: 12 поворотов по 30°.','Отрезок Вперёд 5 сдвигает начало второй фигуры. Это не длина стороны пересечения.','На контуре четыре стороны по 13 и две по 13 − 5.'],explain:'P = 4 × 13 + 2 × (13 − 5) = 68. В пособии указано 62: там длину соединителя 5 ошибочно приняли за короткую сторону пересечения.'},
+ union:{preset:'union',question:'Найдите площадь объединения фигур, построенных алгоритмом. Используйте размеры из условия: вторая фигура — 10 × 14. Начало — (0; 0), направление вверх.',kind:'area',op:'union',hints:['Первая фигура — 6 × 12, вторая — 14 × 10. Повторы обводят те же прямоугольники.','Первый цикл заканчивается в (6; 12), голова смотрит вниз. Поднятый хвост переносит в (5; 7).','Пересечение — прямоугольник 5 × 7. Вычтите его площадь из суммы площадей.'],explain:'S = 6 × 12 + 14 × 10 − 5 × 7 = 177. В пособии условие содержит 10 и 14, а Python-код — 5 и 10. Ответ 97 относится к размерам из кода. Здесь используется исходное условие.'},
+ unionFixed:{preset:'unionFixed',question:'Учебный вариант: во втором цикле Вперёд 5 и Вперёд 10. Найдите площадь объединения. Начало — (0; 0), направление вверх.',kind:'area',op:'union',hints:['Первый прямоугольник — 6 × 12, второй — 10 × 5.','Общая часть имеет размеры 5 × 5.','Сложите 72 и 50, затем вычтите 25.'],explain:'S = 72 + 50 − 25 = 97. В этом варианте взяты размеры 5 и 10 из Python-кода пособия.'},
+ rhombus:{preset:'rhombus',question:'Повтори 10 [Повтори 2 [Вперёд 6 Направо 45] Направо 90]. Найдите целую часть площади. Начало — (0; 0), направление вверх.',kind:'floor',op:'intersection',hints:['Два внешних повторения замыкают ромб. Следующие обводят тот же контур.','Все стороны равны 6. Для площади используйте угол 45° или 135°: синус одинаков.','S = 6² × sin 45° = 18√2 ≈ 25,456. Требуется целая часть.'],explain:'Площадь ромба 18√2 ≈ 25,456. Целая часть равна 25. Количество точек и длина контура к этому вопросу не относятся.'},
+ star:{preset:'star',question:'Учебное уточнение задачи 1: сколько отдельных треугольных областей образовано пересечениями отрезков? Каждая область не содержит других отрезков внутри. Начало — (0; 0), направление вправо.',kind:'faces',op:'intersection',hints:['Не считайте большие треугольники, внутри которых проходят дополнительные отрезки.','Один полный путь повторяется через восемь пар команд. Повторная линия не создаёт область.','Найдите маленькие треугольники у восьми направлений звезды. Четырёхугольники и центральная область не учитываются.'],explain:'Восемь элементарных треугольных областей. Всего элементарных ограниченных областей у этого следа 17: ещё восемь четырёхугольников и одна центральная область. В пособии ответ 8 назван количеством фигур, поэтому здесь вопрос уточнён до треугольных областей.'}
+};
+function examWork(){const id=state.exam.id;if(!state.exam.work[id])state.exam.work[id]={answer:'',checked:false,step:0,marks:[],hint:0};return state.exam.work[id];}
+function examModel(){const e=EXAMS[state.exam.id],p=M.PRESETS[e.preset],sim=M.simulate(p.source,p.heading),ps=sim.polygons.slice(0,2),poly=resultPoly(ps,e.op)||[],faces=e.kind==='faces'?M.faces(sim.segments):[];const value=e.kind==='points'?M.lattice(ps,e.op).length:e.kind==='perimeter'?M.perimeter(poly):e.kind==='area'?resultArea(ps,e.op):e.kind==='floor'?Math.floor(M.area(poly)):faces.filter(f=>f.length===3).length;return {e,p,sim,ps,poly,faces,value};}
+function renderExam(){
+ const w=examWork(),{e,p,sim,ps,poly,faces,value}=examModel();w.step=Math.min(w.step,sim.frames.length-1);const done=w.step===sim.frames.length-1;
+ $('instruction').innerHTML='<div class="sb-eyebrow">05 · Прочитайте, что требуется найти</div><h2 class="sb-h2">'+esc(p.name)+'</h2><p class="lead">'+esc(e.question)+'</p><div class="code-view" id="running-code">'+codeMarkup(p.source,sim.frames[w.step].line)+'</div>';
+ $('scene-title').textContent=w.checked?'Сравните рисунок и решение':'Постройте рисунок по шагам';draw({ps:done?ps:[],sim,step:w.step,op:e.op,showResult:done&&w.checked,points:done&&e.kind==='points',reveal:done&&w.checked,faces:done&&e.kind==='faces'?faces:null,marks:w.marks,edgeLabels:done&&w.checked&&e.kind==='perimeter'});$('plot-note').textContent=e.kind==='faces'?'После построения нажимайте на маленькие области, чтобы отметить найденные треугольники.':e.kind==='points'?'После построения можно нажимать на точки. Общий ответ скрыт до вашей проверки.':'Зелёная область появляется после проверки ответа и полного построения.';
+ $('metrics').innerHTML=metric('Что ищем',{points:'Точки',perimeter:'Периметр',area:'Площадь',floor:'Целую часть S',faces:'Треугольники'}[e.kind])+metric('Шаг',w.step+' / '+(sim.frames.length-1))+metric('Ответ',w.checked?fmt(value):'?');$('controls').innerHTML=playback(sim,w.step);
+ $('settings').innerHTML=select('Задача','exam-id',state.exam.id,Object.entries(EXAMS).map(([id,e])=>[id,M.PRESETS[e.preset].name]))+'<p class="sb-caption">У каждой задачи сохраняются свой ответ, шаг и подсказки. Ответ откроется после проверки.</p><div class="actions">'+btn('Построить целиком','finish')+'</div>';
+ $('key-question').textContent='Какая область нужна, учитывается ли граница, какую величину просят?';
+ $('activity').innerHTML=answerForm(w.answer)+(w.checked?fb((answerNumber(w.answer)!==null&&Math.abs(answerNumber(w.answer)-value)<.001?'Верно. ':'Ответ отличается. ')+'Получается '+fmt(value)+'.',answerNumber(w.answer)!==null&&Math.abs(answerNumber(w.answer)-value)<.001):'')+'<div class="actions">'+btn('Подсказка '+Math.min(3,w.hint+1)+' / 3','hint',w.hint>=3?'disabled':'')+'</div>'+e.hints.slice(0,w.hint).map((h,i)=>'<div class="hint"><b>Шаг '+(i+1)+'.</b> '+h+'</div>').join('');
+ $('explanation').innerHTML='<h2 class="sb-h2">Разбор решения</h2>'+(w.checked?'<p class="lead">'+esc(e.explain)+'</p>'+(e.kind==='points'?'<div class="formula">'+rowCounts(M.lattice(ps,e.op)).map(a=>a[1]).join(' + ')+' = '+value+'</div>':''):'<p class="sb-caption">Разбор появится после проверки. Подсказки можно открывать постепенно.</p>')+'<details><summary>Программа на Python</summary><pre class="code-view">'+esc(M.python(sim.tree,p.heading))+'</pre><p class="sb-caption">Программа строит след и сетку. Ответ получают отдельным анализом нужной области. Для больших рисунков уменьшите scale и подберите диапазон сетки.</p></details>';
+ lessonCards([['1. Прочитайте вопрос','Не начинайте с подсчёта: сначала определите, нужны фигуры, точки, площадь или периметр.'],['2. Восстановите состояние','Запишите стартовое направление. Отслеживайте положение головы и хвоста после каждого цикла.'],['3. Проверьте границы','Для точек перечитайте слова «внутри» и «включая границу». Для площади исключите повторный подсчёт.']]);
 }
-function renderRank(f){
- $('rank-panel').hidden=state.mode!=='order';if(state.mode!=='order')return;
- const digits=[...f.word].map(c=>model.chars.indexOf(c));
- $('rank-map').textContent=model.chars.map((c,i)=>c+' = '+i).join(' · ');
- $('rank-formula').textContent=digits.map((d,i)=>d+' × '+model.chars.length+'^'+(model.length-i-1)).join(' + ')+' + 1 = '+fmt(f.rank+1);
- $('rank-word').value=f.word;
+function rerenderSection(){const focus=document.activeElement?.dataset?.key;({regions:renderRegions,turtle:renderTurtle,points:renderPoints,measure:renderMeasure,exam:renderExam}[state.section])();if(focus)document.querySelector('[data-key="'+focus+'"]')?.focus({preventScroll:true});}
+function activeSim(){return state.section==='turtle'?M.simulate(state.turtle.source,state.turtle.heading):examModel().sim;}
+function activeWork(){return state.section==='turtle'?state.turtle:examWork();}
+function stop(save=true){if(playTimer){clearInterval(playTimer);playTimer=null;if(save)persist();}}
+function refreshPlayback(){
+ // Обновляем только сцену, шкалу и подсветку: введённый ответ и фокус не теряются.
+ const w=activeWork(),sim=activeSim(),f=sim.frames[w.step];
+ if(state.section==='turtle'){draw({sim,step:w.step});$('metrics').innerHTML=metric('Координаты','('+fmt(f.x)+'; '+fmt(f.y)+')')+metric('Направление',fmt(f.angle)+'°')+metric('Хвост',f.pen?'Опущен':'Поднят');}
+ else{const {e,ps,faces,value}=examModel(),done=w.step===sim.frames.length-1;draw({ps:done?ps:[],sim,step:w.step,op:e.op,showResult:done&&w.checked,points:done&&e.kind==='points',reveal:done&&w.checked,marks:w.marks,faces:done&&e.kind==='faces'?faces:null,edgeLabels:done&&w.checked&&e.kind==='perimeter'});$('metrics').innerHTML=metric('Что ищем',{points:'Точки',perimeter:'Периметр',area:'Площадь',floor:'Целую часть S',faces:'Треугольники'}[e.kind])+metric('Шаг',w.step+' / '+(sim.frames.length-1))+metric('Ответ',w.checked?fmt(value):'?');}
+ $('controls').innerHTML=playback(sim,w.step);if($('running-code'))$('running-code').innerHTML=codeMarkup(state.section==='turtle'?state.turtle.source:examModel().p.source,f.line);
 }
-function renderTable(){
- const pageSize=6,filtered=state.filter==='valid',total=filtered?model.validTotal:model.rawTotal;
- state.tablePage=Math.max(0,Math.min(state.tablePage,Math.max(0,Math.ceil(total/pageSize)-1)));
- const start=state.tablePage*pageSize;let html='';
- for(let i=start;i<Math.min(start+pageSize,total);i++){
-  const word=model.wordAt(i,filtered),rank=filtered?model.rankOf(word):i,valid=model.isValid(word);
-  html+='<button type="button" class="result-row" data-rank="'+rank+'" aria-pressed="'+(frame().rank===rank)+'"><span class="result-num">№'+fmt(rank+1)+'</span><strong>'+esc(word)+'</strong><span class="result-verdict '+(valid?'good':'bad')+'">'+(valid?'✓ Подходит':'× Отклонён')+'</span></button>';
- }
- $('rows').innerHTML=html||'<p class="sb-empty">Подходящих вариантов нет. Измените параметры.</p>';
- $('table-counter').textContent=total?fmt(start+1)+'–'+fmt(Math.min(start+pageSize,total))+' из '+fmt(total):'0 вариантов';
- $('table-prev').disabled=state.tablePage===0;$('table-next').disabled=start+pageSize>=total;
- $('filter-all').setAttribute('aria-pressed',String(!filtered));$('filter-valid').setAttribute('aria-pressed',String(filtered));
-}
-function basicResult(){const b=state.basics,n=b.n,k=b.k;return b.kind==='rep'?n**k:b.kind==='arr'?(k>n?0:C.factorial(n)/C.factorial(n-k)):b.kind==='perm'?C.factorial(n):b.kind==='multi'?360:b.kind==='comb'?C.choose(n,k):C.choose(n+k-1,k);}
-function renderBasics(){
- const b=state.basics,n=b.n,k=b.k;
- const dict={rep:['Размещения с повторениями','nᵏ',n+'^'+k,'Порядок важен. Каждый символ можно использовать снова.'],arr:['Размещения без повторений','n! / (n − k)!',n+'! / ('+n+' − '+k+')!','Порядок важен. Выбранный символ больше недоступен.'],perm:['Перестановки без повторений','n!',n+'!','Используем все различные элементы, изменяя их порядок.'],multi:['Перестановки с повторяющимися элементами','n! / (n₁! · n₂! · …)','6! / 2!','В слове «МАШИНА» две одинаковые А. Обмен этих А не создаёт нового слова.'],comb:['Сочетания без повторений','n! / (k! · (n − k)!)',n+'! / ('+k+'! × '+(n-k)+'!)','Порядок не важен. АБ и БА — один выбор. Повторений нет.'],combRep:['Сочетания с повторениями','(n + k − 1)! / (k! · (n − 1)!)',(n+k-1)+'! / ('+k+'! × '+(n-1)+'!)','Порядок не важен. Один тип элемента можно выбирать несколько раз.']};
- const [name,formula,sub,text]=dict[b.kind];$('basic-title').textContent=name;$('basic-formula').textContent=formula;$('basic-substitution').textContent=hiddenAnswer()?'Сначала предложите свой ответ':sub+' = '+fmt(basicResult());$('basic-explanation').textContent=text;
- const isComb=b.kind.startsWith('comb'),repeats=['rep','multi','combRep'].includes(b.kind),all=['perm','multi'].includes(b.kind);
- $('basic-decisions').innerHTML=[['Порядок',isComb?'Не важен':'Важен'],['Повторения',repeats?'Есть / разрешены':'Нет'],['Используем',all?'Все элементы':'Часть или заданное число']].map(([a,v])=>'<div class="decision"><span>'+a+'</span><b>'+v+'</b></div>').join('');
- let examples=[];
- if(b.kind==='multi')examples=['МАШИНА','МАШИАН','АМАШИН','ААМШИН'];
- else{
-  const chars='АБВГДЕЖЗ'.slice(0,n),len=all?n:k;
-  if(len<=n||repeats){
-   function visit(prefix,start){if(examples.length>=8)return;if(prefix.length===len){examples.push(prefix);return;}for(let i=isComb?start:0;i<n;i++){if(!repeats&&prefix.includes(chars[i]))continue;visit(prefix+chars[i],isComb?(repeats?i:i+1):0);if(examples.length>=8)return;}}
-   visit('',0);
-  }
- }
- $('basic-examples').innerHTML=examples.map(w=>'<div class="example-word">'+esc(w)+'</div>').join('')||'<p class="sb-caption">Выбрать '+k+' различных элементов из '+n+' невозможно: ответ 0.</p>';
- $('basic-count-label').textContent='Показано '+examples.length+' примеров из '+(hiddenAnswer()?'?':fmt(basicResult()))+'. '+(isComb?'В сочетаниях буквы показаны в одном порядке, чтобы не считать один выбор повторно.':'Меняя порядок букв, получаем другой вариант.');
-}
-function expected(){if(state.mode==='basics')return basicResult();if(state.mode==='order')return model.validTotal?model.rankOf(model.wordAt(0,true))+1:0;return model.validTotal;}
-function renderPractice(){
- const concealed=hiddenAnswer();
- $('explorer').hidden=state.mode==='basics'||concealed;$('basics-scene').hidden=state.mode!=='basics'||concealed;$('analysis').hidden=state.mode==='basics'||concealed;$('results-card').hidden=state.mode==='basics'||concealed;$('lesson-cards').hidden=concealed;
- const m=state.mode;$('practice-card').hidden=!state.practice[m];$('prediction').value=state.answers[m]||'';
- $('question').textContent=m==='order'?'Под каким номером находится первое подходящее слово? Если таких слов нет, введите 0.':'Сколько различных вариантов получится при текущих параметрах?';
- $('feedback').hidden=!state.checked[m];
- if(state.checked[m]){const ok=Number((state.answers[m]||'').replace(/\s/g,''))===expected();$('feedback').className='sb-quiz-feedback '+(ok?'is-success':'is-error');$('feedback').textContent=(ok?'Верно! ':'Ответ отличается. ')+'Правильный ответ: '+fmt(expected())+'. Сравните свой ход решения с разбором.';}
-}
-function renderLessons(){
- const texts={basics:['Сначала три вопроса: важен ли порядок, есть ли повторения, используем ли все элементы?','При n = 4 и k = 3 сравните размещения и сочетания. Объясните, откуда берётся деление на 3!.','Повторение выбора элемента и одинаковые элементы в исходном слове — разные ситуации.'],numbers:['Независимые варианты перемножаются. Несовместимые случаи складываются.','Включите чередование чётности. Сравните 5-значные восьмеричные и 6-значные семиричные числа.','Ноль — чётная цифра. Внутри числа он допустим, а в первой позиции многозначного числа — нет.'],rules:['Сначала считаем расположения типов символов. Затем заполняем каждую позицию допустимыми буквами или цифрами.','В примере «СЛУЧАЙ» увеличьте длину на 1. Для нечётных цифр сравните шаблоны с разной первой позицией.','«Ровно одна» и «не более одной» — разные условия. «Сразу после» требует соседства.'],perms:['Для одинаковых букв делим n! на факториалы их количеств. Запрещённое начало удобно вычесть из общего числа.','Сравните «МЕЧТА», «МАШИНА» и «МОЛОДЕЖЬ». Запретите первую букву, которая повторяется.','permutations() различает позиции одинаковых букв. Без устранения дублей счётчик завысит ответ.'],order:['Цифра буквы — её индекс в отсортированном алфавите. Номер слова равен значению записи плюс 1.','Нажмите «Первое подходящее». Для АПАПА получится запись 01010 в основании 5 и номер 131.','Счётчик номера увеличивается для каждого слова, а не только для подходящих. Не забудьте прибавить 1.']};
- $('lesson-cards').innerHTML=texts[state.mode].map((t,i)=>'<section class="sb-card"><h3 class="sb-h3">'+['Идея и формула','Что попробовать','Типичная ошибка'][i]+'</h3><p class="sb-caption">'+t+'</p></section>').join('');
-}
-function stop(save=true){PatternUI.stop(save);if(timer){clearInterval(timer);timer=null;if(save)persist();}if($('play'))$('play').textContent='▶ Запуск';}
-function move(step,user=true){if(user)stop(false);state.steps[state.mode]=Math.max(0,Math.min(totalSteps()-1,step));renderFrame();if(user)persist();}
-function resetExperience(){stop(false);state.steps[state.mode]=0;state.checked[state.mode]=false;state.tablePage=0;render();persist();}
-function applySettings(){
- const m=state.mode;const candidate={...state[m]};
- $('fields').querySelectorAll('[data-key]').forEach(el=>{candidate[el.dataset.key]=el.type==='checkbox'?el.checked:el.type==='number'?Number(el.value):el.tagName==='SELECT'?el.value:el.value.trim().toUpperCase();});
- let error='';
- $('fields').querySelectorAll('input[type=number]').forEach(el=>{if(!Number.isInteger(+el.value)||el.value===''||+el.value<+el.min||+el.value>+el.max)error='Поле «'+el.closest('label').firstChild.textContent+'»: введите целое число от '+el.min+' до '+el.max+'.';});
- if(m==='perms'&&!/^[А-ЯЁA-Z]{1,9}$/u.test(candidate.word))error='Введите от 1 до 9 букв без пробелов и знаков.';
- if(m==='order'){
-  if(!/^[А-ЯЁA-Z]{2,8}$/u.test(candidate.alphabet)||C.unique(candidate.alphabet).length<2)error='Алфавит должен содержать от 2 до 8 букв, хотя бы две различные.';
-  candidate.alphabet=C.unique(candidate.alphabet).sort((a,b)=>a.localeCompare(b,'ru')).join('');
-  if(candidate.maxU>candidate.length)error='Число букв У не может превышать длину слова.';
- }
- if(m==='rules'&&candidate.preset==='odd'&&candidate.oddCount>candidate.length)error='Нечётных цифр не может быть больше, чем позиций.';
- if(error){$('field-error').textContent=error;$('field-error').hidden=false;return;}
- if(m==='perms'&&!candidate.word.includes(candidate.forbidFirst))candidate.forbidFirst='';
- if(m==='rules'&&candidate.preset!==state.rules.preset){if(candidate.preset==='odd'){candidate.length=12;candidate.base=8;candidate.oddCount=5;}else candidate.length=candidate.preset==='ay'?7:5;}
- state[m]=candidate;resetExperience();
-}
-$('settings-form').addEventListener('submit',e=>{e.preventDefault();applySettings();});
-$('app').addEventListener('click',e=>{
- const b=e.target.closest('button');if(!b||loading)return;
- if(b.dataset.paction){PatternUI.settingsAction(b);return;}
- if(b.dataset.mode){state.mode=b.dataset.mode;state.filter='all';render();persist();return;}
- if(b.dataset.speed){state.speed=+b.dataset.speed;const playing=!!timer;stop(false);if(playing)play();else renderFrame();persist();return;}
- if(b.dataset.rank!==undefined){move(+b.dataset.rank*(model.length+model.checks.length+1));return;}
- const a=b.dataset.action;if(!a)return;
- if(a==='back')move(state.steps[state.mode]-1);
- if(a==='forward')move(state.steps[state.mode]+1);
- if(a==='stage'){const f=frame();move((f.rank+1)*f.span);}
- if(a==='reset')move(0);
- if(a==='play'){if(timer){stop();renderFrame();}else play();}
- if(a==='end'){move(totalSteps()-1);}
- if(a==='first-valid'){if(model.validTotal)move(model.rankOf(model.wordAt(0,true))*(model.length+model.checks.length+1));}
- if(a==='code'){state.codeOpen=!state.codeOpen;renderFrame();persist();}
- if(a==='table-prev'||a==='table-next'){state.tablePage+=a==='table-next'?1:-1;renderTable();}
- if(a==='filter-all'||a==='filter-valid'){state.filter=a==='filter-valid'?'valid':'all';state.tablePage=0;renderTable();}
- if(a==='preset-number'){state.numbers={base:8,length:5,noZero:true,noRepeat:false,alternate:false};resetExperience();}
- if(a==='preset-alternate'){state.numbers={base:7,length:6,noZero:true,noRepeat:false,alternate:true};resetExperience();}
- if(a==='preset-rule'){state.rules=state.rules.preset==='odd'?{preset:'odd',length:12,base:8,oddCount:5}:state.rules.preset==='letter'?{preset:'letter',length:5,base:8,oddCount:1}:{preset:'ay',length:7,base:8,oddCount:5};resetExperience();}
- if(a==='preset-word'){state.perms={word:b.dataset.word,forbidFirst:b.dataset.word==='МОЛОДЕЖЬ'?'Ь':''};resetExperience();}
- if(a==='preset-order'){state.order={alphabet:'АПРСУ',length:5,maxU:1,noAA:true};resetExperience();}
+function move(step,debounce=false){stop(false);const w=activeWork();w.step=Math.max(0,Math.min(activeSim().frames.length-1,step));refreshPlayback();persist(debounce);}
+function play(){const w=activeWork(),max=activeSim().frames.length-1;if(w.step>=max)w.step=0;playTimer=setInterval(()=>{w.step=Math.min(max,w.step+1);if(w.step===max)stop();refreshPlayback();},650/state.speed);refreshPlayback();persist();}
+function toggleMark(k){const r=state.section==='regions'?state.regions:state.section==='points'?state.points:examWork();r.marks=r.marks.includes(k)?r.marks.filter(x=>x!==k):[...r.marks,k];r.checked=false;r.reveal=false;}
+$('app').addEventListener('click',event=>{
+ if(loading)return;const b=event.target.closest('button[data-action]');if(!b)return;const a=b.dataset.action,v=b.dataset.value;
+ if(a==='section'){stop();state.section=v;render();persist();return;}
+ if(a==='next-section'){stop();state.section=SECTIONS[(SECTIONS.findIndex(s=>s[0]===state.section)+1)%5][0];render();persist();$('title').scrollIntoView({block:'start',behavior:'auto'});return;}
+ if(['zoom-in','zoom-out','fit'].includes(a)){zoom=a==='fit'?1:Math.max(.65,Math.min(2,zoom*(a==='zoom-in'?1.2:1/1.2)));if(['turtle','exam'].includes(state.section))refreshPlayback();else rerenderSection();return;}
+ if(a==='op'){state.regions.op=v;state.regions.marks=[];state.regions.checked=false;state.regions.reveal=false;rerenderSection();persist();return;}
+ if(a==='check-regions'){state.regions.checked=true;rerenderSection();persist();return;}
+ if(a==='check-points'){state.points.checked=true;rerenderSection();persist();return;}
+ if(a==='reveal'){state[state.section].reveal=true;rerenderSection();persist();return;}
+ if(a==='clear-marks'){state[state.section].marks=[];state[state.section].checked=false;state[state.section].reveal=false;rerenderSection();persist();return;}
+ if(a==='apply-program'){try{M.simulate(state.turtle.draft,state.turtle.heading);state.turtle.source=state.turtle.draft;state.turtle.step=0;stop(false);rerenderSection();persist();}catch(e){$('program-error').innerHTML=fb(e.message,false);}return;}
+ if(['back','forward','rewind','finish','cycle'].includes(a)){const w=activeWork(),sim=activeSim();let step=a==='back'?w.step-1:a==='forward'?w.step+1:a==='rewind'?0:sim.frames.length-1;if(a==='cycle'){const now=sim.frames[w.step].context.join('|');const next=sim.frames.findIndex((f,i)=>i>w.step&&f.context.join('|')!==now);step=next<0?sim.frames.length-1:next;}move(step);return;}
+ if(a==='play'){if(playTimer){stop();refreshPlayback();}else play();return;}
+ if(a==='speed'){const playing=!!playTimer;stop(false);state.speed=+v;if(playing)play();else refreshPlayback();persist();return;}
+ if(a==='hint'){examWork().hint=Math.min(3,examWork().hint+1);renderExam();persist();return;}
+ if(a==='reset'){$('reset-confirm').hidden=false;return;}if(a==='reset-no'){$('reset-confirm').hidden=true;return;}
+ if(a==='reset-yes'){stop(false);const id=state.section;state[id]=INITIAL()[id];render();persist();}
 });
-function play(){
- if(state.steps[state.mode]>=totalSteps()-1)state.steps[state.mode]=0;
- timer=setInterval(()=>{if(state.steps[state.mode]>=totalSteps()-1){stop();renderFrame();return;}move(state.steps[state.mode]+1,false);},650/state.speed);renderFrame();persist();
-}
-$('timeline').addEventListener('input',e=>{stop(false);state.steps[state.mode]=+e.target.value;renderFrame();persist(true);});
-$('jump-form').addEventListener('submit',e=>{e.preventDefault();const v=Number($('jump-index').value);if(Number.isInteger(v)&&v>=1&&v<=model.rawTotal)move((v-1)*(model.length+model.checks.length+1));});
-$('rank-form').addEventListener('submit',e=>{e.preventDefault();const w=$('rank-word').value.trim().toUpperCase(),r=model.rankOf(w);$('rank-error').hidden=r!==null;if(r!==null)move(r*(model.length+model.checks.length+1));});
-$('practice-toggle').addEventListener('change',e=>{state.practice[state.mode]=e.target.checked;state.checked[state.mode]=false;stop(false);if(state.mode==='basics')renderBasics();else renderFrame();renderPractice();persist();});
-$('prediction').addEventListener('input',e=>{state.answers[state.mode]=e.target.value.slice(0,20);state.checked[state.mode]=false;$('feedback').hidden=true;renderPractice();persist(true);});
-$('prediction-form').addEventListener('submit',e=>{e.preventDefault();const v=(state.answers[state.mode]||'').replace(/\s/g,'');if(!/^\d+$/.test(v)){$('feedback').hidden=false;$('feedback').className='sb-quiz-feedback is-error';$('feedback').textContent='Введите целое неотрицательное число.';return;}state.checked[state.mode]=true;renderPractice();if(state.mode==='basics')renderBasics();else renderFrame();persist();});
-$('fields').addEventListener('change',e=>{if(state.mode==='patterns'){PatternUI.handleSettings(e);return;}if(state.mode==='basics'&&e.target.matches('[data-key]'))applySettings();});
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&state.mode==='patterns'){PatternUI.stop();PatternUI.render();}if(document.hidden&&timer){stop();renderFrame();}});
-PatternUI.boot();render();loadProgress();
+$('app').addEventListener('change',event=>{
+ if(loading)return;const e=event.target,k=e.dataset.key,v=e.value;if(!k)return;stop(false);zoom=1;
+ if(['bx','by'].includes(k)){const n=Number(v);if(!Number.isInteger(n)||n< -2||n>8){e.setCustomValidity('Введите целое число от −2 до 8.');e.reportValidity();return;}e.setCustomValidity('');state.regions[k]=n;state.regions.marks=[];state.regions.checked=false;state.regions.reveal=false;}
+ if(k==='turtle-preset'){const p=M.PRESETS[v];Object.assign(state.turtle,{preset:v,source:p.source,draft:p.source,heading:p.heading,step:0});}
+ if(k==='heading'){state.turtle.heading=+v;state.turtle.step=0;}
+ if(k==='point-preset')state.points.preset=v;if(k==='point-op')state.points.op=v;if(k==='boundary')state.points.boundary=e.checked;
+ if(['point-preset','point-op','boundary'].includes(k)){state.points.marks=[];state.points.checked=false;state.points.reveal=false;}
+ if(k==='measure-preset'){state.measure.preset=v;state.measure.op='intersection';}if(k==='measure-kind'){state.measure.kind=v;if(v==='perimeter')state.measure.op='intersection';}if(k==='measure-op')state.measure.op=v;if(k.startsWith('measure-')){state.measure.checked=false;state.measure.answer='';}
+ if(k==='exam-id')state.exam.id=v;rerenderSection();persist();
+});
+$('app').addEventListener('input',event=>{
+ if(loading)return;const e=event.target;if(e.id==='timeline'){move(+e.value,true);return;}
+ if(e.id==='program'){state.turtle.draft=e.value.replace(/\u0000/g,'').slice(0,5000);persist(true);}
+ if(e.id==='answer'){const w=state.section==='measure'?state.measure:examWork();w.answer=clean(e.value);w.checked=false;persist(true);}
+});
+$('app').addEventListener('submit',event=>{
+ event.preventDefault();if(loading)return;const form=event.target;
+ if(form.id==='answer-form'){const w=state.section==='measure'?state.measure:examWork();if(answerNumber(w.answer)===null){$('answer-error').innerHTML=fb('Введите неотрицательное число. Например, 24 или 25,456.',false);return;}w.checked=true;if(state.section==='exam'){stop(false);w.step=activeSim().frames.length-1;}rerenderSection();persist();}
+ if(['cell-form','point-form'].includes(form.id)){const data=new FormData(form),x=Number(data.get('x')),y=Number(data.get('y'));if(!Number.isInteger(x)||!Number.isInteger(y)||Math.abs(x)>100||Math.abs(y)>100)return;if(form.id==='cell-form'){const b=M.bounds(pair());if(x<b.x0||x>=b.x1||y<b.y0||y>=b.y1){form.insertAdjacentHTML('beforeend',fb('Выберите клетку в пределах показанной сетки.',false));return;}toggleMark(x+','+y);}else{state.points.probe={x,y};toggleMark(x+','+y);}rerenderSection();persist();}
+});
+$('plot').addEventListener('click',event=>{
+ if(loading||!view)return;const svg=$('plot').querySelector('svg'),ctm=svg.getScreenCTM();if(!ctm)return;const p=new DOMPoint(event.clientX,event.clientY).matrixTransform(ctm.inverse());const x=(p.x-view.W/2)/view.scale+view.cx,y=(view.H/2-p.y)/view.scale+view.cy;
+ if(state.section==='regions'){if(x<view.b.x0||x>=view.b.x1||y<view.b.y0||y>=view.b.y1)return;toggleMark(Math.floor(x)+','+Math.floor(y));renderRegions();persist();}
+ if(state.section==='points'){const point={x:Math.round(x),y:Math.round(y)};state.points.probe=point;toggleMark(key(point));renderPoints();persist();}
+ if(state.section==='exam'){const w=examWork(),{e,sim,faces}=examModel();if(w.step!==sim.frames.length-1)return;if(e.kind==='faces'){const i=faces.findIndex(poly=>M.locate({x,y},poly)!=='outside');if(i>=0){toggleMark(i+',0');renderExam();persist();}}else if(e.kind==='points'){toggleMark(Math.round(x)+','+Math.round(y));renderExam();persist();}}
+});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&playTimer){stop();refreshPlayback();}});
+render();load();
 
 </script>
 </body></html>
