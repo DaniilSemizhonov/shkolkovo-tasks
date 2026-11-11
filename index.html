@@ -1,6 +1,11 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>№6 · Геометрия Черепахи · Школково</title>
-<script src="https://3.shkolkovo.online/js/sandbox-client.v1.js"></script>
-<style>
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>№4 · Двоичные коды · Школково</title>
+  <script src="https://3.shkolkovo.online/js/sandbox-client.v1.js" defer></script>
+  <style>
 /* ШКОЛКОВО — унифицированный визуальный слой HTML-песочниц.
    Версия 2.4 · 2026-11-04. Не содержит SDK/JS; AGENTS.md применяется отдельно.
    Селекторы sb-* предназначены для новых страниц. Нельзя автоматически подменять
@@ -457,412 +462,827 @@ textarea:focus-visible, [tabindex]:focus-visible {
 .sb-quiz-feedback.is-success{border-left-color:var(--sb-success);background:var(--sb-success-surface);color:var(--sb-success-text);}
 .sb-quiz-feedback.is-error{border-left-color:var(--sb-error);background:var(--sb-error-surface);color:var(--sb-error-text);}
 
-:root{--shape-a:#8B5CF6;--shape-b:#EA9847;--shape-result:#21966C}
-.storage-note{max-width:1840px;margin:14px auto 0;padding:10px 16px;border:1px solid var(--sb-border);border-radius:12px;background:var(--sb-warning-surface);color:var(--sb-warning-text);font-size:12px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}.storage-note.is-error{background:var(--sb-error-surface);color:var(--sb-error-text)}
-.sb-app[aria-busy=true]{opacity:.6}.sb-main>*{min-width:0}.sb-section-btn{text-align:left;justify-content:flex-start}.nav-footer{border-top:1px solid var(--sb-border);padding-top:18px;margin-top:20px}.hero-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}.hero-tags span{background:var(--sb-surface);color:var(--sb-accent-text);padding:5px 8px;border-radius:7px;font-size:11px;font-weight:700}
-.lead{font-size:15px;line-height:1.75;margin:8px 0}.formula{font:700 clamp(17px,2vw,23px)/1.6 var(--sb-mono);color:var(--sb-accent-text);overflow-wrap:anywhere;margin:12px 0}.sb-params .sb-field label{display:grid;gap:6px}.sb-params select{width:100%;min-width:0}.sb-params .sb-caption{overflow-wrap:anywhere}.params-divider{height:1px;background:var(--sb-border);margin:20px 0}.sb-toggle{font-size:13px;margin:8px 0}.sb-field{min-width:0}.sb-field label{display:grid;gap:6px}.sb-field input,.sb-field select,.sb-field textarea{display:block;width:100%;min-width:0}.scene-tools{display:flex;gap:6px;flex-wrap:wrap}.scene-tools .sb-btn{padding:8px;font-size:12px}.legend{display:flex;flex-wrap:wrap;gap:14px;color:var(--sb-muted);font-size:11px;margin:4px 0 12px}.legend span{display:flex;gap:6px;align-items:center}.legend i{width:9px;height:9px;border-radius:50%}.dot-a{background:var(--shape-a)}.dot-b{background:var(--shape-b)}.dot-result{background:var(--shape-result)}
-.plot{width:100%;aspect-ratio:1.4;min-height:260px;max-height:540px;border:1px solid var(--sb-border);background:var(--sb-surface);border-radius:12px;position:relative;overflow:hidden;touch-action:pan-y}.plot svg{width:100%;height:100%;display:block;user-select:none}.plot text{font-family:var(--sb-mono);fill:var(--sb-muted)}.plot .grid{stroke:var(--sb-border);stroke-width:1}.plot .axis{stroke:var(--sb-muted);stroke-width:1.5}.plot .shape-a{stroke:var(--shape-a);fill:var(--shape-a);fill-opacity:.10;stroke-width:2}.plot .shape-b{stroke:var(--shape-b);fill:var(--shape-b);fill-opacity:.10;stroke-width:2}.plot .result{fill:var(--shape-result);fill-opacity:.28;stroke:var(--shape-result);stroke-width:2.5}.plot .selected-cell{fill:var(--shape-result);fill-opacity:.38}.plot .trace{fill:none;stroke:var(--shape-a);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.plot .travel{stroke:var(--shape-b);stroke-width:2;stroke-dasharray:7 5}.plot .point{fill:var(--sb-muted);opacity:.5}.plot .point.chosen{fill:var(--shape-result);opacity:1}.plot .point.wrong{fill:var(--sb-error);opacity:1}.plot .point.boundary{fill:var(--shape-b);opacity:1}.plot .focus-point{fill:none;stroke:var(--sb-text);stroke-width:2}.plot .turtle{fill:var(--shape-result);stroke:var(--sb-card);stroke-width:1.5}.plot .face-mark{fill:var(--shape-result);fill-opacity:.45;stroke:var(--shape-result);stroke-width:1.5}.plot .edge-label{font-size:13px;font-weight:800;fill:var(--sb-text);paint-order:stroke;stroke:var(--sb-surface);stroke-width:5;stroke-linejoin:round}
-#metrics{margin-top:16px;grid-template-columns:repeat(3,minmax(0,1fr))}.sb-metric-value{font-size:clamp(16px,1.8vw,24px)}#controls:not(:empty){margin-top:16px}.sb-playback-actions{gap:7px}.sb-playback-actions .sb-btn{font-size:12px}.sb-playback-actions .sb-btn--icon{flex:0 0 44px}.sb-step-spotlight{margin-top:12px}.operation-row{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}.operation-row .sb-btn[aria-pressed=true]{background:var(--sb-action);border-color:var(--sb-action);color:white}.feedback{margin-top:12px}.code-editor{width:100%;min-height:210px;padding:12px;border:1px solid var(--sb-border);border-radius:10px;background:var(--sb-code);color:var(--sb-text);font:16px/1.65 var(--sb-mono);resize:vertical}.code-view{white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.8 var(--sb-mono);background:var(--sb-code);padding:12px;border-radius:12px;max-height:400px;overflow-y:auto}.code-line{display:grid;grid-template-columns:25px minmax(0,1fr);gap:6px;padding:3px 6px;border-radius:5px}.code-line>span:first-child{color:var(--sb-muted);user-select:none}.code-line.active{background:var(--sb-surface-2);box-shadow:inset 3px 0 var(--sb-accent)}.form-row{display:flex;flex-wrap:wrap;align-items:end;gap:10px}.form-row .sb-field{flex:1 1 100px;margin:0}.form-row .sb-field input{width:100%}.form-row>.sb-btn{flex:0 1 auto}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.actions .sb-btn{font-size:13px}.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.lesson-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.lesson-cards .sb-card{box-shadow:none}.lesson-cards h3{font-size:14px;margin:0 0 8px}.next-card{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding:10px 0}.row-table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}.row-table th,.row-table td{padding:8px;border-bottom:1px solid var(--sb-border);text-align:left}.row-table th{color:var(--sb-muted)}details{min-width:0}summary{min-height:44px;display:flex;align-items:center;cursor:pointer;font-weight:750;color:var(--sb-accent-text)}details[open] summary{margin-bottom:10px}.boundary-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.boundary-tags span{background:var(--sb-surface);border:1px solid var(--sb-border);padding:8px 12px;border-radius:8px;font:12px var(--sb-mono)}.hint{background:var(--sb-surface);border-left:3px solid var(--sb-accent);padding:12px;border-radius:0 10px 10px 0;font-size:13px;line-height:1.65;margin-top:12px}.sb-quiz-feedback{margin-top:12px}.section-number{margin-left:auto;opacity:.65;font:11px var(--sb-mono)}
-@media(prefers-color-scheme:dark){:root{--shape-b:#F3AB66;--shape-result:#5BDB9F}}@media(max-width:1180px){.lesson-cards{grid-template-columns:minmax(0,1fr)}}@media(max-width:768px){.storage-note{margin:12px 12px 0}.plot{min-height:270px;aspect-ratio:1.05}.two-col{grid-template-columns:minmax(0,1fr)}#metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.form-row .sb-btn{flex:1 1 100%}.lesson-cards{gap:12px}.nav-footer{display:none}.sb-metric-label{font-size:11px}.sb-scene-head{margin-bottom:12px}}@media(max-width:380px){.plot{min-height:245px}.sb-playback-actions .sb-btn{padding:8px}.formula{font-size:16px}}
-
-.plot .wrong-cell{fill:var(--sb-error);fill-opacity:.45}
-.operation-visual{margin:16px 0;padding:12px;border:1px solid var(--sb-border);border-radius:12px;background:var(--sb-surface)}.operation-visual svg{display:block;width:100%;max-width:520px;height:auto;max-height:260px;margin:auto;animation:venn-appear .18s ease-out}.venn-base{fill:var(--sb-surface-2)}.venn-fill{fill:var(--shape-result);opacity:.6}.venn-a,.venn-b{fill:none;stroke-width:3}.venn-a{stroke:var(--shape-a)}.venn-b{stroke:var(--shape-b)}.operation-visual text{text-anchor:middle;fill:var(--sb-text);font:800 24px var(--sb-mono)}.operation-visual figcaption{display:flex;align-items:baseline;justify-content:center;gap:8px;color:var(--sb-text);font-size:13px;line-height:1.6;text-align:center}.operation-visual figcaption i{display:inline-block;flex:0 0 9px;width:9px;height:9px;border-radius:50%;background:var(--shape-result)}@keyframes venn-appear{from{opacity:.4}to{opacity:1}}@media(prefers-reduced-motion:reduce){.operation-visual svg{animation:none}}
-
-.sb-app.is-regions{grid-template-columns:var(--sb-nav-width) minmax(0,1fr);max-width:1440px}@media(max-width:768px){.sb-app.is-regions{grid-template-columns:minmax(0,1fr)}}
-
-.code-editor-shell{position:relative;margin-top:8px;background:var(--sb-code);border-radius:10px;min-width:0}.code-editor-shell .code-editor,.code-editor-highlight{font:16px/1.65 var(--sb-mono);padding:12px;letter-spacing:normal;tab-size:4;white-space:pre;overflow-wrap:normal;word-break:normal;box-sizing:border-box}.code-editor-shell .code-editor{position:relative;display:block;margin:0;background:transparent;color:transparent;-webkit-text-fill-color:transparent;caret-color:var(--sb-text);overflow:auto}.code-editor-highlight{position:absolute;inset:0;z-index:0;margin:0;border:1px solid transparent;border-radius:10px;overflow:hidden;pointer-events:none;color:var(--sb-text)}.code-editor::selection{background:#8b5cf644}.syntax-keyword{color:#8a2bb8}.syntax-function{color:#176b96}.syntax-number{color:#ae4a12}.syntax-comment{color:#657463}.syntax-punctuation{color:var(--sb-muted)}@media(prefers-color-scheme:dark){.syntax-keyword{color:#ce99ff}.syntax-function{color:#73cef3}.syntax-number{color:#ffc17c}.syntax-comment{color:#96ad92}.syntax-punctuation{color:#b6abd0}}
+.storage-note { max-width: 1840px; margin: 12px auto 0; padding: 8px 16px; color: var(--sb-muted); }
+.storage-note button { margin-inline-start: 8px; }
+.sb-app[aria-busy="true"] { opacity: .75; }
+.sb-card p { overflow-wrap: anywhere; }
+.sb-card p:last-child { margin-bottom: 0; }
+.field-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 68px), 1fr)); gap: 8px; }
+.field-grid .sb-field { margin: 4px 0 10px; }
+.field-grid input { font-family: var(--sb-mono); }
+.flow { display: grid; gap: 12px; }
+.flow > * { margin-block: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; }
+.chip { display: inline-grid; gap: 3px; justify-items: center; min-width: 44px; padding: 5px 8px;
+  border-radius: 8px; background: var(--sb-surface-2); font-family: var(--sb-mono); overflow-wrap: anywhere; }
+.chip small { color: var(--sb-muted); }
+.chip.active { background: var(--sb-action); color: var(--sb-action-text); }
+.chip.active small { color: inherit; }
+.chip.sum { outline: 2px solid var(--sb-accent); outline-offset: -2px; }
+.result { min-height: 48px; }
+.result p { margin-block: 0 8px; }
+.result p:last-child { margin-bottom: 0; }
+.good { color: var(--sb-success-text); }
+.bad { color: var(--sb-error-text); }
+.mono { font-family: var(--sb-mono); overflow-wrap: anywhere; }
+.tree { margin: 0; padding: 8px; }
+.tree svg { display: block; width: 100%; height: auto; max-height: 440px; }
+.tree line { stroke: var(--sb-accent); stroke-width: 1.5; }
+.tree circle { fill: var(--sb-card); stroke: var(--sb-accent); }
+.tree circle.leaf { fill: var(--sb-action); stroke: var(--sb-action); }
+.tree text { fill: var(--sb-text); font: 700 14px var(--sb-mono); text-anchor: middle; dominant-baseline: central; }
+.tree text.bit { paint-order: stroke; stroke: var(--sb-surface); stroke-width: 5px; }
+.tree text.leaf { fill: var(--sb-action-text); }
+.tree figcaption { margin-top: 8px; }
+.task-progress { margin: 12px 0; }
+.task-progress button { padding-inline: 10px; }
+.sb-params .sb-btn { white-space: normal; }
+details summary { cursor: pointer; display: flex; align-items: center; min-height: 44px; font-weight: 750; }
+details summary::before { content: '▸'; margin-inline-end: 8px; }
+details[open] summary::before { content: '▾'; }
+details summary:focus-visible { outline: 2px solid var(--sb-accent); outline-offset: 2px; }
+@media (max-width: 768px) {
+  .sb-section-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 12px; }
+  .sb-brand-picture { max-width: 150px; }
+  .sb-section-btn { padding-inline: 6px; }
+}
+.candidate-field .sb-field { margin: 0; max-width: 230px; }
+.mobile-settings { display: none; }
+@media (max-width: 1180px) {
+  .mobile-settings { display: inline-flex; margin-top: 12px; }
+}
 
 </style>
-</head><body><div id="storage" class="storage-note" role="status" aria-live="polite">Загружаем прогресс…</div>
-<div id="app" class="sb-app" aria-busy="true" inert>
-<aside class="sb-card sb-nav"><picture class="sb-brand-picture"><source media="(prefers-color-scheme:dark)" srcset="data:image/png;base64,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"><img class="sb-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaMAAABZCAYAAACT60s/AAAOUElEQVR42u2dT4/bxhmHf6tsL72Ep/YWa3MReyjCBYICRQpE+gRZBwVaIC1W+gCEtYeed/fcg9bQB5AMtIcCRax8gqWL/gGKAGYLtBAP7cq9OehBDtAAjYO4B44aRhFnhpwhOZR+D7AH2zKXemc4z7zDl8MjCEI/CQBcAhhNl701HCL0k1dbfxVNl70BHCT0kyEATJe9OQghhGjRyYjoFsAZgNvQTzyGprSIZgBmGykRQgjRkFFGRBsBBRSSkYg2UEiEEFIgM8qKCBSSFRFlhXTGCBFCiFpGFzn/RiGZiQgAYgARo0QIIQoZiRvtIwqpEhENXCsGIYQQVzMjUEgUESGENC4jCokiIoQQJ2REIVFEhBDihIwoJIqIEEKckBGFRBERQogTMqKQKCJCCHFCRppC6h9InCYUESGEVMex6gPTZW8e+gl2ZAaj6bK3qOk8tzdFrXvwH+CbO1VQRIQQYokj3Q9uLVWNDm1X6q09/CgiQghpQkYZIR3s6xFcfs0GIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIQYcteEkxR54QwDvIn3odAXgyaE+70QIIZRR/SI6Q7rzg7fjn2OkD6DGbEpCCKGMqhLREPm7ZW9YI92ah0IihJCW0mm5iCAypluxVQ8hhBDKqHYRUUiEELIHOLdMV0JEWdbgkt12PCdI3z21i3i67F1oHCNA/judAOBCJ+aibc/LnIvqHKbL3qBEbPpIN77N41HRIhlRbNNHWmwTAOiKn699V9FXnwCIpsteVGObW0EV79BPbk37y464PpZ8RKsv5/SBTXt5O+K2Ej9xpr3WFsa4cwvN8ET0o6jKMa+uGB3DIQxFlM2QKKSvCGD+EkRPcQxP8zhdg3PxYPFljmJwm+0QRfYCWxS8YM+RVn3qtAnE97kM/WQNYA7g4XTZWznS5qbY6C9ZZopjXhRoqy6AB6KtPI0+u+m3Y/H/52KiUnYS0bXUPv3Md7Lah5qIkTPLdBZEtC2kAITkcykREaD5mpDQT7oiC7jVFFFenx0DuAv95EqI0vQa2Kfs/gzAmeQj15qZuSeyxjsR77JxGoox5rEYtF1g04eehn4yNpmkNRWjjiOdzZaIKCSim8XILtgbnRmd6LdPLWchl2JAMem7wR61lacYG+LpsnelcZxAtNXY4umdibYaOhQyD8BECKVorBuNUceBzmZbRBQSMRrcAFxrHGeG/OffTOk6OMg1hSzGawCjApOGKrIYD8BM9AeXGIuMssg43GiMOg0PDFWJiEIiuRcpDJfnxEVVhyhmhywkkcHKBlTl8lwNY8yGoUUhRYqfleZxJppxdiJGxw12tLoCsBESixqYFQWQV8/pDG7jgiKKRLb1Qvz5HtJlNN0J0iT0k9hS350DeKT52XPUI9yyGWw0XfZuNNq7yBgTi59n4s+vo1gxyDD0E+NtynQqQzPVpbJz64Z+0pUVNLgUo+OGOlpdIqKQyNcyDdlFprr3oFHivmGFdKlvkZdliZu6Q6QVS56i7z4O/eTUtKQYwDPd6iaRlTSJrMBkDcXynEYpePZYDwHM8wZtcawzqIteNtlsXPU4I44/EMUzUiHlZVKuxaj2ZbqSIlpb+NUbIQUgh5gVXSmykZHGYXRENAdwOl325jJ5TJe9lZDficieoBhQxgfUVn3F973WKF8eawyKsWirK9nxpsveWrTnCYAbS/3EFqpMt9+WGHVq7mRlM6IBhUQM+l0A8+W5vsZSxMV02RsVyWDERTwQEpPxQKfk20JZeNNt5cF8ec4TGaeMxXTZOy36TI54sFY1cenXmFmqzj9qS4w6NXaysiL6f0pKIZGSGJcGa164NwbneCFmobJ+O9Q4Ttv7tdHynGAI+dLnSvM4eePRXGfy4Eg8122JUS0ysnGPiEIiJfveGIbLc5n1cBgOktIMCepdBEy3kFk73lYBzJfndOI0snD/7UIRz7OaslTZd11JMn7nYtSpoYMZi6hiIXU5ZO+tiLqQL8/p7pHWV/z73MKFC1FcIDufwHCAix1vsplp5iniEygy4chCW601Zv79ivv3WJEtX7QpRscVB8uaiLJCCv1kgHT7FdOZhyfObwDSdvHs2pizK+kjUYFlNVUG/cjiV3mk+H0B1AUPrjMRe6ltX4uBhcyz7rYaK85lUaIvXyk+ck8M4l3FBGnRphgdVzg4WBdRRULqh34SaO5tFZT4fStLm18Se7PQIoMbALylkbHbQnWsfZBRUPDzRZaMAsP4Fh2HSvcbCZeGp3aj2MHcyRhVskz3fPVy+M4Hb1b6HJHlJTvdgWwiBFjkZ0hPOMd1wQmCbAISWe7XkcG5ANVs59IkC8kMv3B8bL+uQ9H+XgPxutB4lYaTMbIuo+erl0MAs8HPgXc+eNPGIVc1CMkDOSTe3ePvtm8yCtperl4zk9BPWlmcZVVGGxFt/mxJSKsaMqQV+/BBcVZkE8l9oYIZb11yvWSXLUQfLdxo15qMtkVkWUiqi8xUSBH778ExKzDjXikufGtoPCypmji9tYdtNS7wEOnKML5lBn7bk9xI4yfW7OPDtsTISgFDnoiyQgLexB9+/U8bF6uH/Btw1yi+Fce8wP2DuMQpM+uqh12vfXhP0lc80Vd0ChmeKfpkYLGIITDsT3mCXTvUVvMdMX0L8me5Zki3TjK93gJbk0+NpbBnJSfXA83f7yG9J30pafdJ6CfbeyQ6GSNjGalEZEFI/dBPXlV0UcQo8LpijRuDpCF27aIgXn18J/lvw9BPdF6NHEG+VHQOexVI54rvqTrXvsWJVFXsjHnoJ3fIv+fVDf3kSrVbxnTZixTVW+fQ2zvNuK1Q8YqLEMxN6Ccx0mKpvMnJMPudXY2R0TKdroiyQvrhT09cuSBiAAMbDysSZwW1gvpFecrlOjFwrhVS8yzMIvuKzGhhMAttQz9XZamXmjfmZXEKbCxDZbKS3HjXdY9O42Hp99oQo9IyKioiAPj030d443vfwg9+3LiQKKLDyphkF2oXejfIZRevB8Nn6sSFq1pi/qhkVgQAf2lBW0UaM3KdOKviNLMweZhAXoW7qDl8a0Ufdz5GpWRUVkTP//EaAODk+40KiSI6PFQzbp0b5KoM60xsz2Jy4cpm/SuNl7Y9UPT7NnAN+T2NQLVDgYjTSjE4l548iKKAoWF/qZNuG2JUWEamItrQkJAoosPMjmLTGbdY8lPJYBL6SaEZZegnXbGVkdHgJkTYbbuMNDeMvdTYU1Jn8vC0yN6UoZ94oZ9MNMa/eQO7rpRpe6diVEhGtkTUkJAoosNGNePuauwJptqFGEIqT0M/kd5HEhK6AvAU6vLwaDsr2hxbXPxXkC/xtWpLKrHjwsJw8jCHuoAgEG11JRtwRYyHoq1U2a+OTK0i2l8mjFUbYqRdTWdbRFkhASf482/vKKIG0neNARhIN2aUca55w7OxnQ+my9469JMR8quONjPuRV6ZtjjGfcUxskscs9BPItH/XmRiGUB/f7Y1gPs7/v5xgZvMixb2zZGQdJ7Q+6GfjBWb3d5HWk0py1Q9pPcML0VVWoyvyo1fF+3UL3De9+sYZ8RkpI+0Wu1M8fGP2hAjLRlVJaKahEQRyQdNG0+3D1sy445CP7lRzNxmAE4VxxgVuB76KP9g7NpS333Yto6ZmTw81pg8rCTHKLKhcpFJwk6B2qigs/woy1o2GXEpRspluqpFlBVSBUt2FBHZ5hrypTbdG+QjVFsuvRJ9NzY8zqKtu8aL5bpIMWNXLdfFSHdnqTIGazHIzl3MMFXjnysx6rggooqERBGRnTNB6D3P0tUQ0gDVFAYsAJwqRBRoDgBtf1BbJf2+ag82EcdTVLNcuRlnXBXRQvO6aDxGHVdEZFlIFBFRzbhVF91M5wKeLnun0CtsKJIN6dx30FlSGbX9XVqaDy5PNB5cXk+XvfsWM4A10tc1nFp+n5Wtwf+0qCCbjlHHJRFZEhJFRGzNuMeaF/EN0n3TRiUzpQXSm7onlp7a30htsQ8NJeIbKcQ80zxWNF32TpDeuC8Tn1i080mBNwXXwTrTj4wE2VSMjl0T0Ybv3nsNb79/go8/vCsaBIro6zwC8KQF57nS+HdrDxJmbpAHto6H9DmkeabSKUBaPdfd0U9fIC3ZLiufa3yzOjEG8MSShEyleG3Q1ru4gKJqLPQTT/faz2bHoiqxj68qw7bP9ZmIbWRpbIksXjcR0m11rGdndcfoyEURffbpl/jbHz/HFy9f4TtvHOsKiSIihJCW0nFZRADwyb++wNvvK5fsKCJCCGm7jFwV0QaFkCgiQghpu4xcF5FCSBQRIYTsAUfPVy8D6JWJplK463gvPunMivwfUxFlydxDoogIIWRfZFTmP/3+N68C6G8fYU1EGSHFH394RxERQsghy8iWkMqIaJMR/eJX36aICCFkTyj9ptcf/eQoRvqkbikpUESEEEKMZWQiJIqIEEKINRmVERJFRAghxLqMigiJIiKEEFKZjHSERBERQgjJ48j2AXdV2e2LiMQGmBOk26JTkIQQ4lpmlJch7ZmIbpG+YvtW9f4UQgghDWZG2QzpPy++vP37nz739khEwfZ5MkMihBAHM6NshvTX3/334Z7cI9oWEcSfmSERQogNGYV+EjhyLq6KCAAe5vw9hUQIIZYyo1sHhOSyiCDeJT+ikAghpDoZeQ0LyWkRUUiEEFKPjNCgkFohIgqJEELqkVETQmqViCgkQgipR0Z1CqmVIqKQCCGkHhnVIaRWi4hCIoSQemRUpZD2QkQUEiGE1COjKoS0VyIqIKQhuxkhhJSXkU0h7aWINIQ0ny57N+xmhBBiJiMbQtprEUmENJ8ueyN2MUIIUXMU+smt5mfXAEZFNgb95c8+6wOID+l9RKGfDAG8SxERQog+/wM2d2xWUfxergAAAABJRU5ErkJggg==" width="419" height="89" alt="Школково"></picture><nav class="sb-section-nav" aria-label="Учебные разделы" id="navigation"></nav><div class="nav-footer"><span class="sb-eyebrow">№6 · Черепаха</span><p class="sb-caption">Фигуры, команды и точки на сетке.</p></div></aside>
-<main class="sb-main"><header class="sb-card sb-hero"><div class="sb-eyebrow" id="eyebrow"></div><h1 id="title"></h1><p id="description"></p><div class="hero-tags"><span>Фигуры на сетке</span><span>Команды по шагам</span><span>Задачи с проверкой</span></div></header>
-<section class="sb-card" id="instruction"></section>
-<section class="sb-card scene-card"><div class="sb-scene-head"><div><div class="sb-eyebrow" id="scene-kicker">Координатная плоскость</div><h2 class="sb-h2" id="scene-title"></h2></div><div class="scene-tools"><button type="button" class="sb-btn" data-action="zoom-out" aria-label="Уменьшить рисунок">−</button><button type="button" class="sb-btn" data-action="zoom-in" aria-label="Увеличить рисунок">+</button><button type="button" class="sb-btn" data-action="fit">Вписать</button></div></div><div class="legend"><span><i class="dot-a"></i>Фигура A</span><span><i class="dot-b"></i>Фигура B</span><span><i class="dot-result"></i>Нужная область</span></div><div id="plot" class="plot" tabindex="0" aria-label="Координатный рисунок. Точку можно выбрать в форме под рисунком."></div><p id="plot-note" class="sb-caption"></p><div id="metrics" class="sb-metric-grid"></div><div id="controls"></div></section>
-<section class="sb-card" id="activity"></section><section class="sb-card" id="explanation"></section><div class="lesson-cards" id="lessons"></div>
-<div class="next-card"><span class="sb-caption" id="next-note"></span><button type="button" class="sb-btn sb-btn--primary" data-action="next-section">Дальше →</button></div>
-</main><aside class="sb-card sb-params"><h2 class="sb-h2">Параметры опыта</h2><div id="settings"></div><div class="params-divider"></div><h3 class="sb-h3">Главный вопрос</h3><p class="sb-caption" id="key-question"></p><div class="params-divider"></div><button type="button" class="sb-btn" data-action="reset">Начать раздел заново</button><div id="reset-confirm" hidden><p class="sb-caption">Очистить действия только в этом разделе?</p><button type="button" class="sb-btn sb-btn--danger" data-action="reset-yes">Да, очистить</button><button type="button" class="sb-btn" data-action="reset-no">Оставить</button></div></aside></div>
-<script>
-/* Геометрия и исполнитель. Угол 0 — вправо, 90 — вверх. */
-(function(root){
-'use strict';
-const EPS=1e-7, cross=(a,b)=>a.x*b.y-a.y*b.x,sub=(a,b)=>({x:a.x-b.x,y:a.y-b.y}),dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
-const near=(a,b)=>dist(a,b)<EPS;
-const signed=p=>p.reduce((s,a,i)=>s+cross(a,p[(i+1)%p.length]),0)/2;
-const area=p=>Math.abs(signed(p)),perimeter=p=>p.length<3?0:p.reduce((s,a,i)=>s+dist(a,p[(i+1)%p.length]),0);
-const rect=(x,y,w,h)=>[{x,y},{x:x+w,y},{x:x+w,y:y+h},{x,y:y+h}];
-function onSegment(p,a,b){return Math.abs(cross(sub(p,a),sub(b,a)))<EPS*Math.max(1,dist(a,b))&&p.x>=Math.min(a.x,b.x)-EPS&&p.x<=Math.max(a.x,b.x)+EPS&&p.y>=Math.min(a.y,b.y)-EPS&&p.y<=Math.max(a.y,b.y)+EPS;}
-function locate(p,poly){
- if(poly.length<3||area(poly)<EPS)return 'outside';
- let inside=false;for(let i=0,j=poly.length-1;i<poly.length;j=i++){
-  const a=poly[j],b=poly[i];if(onSegment(p,a,b))return 'boundary';
-  if((a.y>p.y)!==(b.y>p.y)&&p.x<(b.x-a.x)*(p.y-a.y)/(b.y-a.y)+a.x)inside=!inside;
- }return inside?'inside':'outside';
-}
-function clip(subject,other){
- let out=subject.slice();const poly=signed(other)<0?other.slice().reverse():other;
- for(let i=0;i<poly.length&&out.length;i++){
-  const a=poly[i],b=poly[(i+1)%poly.length],edge=sub(b,a),input=out;out=[];
-  for(let j=0;j<input.length;j++){
-   const s=input[j],e=input[(j+1)%input.length],cs=cross(edge,sub(s,a)),ce=cross(edge,sub(e,a));
-   if(cs>=-EPS&&ce>=-EPS)out.push(e);
-   else if((cs>=-EPS)!==(ce>=-EPS)){const t=cs/(cs-ce);out.push({x:s.x+t*(e.x-s.x),y:s.y+t*(e.y-s.y)});if(ce>=-EPS)out.push(e);}
+</head>
+<body>
+  <div id="storage" class="storage-note" role="status" hidden></div>
+  <div id="app" class="sb-app" aria-busy="true" inert>
+    <aside class="sb-card sb-nav">
+      <picture class="sb-brand-picture">
+        <source media="(prefers-color-scheme:dark)" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaMAAABZCAYAAACT60s/AAAOU0lEQVR42u2dMYzkVhnH/162ghPnSKBIBJG5BujirWhGymyHSJG9Ak2DtDMNDYoyWyDK3S0RxewpQkhpZk5KY1HcpADSrQ+ZhuaMhCJCc3MFKBekaE4nBXQXYgq/Ic5k/N6z37P9PPP/SVvc3ZzX873n93vf8+dnD4I4TAMA5wDG/aG3gkPEYZpu/FXUH3rHcJA4TEcA0B96cxBCCNHiICeiawAnAK7jMPUZmsoimgGYraVECCFEQ0Y5Ea0FFFBIRiJaQyERQkiJzCgvIlBIVkSUF9IJI0QIIWoZnRX8G4VkJiIASABEjBIhhChkJG60jymkWkR07FoxCCGEuJoZgUKiiAghpHUZUUgUESGEOCEjCokiIoQQJ2REIVFEhBDihIwoJIqIEEKckBGFRBERQogTMtIU0mBP4jSliAghpD4OVR/oD715HKbYkhmM+0Nv0dB5bm6K2vTgf4wv71RBERFCiCU83Q9uLFWN921X6o09/CgiQghpQ0Y5Ie3t6xFcfs0GIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIQZ4XThJsQfeCMCryB46XQK4v6/POxFCCGXUvIhOkO384G/55wTZA6gJm5IQQiijukQ0QvFu2WtWyLbmoZAIIaSjHHRcRBAZ07XYqocQQghl1LiIKCRCCNkBnFumqyCiPCtwyW4znlNk757aRtIfemcaxwhQ/E4nADjTiblo29Mq56I6h/7QO64QmwGyjW+LuFu2SEYU2wyQFdsEAHri5wvfVfTV+wCi/tCLGmxzK6jiHYfptWl/2RLXe5KPaPXlgj6wbi9/S9yW4ifJtdfKwhh3aqEZ7ot+FNU55jUVo0M4hKGI8hkShfQ5AcxfgugrjuFrHqdncC4+LL7MUQxusy2iyF9gi5IX7Cmyqk+dNoH4PudxmK4AzAHc6Q+9pSNtboqN/pJnpjjmWYm26gF4U7SVr9Fn1/12Iv7/XExUqk4iepbaZ5D7Tlb7UBsxcmaZzoKINoUUgJBiziUiAjRfExKHaU9kAdeaIirqsxMAD+MwvRCiNL0Gdim7PwFwIvnIpWZm7ous8aGId9U4jcQYc08M2i6w7kMP4jCdmEzS2orRgSOdzZaIKCSim8XILtgrnRmd6LcPLGch52JAMem7wQ61la8YG5L+0LvQOE4g2mpi8fRORFuNHAqZD2AqhFI21q3G6MCBzmZbRBQSMRrcAFxqHGeG4uffTOk5OMi1hSzGKwDjEpOGOrIYH8BM9AeXmIiMssw43GqMDloeGOoSEYVECi9SGC7PiYuqCVHM9llIIoOVDajK5bkGxpg1I4tCihQ/S83jTDXj7ESMDlvsaE0FYC0kFjUwKwogr57TGdwmJUUUiWzrifjzy8iW0XQnSNM4TBNLfXcO4K7mZ0/RjHCrZrBRf+hdabR3mTEmET+PxJ9volwxyCgOU+NtynQqQ3PVpbJz68Vh2pMVNLgUo8OWOlpTIqKQyBcyDdlFprr3oFHivmaJbKlvUZRliZu6I2QVS76i796Lw/TItKQYwCPd6iaRlbSJrMBkBcXynEYpeP5YdwDMiwZtcawTqIte1tlsUvc4I45/LIpnpEIqyqRci1Hjy3QVRbSy8KvXQgpA9jErulBkI2ONw+iIaA7gqD/05jJ59IfeUsjvlsieoBhQJnvUVgPF973UKF+eaAyKiWirC9nx+kNvJdrzFoArS/3EFqpMd9CVGB003MmqZkTHFBIx6HcBzJfnBhpLEWf9oTcuk8GIi/hYSEzGmzol3xbKwttuKx/my3O+yDhlLPpD76jsMzniwVrVxGXQYGapOv+oKzE6aLCTVRXR/1NSColUxLg0WPPCvTI4xzMxC5X125HGcbrer42W5wQjyJc+l5rHKRqP5jqTB0fiuepKjBqRkY17RBQSqdj3JjBcnsuth8NwkJRmSFDvImC6hczK8bYKYL48pxOnsYX7b2eKeJ40lKXKvutSkvE7F6ODBjqYsYhqFlKPQ/bOiqgH+fKc7h5pA8W/zy1cuBDFBbLzCQwHuMTxJpuZZp4iPoEiE44stNVKY+Y/qLl/TxTZ8lmXYnRYc7CsiSgvpDhMj5Ftv2I68/DF+R2DdF082zbm7En6SFRiWU2VQd+1+FXuKn5fAHXBg+tMxV5qm9diYCHzbLqtJopzWVToyxeKj7wsBvGeYoK06FKMDmscHKyLqCYhDeIwDTT3tgoq/L6lpc0vib1ZaJnBDQBe0cjYbaE61i7IKCj5+TJLRoFhfMuOQ5X7jYRzw1O7Uuxg7mSMalmme/pxOnrv7ce1PkdkeclOdyCbCgGW+RnRE85xWXKCIJuARJb7dWRwLkA927m0yUIywy8dH9uv61C0v99CvM40XqXhZIysy+jpx1lG9Ivfvoj33n5s45DLBoTkg+wTr+7wd9s1GQVdL1dvmGkcpp0szrIqo7WI1n+2JKRlAxnSkn14rzgps4nkrlDDjLcpuZ6zy5ZigA5utGtNRpsisiwk1UVmKqSI/XfvmJWYcS8VF741NB6WVE2cXtnBtpqUeIh0aRjfKgO/7UlupPGTaPbxUVdiZKWAoUhEeSH98seP8cOfvmjjYvVRfAPuEuW34piXuH+QVDhlZl3NsO21D69L+oov+opOIcMjRZ8MLBYxBIb9qUiwK4faar4lpq9A/izXDNnWSabXW2Br8qmxFPao4uT6WPP3+8juSZ9L2n0ah+nmHolOxshYRioRWRDSIA7TtKaLIkGJ1xVr3BgkLbFtFwXx6uOHkv82isNU59XIEeRLRaewV4F0qvieqnMdWJxI1cXWmMdh+hDF97x6cZheqHbL6A+9SFG9dQq9vdOM2wo1r7gIwVzFYZogK5YqmpyM8t/Z1RgZLdPpiigvpD/85kNXLogEwLGNhxWJs4JaQv2iPOVynRg4Vwqp+RZmkQNFZrQwmIV2oZ+rstRzzRvzsjgFNpahcllJYbybuken8bD0612IUWUZlRURAHzw5//C//ZN/P7X/6SISJMZk+xC7UHvBrns4vVh+EyduHBVS8zvVsyKAOAvHWirSGNGrhNnVZxmFiYPU8ircBcNh2+l6OPOx6iSjKqK6PqdZwCAF77zQptCooj2D9WMW+cGuSrDOhHbs5hcuLJZ/1LjpW1vKvp9F7iE/J5GoNqhQMRpqRicK08eRFHAyLC/NEmvCzEqLSNTEa1pSUgU0X5mR4npjFss+alkMI3DtNSMMg7TntjKyGhwEyLsdV1GmhvGnmvsKakzeXhQZm/KOEz9OEynGuPfvIVdV6q0vVMxKiUjWyJqSUgU0X6jmnH3NPYEU+1CDCGVB3GYSu8jCQldAHgAdXl4tJkVrY8tLv4LyJf4OrUlldhxYWE4eZhDXUAQiLa6kA24IsYj0Vaq7FdHplYR7S8TxrILMdKuprMtok0h/ehn36KIWkjfNQZgINuYUcap5g3P1nY+6A+9VRymYxRXHa1n3IuiMm1xjNuKY+SXOGZxmEai/z3JxTKA/v5sKwC3t/z9vRI3mRcd7JtjIekioQ/iMJ0oNru9jayaUpap+sjuGZ6LqrQEn5cb3xTtNChx3rebGGfEZGSArFrtRPHxd7sQIy0Z1SWihoREEckHTRtPt486MuOO4jC9UszcZgCOFMcYl7geBqj+YOzKUt+907WOmZs83NOYPCwlxyizoXKZScJWgdqooLP8KMtKNhlxKUbKZbq6RbQpJIqI1Mwl5EttujfIx6i3XHop+m5ieJxFV3eNF8t1kWLGrlquS5DtzlJnDFZikJ27mGGqxj9XYnTggohqEhJFRLbOBKH3PEtPQ0jHqKcwYAHgSCGiQHMA6PqD2irpD1R7sIk4HqGe5cr1OOOqiBaa10XrMTpwRUSWhUQREdWMW3XRzXQu4P7QO4JeYUOZbEjnvoPOksq46+/S0nxwearx4PKqP/RuW8wAVshe13Bk+X1Wtgb/o7KCbDtGBy6JyJKQKCJia8Y90byIr5DtmzaumCktkN3UvWXpqf211Ba70FAivpFCzDPNY0X9oXcL2Y37KvFJRDvfKvGm4CZY5fqRkSDbitGhayJac+ObN/C7t/6B1954iSIy4y6A+x04z6XGv1t7kDB3gzywdTxkzyHNc5VOAbLqud6WfvoEWcl2Vflc4svViQmA+5YkZCrFS4O23sYZFFVjcZj6utd+PjsWVYkDfF4Ztnmuj0RsI0tjS2TxuomQbatjPTtrOkaeiyJ6/u/nePzBR/js089w4xtf0xUSRUQIIR3lKy6LCACeffIcj/76H3z3B1+niAghZJdl5KqI1iiERBERQkjXZeS6iBRCoogIIWQH8J5+nAbQKxMFAPwxfO6//6dPZ2X+j6mI8uTuIVFEhBCyKzKq8p9+9ZNPAuhvH2FNRDkhJa+98RJFRAgh+ywjW0KqIqJ1RvTW375HERFCyI5Q+U2vP3/nqwmyJ3UrSYEiIoQQYiwjEyFRRIQQQqzJqIqQKCJCCCHWZVRGSBQRIYSQ2mSkIySKiBBCSBGe7QNuq7LbFRGJDTCnyLZFpyAJIcS1zKgoQ9oxEV0je8X2ter9KYQQQlrMjPIZ0rNPnl1/9Pd/+TskomDzPJkhEUKIg5lRPkP68P3Hd3bkHtGmiCD+zAyJEEJsyCgO08CRc3FVRABwp+DvKSRCCLGUGV07ICSXRQTxLvkxhUQIIfXJyG9ZSE6LiEIihJBmZIQWhdQJEVFIhBDSjIzaEFKnREQhEUJIMzJqUkidFBGFRAghzcioCSF1WkQUEiGENCOjOoW0EyKikAghpBkZ1SGknRJRCSGN2M0IIaS6jGwKaSdFpCGkeX/oXbGbEUKImYxsCGmnRSQR0rw/9MbsYoQQosaLw/Ra87MrAOMyG4O+8f0PBgCSfXofURymIwCvUkSEEKLP/wAZCcYcwXX75AAAAABJRU5ErkJggg==">
+        <img class="sb-logo" src="data:image/png;base64,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" width="419" height="89" alt="Школково">
+      </picture>
+      <nav class="sb-section-nav" aria-label="Разделы задания №4">
+        <button class="sb-section-btn" type="button" data-tab="codec" aria-pressed="true">Кодирование</button>
+        <button class="sb-section-btn" type="button" data-tab="fano" aria-pressed="false">Условие Фано</button>
+        <button class="sb-section-btn" type="button" data-tab="huffman" aria-pressed="false">Алгоритм Хаффмана</button>
+        <button class="sb-section-btn" type="button" data-tab="tasks" aria-pressed="false">Решаем №4</button>
+      </nav>
+    </aside>
+    <main class="sb-main">
+      <header class="sb-card sb-hero">
+        <div class="sb-eyebrow" id="kicker">ЕГЭ · Информатика · Задание №4</div>
+        <h1 id="title">Двоичные коды</h1>
+        <p id="intro">Закодируй слово и проверь, можно ли восстановить его по строке без пробелов.</p>
+        <button type="button" class="sb-btn mobile-settings" id="settings-link" data-action="settings">Таблица кодов ↓</button>
+      </header>
+      <section class="sb-card" id="workspace">
+        <h2 class="sb-h2">Кодирование и декодирование</h2>
+        <p>Сопоставь каждой букве двоичный код. При декодировании границы между кодами нужно найти по таблице.</p>
+      </section>
+      <section class="sb-card" id="notes" hidden></section>
+    </main>
+    <aside class="sb-card sb-params" id="settings" tabindex="-1"><h2 class="sb-h2">Параметры опыта</h2></aside>
+  </div>
+  <footer id="local-mode" class="storage-note" hidden>Вне Школково прогресс доступен до обновления страницы.</footer>
+  <script>
+const Codes = (() => {
+  const reverse = text => [...text].reverse().join('');
+  const binary = (text, max = 6) => /^[01]+$/.test(text) && text.length <= max;
+
+  function conflict(codes, suffix = false) {
+    for (const [i, a] of codes.entries()) {
+      for (const [j, b] of codes.entries()) {
+        if (i !== j && (suffix ? b.endsWith(a) : b.startsWith(a))) return [i, j];
+      }
+    }
+    return null;
   }
- }
- out=out.filter((p,i)=>!i||!near(p,out[i-1]));if(out.length>1&&near(out[0],out.at(-1)))out.pop();
- return out.length>=3&&area(out)>EPS?out:[];
-}
-function bounds(polys){const ps=polys.flat();if(!ps.length)return {x0:-2,x1:10,y0:-2,y1:10};return {x0:Math.floor(Math.min(...ps.map(p=>p.x)))-1,x1:Math.ceil(Math.max(...ps.map(p=>p.x)))+1,y0:Math.floor(Math.min(...ps.map(p=>p.y)))-1,y1:Math.ceil(Math.max(...ps.map(p=>p.y)))+1};}
-function belongs(p,polys,op='intersection',boundary=false){
- const v=polys.map(poly=>{const k=locate(p,poly);return k==='inside'||boundary&&k==='boundary';});
- return op==='intersection'?v.every(Boolean):op==='union'?v.some(Boolean):op==='difference'?v[0]&&!v[1]:v[0]!==v[1];
-}
-function lattice(polys,op='intersection',boundary=false){const b=bounds(polys),out=[];if((b.x1-b.x0)*(b.y1-b.y0)>20000)return out;for(let y=b.y0;y<=b.y1;y++)for(let x=b.x0;x<=b.x1;x++)if(belongs({x,y},polys,op,boundary))out.push({x,y});return out;}
-function parse(source){
- if(/^\s*(?:for\b|forward\b|back\b|right\b|left\b|penup\b|pendown\b)/m.test(source))return parsePseudo(source);
- const aliases={'вперёд':'forward','вперед':'forward','назад':'back','направо':'right','налево':'left','повтори':'repeat','поднять':'up','опустить':'down'};
- const re=/\s+|#[^\n]*|[\p{L}_]+|-?\d+(?:\.\d+)?|[\[\]]/gu;let m,last=0,tokens=[];
- while((m=re.exec(source))){if(source.slice(last,m.index).trim())throw Error('Неизвестный символ рядом с «'+source.slice(last,m.index+8)+'».');last=re.lastIndex;if(/^\s|^#/.test(m[0]))continue;tokens.push({s:m[0].toLowerCase(),line:source.slice(0,m.index).split('\n').length});}
- if(source.slice(last).trim())throw Error('В конце программы есть неизвестные символы.');
- let pos=0;function block(depth=0){if(depth>5)throw Error('Допустимо не больше пяти вложенных циклов.');const out=[];
-  while(pos<tokens.length&&tokens[pos].s!==']'){
-   const t=tokens[pos++],kind=aliases[t.s];if(!kind)throw Error('Строка '+t.line+': неизвестная команда «'+t.s+'».');
-   if(kind==='up'||kind==='down'){if(tokens[pos]?.s==='хвост')pos++;out.push({kind,line:t.line});continue;}
-   const n=Number(tokens[pos++]?.s);if(!Number.isFinite(n))throw Error('Строка '+t.line+': после команды нужно число.');
-   if(kind==='repeat'){
-    if(!Number.isInteger(n)||n<1||n>30)throw Error('Число повторений должно быть целым от 1 до 30.');
-    if(tokens[pos++]?.s!=='[')throw Error('После числа повторений нужна открывающая скобка [.');
-    const children=block(depth+1);if(tokens[pos++]?.s!==']')throw Error('Не хватает закрывающей скобки ].');if(!children.length)throw Error('Внутри цикла нужна хотя бы одна команда.');out.push({kind,n,children,line:t.line});
-   }else{if(Math.abs(n)>360)throw Error('Число в команде должно быть от −360 до 360.');out.push({kind,n,line:t.line});}
-  }return out;
- }
- const tree=block();if(pos!==tokens.length)throw Error('Лишняя закрывающая скобка ].');if(!tree.length)throw Error('Добавьте хотя бы одну команду.');
- const atoms=[];function expand(nodes,context=[]){for(const n of nodes){if(n.kind==='repeat')for(let i=1;i<=n.n;i++)expand(n.children,[...context,i+' / '+n.n]);else atoms.push({...n,context});if(atoms.length>600)throw Error('Слишком длинный опыт: не больше 600 простых команд.');}}
- expand(tree);return {tree,atoms};
-}
-function simulate(source,heading=90){
- const {tree,atoms}=parse(source);let x=0,y=0,angle=heading,pen=true,path=[{x,y}],polygons=[],segments=[],frames=[{x,y,angle,pen,line:0,context:[]}];
- for(const a of atoms){
-  if(a.kind==='right')angle-=a.n;if(a.kind==='left')angle+=a.n;
-  if(a.kind==='up'){pen=false;path=[{x,y}];}if(a.kind==='down'){pen=true;path=[{x,y}];}
-  if(a.kind==='forward'||a.kind==='back'){
-   const from={x,y},n=a.n*(a.kind==='back'?-1:1);x+=n*Math.cos(angle*Math.PI/180);y+=n*Math.sin(angle*Math.PI/180);if(Math.abs(x)<EPS)x=0;if(Math.abs(y)<EPS)y=0;
-   if(Math.abs(x)>600||Math.abs(y)>600)throw Error('Рисунок вышел за пределы опыта: уменьшите длины или число повторений.');
-   const to={x,y};segments.push({a:from,b:to,pen,step:frames.length});
-   if(pen){const index=path.findIndex(p=>near(p,to));if(index>=0){const poly=path.slice(index);if(poly.length>=3&&area(poly)>EPS&&!polygons.some(old=>samePoly(old,poly)))polygons.push(poly);path=path.slice(0,index+1);}else path.push(to);}else path=[to];
+
+  function decode(bits, symbols, codes) {
+    // Два пути достаточно, чтобы показать неоднозначность именно этой строки.
+    const paths = Array.from({length: bits.length + 1}, () => []);
+    paths[bits.length].push([]);
+    for (let i = bits.length - 1; i >= 0; i--) {
+      for (const [j, code] of codes.entries()) {
+        if (!bits.startsWith(code, i)) continue;
+        for (const tail of paths[i + code.length]) {
+          if (paths[i].length < 2) paths[i].push([{symbol: symbols[j], code}, ...tail]);
+        }
+      }
+    }
+    return paths[0];
   }
-  angle=((angle%360)+360)%360;frames.push({x,y,angle,pen,line:a.line,context:a.context,kind:a.kind,n:a.n});
- }
- return {tree,atoms,frames,segments,polygons};
-}
-function samePoly(a,b){return a.length===b.length&&a.every(p=>b.some(q=>near(p,q)));}
-function parsePseudo(source){
- const rows=source.split('\n').map((raw,i)=>{if(raw.includes('\t'))throw Error('Строка '+(i+1)+': используйте четыре пробела вместо табуляции.');const text=raw.split('#')[0].trimEnd(),indent=text.length-text.trimStart().length;return {text:text.trim(),indent,line:i+1};}).filter(r=>r.text);
- let index=0;
- function block(indent,depth=0){if(depth>5)throw Error('Допустимо не больше пяти вложенных циклов.');const out=[];
-  while(index<rows.length){const r=rows[index];if(r.indent<indent)break;if(r.indent!==indent)throw Error('Строка '+r.line+': проверьте отступ. Внутри цикла нужны четыре пробела.');index++;
-   const loop=r.text.match(/^for\s+[a-zA-Z_]\w*\s+in\s+range\(\s*(\d+)\s*\)\s*:$/);
-   if(loop){const n=Number(loop[1]);if(n<1||n>30)throw Error('Число повторений должно быть целым от 1 до 30.');if(index>=rows.length||rows[index].indent!==indent+4)throw Error('После for нужна команда с отступом в четыре пробела.');out.push({kind:'repeat',n,line:r.line,children:block(indent+4,depth+1)});continue;}
-   const cmd=r.text.match(/^(forward|back|right|left)\(\s*(-?\d+(?:\.\d+)?)\s*\)$/),pen=r.text.match(/^(penup|pendown)\(\s*\)$/);
-   if(cmd){const n=Number(cmd[2]);if(Math.abs(n)>360)throw Error('Число в команде должно быть от −360 до 360.');out.push({kind:cmd[1],n,line:r.line});}
-   else if(pen)out.push({kind:pen[1]==='penup'?'up':'down',line:r.line});
-   else throw Error('Строка '+r.line+': используйте forward(6), back(6), right(90), left(90), penup(), pendown() или for i in range(4):.');
-  }return out;
- }
- const tree=block(0);if(!tree.length)throw Error('Добавьте хотя бы одну команду.');const atoms=[];
- function expand(nodes,context=[]){for(const n of nodes){if(n.kind==='repeat')for(let i=1;i<=n.n;i++)expand(n.children,[...context,i+' / '+n.n]);else atoms.push({...n,context});if(atoms.length>600)throw Error('Слишком длинный опыт: не больше 600 простых команд.');}}
- expand(tree);return {tree,atoms};
-}
-function pseudo(tree){const lines=[];function emit(nodes,depth=0){for(const n of nodes){const pad='    '.repeat(depth);if(n.kind==='repeat'){lines.push(pad+'for '+(depth?'j'+depth:'i')+' in range('+n.n+'):');emit(n.children,depth+1);}else lines.push(pad+({up:'penup()',down:'pendown()'}[n.kind]||n.kind+'('+n.n+')'));}}emit(tree);return lines.join('\n');}
-function python(tree,heading=90){
- const out=['from turtle import *','tracer(0)','scale = 20','setheading('+heading+')  # направление из условия'];
- function emit(nodes,depth=0){for(const n of nodes){const pad='    '.repeat(depth);if(n.kind==='repeat'){out.push(pad+'for i'+depth+' in range('+n.n+'):');emit(n.children,depth+1);}else out.push(pad+({up:'penup()',down:'pendown()'}[n.kind]||n.kind+'('+n.n+(['forward','back'].includes(n.kind)?' * scale':'')+')'));}}
- emit(tree);out.push('penup()','# Границы сетки подберите по своему рисунку.','for x in range(-30, 61):','    for y in range(-30, 61):','        goto(x * scale, y * scale)','        dot(3)','update()','done()');return out.join('\n');
-}
-/* Разбиение следа на элементарные ограниченные области. Повторные рёбра удаляются. */
-function faces(segments){
- const lines=[];for(const s of segments.filter(s=>s.pen&&dist(s.a,s.b)>EPS))if(!lines.some(t=>near(s.a,t.a)&&near(s.b,t.b)||near(s.a,t.b)&&near(s.b,t.a)))lines.push(s);
- const cuts=lines.map(s=>[s.a,s.b]);
- for(let i=0;i<lines.length;i++)for(let j=0;j<i;j++){
-  const a=lines[i],b=lines[j],r=sub(a.b,a.a),s=sub(b.b,b.a),den=cross(r,s);
-  if(Math.abs(den)<EPS){for(const p of [a.a,a.b])if(onSegment(p,b.a,b.b))cuts[j].push(p);for(const p of [b.a,b.b])if(onSegment(p,a.a,a.b))cuts[i].push(p);continue;}
-  const d=sub(b.a,a.a),t=cross(d,s)/den,u=cross(d,r)/den;if(t>=-EPS&&t<=1+EPS&&u>=-EPS&&u<=1+EPS){const p={x:a.a.x+t*r.x,y:a.a.y+t*r.y};cuts[i].push(p);cuts[j].push(p);}
- }
- const vertices=[],adj=[];function id(p){let k=vertices.findIndex(q=>near(p,q));if(k<0){k=vertices.length;vertices.push(p);adj.push(new Set());}return k;}
- cuts.forEach((ps,i)=>{ps.sort((p,q)=>dist(p,lines[i].a)-dist(q,lines[i].a));for(let j=1;j<ps.length;j++){const a=id(ps[j-1]),b=id(ps[j]);if(a!==b){adj[a].add(b);adj[b].add(a);}}});
- const lists=adj.map((ns,i)=>[...ns].sort((a,b)=>Math.atan2(vertices[a].y-vertices[i].y,vertices[a].x-vertices[i].x)-Math.atan2(vertices[b].y-vertices[i].y,vertices[b].x-vertices[i].x)));
- const seen=new Set(),out=[];for(let a=0;a<vertices.length;a++)for(const b of lists[a]){
-  if(seen.has(a+','+b))continue;let u=a,v=b,poly=[],guard=0;
-  do{seen.add(u+','+v);poly.push(vertices[u]);const ns=lists[v],w=ns[(ns.indexOf(u)-1+ns.length)%ns.length];u=v;v=w;}while((u!==a||v!==b)&&++guard<3000);
-  if(poly.length>=3&&signed(poly)>EPS)out.push(poly);
- }return out;
-}
-const PRESETS={
- square:{name:'Квадрат и поворот',heading:90,source:'Повтори 4 [\n  Вперёд 6\n  Направо 90\n]'},
- triangle:{name:'Треугольник · 10 повторений',heading:90,source:'Повтори 10 [\n  Вперёд 8\n  Направо 120\n]'},
- pen:{name:'Две фигуры и поднятый хвост',heading:90,source:'Повтори 4 [Вперёд 5 Направо 90]\nПоднять хвост\nНаправо 90 Вперёд 3 Налево 90\nОпустить хвост\nПовтори 4 [Вперёд 5 Направо 90]'},
- star:{name:'Пересекающиеся отрезки',heading:0,source:'Повтори 20 [\n  Направо 225\n  Вперёд 7\n]'},
- perimeter:{name:'Периметр пересечения',heading:270,source:'Повтори 2 [\n  Налево 90\n  Повтори 12 [Вперёд 13 Направо 30]\n  Вперёд 5\n]'},
- union:{name:'Площадь объединения · по условию',heading:90,source:'Повтори 3 [Вперёд 12 Направо 90 Вперёд 6 Направо 90]\nПоднять хвост\nВперёд 5 Направо 90 Вперёд 1 Налево 90\nОпустить хвост\nПовтори 5 [Вперёд 10 Направо 90 Вперёд 14 Направо 90]'},
- unionFixed:{name:'Площадь объединения · исправленный пример',heading:90,source:'Повтори 3 [Вперёд 12 Направо 90 Вперёд 6 Направо 90]\nПоднять хвост\nВперёд 5 Направо 90 Вперёд 1 Налево 90\nОпустить хвост\nПовтори 5 [Вперёд 5 Направо 90 Вперёд 10 Направо 90]'},
- overlap:{name:'Точки: треугольник и квадрат',heading:90,source:'Повтори 3 [Вперёд 12 Направо 120]\nПоднять хвост\nВперёд 10 Направо 90 Вперёд 3\nОпустить хвост\nПовтори 4 [Вперёд 5 Направо 90]'},
- rhombus:{name:'Ромб · вложенный цикл',heading:90,source:'Повтори 10 [\n  Повтори 2 [Вперёд 6 Направо 45]\n  Направо 90\n]'}
+
+  function encode(word, symbols, codes) {
+    const lookup = new Map(symbols.map((symbol, i) => [symbol, codes[i]]));
+    return [...word].map(symbol => ({symbol, code: lookup.get(symbol)}));
+  }
+
+  function frontier(codes) {
+    const free = [];
+    function visit(path) {
+      if (codes.includes(path)) return;
+      if (!codes.some(code => code.startsWith(path))) {
+        free.push(path);
+        return;
+      }
+      visit(path + '0');
+      visit(path + '1');
+    }
+    visit('');
+    return free;
+  }
+
+  function trie(symbols, codes) {
+    const root = {label: '•', children: []};
+    for (const [i, code] of codes.entries()) {
+      let node = root;
+      for (const bit of code) {
+        const index = Number(bit);
+        node.children[index] ??= {label: '•', children: []};
+        node = node.children[index];
+      }
+      node.label = symbols[i];
+    }
+    return root;
+  }
+
+  function huffman(symbols, weights) {
+    let next = symbols.length;
+    const queue = symbols.map((label, id) => ({label, id, weight: weights[id], children: []}));
+    // При равном весе узел, созданный позже, идёт первым.
+    const sort = () => queue.sort((a, b) => a.weight - b.weight || b.id - a.id);
+    sort();
+    const steps = [{queue: [...queue]}];
+    while (queue.length > 1) {
+      const [left, right] = queue.splice(0, 2);
+      const node = {label: left.label + right.label, id: next++, weight: left.weight + right.weight,
+        children: [left, right]};
+      queue.push(node);
+      sort();
+      steps.push({queue: [...queue], left, right, node});
+    }
+    const codes = {};
+    function walk(node, path) {
+      if (!node.children.length) codes[node.label] = path;
+      else node.children.forEach((child, bit) => walk(child, path + bit));
+    }
+    walk(queue[0], '');
+    return {root: queue[0], codes: symbols.map(symbol => codes[symbol]), steps};
+  }
+
+  return {binary, reverse, conflict, decode, encode, frontier, trie, huffman};
+})();
+
+const $ = id => document.getElementById(id);
+const letters = ['А', 'Б', 'В', 'Г', 'Д'];
+const codecExamples = {
+  uniform: {codes: ['00','01','10'], word: 'БАВ', bits: '010010'},
+  prefix: {codes: ['0','10','110'], word: 'АБВ', bits: '010110'},
+  ambiguous: {codes: ['0','01','10'], word: 'АВ', bits: '010'}
 };
-function compareTraces(actual,expected){
- const drawn=s=>s.segments.filter(s=>s.pen&&dist(s.a,s.b)>EPS);
- const a=drawn(actual),b=drawn(expected);
- function covered(seg,lines){const v=sub(seg.b,seg.a),len=dist(seg.a,seg.b),intervals=[];
-  for(const line of lines){if(Math.abs(cross(v,sub(line.a,seg.a)))>EPS*len||Math.abs(cross(v,sub(line.b,seg.a)))>EPS*len)continue;
-   const t=p=>((p.x-seg.a.x)*v.x+(p.y-seg.a.y)*v.y)/(len*len),x=t(line.a),y=t(line.b),lo=Math.max(0,Math.min(x,y)),hi=Math.min(1,Math.max(x,y));if(hi>=lo)intervals.push([lo,hi]);}
-  intervals.sort((x,y)=>x[0]-y[0]);let end=0;for(const [lo,hi]of intervals){if(lo>end+EPS)return false;end=Math.max(end,hi);}return end>=1-EPS;
- }
- const extra=a.find(s=>!covered(s,b));if(extra)return {ok:false,kind:'extra',segment:extra};
- const missing=b.find(s=>!covered(s,a));if(missing)return {ok:false,kind:'missing',segment:missing};
- return {ok:true};
+const fanoExamples = {
+  direct: {codes: ['1','011','001',''], candidate: '', suffix: false, remaining: '2'},
+  reverse: {codes: ['00','01','11',''], candidate: '', suffix: true, remaining: '1'}
+};
+const tasks = [
+  {
+    title: 'Кратчайшее кодовое слово', answer: '000', kind: 'code',
+    prompt: 'Алфавит состоит из букв П, И, Ф, А, Г, О, Р. Известно, что П = 1, И = 011, Ф = 001. Найди кратчайший код для А по прямому условию Фано. При равной длине выбери наименьший код. Оставь место для остальных букв.',
+    hint: 'В дереве есть две свободные ветки. Одну можно отдать букве А, а другую разветвить.',
+    symbols: ['П','И','Ф','А','Г','О','Р'], codes: ['1','011','001','000','0100','01010','01011'],
+    explanation: 'Коды короче трёх бит конфликтуют с заданными. Из свободных веток 000 и 010 меньшая — 000. Под веткой 010 можно разместить Г, О и Р.'
+  },
+  {
+    title: 'Длина слова «ДИАНА»', answer: '13', word: 'ДИАНА',
+    prompt: 'В алфавите А, Д, И, Л, Ь, Н известны коды Л = 010 и Ь = 10. Какова минимальная длина слова ДИАНА при прямом условии Фано? Код нужен каждой букве алфавита.',
+    hint: 'Буква А встречается дважды. Сравни, сколько бит понадобится, если отдать ей целую ветку длины 2.',
+    symbols: ['А','Д','И','Л','Ь','Н'], codes: ['11','000','011','010','10','001'],
+    explanation: 'Свободны 00, 011 и 11. Если у А длина 2, а у одной из трёх других букв слова тоже длина 2, остаётся ветка 011. В ней нужно разместить ещё две буквы слова и неиспользуемую букву, поэтому длины двух оставшихся букв слова не меньше 4. Если короткий код есть только у А, три другие длины не меньше 3. Если у А длина хотя бы 3, три другие длины в сумме дают не меньше 2 + 2 + 3. Во всех случаях получается минимум 13 бит.'
+  },
+  {
+    title: 'Весь русский алфавит', answer: '23', word: 'ПАРАЛЛЕЛЬ',
+    prompt: 'Код назначен каждой из 33 заглавных букв русского алфавита. Найди минимальную длину записи слова ПАРАЛЛЕЛЬ по прямому условию Фано.',
+    hint: 'Посчитай повторения. Для оценки минимума сверни все буквы вне слова в один лист с весом 0.',
+    symbols: ['П','А','Р','Л','Е','Ь'], codes: ['100','00','101','01','110','1110'],
+    explanation: 'Частоты букв слова — 3, 2, 1, 1, 1, 1. Добавим одну условную букву веса 0: из любого решения можно оставить только её и шесть букв слова. Хаффман для весов 0, 1, 1, 1, 1, 2, 3 даёт нижнюю границу 23. В показанном дереве свободна ветка 1111. Под ней можно разместить все 27 остальных букв, дописав к 1111 по пять бит.'
+  },
+  {
+    title: 'Код по обратному условию', answer: '110', kind: 'code', suffix: true,
+    prompt: 'Для букв П, Ё, С, И, К действует обратное условие Фано. П = 00, Ё = 01, С = 11. Найди кратчайший код для И. При равной длине выбери наибольший код. Оставь код для К.',
+    hint: 'Разверни известные коды. Единственная свободная ветка должна дать два листа. Сравни коды после обратного разворота.',
+    symbols: ['П','Ё','С','И','К'], codes: ['00','01','11','110','010'],
+    explanation: 'В развёрнутом дереве свободна только ветка 01. Делим её на 010 и 011. После разворота получаем 010 и 110. Больший код 110 отдаём букве И.'
+  },
+  {
+    title: 'Коды по частотам', answer: '12', word: 'АБВГД',
+    prompt: 'Частоты А, Б, В, Г, Д равны 10, 15, 20, 25, 30. Построй код Хаффмана по этим частотам и вычисли длину закодированного слова АБВГД.',
+    hint: 'Сначала объедини веса 10 и 15, затем 20 и один из узлов веса 25.',
+    symbols: letters, codes: Codes.huffman(letters, [10,15,20,25,30]).codes,
+    explanation: 'Суммы при слияниях — 25, 45, 55 и 100. Если выбрать другой узел веса 25, могут измениться сами коды, но набор длин для этой задачи останется тем же. В слове каждая буква встречается один раз.'
+  }
+];
+const views = {
+  codec: ['Двоичные коды', 'Закодируй слово и проверь, можно ли восстановить его по строке без пробелов.'],
+  fano: ['Условие Фано', 'Проверь, где в двоичном дереве ещё можно разместить букву.'],
+  huffman: ['Алгоритм Хаффмана', 'Меняй частоты букв и наблюдай, как из двух самых лёгких узлов на каждом шаге строится дерево.'],
+  tasks: ['Решаем задание №4', 'Пять прототипов из методички с проверкой ответа, подсказкой и разбором.']
+};
+
+function initialState() {
+  return {
+    version: 1, tab: 'codec', codec: {...codecExamples.uniform, codes: [...codecExamples.uniform.codes], preset: 'uniform', mode: 'encode', decimal: '23', binary: '101010'},
+    fano: {...fanoExamples.direct, codes: [...fanoExamples.direct.codes], preset: 'direct'}, huffman: {weights: ['10','15','20','25','30'], word: 'АБВГД', step: 0, speed: 1},
+    task: 0, attempts: tasks.map(() => ({answer: '', checked: false, hint: false, reveal: false, solved: false}))
+  };
 }
-const api={EPS,near,dist,area,perimeter,rect,locate,clip,bounds,belongs,lattice,parse,parsePseudo,pseudo,simulate,python,faces,compareTraces,PRESETS};
-if(typeof module!=='undefined')module.exports=api;else root.TurtleMath=api;
-})(typeof window==='undefined'?globalThis:window);
+
+function normalize(saved) {
+  const next = initialState();
+  if (saved?.version !== next.version) return next;
+  const pick = (value, options, fallback) => options.includes(value) ? value : fallback;
+  const str = (value, fallback, max) => typeof value === 'string' ? value.replace(/[\u0000-\u001f\u007f]/g, '').slice(0, max) : fallback;
+  const num = (value, max) => Number.isInteger(value) && value >= 0 && value <= max ? value : 0;
+  const list = (value, fallback, max) => fallback.map((item, index) => str(value?.[index], item, max));
+  next.tab = pick(saved.tab, Object.keys(views), next.tab);
+  next.codec.preset = pick(saved.codec?.preset, Object.keys(codecExamples), next.codec.preset);
+  Object.assign(next.codec, codecExamples[next.codec.preset]);
+  next.codec.codes = list(saved.codec?.codes, next.codec.codes, 6);
+  next.codec.mode = pick(saved.codec?.mode, ['encode','decode'], next.codec.mode);
+  for (const [key, max] of [['word',32],['bits',192],['decimal',7],['binary',20]]) {
+    next.codec[key] = str(saved.codec?.[key], next.codec[key], max);
+  }
+  next.fano.preset = pick(saved.fano?.preset, Object.keys(fanoExamples), next.fano.preset);
+  Object.assign(next.fano, fanoExamples[next.fano.preset]);
+  next.fano.codes = list(saved.fano?.codes, next.fano.codes, 6);
+  next.fano.suffix = typeof saved.fano?.suffix === 'boolean' ? saved.fano.suffix : next.fano.suffix;
+  next.fano.candidate = str(saved.fano?.candidate, '', 6);
+  next.fano.remaining = str(saved.fano?.remaining, next.fano.remaining, 2);
+  next.huffman.weights = list(saved.huffman?.weights, next.huffman.weights, 2);
+  next.huffman.word = str(saved.huffman?.word, next.huffman.word, 32);
+  next.huffman.step = num(saved.huffman?.step, letters.length - 1);
+  next.huffman.speed = pick(saved.huffman?.speed, [.5, 1, 2], 1);
+  next.task = num(saved.task, tasks.length - 1);
+  next.attempts = next.attempts.map((_, i) => {
+    const attempt = Array.isArray(saved.attempts) ? saved.attempts[i] : null;
+    return {answer: str(attempt?.answer, '', 8), checked: attempt?.checked === true,
+      hint: attempt?.hint === true, reveal: attempt?.reveal === true, solved: attempt?.solved === true};
+  });
+  return next;
+}
+
+let state = initialState();
+let playing = false;
+let playTimer;
+const esc = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+const btn = (label, action, {value, primary = false, disabled = false, pressed} = {}) =>
+  `<button type="button" class="sb-btn${action === 'speed' ? ' sb-speed-btn' : ''}${primary ? ' sb-btn--primary' : ''}" data-action="${action}"${value === undefined ? '' : ` data-value="${value}"`}${disabled ? ' disabled' : ''}${pressed === undefined ? '' : ` aria-pressed="${pressed}"`}>${label}</button>`;
+const field = (key, label, value, max, numeric = false) =>
+  `<div class="sb-field"><label for="field-${key}">${label}</label><input id="field-${key}" data-field="${key}" type="text" maxlength="${max}" value="${esc(value)}"${numeric ? ' inputmode="numeric"' : ''} autocomplete="off" spellcheck="false"></div>`;
+const result = id => `<div id="${id}" class="sb-surface result" aria-live="polite"></div>`;
+const chip = (main, sub = '', type = '') => `<span class="chip ${type}"><b>${esc(main)}</b>${sub === '' ? '' : `<small>${esc(sub)}</small>`}</span>`;
+const chips = items => `<div class="chips">${items.join('')}</div>`;
+const breakdown = parts => chips(parts.map(({symbol, code}) => chip(code, symbol)));
+const title = text => `<h2 class="sb-h2">${text}</h2>`;
+const errorText = text => `<p class="bad">${text}</p>`;
+const goodText = text => `<p class="good">${text}</p>`;
+
+function tree(root, suffix = false, weights = false) {
+  const nodes = [];
+  const edges = [];
+  let leafCount = 0;
+  let height = 0;
+  function place(node, depth) {
+    height = Math.max(height, depth);
+    const children = node.children.map(child => place(child, depth + 1));
+    const positions = children.filter(Boolean);
+    let x = positions.length ? (positions[0].x + positions.at(-1).x) / 2 : leafCount++ * 62 + 35;
+    if (positions.length === 1) x += children[0] ? 14 : -14;
+    const y = 25 + depth * 56;
+    const leaf = !positions.length;
+    const label = weights && !leaf ? node.weight : node.label;
+    nodes.push({x, y, leaf, label});
+    children.forEach((child, bit) => edges.push({x,y,child,bit}));
+    return {x,y};
+  }
+  place(root, 0);
+  const low = Math.min(...nodes.map(node => node.x)) - 25;
+  const high = Math.max(...nodes.map(node => node.x)) + 25;
+  const width = Math.max(220, high - low);
+  const left = (high + low - width) / 2;
+  const lines = edges.map(({x,y,child,bit}) => `<line x1="${x}" y1="${y}" x2="${child.x}" y2="${child.y}"/>
+    <text class="bit" x="${(x + child.x)/2}" y="${(y + child.y)/2}">${bit}</text>`).join('');
+  const points = nodes.map(({x,y,leaf,label}) => `<circle class="${leaf ? 'leaf' : ''}" cx="${x}" cy="${y}" r="${label === '•' ? 7 : 15}"/>
+    ${label === '•' ? '' : `<text class="${leaf ? 'leaf' : ''}" x="${x}" y="${y}">${esc(label)}</text>`}`).join('');
+  return `<figure class="sb-surface tree"><svg viewBox="${left} 0 ${width} ${height * 56 + 50}" role="img" aria-label="Двоичное дерево кодов">
+    ${lines}${points}</svg><figcaption class="sb-caption">${suffix ? 'Прочитай ветви от корня к букве, затем разверни полученный путь.' : 'Код буквы — последовательность нулей и единиц от корня до листа.'}</figcaption></figure>`;
+}
+
+function codecPanel() {
+  const codec = state.codec;
+  const encoding = codec.mode === 'encode';
+  $('workspace').innerHTML = `${title('Сообщение и код')}
+    <div class="flow"><div class="sb-segment" aria-label="Направление">
+    ${btn('Кодировать', 'mode', {value:'encode', pressed:encoding})}
+    ${btn('Декодировать', 'mode', {value:'decode', pressed:!encoding})}</div>
+    <div>${encoding ? field('word','Слово из букв А, Б и В',codec.word,32) : field('bits','Двоичная строка',codec.bits,192,true)}</div>
+    ${result('codec-result')}
+    <div class="sb-controls">${encoding ? btn('Декодировать эту строку →','transfer') : ''}</div></div>`;
+  $('settings').innerHTML = `${title('Таблица кодов')}
+    <div class="sb-field"><label for="codec-preset">Пример</label><select id="codec-preset" data-change="codec-preset">
+    ${options([['uniform','Равномерный код'],['prefix','Префиксный код'],['ambiguous','Неоднозначный код']], codec.preset)}</select></div>
+    <div class="field-grid">${letters.slice(0,3).map((symbol,i) => field('code'+i,symbol,codec.codes[i],6,true)).join('')}</div>
+    <p class="sb-caption" id="code-kind"></p>`;
+  $('notes').innerHTML = `<details id="conversion"><summary>Двоичная и десятичная запись</summary>
+    <p class="sb-caption">Разложи число по степеням двойки. Разряд 0 находится справа.</p>
+    ${field('decimal','Десятичное число от 0 до 1 048 575',codec.decimal,7,true)}${result('decimal-result')}
+    ${field('binary','Двоичное число до 20 разрядов',codec.binary,20,true)}${result('binary-result')}</details>`;
+  updateCodec();
+  updateNumbers();
+}
+
+function options(entries, selected) {
+  return entries.map(([value, label]) => `<option value="${value}"${String(value) === String(selected) ? ' selected' : ''}>${label}</option>`).join('');
+}
+
+function updateCodec() {
+  const {mode,codes,word,bits} = state.codec;
+  const symbols = letters.slice(0,3);
+  const transfer = $('workspace').querySelector('[data-action="transfer"]');
+  const message = $('codec-result');
+  if (transfer) transfer.disabled = true;
+  if (!codes.every(code => Codes.binary(code))) {
+    $('code-kind').textContent = 'Заполни все три кода. Допустимо от 1 до 6 бит в каждом.';
+    message.innerHTML = errorText('Исправь таблицу кодов.');
+    return;
+  }
+  const pair = Codes.conflict(codes);
+  const uniform = codes.every(code => code.length === codes[0].length);
+  $('code-kind').textContent = `${uniform ? 'Равномерный' : 'Неравномерный'} код. ${pair ? 'Прямое условие Фано нарушено.' : 'Прямое условие Фано выполнено.'}`;
+  if (mode === 'encode') {
+    const parts = Codes.encode(word.trim().toUpperCase(),symbols,codes);
+    if (!parts.length || parts.some(part => !part.code)) {
+      message.innerHTML = errorText('Введи слово из кириллических букв А, Б и В.');
+      return;
+    }
+    transfer.disabled = false;
+    message.innerHTML = `<p><b>${parts.reduce((sum,part) => sum + part.code.length,0)} бит</b></p>${breakdown(parts)}
+      <p class="mono">${parts.map(part => part.code).join('')}</p>`;
+    return;
+  }
+  const cleaned = bits.replace(/\s/g,'');
+  if (!Codes.binary(cleaned,192)) {
+    message.innerHTML = errorText('Введи строку из нулей и единиц.');
+    return;
+  }
+  const paths = Codes.decode(cleaned,symbols,codes);
+  const captions = ['Разбиения нет. Проверь строку и таблицу кодов.',
+    'Для этой строки найдено одно разбиение.', 'Для этой строки есть как минимум два разбиения.'];
+  message.innerHTML = (paths.length === 1 ? goodText(captions[1]) : errorText(captions[paths.length])) +
+    paths.map(parts => `<p><b>${parts.map(part => part.symbol).join('')}</b></p>${breakdown(parts)}`).join('');
+}
+
+function updateNumbers() {
+  const {decimal,binary} = state.codec;
+  const n = Number(decimal);
+  $('decimal-result').innerHTML = /^\d+$/.test(decimal) && n <= 1048575
+    ? `<p class="mono"><b>${n.toString(2)}</b><sub>2</sub></p>`
+    : errorText('Введи целое число от 0 до 1 048 575.');
+  $('binary-result').innerHTML = Codes.binary(binary,20)
+    ? `<p class="mono">${[...binary].reverse().flatMap((bit,i) => bit === '1' ? [2 ** i] : []).reverse().join(' + ') || '0'} → <b>${parseInt(binary,2)}</b><sub>10</sub></p>`
+    : errorText('Введи до 20 нулей и единиц.');
+}
+
+function fanoPanel() {
+  const {codes,candidate,suffix,preset,remaining} = state.fano;
+  const symbols = preset === 'reverse' ? ['П','Ё','С','И'] : ['П','И','Ф','А'];
+  $('workspace').innerHTML = `${title('Свободные ветки')}
+    <div class="flow">
+    <p>Каждая занятая вершина закрывает все ветви под собой. Свободную ветку можно отдать одной букве или разделить.</p>
+    <div class="candidate-field">${field('candidate','Код новой буквы',candidate,6,true)}</div>
+    ${result('fano-result')}
+    <div id="fano-tree"></div>
+    <div class="sb-surface" id="fano-frontier"></div></div>`;
+  $('settings').innerHTML = `${title('Параметры дерева')}
+    <div class="sb-field"><label for="fano-preset">Набор кодов</label><select id="fano-preset" data-change="fano-preset">
+    ${options([['direct','П, И, Ф, А'],['reverse','П, Ё, С, И']],preset)}</select></div>
+    <div class="sb-segment" aria-label="Условие Фано">
+    ${btn('Прямое','suffix',{value:'false',pressed:!suffix})}${btn('Обратное','suffix',{value:'true',pressed:suffix})}</div>
+    <p class="sb-caption">Редактируй известные коды. Пустое поле означает, что код ещё не назначен.</p>
+    <div class="field-grid">${symbols.map((symbol,i) => field('known'+i,symbol,codes[i],6,true)).join('')}</div>
+    ${field('remaining','Других букв после новой (0–30)',remaining,2,true)}`;
+  $('notes').innerHTML = `${title('С какой стороны читать?')}
+    <p>При прямом условии код читается слева направо, при обратном — справа налево. Каждое из этих условий гарантирует однозначное декодирование. Если условие нарушено, попробуй найти строку с двумя разбиениями в разделе «Кодирование».</p>`;
+  updateFano();
+}
+
+function updateFano() {
+  const {codes,candidate,suffix,preset,remaining} = state.fano;
+  const symbols = preset === 'reverse' ? ['П','Ё','С','И'] : ['П','И','Ф','А'];
+  const known = codes.flatMap((code,i) => code ? [{symbol:symbols[i], code}] : []);
+  const out = $('fano-result');
+  const plot = $('fano-tree');
+  const free = $('fano-frontier');
+  plot.innerHTML = '';
+  free.innerHTML = '';
+  free.hidden = true;
+  if (!known.every(item => Codes.binary(item.code))) {
+    out.innerHTML = errorText('В каждом заполненном поле должно быть от 1 до 6 бит.');
+    return;
+  }
+  const pair = Codes.conflict(known.map(item => item.code), suffix);
+  if (pair) {
+    const [a,b] = pair.map(i => known[i]);
+    out.innerHTML = errorText(a.code === b.code
+      ? `У букв ${a.symbol} и ${b.symbol} одинаковый код ${a.code}.`
+      : `Код ${a.code} (${a.symbol}) совпадает с ${suffix ? 'окончанием' : 'началом'} кода ${b.code} (${b.symbol}).`);
+    return;
+  }
+  const path = code => suffix ? Codes.reverse(code) : code;
+  const paths = known.map(item => path(item.code));
+  const available = Codes.frontier(paths);
+  const validCandidate = Codes.binary(candidate);
+  const candidatePath = path(candidate);
+  const canPlace = validCandidate && available.some(branch => candidatePath.startsWith(branch));
+  const availableAfter = canPlace ? Codes.frontier([...paths,candidatePath]) : available;
+  const displayed = canPlace ? [...known,{symbol:'Новая',code:candidate}] : known;
+  const labels = displayed.map(item => item.symbol === 'Новая' ? '+' : item.symbol);
+  plot.innerHTML = displayed.length ? tree(Codes.trie(labels, displayed.map(item => path(item.code))),suffix) : '';
+  free.hidden = false;
+  const branches = availableAfter.flatMap(branch => branch ? [path(branch)] : ['0','1']);
+  free.innerHTML = `<h3 class="sb-h3">${canPlace ? 'Свободно после добавления' : 'Кратчайшие свободные ветки'}</h3>` +
+    (branches.length ? chips(branches.map(code => canPlace ? chip(code) : btn(code,'pick-code',{value:code})))
+      : '<p>Свободных веток нет.</p>') +
+    (suffix ? '<p class="sb-caption">Здесь показаны развёрнутые коды, готовые к записи.</p>' : '');
+  if (!candidate) out.innerHTML = goodText('Заданные коды удовлетворяют выбранному условию. Введи новый код или выбери свободную ветку.');
+  else if (!validCandidate) out.innerHTML = errorText('В новом коде должно быть от 1 до 6 бит.');
+  else if (!canPlace) {
+    const old = known.find(item => path(item.code).startsWith(candidatePath) || candidatePath.startsWith(path(item.code)));
+    out.innerHTML = errorText(`Код ${candidate} конфликтует с кодом ${old.code} (${old.symbol}).`);
+  } else if (!/^\d+$/.test(remaining) || Number(remaining) > 30) {
+    out.innerHTML = errorText('Введи число других букв от 0 до 30.');
+  } else if (Number(remaining) && !availableAfter.length) {
+    out.innerHTML = errorText(`Код ${candidate} допустим сам по себе, но занимает последнюю свободную ветку. Разветви её и возьми более длинный код.`) +
+      (candidate.length < 6 ? chips(['0','1'].map(bit => {
+        const code = path(candidatePath + bit);
+        return btn(code,'pick-code',{value:code});
+      })) : '');
+  } else {
+    out.innerHTML = goodText(`Код ${candidate} подходит. ${Number(remaining) > availableAfter.length ? 'Для остальных букв разветви свободные вершины.' : ''}`);
+  }
+}
+
+function huffmanPanel() {
+  const {weights,word,speed} = state.huffman;
+  $('workspace').innerHTML = `${title('Очередь узлов')}
+    <div class="flow"><div class="sb-surface flow" id="queue" aria-live="polite"></div>
+    <div class="sb-playback">
+      <div class="sb-timeline-head"><label class="sb-timeline-title" for="merge-step">Слияние узлов</label><output class="sb-timeline-counter" id="step-counter"></output></div>
+      <input class="sb-playback-range" id="merge-step" type="range" min="0" max="${letters.length - 1}" data-field="step">
+      <div class="sb-playback-toolbar">
+        <div class="sb-playback-actions">
+          ${btn('← Назад','step-back')}${btn('Запуск','play',{primary:true})}
+          ${btn('Вперёд →','step-next')}${btn('В начало','step-reset')}
+        </div>
+        <div class="sb-playback-speed"><span class="sb-speed-label">Скорость</span><div class="sb-speed-segment">
+          ${[.5,1,2].map(value => btn(String(value).replace('.',',')+'×','speed',{value,pressed:value === speed})).join('')}
+        </div></div>
+      </div>
+    </div><div class="flow" id="huffman-tree"></div></div>`;
+  $('settings').innerHTML = `${title('Частоты букв')}
+    <p class="sb-caption">Задай целые веса от 1 до 99.</p>
+    <div class="field-grid">${letters.map((symbol,i) => field('weight'+i,symbol,weights[i],2,true)).join('')}</div>
+    ${field('huffword','Слово для проверки',word,32)}
+    ${btn('Вернуть пример','huffman-default')}`;
+  $('notes').innerHTML = `${title('Что именно сокращает Хаффман?')}
+    <p>Алгоритм минимизирует сумму «частота × длина кода» по всем буквам. Чтобы найти длину отдельного слова, сложи длины кодов его букв с учётом повторений. При равном весе здесь первым берём узел, созданный позже.</p>`;
+  updateHuffman();
+}
+
+function updateHuffman() {
+  const {weights,word,step,speed} = state.huffman;
+  const valid = weights.every(weight => /^\d{1,2}$/.test(weight) && Number(weight) > 0);
+  const range = $('merge-step');
+  range.value = step;
+  range.disabled = !valid;
+  $('step-counter').textContent = step + ' / ' + range.max;
+  const action = name => $('workspace').querySelector(`[data-action="${name}"]`);
+  action('step-back').disabled = !valid || step === 0;
+  action('step-reset').disabled = !valid || step === 0 && !playing;
+  action('step-next').disabled = !valid || step === Number(range.max);
+  action('play').disabled = !valid;
+  action('play').textContent = playing ? 'Пауза' : step === Number(range.max) ? 'Сначала' : 'Запуск';
+  $('workspace').querySelectorAll('[data-action="speed"]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.value) === speed)));
+  const plot = $('huffman-tree');
+  plot.innerHTML = '';
+  if (!valid) {
+    $('queue').innerHTML = errorText('Заполни частоты всех пяти букв числами от 1 до 99.');
+    return;
+  }
+  const computed = Codes.huffman(letters, weights.map(Number));
+  const {queue,left,right,node} = computed.steps[step];
+  const label = item => [...item.label].join(', ');
+  $('queue').innerHTML = (node ? `<p>Объединили <b>${label(left)}</b> и <b>${label(right)}</b>: <b class="mono">${left.weight} + ${right.weight} = ${node.weight}</b>.</p>`
+    : '<p>Отсортировали исходные узлы по весу.</p>') +
+    chips(queue.map((item,i) => chip(label(item),item.weight, (queue.length > 1 && i < 2 ? 'active ' : '') + (item === node ? 'sum' : '')))) +
+    `<p class="sb-caption">${queue.length > 1 ? 'Выделенные узлы объединятся на следующем шаге.' : 'В очереди остался корень. Теперь можно прочитать коды.'}</p>`;
+  if (queue.length > 1) {
+    if (node) plot.innerHTML = tree(node,false,true);
+    return;
+  }
+  const parts = Codes.encode(word.trim().toUpperCase(),letters,computed.codes);
+  const total = computed.codes.reduce((sum,code,i) => sum + Number(weights[i])*code.length,0);
+  plot.innerHTML = tree(computed.root,false,true) +
+    `<div class="sb-surface flow">${title('Коды и длины')}${breakdown(Codes.encode(letters.join(''),letters,computed.codes))}
+    <p>Взвешенная сумма длин: <b>${total}</b></p>
+    ${parts.length && parts.every(part => part.code) ? `<p>Длина слова: <b>${parts.reduce((sum,part) => sum + part.code.length,0)} бит</b></p>${breakdown(parts)}`
+      : '<p class="bad">Для проверки длины введи слово из букв А, Б, В, Г и Д.</p>'}</div>`;
+}
+
+function stopPlayback() {
+  clearTimeout(playTimer);
+  playing = false;
+}
+
+function scheduleStep() {
+  clearTimeout(playTimer);
+  playTimer = setTimeout(() => {
+    state.huffman.step++;
+    if (state.huffman.step === letters.length - 1) {
+      stopPlayback();
+      saveNow();
+    }
+    updateHuffman();
+    if (playing) scheduleStep();
+  }, 1000 / state.huffman.speed);
+}
+
+function taskPanel() {
+  const task = tasks[state.task];
+  const attempt = state.attempts[state.task];
+  $('workspace').innerHTML = `${title(task.title)}
+    <div class="flow"><p>${task.prompt}</p>
+    <form id="answer-form">
+      ${field('answer',task.kind === 'code' ? 'Кодовое слово' : 'Длина в битах',attempt.answer,8,true)}
+      <div class="sb-controls"><button class="sb-btn sb-btn--primary" type="submit">Проверить ответ</button>
+      ${btn(attempt.hint ? 'Скрыть подсказку' : 'Подсказка','hint',{pressed:attempt.hint})}
+      ${btn(attempt.reveal ? 'Скрыть разбор' : 'Разбор','reveal',{pressed:attempt.reveal})}</div>
+    </form>${attempt.hint ? `<p class="sb-callout">${task.hint}</p>` : ''}<div id="feedback" role="status"></div></div>`;
+  const solved = state.attempts.filter(item => item.solved).length;
+  $('settings').innerHTML = `${title('Задачи')}
+    <div class="sb-field"><label for="task-select">Выбери задачу</label><select id="task-select" data-change="task-select">
+    ${options(tasks.map((item,i) => [i,`${i+1}. ${item.title}${state.attempts[i].solved ? ' ✓' : ''}`]),state.task)}
+    </select></div>
+    <p class="sb-caption">Решено: <b>${solved} из ${tasks.length}</b></p>
+    <div class="sb-progress task-progress" aria-hidden="true"><span style="width:${solved/tasks.length*100}%"></span></div>
+    <div class="sb-controls">${btn('Предыдущая','task-prev',{disabled:state.task === 0})}
+    ${btn('Следующая','task-next',{disabled:state.task === tasks.length-1})}</div>`;
+  $('notes').hidden = !attempt.reveal;
+  if (attempt.reveal) {
+    const paths = task.suffix ? task.codes.map(Codes.reverse) : task.codes;
+    $('notes').innerHTML = `<div class="flow">${title('Разбор')}${tree(Codes.trie(task.symbols,paths),task.suffix)}
+      ${breakdown(Codes.encode(task.symbols.join(''),task.symbols,task.codes))}
+      <p>${task.explanation}</p>
+      ${task.word ? breakdown(Codes.encode(task.word,task.symbols,task.codes).map(part => ({...part, code:part.code.length}))) : ''}
+      <p><b>Ответ: <span class="mono">${task.answer}</span></b></p></div>`;
+  }
+  updateAnswer();
+}
+
+function updateAnswer() {
+  const task = tasks[state.task];
+  const attempt = state.attempts[state.task];
+  const answer = attempt.answer.trim();
+  $('feedback').innerHTML = !attempt.checked ? '' : !answer
+    ? errorText('Введи ответ.')
+    : answer === task.answer
+      ? goodText('Верно.')
+      : errorText(task.kind === 'code' ? 'Проверь длину кода и сравни варианты той же длины.' : 'Проверь длины кодов и учти все повторения букв.');
+}
+
+function render() {
+  $('title').textContent = views[state.tab][0];
+  $('intro').textContent = views[state.tab][1];
+  $('settings-link').textContent = {codec:'Таблица кодов ↓', fano:'Параметры дерева ↓',
+    huffman:'Частоты букв ↓', tasks:'Выбрать задачу ↓'}[state.tab];
+  document.querySelectorAll('[data-tab]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.tab === state.tab)));
+  $('notes').hidden = false;
+  ({codec:codecPanel, fano:fanoPanel, huffman:huffmanPanel, tasks:taskPanel})[state.tab]();
+}
+
+$('app').addEventListener('input', event => {
+  const key = event.target.dataset.field;
+  if (!key) return;
+  const value = event.target.value.replace(/[\u0000-\u001f\u007f]/g,'');
+  if (state.tab === 'codec') {
+    if (key.startsWith('code')) state.codec.codes[Number(key.at(-1))] = value;
+    else state.codec[key] = value;
+    if (key === 'decimal' || key === 'binary') updateNumbers();
+    else updateCodec();
+  } else if (state.tab === 'fano') {
+    if (key.startsWith('known')) state.fano.codes[Number(key.at(-1))] = value;
+    else state.fano[key] = value;
+    updateFano();
+  } else if (state.tab === 'huffman') {
+    if (key.startsWith('weight')) {
+      stopPlayback();
+      state.huffman.step = 0;
+      state.huffman.weights[Number(key.at(-1))] = value;
+    } else if (key === 'step') {
+      stopPlayback();
+      state.huffman.step = Number(value);
+    } else state.huffman.word = value;
+    updateHuffman();
+  } else {
+    const attempt = state.attempts[state.task];
+    attempt.answer = value;
+    attempt.checked = false;
+    updateAnswer();
+  }
+  saveSoon();
+});
+
+$('app').addEventListener('change', event => {
+  const key = event.target.dataset.change;
+  const value = event.target.value;
+  if (!key) return;
+  if (key === 'codec-preset') {
+    Object.assign(state.codec,codecExamples[value],{preset:value,codes:[...codecExamples[value].codes],
+      mode:value === 'uniform' ? 'encode' : 'decode'});
+  } else if (key === 'fano-preset') {
+    Object.assign(state.fano,fanoExamples[value],{preset:value,codes:[...fanoExamples[value].codes]});
+  } else state.task = Number(value);
+  render();
+  $(key).focus();
+  saveNow();
+});
+
+$('app').addEventListener('submit', event => {
+  event.preventDefault();
+  const attempt = state.attempts[state.task];
+  attempt.checked = true;
+  if (attempt.answer.trim() === tasks[state.task].answer) {
+    attempt.solved = true;
+    taskPanel();
+    $('answer-form').querySelector('[type="submit"]').focus();
+  } else updateAnswer();
+  saveNow();
+});
+
+$('app').addEventListener('click', event => {
+  const button = event.target.closest('button');
+  if (!button) return;
+  const {tab,action,value} = button.dataset;
+  if (tab) {
+    stopPlayback();
+    state.tab = tab;
+    render();
+  } else if (action === 'settings') {
+    $('settings').scrollIntoView({block:'start'});
+    $('settings').focus({preventScroll:true});
+    return;
+  } else if (action === 'mode' || action === 'transfer') {
+    if (action === 'transfer') {
+      state.codec.bits = Codes.encode(state.codec.word.trim().toUpperCase(), letters.slice(0,3), state.codec.codes).map(part => part.code).join('');
+    }
+    state.codec.mode = value || 'decode';
+    codecPanel();
+    $('field-'+(state.codec.mode === 'encode' ? 'word' : 'bits')).focus();
+  } else if (action === 'suffix' || action === 'pick-code') {
+    if (action === 'suffix') {
+      state.fano.suffix = value === 'true';
+      fanoPanel();
+      $('settings').querySelector(`[data-value="${value}"]`).focus();
+    } else {
+      state.fano.candidate = value;
+      $('field-candidate').value = value;
+      updateFano();
+      $('field-candidate').focus({preventScroll:true});
+    }
+  } else if (action === 'huffman-default') {
+    stopPlayback();
+    state.huffman = initialState().huffman;
+    huffmanPanel();
+    $('field-weight0').focus();
+  } else if (action === 'speed') {
+    state.huffman.speed = Number(value);
+    if (playing) scheduleStep();
+    updateHuffman();
+  } else if (action === 'play') {
+    if (playing) stopPlayback();
+    else {
+      if (state.huffman.step === letters.length - 1) state.huffman.step = 0;
+      playing = true;
+      scheduleStep();
+    }
+    updateHuffman();
+  } else if (['step-back','step-next','step-reset'].includes(action)) {
+    stopPlayback();
+    if (action === 'step-reset') state.huffman.step = 0;
+    else state.huffman.step += action === 'step-back' ? -1 : 1;
+    updateHuffman();
+  } else if (['hint','reveal','task-prev','task-next'].includes(action)) {
+    if (action === 'task-prev' || action === 'task-next') {
+      state.task += action === 'task-prev' ? -1 : 1;
+      taskPanel();
+      $('task-select').focus();
+    } else {
+      const attempt = state.attempts[state.task];
+      attempt[action] = !attempt[action];
+      taskPanel();
+      $('workspace').querySelector(`[data-action="${action}"]`).focus();
+    }
+  } else return;
+  saveNow();
+});
+
+let canSave = false;
+let saving = false;
+let pending = false;
+let saveTimer;
+
+function status(message, retry) {
+  const banner = $('storage');
+  banner.hidden = !message;
+  banner.textContent = message;
+  if (retry) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'sb-btn';
+    button.textContent = 'Повторить';
+    button.addEventListener('click', retry);
+    banner.append(button);
+  }
+}
+
+async function loadProgress(note = '') {
+  stopPlayback();
+  clearTimeout(saveTimer);
+  pending = false;
+  canSave = false;
+  $('app').inert = true;
+  $('app').setAttribute('aria-busy','true');
+  $('local-mode').hidden = true;
+  status('Загружаем прогресс…');
+  try {
+    if (!window.Sandbox) throw Object.assign(new Error(), {code:'NO_SDK'});
+    state = normalize(await Sandbox.load());
+    canSave = true;
+    status(note);
+  } catch (error) {
+    const reason = error?.code;
+    const message = note ? note + ' ' : '';
+    if (['NO_SDK','NOT_EMBEDDED'].includes(reason)) {
+      status(note);
+      $('local-mode').hidden = false;
+    } else if (reason === 'STORAGE_ERROR') {
+      status(message + 'Хранилище прогресса недоступно.');
+    } else status(message + 'Не удалось загрузить прогресс. Изменения не сохраняются.', () => loadProgress(note));
+  } finally {
+    render();
+    $('app').inert = false;
+    $('app').setAttribute('aria-busy','false');
+  }
+}
+
+async function saveNow() {
+  clearTimeout(saveTimer);
+  if (!canSave) return;
+  if (saving) {
+    pending = true;
+    return;
+  }
+  saving = true;
+  try {
+    await Sandbox.save(structuredClone(state));
+    status('');
+  } catch (error) {
+    if (['AUTH_CHANGED','SYNC_REQUIRED'].includes(error?.code)) {
+      await loadProgress('Прогресс обновился. Повтори последнее действие.');
+    } else if (error?.code === 'STORAGE_ERROR') {
+      canSave = false;
+      pending = false;
+      status('Прогресс не сохраняется. Хранилище недоступно.');
+    } else status('Не удалось сохранить изменения.', saveNow);
+  } finally {
+    saving = false;
+  }
+  if (pending) {
+    pending = false;
+    if (canSave) saveNow();
+  }
+}
+
+function saveSoon() {
+  clearTimeout(saveTimer);
+  if (canSave) saveTimer = setTimeout(saveNow, 700);
+}
+
+render();
+status('Загружаем прогресс…');
+document.addEventListener('DOMContentLoaded', () => loadProgress(), {once:true});
 
 </script>
-<script>
-'use strict';
-const M=TurtleMath,$=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const fmt=n=>new Intl.NumberFormat('ru-RU',{maximumFractionDigits:3}).format(Math.abs(n)<1e-7?0:n);
-const own=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
-const SECTIONS=[['regions','Области и множества','Пересечение, объединение и разность','Что значит «в обеих фигурах» и почему общую часть нельзя считать дважды?'],['turtle','Команды Черепахи','Как Черепаха выполняет команды','Следите за координатами, направлением головы и хвостом. Один шаг — одна простая команда.'],['measure','Площадь и периметр','Внутри или по контуру?','Найдите площадь и периметр одной области. Для каждого ответа понадобится свой способ подсчёта.'],['exam','Решаем №6','Задачи на Черепаху','Сначала прочитайте вопрос и предложите ответ. Потом проверьте себя по рисунку и разбору.']];
-const OPS={intersection:['Пересечение','A ∩ B','Общая часть A и B. Точка входит в пересечение, если принадлежит обеим фигурам.'],union:['Объединение','A ∪ B','Всё, что принадлежит хотя бы одной фигуре: A или B, включая общую часть.'],difference:['Разность','A ∖ B','Часть A, которая не принадлежит B. Порядок фигур важен.'],xor:['Без общей части','A △ B','Только одна из фигур: либо A, либо B, но не обе сразу.']};
-const INITIAL=()=>({version:1,section:'regions',speed:1,regions:{op:'intersection'},turtle:{preset:'square',source:M.pseudo(M.parse(M.PRESETS.square.source).tree),draft:M.pseudo(M.parse(M.PRESETS.square.source).tree),syntax:'python',heading:90,step:0,prediction:'',checked:false},measure:{preset:'rect',op:'intersection',kind:'area',answer:'',checked:false},exam:{id:'triangle',work:{}}});
-let state=INITIAL(),loading=true,canSave=false,dirty=false,saving=false,saveTimer,lastSave=0,epoch=0,playTimer=null,view=null,zoom=1,notice='',feedback=null;
-const clean=s=>typeof s==='string'?s.replace(/[\u0000-\u001f]/g,'').slice(0,32):'';
-const validMarks=a=>Array.isArray(a)?[...new Set(a.filter(s=>typeof s==='string'&&/^-?\d{1,3},-?\d{1,3}$/.test(s)))].slice(0,1500):[];
-function normalize(s){
- const d=INITIAL();if(!s||typeof s!=='object'||s.version!==1)return d;
- if(SECTIONS.some(x=>x[0]===s.section))d.section=s.section;if([.5,1,2].includes(s.speed))d.speed=s.speed;
- for(const id of ['regions','turtle','measure']){const t=s[id];if(!t||typeof t!=='object')continue;
-  for(const k of ['checked','reveal','boundary'])if(k in d[id])d[id][k]=t[k]===true;
-  for(const k of ['answer','prediction'])if(k in d[id])d[id][k]=clean(t[k]);
-  if(own(OPS,t.op)&&'op' in d[id])d[id].op=t.op;if('marks' in d[id])d[id].marks=validMarks(t.marks);
- }
- const t=s.turtle||{};if(own(M.PRESETS,t.preset))d.turtle.preset=t.preset;
- if([0,90,180,270].includes(t.heading))d.turtle.heading=t.heading;
- if(typeof t.source==='string'&&t.source.length<=5000)try{M.simulate(t.source,d.turtle.heading);d.turtle.source=t.syntax==='python'?t.source:M.pseudo(M.parse(t.source).tree);}catch{}
- d.turtle.draft=typeof t.draft==='string'?t.draft.replace(/\u0000/g,'').slice(0,5000):d.turtle.source;
- if(t.syntax!=='python')try{d.turtle.draft=M.pseudo(M.parse(d.turtle.draft).tree);}catch{}
- if(Number.isInteger(t.step))d.turtle.step=Math.max(0,Math.min(600,t.step));
- if(['rect','perimeter','rhombus'].includes(s.measure?.preset))d.measure.preset=s.measure.preset;if(['area','perimeter'].includes(s.measure?.kind))d.measure.kind=s.measure.kind;
- if(own(EXAMS,s.exam?.id))d.exam.id=s.exam.id;
- for(const id of Object.keys(EXAMS)){const w=s.exam?.work?.[id];if(w&&typeof w==='object')d.exam.work[id]={answer:clean(w.answer),checked:w.checked===true,step:Number.isInteger(w.step)?Math.max(0,Math.min(600,w.step)):0,marks:validMarks(w.marks),hint:Math.max(0,Math.min(3,Number.isInteger(w.hint)?w.hint:0)),draft:typeof w.draft==='string'?w.draft.replace(/\u0000/g,'').slice(0,5000):'',source:validProgram(w.source),algoChecked:w.algoChecked===true};}
- for(const w of Object.values(d.exam.work)){if(!w.source||!w.algoChecked)w.checked=false;if(!w.source)w.step=0;}
- return d;
-}
-function status(text,error=false,retry){const e=$('storage');e.replaceChildren();e.hidden=!text;e.classList.toggle('is-error',error);const span=document.createElement('span');span.textContent=text;e.append(span);if(retry){const b=document.createElement('button');b.type='button';b.className='sb-btn';b.textContent='Повторить';b.onclick=retry;e.append(b);}}
-async function load(note='',attempt=0){const id=++epoch;stop(false);clearTimeout(saveTimer);dirty=false;canSave=false;loading=true;$('app').inert=true;$('app').setAttribute('aria-busy','true');status('Загружаем прогресс…');try{if(!window.Sandbox)throw {code:'NO_SDK'};const s=await Sandbox.load();if(id!==epoch)return;state=normalize(s);canSave=true;status(note);}catch(e){if(id!==epoch)return;if(['AUTH_CHANGED','SYNC_REQUIRED'].includes(e.code)&&attempt<2)return load('Прогресс обновлён. Повторите последнее действие.',attempt+1);const ordinary=['NO_SDK','NOT_EMBEDDED','STORAGE_ERROR'].includes(e.code);status(ordinary?'Прогресс не сохраняется. Все опыты доступны в этой сессии.':'Не удалось загрузить прогресс ('+(e.code||'сбой связи')+'). Можно работать без сохранения. Повтор загрузки заменит текущие изменения.',!ordinary,ordinary?null:()=>load());}finally{if(id===epoch){loading=false;$('app').inert=false;$('app').setAttribute('aria-busy','false');render();}}}
-function persist(debounce=false){if(!canSave||loading)return;dirty=true;clearTimeout(saveTimer);saveTimer=setTimeout(flush,debounce?700:Math.max(0,550-(Date.now()-lastSave)));}
-async function flush(){if(saving||!dirty||!canSave||loading)return;saving=true;dirty=false;lastSave=Date.now();const id=epoch;let failed=false;try{await Sandbox.save(JSON.parse(JSON.stringify(state)));if(id===epoch)status('');}catch(e){failed=true;if(id!==epoch)return;if(['AUTH_CHANGED','SYNC_REQUIRED'].includes(e.code))await load('Прогресс обновлён. Повторите последнее действие.');else{dirty=true;status('Изменения не сохранены ('+(e.status===413?'слишком большой объём данных':e.status===429?'слишком частые запросы':e.code||'сбой связи')+').',true,()=>persist());}}finally{saving=false;if(dirty&&!failed&&id===epoch)persist();}}
-const btn=(text,action,attrs='')=>'<button type="button" class="sb-btn" data-action="'+action+'" '+attrs+'>'+text+'</button>';
-const select=(label,key,value,options)=>'<div class="sb-field"><label>'+label+'<select data-key="'+key+'">'+options.map(([v,t])=>'<option value="'+v+'" '+(v===value?'selected':'')+'>'+t+'</option>').join('')+'</select></label></div>';
-const input=(label,key,value,min,max)=>'<div class="sb-field"><label>'+label+'<input type="number" data-key="'+key+'" min="'+min+'" max="'+max+'" value="'+value+'"></label></div>';
-const metric=(label,value)=>'<div class="sb-metric"><strong class="sb-metric-value">'+value+'</strong><span class="sb-metric-label">'+label+'</span></div>';
-const fb=(text,ok)=>'<div class="sb-quiz-feedback '+(ok?'is-success':'is-error')+'" role="status">'+esc(text)+'</div>';
-function operations(op){return '<div class="operation-row">'+Object.entries(OPS).map(([id,a])=>btn(a[1],'op','data-value="'+id+'" aria-label="'+a[0]+'" aria-pressed="'+(op===id)+'"')).join('')+'</div>';}
-const key=p=>Math.round(p.x)+','+Math.round(p.y);
-const learningPair=()=>[M.rect(0,0,6,5),M.rect(3,2,5,4)];
-function polygons(preset){if(preset==='rect')return learningPair();const p=M.PRESETS[preset];return M.simulate(p.source,p.heading).polygons.slice(0,2);}
-function resultArea(ps,op){const a=M.area(ps[0]||[]),b=M.area(ps[1]||[]),i=ps.length>1?M.area(M.clip(ps[0],ps[1])):a;return op==='intersection'?i:op==='union'?a+b-(ps.length>1?i:0):op==='difference'?a-i:a+b-2*i;}
-function resultPoly(ps,op){return ps.length===1?ps[0]:op==='intersection'?M.clip(ps[0],ps[1]):null;}
-function rowCounts(points){const map=new Map();for(const p of points)map.set(p.y,(map.get(p.y)||0)+1);return [...map].sort((a,b)=>b[0]-a[0]);}
-function draw({ps=[],sim=null,step=null,op='intersection',showResult=false,points=false,boundary=false,marks=[],reveal=false,probe=null,faces=null,edgeLabels=false}={}){
- const all=sim?sim.segments.flatMap(s=>[s.a,s.b]):ps.flat(),b=M.bounds([all]),W=$('plot').clientWidth||760,H=$('plot').clientHeight||510,pad=W<400?24:40,cx=(b.x0+b.x1)/2,cy=(b.y0+b.y1)/2,scale=Math.min((W-2*pad)/(b.x1-b.x0),(H-2*pad)/(b.y1-b.y0))*zoom;
- const X=x=>W/2+(x-cx)*scale,Y=y=>H/2-(y-cy)*scale,poly=p=>p.map(v=>X(v.x)+','+Y(v.y)).join(' '),set=new Set(marks);view={X,Y,scale,cx,cy,W,H,b,ps,points,faces,step};
- let s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(sim?'След Черепахи и её текущее положение':'Фигуры на координатной сетке')+'"><title>Ось x направлена вправо, ось y вверх</title>';
- const stride=Math.max(1,Math.ceil(Math.max(b.x1-b.x0,b.y1-b.y0)/Math.max(8,Math.floor(W/22))));
- for(let x=b.x0;x<=b.x1;x++)if((x%stride===0)||x===0){s+='<line class="'+(x===0?'axis':'grid')+'" x1="'+X(x)+'" x2="'+X(x)+'" y1="'+Y(b.y0)+'" y2="'+Y(b.y1)+'"/>';if(x%(stride*2)===0)s+='<text font-size="13" x="'+(X(x)+3)+'" y="'+(Y(Math.max(b.y0,Math.min(0,b.y1)))+16)+'">'+x+'</text>';}
- for(let y=b.y0;y<=b.y1;y++)if((y%stride===0)||y===0){s+='<line class="'+(y===0?'axis':'grid')+'" x1="'+X(b.x0)+'" x2="'+X(b.x1)+'" y1="'+Y(y)+'" y2="'+Y(y)+'"/>';if(y%(stride*2)===0&&y!==0)s+='<text font-size="13" x="'+(X(Math.max(b.x0,Math.min(0,b.x1)))+5)+'" y="'+(Y(y)-3)+'">'+y+'</text>';}
- s+='<text font-size="16" x="'+(W-22)+'" y="'+Math.max(20,Math.min(H-10,Y(0)-8))+'">x</text><text font-size="16" x="'+Math.max(10,Math.min(W-20,X(0)+8))+'" y="22">y</text>';
- ps.forEach((p,i)=>s+='<polygon class="shape-'+(i?'b':'a')+'" points="'+poly(p)+'"/>');
- if(showResult&&ps.length){if(op==='intersection')s+='<polygon class="result" points="'+poly(resultPoly(ps,op)||[])+'"/>';else if(op==='union')s+='<path class="result" d="'+ps.map(p=>'M'+p.map(v=>X(v.x)+' '+Y(v.y)).join('L')+'Z').join(' ')+'" fill-rule="nonzero"/>';}
- if(faces)faces.forEach((p,i)=>{if(set.has(i+',0')||reveal&&p.length===3)s+='<polygon class="face-mark" points="'+poly(p)+'"/>';});
- if(sim){const n=step===null?sim.frames.length-1:Math.min(step,sim.frames.length-1);for(const seg of sim.segments)if(seg.step<=n)s+='<line class="'+(seg.pen?'trace':'travel')+'" x1="'+X(seg.a.x)+'" y1="'+Y(seg.a.y)+'" x2="'+X(seg.b.x)+'" y2="'+Y(seg.b.y)+'"/>';const f=sim.frames[n],x=X(f.x),y=Y(f.y);s+='<path class="turtle" d="M 13 0 L -9 -8 L -5 0 L -9 8 Z" transform="translate('+x+' '+y+') rotate('+(-f.angle)+')"/>';}
- if(points&&(b.x1-b.x0)*(b.y1-b.y0)<2200)for(let y=b.y0;y<=b.y1;y++)for(let x=b.x0;x<=b.x1;x++){
-  const p={x,y},chosen=set.has(key(p)),correct=M.belongs(p,ps,op,boundary),edge=ps.some(a=>M.locate(p,a)==='boundary');
-  s+='<circle class="point '+(chosen?'chosen ':'')+(reveal&&correct?'chosen ':reveal&&chosen&&!correct?'wrong ':reveal&&edge?'boundary ':'')+'" cx="'+X(x)+'" cy="'+Y(y)+'" r="'+(chosen||reveal&&correct?4.7:2.2)+'"/>';
- }
- if(probe)s+='<circle class="focus-point" cx="'+X(probe.x)+'" cy="'+Y(probe.y)+'" r="10"/>';
- if(edgeLabels){const p=resultPoly(ps,op)||[];for(let i=0;i<p.length;i++){const a=p[i],b=p[(i+1)%p.length];s+='<text class="edge-label" text-anchor="middle" x="'+X((a.x+b.x)/2)+'" y="'+(Y((a.y+b.y)/2)-7)+'">'+fmt(M.dist(a,b))+'</text>';}}
- $('plot').innerHTML=s+'</svg>';
-}
-function lessonCards(items){$('lessons').hidden=items.length===0;$('lessons').innerHTML=items.map(([a,b])=>'<section class="sb-card"><h3>'+a+'</h3><p class="sb-caption">'+b+'</p></section>').join('');}
-function render(){
- $('explanation').hidden=state.section==='turtle';
- stop(false);feedback=null;zoom=1;const i=SECTIONS.findIndex(x=>x[0]===state.section),sec=SECTIONS[i];
- $('navigation').innerHTML=SECTIONS.map(([id,label],j)=>'<button type="button" class="sb-section-btn" data-action="section" data-value="'+id+'" aria-pressed="'+(id===state.section)+'">'+label+'<span class="section-number">0'+(j+1)+'</span></button>').join('');
- $('eyebrow').textContent='Задание №6 · Шаг '+(i+1)+' из '+SECTIONS.length;$('title').textContent=sec[2];$('description').textContent=sec[3];$('controls').innerHTML='';$('next-note').textContent=i<SECTIONS.length-1?'Следующий шаг: '+SECTIONS[i+1][1]:'Вернитесь к любому разделу и измените условия опыта.';document.querySelector('[data-action="next-section"]').textContent=i<SECTIONS.length-1?'Дальше →':'К началу';$('reset-confirm').hidden=true;$('app').classList.toggle('is-regions',state.section==='regions');document.querySelector('.scene-card').hidden=state.section==='regions';$('activity').hidden=state.section==='regions';document.querySelector('.sb-params').hidden=state.section==='regions';
- ({regions:renderRegions,turtle:renderTurtle,measure:renderMeasure,exam:renderExam}[state.section])();
-}
-function operationVisual(op){
- const a='<circle cx="150" cy="110" r="82"/>',b='<circle cx="250" cy="110" r="82"/>';
- const captions={intersection:'Только общая часть двух кругов.',union:'Оба круга целиком. Общая часть входит в область один раз.',difference:'Часть круга A за пределами круга B.',xor:'Части кругов за пределами пересечения. Общая часть исключена.'};
- const mask=op==='intersection'?'<g clip-path="url(#venn-b)">'+a+'</g>':op==='union'?a+b:op==='difference'?a+'<g fill="black">'+b+'</g>':a+b+'<g fill="black" clip-path="url(#venn-b)">'+a+'</g>';
- return '<figure class="operation-visual" id="operation-visual"><svg viewBox="0 0 400 220" role="img" aria-label="'+OPS[op][0]+': '+captions[op]+'"><title>'+OPS[op][0]+'</title><defs><clipPath id="venn-b">'+b+'</clipPath><mask id="venn-result" maskUnits="userSpaceOnUse" x="0" y="0" width="400" height="220"><rect width="400" height="220" fill="black"/><g fill="white">'+mask+'</g></mask></defs><g class="venn-base">'+a+b+'</g><rect class="venn-fill" width="400" height="220" mask="url(#venn-result)"/><circle class="venn-a" cx="150" cy="110" r="82"/><circle class="venn-b" cx="250" cy="110" r="82"/><text x="110" y="119">A</text><text x="290" y="119">B</text></svg><figcaption><i></i>'+captions[op]+'</figcaption></figure>';
-}
-function renderRegions(){
- const r=state.regions,op=OPS[r.op];
- $('instruction').innerHTML='<div class="sb-eyebrow">01 · Пересечение и объединение</div><h2 class="sb-h2">'+op[0]+'</h2><div class="formula">'+op[1]+'</div><p class="lead">'+op[2]+'</p>'+operations(r.op)+operationVisual(r.op)+'<p class="sb-caption">Зелёным показана выбранная область. Переключайте операции и сравнивайте рисунки.</p>';
- $('activity').replaceChildren();$('settings').replaceChildren();view=null;
- $('explanation').innerHTML='<h2 class="sb-h2">Почему общую часть вычитают?</h2><p class="lead">В сумме S(A) + S(B) общая часть учтена два раза. Для объединения одну её копию нужно убрать.</p><div class="formula">S(A ∪ B) = S(A) + S(B) − S(A ∩ B)</div>';
- lessonCards([]);
-}
-function playback(sim,step){const f=sim.frames[Math.min(step,sim.frames.length-1)],max=sim.frames.length-1;return '<section class="sb-playback"><div class="sb-timeline-head"><h3 class="sb-timeline-title">Ход алгоритма</h3><output class="sb-timeline-counter">'+step+' / '+max+'</output></div><input class="sb-playback-range" id="timeline" type="range" min="0" max="'+max+'" value="'+step+'" aria-label="Шаг алгоритма"><div class="sb-playback-toolbar"><div class="sb-playback-actions">'+btn('←','back','aria-label="Предыдущая команда" '+(!step?'disabled':'')+' class="sb-btn sb-btn--icon"')+btn(playTimer?'Ⅱ Пауза':'▶ Запуск','play')+btn('→','forward','aria-label="Следующая команда" '+(step===max?'disabled':''))+btn('Следующий цикл','cycle')+btn('↺ Сброс','rewind')+'</div><div class="sb-playback-speed"><span class="sb-speed-label">Скорость</span><div class="sb-speed-segment">'+[.5,1,2].map(v=>'<button type="button" class="sb-speed-btn" data-action="speed" data-value="'+v+'" aria-pressed="'+(state.speed===v)+'">'+String(v).replace('.',',')+'×</button>').join('')+'</div></div></div></section><div class="sb-step-spotlight"><span class="sb-step-spotlight-label">ТЕКУЩИЙ ШАГ</span><span aria-live="'+(playTimer?'off':'polite')+'">'+frameText(f)+'</span></div>';}
-function frameText(f){if(!f.line)return 'Начало: координаты (0; 0). Проверьте начальное направление по условию.';const command={forward:'Вперёд',back:'Назад',right:'Направо',left:'Налево',up:'Поднять хвост',down:'Опустить хвост'}[f.kind];return command+(f.n!==undefined?' '+f.n:'')+'. '+(['right','left'].includes(f.kind)?'Повернулась только голова, координаты прежние. ':['up','down'].includes(f.kind)?'Положение и направление прежние. ':'Новое положение ('+fmt(f.x)+'; '+fmt(f.y)+'). ')+(f.context.length?'Повторение: '+f.context.join(' → ')+'. ':'')+(f.pen?'Хвост опущен.':'Хвост поднят, линия не рисуется.');}
-function highlightCode(source){
- const pattern=/#[^\n]*|\b(?:for|in|from|import)\b|\b(?:forward|back|right|left|penup|pendown|range|setheading|tracer|goto|dot|update|done)\b|\b\d+(?:\.\d+)?\b|[()[\]:]|\b(?:Повтори|Вперёд|Вперед|Назад|Направо|Налево|Поднять|Опустить)\b/gu;
- let result='',last=0;for(const match of source.matchAll(pattern)){const token=match[0];const kind=token.startsWith('#')?'comment':/^(for|in|from|import)$/.test(token)?'keyword':/^\d/.test(token)?'number':/^[()[\]:]$/.test(token)?'punctuation':'function';result+=esc(source.slice(last,match.index))+'<span class="syntax-'+kind+'">'+esc(token)+'</span>';last=match.index+token.length;}return result+esc(source.slice(last));
-}
-function editorMarkup(source){return '<div class="code-editor-shell"><pre id="program-colors" class="code-editor-highlight" aria-hidden="true">'+highlightCode(source)+'\n</pre><textarea id="program" aria-describedby="editor-keys" class="code-editor" maxlength="5000" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" wrap="off">'+esc(source)+'</textarea></div><p id="editor-keys" class="sb-caption">Tab — отступ, Shift+Tab — убрать отступ. Чтобы выйти из поля, нажмите Escape, затем Tab.</p>';}
-function codeMarkup(source,line){return source.split('\n').map((s,i)=>'<div class="code-line '+(i+1===line?'active':'')+'"><span>'+(i+1)+'</span><span>'+highlightCode(s)+'</span></div>').join('');}
-function renderTurtle(){
- const t=state.turtle,sim=M.simulate(t.source,t.heading);t.step=Math.min(t.step,sim.frames.length-1);const f=sim.frames[t.step];
- $('instruction').innerHTML='<div class="sb-eyebrow">02 · Команда меняет состояние</div><h2 class="sb-h2">Поворот — на месте, движение — по направлению головы</h2><p class="lead">Вперёд — идём туда, куда смотрит Черепаха. Назад — отступаем, сохраняя направление головы. Поворот направо выполняется по часовой стрелке. Поднятый хвост не останавливает движение.</p><p class="sb-caption">Пунктир показывает перемещения без рисования. Он не становится границей фигуры.</p>';
- $('scene-title').textContent='Проследите путь Черепахи';draw({sim,step:t.step});$('plot-note').textContent='Зелёная стрелка показывает положение и направление головы. Сетка — в единицах задачи, масштаб меняет только изображение.';
- $('metrics').innerHTML=metric('Координаты','('+fmt(f.x)+'; '+fmt(f.y)+')')+metric('Направление',fmt(f.angle)+'°')+metric('Хвост',f.pen?'Опущен':'Поднят');$('controls').innerHTML=playback(sim,t.step);
- $('settings').innerHTML=select('Готовый опыт','turtle-preset',t.preset,[['square','Квадрат'],['triangle','Треугольник: 10 повторений'],['pen','Поднятый хвост'],['rhombus','Вложенный цикл']])+select('Начальное направление','heading',String(t.heading),[['90','Вверх · +y'],['0','Вправо · +x'],['270','Вниз · −y'],['180','Влево · −x']]);$('key-question').textContent='Изменилась позиция, направление или только положение хвоста?';
- $('activity').innerHTML='<h2 class="sb-h2">Измените длину, поворот или число повторений</h2><p class="sb-caption">Команды: forward(6) — вперёд, back(6) — назад, right(90) и left(90) — повороты, penup() и pendown() — поднять и опустить хвост. Цикл: for i in range(4):. Команды внутри цикла пишите с отступом в четыре пробела.</p><label for="program" class="sb-caption">Ваш алгоритм на упрощённом Python</label>'+editorMarkup(t.draft)+'<div class="actions">'+btn('Выполнить мой алгоритм','apply-program')+'</div><div id="program-error" role="status"></div><h3 class="sb-h3" style="margin-top:20px">Какая строка выполняется?</h3><div class="code-view" id="running-code">'+codeMarkup(t.source,f.line)+'</div>';
- $('explanation').replaceChildren();
- lessonCards([]);
-}
-function measureModel(){const m=state.measure,ps=polygons(m.preset);const poly=resultPoly(ps,m.op);return {ps,poly,value:m.kind==='area'?resultArea(ps,m.op):M.perimeter(poly||[])};}
-function renderMeasure(){
- const m=state.measure,{ps,poly,value}=measureModel();
- $('instruction').innerHTML='<div class="sb-eyebrow">03 · Выбираем правильную величину</div><h2 class="sb-h2">'+(m.kind==='area'?'Площадь — сколько места занимает область':'Периметр — длина границы выбранной области')+'</h2><p class="lead">'+(m.kind==='area'?'Разбейте область на непересекающиеся части или вычтите повторно учтённую площадь. Площадь одной единичной клетки равна 1.':'Обведите контур нужной области. Линии исходных фигур, которые оказались внутри неё или вне её, в периметр не входят.')+'</p>';
- $('scene-title').textContent=m.kind==='area'?'Площадь выбранной области':'Проследите границу';draw({ps,op:m.op,showResult:true,edgeLabels:m.checked&&m.kind==='perimeter'});$('plot-note').textContent='Сначала вычислите результат. После проверки на контуре появятся длины сторон, если выбран периметр.';
- $('metrics').innerHTML=metric('Величина',m.kind==='area'?'S':'P')+metric('Единицы',m.kind==='area'?'кв. ед.':'единицы')+metric('Результат',m.checked?fmt(value):'?');
- $('settings').innerHTML=select('Пример','measure-preset',m.preset,[['rect','Два прямоугольника'],['perimeter','Два 12-угольника'],['rhombus','Ромб из вложенного цикла']])+select('Что считаем','measure-kind',m.kind,[['area','Площадь'],['perimeter','Периметр']])+(m.kind==='area'&&ps.length>1?select('Нужная область','measure-op',m.op,[['intersection','Пересечение'],['union','Объединение']]):'<p class="sb-caption">'+(ps.length>1?'Периметр пересечения двух фигур.':'Изучаем одну замкнутую фигуру.')+'</p>');$('key-question').textContent='В условии просят квадратные единицы или длину контура?';
- $('activity').innerHTML=answerForm(m.answer,'Ваш результат','Допустима десятичная дробь с точкой или запятой.')+(m.checked?fb((answerNumber(m.answer)!==null&&Math.abs(answerNumber(m.answer)-value)<.01?'Верно. ':'Пока не совпало. ')+(m.kind==='area'?'Площадь':'Периметр')+' = '+fmt(value)+(m.kind==='area'?' кв. ед.':' ед.'),answerNumber(m.answer)!==null&&Math.abs(answerNumber(m.answer)-value)<.01):'');
- let explanation='';if(m.preset==='rect'){const i=M.area(M.clip(...ps));explanation=m.kind==='area'?(m.op==='union'?'S(A) + S(B) − S(A ∩ B) = 30 + 20 − '+i+' = '+fmt(value):'Общая часть — прямоугольник 3 × 3. S = 9.'):'Общая часть — прямоугольник 3 × 3. P = 2 × (3 + 3) = 12.';}
- if(m.preset==='rhombus')explanation=m.kind==='area'?'Ромб: S = a² sin 45° = 36 × √2 / 2 = 18√2 ≈ 25,456. Если просят целую часть, ответ 25.':'Четыре стороны по 6: P = 4 × 6 = 24. Высота нужна для площади, но не для периметра.';
- if(m.preset==='perimeter')explanation=m.kind==='perimeter'?'На границе пересечения четыре стороны длиной 13 и две стороны длиной 13 − 5 = 8. P = 4 × 13 + 2 × 8 = 68. Соединительный отрезок длиной 5 не является короткой стороной пересечения.':'Общая фигура — шестиугольник. Её можно разбить на простые части. Точный расчёт по координатам вершин даёт S ≈ '+fmt(value)+'.';
- $('explanation').innerHTML='<h2 class="sb-h2">Разбор</h2>'+(m.checked?'<p class="lead">'+explanation+'</p>':'<p class="sb-caption">Предложите ответ, чтобы открыть ход решения.</p>')+'<details><summary>Формулы, которые стоит узнавать</summary><div class="boundary-tags"><span>Прямоугольник: S = ab</span><span>Треугольник: S = ah / 2</span><span>Параллелограмм: S = ah</span><span>Ромб: S = a² sin α</span><span>Трапеция: S = (a + b)h / 2</span></div><p class="sb-caption">h — перпендикулярная высота. Наклонная сторона обычно не равна высоте.</p></details>';
- lessonCards([]);
-}
-function answerNumber(s){if(!/^\s*\d+(?:[.,]\d+)?\s*$/.test(s))return null;return Number(s.trim().replace(',','.'));}
-function answerForm(value,label='Ваш ответ',hint='Введите число без единиц измерения.'){return '<h2 class="sb-h2">Сначала ваш ответ</h2><form id="answer-form" class="form-row"><div class="sb-field"><label>'+label+'<input id="answer" type="text" inputmode="decimal" maxlength="32" value="'+esc(value)+'" required autocomplete="off"></label></div><button type="submit" class="sb-btn sb-btn--primary">Проверить</button></form><p class="sb-caption">'+hint+'</p><div id="answer-error" role="status"></div>';}
-const EXAMS={
- triangle:{preset:'triangle',question:'Сколько целочисленных точек строго внутри полученной области? Начало — (0; 0), направление вверх.',kind:'points',op:'intersection',hints:['После трёх повторений контур уже замкнулся. Остальные повторения его обводят.','Получается равносторонний треугольник. Исключите вертикальную сторону x = 0.','Сумма по горизонтальным строкам: 1 + 2 + 4 + 6 + 4 + 2 + 1.'],explain:'Всего 24 точки. Угол поворота 120°, внутренний угол треугольника 60°. Десять повторений не создают десять новых областей.'},
- overlap:{preset:'overlap',question:'Сначала строится треугольник со стороной 12, затем квадрат со стороной 5. Сколько целочисленных точек строго внутри пересечения? Начало — (0; 0), направление вверх.',kind:'points',op:'intersection',hints:['Нужны точки, лежащие строго внутри обеих фигур одновременно.','После первого цикла Черепаха в начале и смотрит вверх. Квадрат занимает 3 ≤ x ≤ 8, 5 ≤ y ≤ 10.','Проверьте строки y = 6, 7, 8, 9. Наклонная сторона треугольника отсекает часть точек.'],explain:'В строках y = 6, 7, 8, 9 находятся 4, 4, 3 и 2 точки. Всего 13. Точки на стороне квадрата или треугольника исключены.'},
- perimeter:{preset:'perimeter',question:'Два правильных 12-угольника строятся вложенными циклами. Найдите периметр их пересечения. Начало — (0; 0), направление вниз.',kind:'perimeter',op:'intersection',hints:['Внутренний цикл рисует правильный 12-угольник: 12 поворотов по 30°.','Команда forward(5) сдвигает начало второй фигуры. Это не длина стороны пересечения.','На контуре четыре стороны по 13 и две по 13 − 5.'],explain:'P = 4 × 13 + 2 × (13 − 5) = 68. В пособии указано 62: там длину соединителя 5 ошибочно приняли за короткую сторону пересечения.'},
- union:{preset:'union',question:'Найдите площадь объединения фигур, построенных алгоритмом. Используйте размеры из условия: вторая фигура — 10 × 14. Начало — (0; 0), направление вверх.',kind:'area',op:'union',hints:['Первая фигура — 6 × 12, вторая — 14 × 10. Повторы обводят те же прямоугольники.','Первый цикл заканчивается в (6; 12), голова смотрит вниз. Поднятый хвост переносит в (5; 7).','Пересечение — прямоугольник 5 × 7. Вычтите его площадь из суммы площадей.'],explain:'S = 6 × 12 + 14 × 10 − 5 × 7 = 177. В пособии условие содержит 10 и 14, а Python-код — 5 и 10. Ответ 97 относится к размерам из кода. Здесь используется исходное условие.'},
- unionFixed:{preset:'unionFixed',question:'Учебный вариант: во втором цикле forward(5) и forward(10). Найдите площадь объединения. Начало — (0; 0), направление вверх.',kind:'area',op:'union',hints:['Первый прямоугольник — 6 × 12, второй — 10 × 5.','Общая часть имеет размеры 5 × 5.','Сложите 72 и 50, затем вычтите 25.'],explain:'S = 72 + 50 − 25 = 97. В этом варианте взяты размеры 5 и 10 из Python-кода пособия.'},
- rhombus:{preset:'rhombus',question:'Найдите целую часть площади. Начало — (0; 0), направление вверх.',kind:'floor',op:'intersection',hints:['Два внешних повторения замыкают ромб. Следующие обводят тот же контур.','Все стороны равны 6. Для площади используйте угол 45° или 135°: синус одинаков.','S = 6² × sin 45° = 18√2 ≈ 25,456. Требуется целая часть.'],explain:'Площадь ромба 18√2 ≈ 25,456. Целая часть равна 25. Количество точек и длина контура к этому вопросу не относятся.'},
- star:{preset:'star',question:'Учебное уточнение задачи 1: сколько отдельных треугольных областей образовано пересечениями отрезков? Каждая область не содержит других отрезков внутри. Начало — (0; 0), направление вправо.',kind:'faces',op:'intersection',hints:['Не считайте большие треугольники, внутри которых проходят дополнительные отрезки.','Один полный путь повторяется через восемь пар команд. Повторная линия не создаёт область.','Найдите маленькие треугольники у восьми направлений звезды. Четырёхугольники и центральная область не учитываются.'],explain:'Восемь элементарных треугольных областей. Всего элементарных ограниченных областей у этого следа 17: ещё восемь четырёхугольников и одна центральная область. В пособии ответ 8 назван количеством фигур, поэтому здесь вопрос уточнён до треугольных областей.'}
-};
-function validProgram(source){if(typeof source!=='string'||source.length>5000)return '';try{M.parsePseudo(source);M.simulate(source);return source;}catch{return '';}}
-function examWork(){const id=state.exam.id;if(!state.exam.work[id])state.exam.work[id]={answer:'',checked:false,step:0,marks:[],hint:0,draft:'',source:'',algoChecked:false};return state.exam.work[id];}
-const CODING_TASKS={
- triangle:'Повторите 10 раз: пройти вперёд 8 единиц и повернуть направо на 120°.',
- overlap:'Сначала повторите 3 раза: вперёд 12, направо 120°. Поднимите хвост, пройдите вперёд 10, поверните направо на 90° и пройдите вперёд 3. Опустите хвост. Повторите 4 раза: вперёд 5, направо 90°.',
- perimeter:'Повторите 2 раза: повернуть налево на 90°, затем 12 раз пройти вперёд 13 и повернуть направо на 30°, после внутреннего цикла пройти вперёд 5. Хвост всё время опущен.',
- union:'Повторите 3 раза: вперёд 12, направо 90°, вперёд 6, направо 90°. Поднимите хвост. Пройдите вперёд 5, поверните направо на 90°, пройдите вперёд 1 и поверните налево на 90°. Опустите хвост. Повторите 5 раз: вперёд 10, направо 90°, вперёд 14, направо 90°.',
- unionFixed:'Повторите 3 раза: вперёд 12, направо 90°, вперёд 6, направо 90°. Поднимите хвост. Пройдите вперёд 5, поверните направо на 90°, пройдите вперёд 1 и поверните налево на 90°. Опустите хвост. Повторите 5 раз: вперёд 5, направо 90°, вперёд 10, направо 90°.',
- rhombus:'Повторите 10 раз: дважды выполнить пару «вперёд 6, направо 45°», затем повернуть направо ещё на 90°. Хвост всё время опущен.',
- star:'Повторите 20 раз: повернуть направо на 225°, затем пройти вперёд 7 единиц. Хвост всё время опущен.'
-};
-function examModel(){
- const e=EXAMS[state.exam.id],p=M.PRESETS[e.preset],target=M.simulate(p.source,p.heading),targetPs=target.polygons.slice(0,2),poly=resultPoly(targetPs,e.op)||[],w=examWork(),source=w.source||'';
- const sim=source?M.simulate(source,p.heading):{frames:[{x:0,y:0,angle:p.heading,pen:true,line:0,context:[]}],segments:[],polygons:[],tree:[],atoms:[]};
- const result=M.compareTraces(sim,target),ps=sim.polygons.slice(0,2),faces=e.kind==='faces'?M.faces(sim.segments):[];
- const value=e.kind==='points'?M.lattice(targetPs,e.op).length:e.kind==='perimeter'?M.perimeter(poly):e.kind==='area'?resultArea(targetPs,e.op):e.kind==='floor'?Math.floor(M.area(poly)):M.faces(target.segments).filter(f=>f.length===3).length;
- return {e,p,source,sim,ps,poly,faces,value,targetPs,result};
-}
-function algorithmFeedback(result){if(result.ok)return fb('Алгоритм строит нужный рисунок. Теперь найдите ответ на вопрос задачи.',true);const seg=result.segment,coords=p=>'('+fmt(p.x)+'; '+fmt(p.y)+')';return fb((result.kind==='extra'?'Лишняя линия от ':'Не хватает линии от ')+coords(seg.a)+' до '+coords(seg.b)+'. Проверьте длины, повороты и положение хвоста.',false);}
-function renderExam(){
- const w=examWork(),{e,p,source,sim,ps,poly,faces,value,targetPs,result}=examModel();w.step=Math.min(w.step,sim.frames.length-1);const done=w.step===sim.frames.length-1;$('explanation').hidden=!w.checked||!result.ok;
- $('instruction').innerHTML='<div class="sb-eyebrow">04 · Напишите алгоритм</div><h2 class="sb-h2">'+esc(p.name)+'</h2><p class="lead">'+esc(e.question)+'</p><div class="hint">'+CODING_TASKS[state.exam.id]+'</div><p class="sb-caption">Начало — (0; 0), хвост опущен. Направление головы: '+({0:'вправо',90:'вверх',180:'влево',270:'вниз'}[p.heading])+'.</p><h3 class="sb-h3" style="margin-top:16px">Ваш код</h3><p class="sb-caption">forward(n), back(n), right(a), left(a), penup(), pendown(). Цикл — for i in range(k):, внутри — отступ в четыре пробела.</p>'+editorMarkup(w.draft)+'<div class="actions">'+btn('Запустить мой код','run-exam')+btn('Проверить алгоритм','check-algorithm')+'</div><div id="program-error" role="status"></div>'+'<div id="algorithm-feedback">'+(w.algoChecked?algorithmFeedback(result):'')+'</div>'+(source?'<h3 class="sb-h3" style="margin-top:16px">Последний запуск · выполняемая строка</h3><div class="code-view" id="running-code">'+codeMarkup(source,sim.frames[w.step].line)+'</div>':'');
- $('scene-title').textContent=w.checked?'Сравните рисунок и решение':'Постройте рисунок по шагам';draw({ps:done?ps:[],sim,step:w.step,op:e.op,showResult:done&&w.checked,points:done&&e.kind==='points',reveal:done&&w.checked,faces:done&&e.kind==='faces'?faces:null,marks:w.marks,edgeLabels:done&&w.checked&&e.kind==='perimeter'});$('plot-note').textContent=e.kind==='faces'?'После построения нажимайте на маленькие области, чтобы отметить найденные треугольники.':e.kind==='points'?'После построения можно нажимать на точки. Общий ответ скрыт до вашей проверки.':'Зелёная область появляется после проверки ответа и полного построения.';
- $('metrics').innerHTML=metric('Что ищем',{points:'Точки',perimeter:'Периметр',area:'Площадь',floor:'Целую часть S',faces:'Треугольники'}[e.kind])+metric('Шаг',w.step+' / '+(sim.frames.length-1))+metric('Ответ',w.checked?fmt(value):'?');$('controls').innerHTML=source?playback(sim,w.step):'';
- $('settings').innerHTML=select('Задача','exam-id',state.exam.id,Object.entries(EXAMS).map(([id,e])=>[id,M.PRESETS[e.preset].name]))+'<p class="sb-caption">У каждой задачи сохраняются свой код, ответ, шаг и подсказки. Сначала проверьте код, затем введите числовой ответ.</p><div class="actions">'+btn('Построить целиком','finish',source?'':'disabled')+'</div>';
- $('key-question').textContent='Какая область нужна, учитывается ли граница, какую величину просят?';
- $('activity').innerHTML=(w.algoChecked&&result.ok?answerForm(w.answer):'<h2 class="sb-h2">Ответ на задачу</h2><p class="sb-caption">Сначала напишите и проверьте алгоритм. После верного построения здесь появится поле ответа.</p>')+(w.checked&&result.ok?fb((answerNumber(w.answer)!==null&&Math.abs(answerNumber(w.answer)-value)<.001?'Верно. ':'Ответ отличается. ')+'Получается '+fmt(value)+'.',answerNumber(w.answer)!==null&&Math.abs(answerNumber(w.answer)-value)<.001):'')+'<div class="actions">'+btn('Подсказка '+Math.min(3,w.hint+1)+' / 3','hint',w.hint>=3?'disabled':'')+'</div>'+e.hints.slice(0,w.hint).map((h,i)=>'<div class="hint"><b>Шаг '+(i+1)+'.</b> '+h+'</div>').join('');
- $('explanation').innerHTML='<h2 class="sb-h2">Разбор решения</h2>'+(w.checked?'<p class="lead">'+esc(e.explain)+'</p>'+(e.kind==='points'?'<div class="formula">'+rowCounts(M.lattice(targetPs,e.op)).map(a=>a[1]).join(' + ')+' = '+value+'</div>':''):'<p class="sb-caption">Разбор появится после проверки. Подсказки можно открывать постепенно.</p>');
- lessonCards([]);
-}
-function rerenderSection(){const focus=document.activeElement?.dataset?.key;({regions:renderRegions,turtle:renderTurtle,measure:renderMeasure,exam:renderExam}[state.section])();if(focus)document.querySelector('[data-key="'+focus+'"]')?.focus({preventScroll:true});}
-function activeSim(){return state.section==='turtle'?M.simulate(state.turtle.source,state.turtle.heading):examModel().sim;}
-function activeWork(){return state.section==='turtle'?state.turtle:examWork();}
-function stop(save=true){if(playTimer){clearInterval(playTimer);playTimer=null;if(save)persist();}}
-function refreshPlayback(){
- // Обновляем только сцену, шкалу и подсветку: введённый ответ и фокус не теряются.
- const w=activeWork(),sim=activeSim(),f=sim.frames[w.step];
- if(state.section==='turtle'){draw({sim,step:w.step});$('metrics').innerHTML=metric('Координаты','('+fmt(f.x)+'; '+fmt(f.y)+')')+metric('Направление',fmt(f.angle)+'°')+metric('Хвост',f.pen?'Опущен':'Поднят');}
- else{const {e,ps,faces,value}=examModel(),done=w.step===sim.frames.length-1;draw({ps:done?ps:[],sim,step:w.step,op:e.op,showResult:done&&w.checked,points:done&&e.kind==='points',reveal:done&&w.checked,marks:w.marks,faces:done&&e.kind==='faces'?faces:null,edgeLabels:done&&w.checked&&e.kind==='perimeter'});$('metrics').innerHTML=metric('Что ищем',{points:'Точки',perimeter:'Периметр',area:'Площадь',floor:'Целую часть S',faces:'Треугольники'}[e.kind])+metric('Шаг',w.step+' / '+(sim.frames.length-1))+metric('Ответ',w.checked?fmt(value):'?');}
- $('controls').innerHTML=playback(sim,w.step);if($('running-code'))$('running-code').innerHTML=codeMarkup(state.section==='turtle'?state.turtle.source:examModel().source,f.line);
-}
-function move(step,debounce=false){stop(false);const w=activeWork();w.step=Math.max(0,Math.min(activeSim().frames.length-1,step));refreshPlayback();persist(debounce);}
-function play(){const w=activeWork(),max=activeSim().frames.length-1;if(w.step>=max)w.step=0;playTimer=setInterval(()=>{w.step=Math.min(max,w.step+1);if(w.step===max)stop();refreshPlayback();},650/state.speed);refreshPlayback();persist();}
-function toggleMark(k){const r=examWork();r.marks=r.marks.includes(k)?r.marks.filter(x=>x!==k):[...r.marks,k];r.checked=false;r.reveal=false;}
-$('app').addEventListener('click',event=>{
- if(loading)return;const b=event.target.closest('button[data-action]');if(!b)return;const a=b.dataset.action,v=b.dataset.value;
- if(a==='section'){stop();state.section=v;render();persist();return;}
- if(a==='next-section'){stop();state.section=SECTIONS[(SECTIONS.findIndex(s=>s[0]===state.section)+1)%SECTIONS.length][0];render();persist();$('title').scrollIntoView({block:'start',behavior:'auto'});return;}
- if(['zoom-in','zoom-out','fit'].includes(a)){zoom=a==='fit'?1:Math.max(.65,Math.min(2,zoom*(a==='zoom-in'?1.2:1/1.2)));if(['turtle','exam'].includes(state.section))refreshPlayback();else rerenderSection();return;}
- if(a==='op'){state.regions.op=v;rerenderSection();persist();return;}
- if(a==='run-exam'||a==='check-algorithm'){stop(false);const w=examWork();try{M.parsePseudo(w.draft);const sim=M.simulate(w.draft,M.PRESETS[EXAMS[state.exam.id].preset].heading);w.source=w.draft;w.step=a==='check-algorithm'?sim.frames.length-1:0;w.algoChecked=a==='check-algorithm';w.checked=false;renderExam();persist();}catch(e){$('program-error').innerHTML=fb(e.message,false);}return;}
- if(a==='apply-program'){try{M.parsePseudo(state.turtle.draft);M.simulate(state.turtle.draft,state.turtle.heading);state.turtle.source=state.turtle.draft;state.turtle.step=0;stop(false);rerenderSection();persist();}catch(e){$('program-error').innerHTML=fb(e.message,false);}return;}
- if(['back','forward','rewind','finish','cycle'].includes(a)){const w=activeWork(),sim=activeSim();let step=a==='back'?w.step-1:a==='forward'?w.step+1:a==='rewind'?0:sim.frames.length-1;if(a==='cycle'){const now=sim.frames[w.step].context.join('|');const next=sim.frames.findIndex((f,i)=>i>w.step&&f.context.join('|')!==now);step=next<0?sim.frames.length-1:next;}move(step);return;}
- if(a==='play'){if(playTimer){stop();refreshPlayback();}else play();return;}
- if(a==='speed'){const playing=!!playTimer;stop(false);state.speed=+v;if(playing)play();else refreshPlayback();persist();return;}
- if(a==='hint'){examWork().hint=Math.min(3,examWork().hint+1);renderExam();persist();return;}
- if(a==='reset'){$('reset-confirm').hidden=false;return;}if(a==='reset-no'){$('reset-confirm').hidden=true;return;}
- if(a==='reset-yes'){stop(false);const id=state.section;state[id]=INITIAL()[id];render();persist();}
-});
-$('app').addEventListener('change',event=>{
- if(loading)return;const e=event.target,k=e.dataset.key,v=e.value;if(!k)return;stop(false);zoom=1;
- if(k==='turtle-preset'){const p=M.PRESETS[v];Object.assign(state.turtle,{preset:v,source:M.pseudo(M.parse(p.source).tree),draft:M.pseudo(M.parse(p.source).tree),heading:p.heading,step:0});}
- if(k==='heading'){state.turtle.heading=+v;state.turtle.step=0;}
- if(k==='measure-preset'){state.measure.preset=v;state.measure.op='intersection';}if(k==='measure-kind'){state.measure.kind=v;if(v==='perimeter')state.measure.op='intersection';}if(k==='measure-op')state.measure.op=v;if(k.startsWith('measure-')){state.measure.checked=false;state.measure.answer='';}
- if(k==='exam-id')state.exam.id=v;rerenderSection();persist();
-});
-$('app').addEventListener('input',event=>{
- if(loading)return;const e=event.target;if(e.id==='timeline'){move(+e.value,true);return;}
- if(e.id==='program'){const work=state.section==='exam'?examWork():state.turtle;work.draft=e.value.replace(/\u0000/g,'').slice(0,5000);if(state.section==='exam'){stop(false);work.algoChecked=false;work.checked=false;const answerMetric=$('metrics').querySelector('.sb-metric:last-child strong');if(answerMetric)answerMetric.textContent='?';$('algorithm-feedback')?.replaceChildren();$('program-error')?.replaceChildren();$('explanation').hidden=true;$('activity').innerHTML='<p class="sb-caption">Код изменён. Проверьте алгоритм заново.</p>';$('explanation').innerHTML='';}$('program-colors').innerHTML=highlightCode(e.value)+'\n';$('program-colors').scrollTop=e.scrollTop;$('program-colors').scrollLeft=e.scrollLeft;persist(true);}
- if(e.id==='answer'){const w=state.section==='measure'?state.measure:examWork();w.answer=clean(e.value);w.checked=false;persist(true);}
-});
-$('app').addEventListener('submit',event=>{
- event.preventDefault();if(loading)return;const form=event.target;
- if(form.id==='answer-form'){if(state.section==='exam'&&(!examWork().algoChecked||!examModel().result.ok))return;const w=state.section==='measure'?state.measure:examWork();if(answerNumber(w.answer)===null){$('answer-error').innerHTML=fb('Введите неотрицательное число. Например, 24 или 25,456.',false);return;}w.checked=true;if(state.section==='exam'){stop(false);w.step=activeSim().frames.length-1;}rerenderSection();persist();}
-});
-$('plot').addEventListener('click',event=>{
- if(loading||!view)return;const svg=$('plot').querySelector('svg'),ctm=svg.getScreenCTM();if(!ctm)return;const p=new DOMPoint(event.clientX,event.clientY).matrixTransform(ctm.inverse());const x=(p.x-view.W/2)/view.scale+view.cx,y=(view.H/2-p.y)/view.scale+view.cy;
- if(state.section==='exam'){const w=examWork(),{e,sim,faces}=examModel();if(w.step!==sim.frames.length-1)return;if(e.kind==='faces'){const i=faces.findIndex(poly=>M.locate({x,y},poly)!=='outside');if(i>=0){toggleMark(i+',0');renderExam();persist();}}else if(e.kind==='points'){toggleMark(Math.round(x)+','+Math.round(y));renderExam();persist();}}
-});
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&playTimer){stop();refreshPlayback();}});
-render();load();
-
-$('app').addEventListener('scroll',event=>{if(event.target.id==='program'&&$('program-colors')){$('program-colors').scrollTop=event.target.scrollTop;$('program-colors').scrollLeft=event.target.scrollLeft;}},true);
-
-$('app').addEventListener('keydown',event=>{
- const el=event.target;if(el.id!=='program'||loading)return;
- if(event.key==='Escape'){el.dataset.tabExit='true';return;}
- if(event.key!=='Tab'){delete el.dataset.tabExit;return;}
- if(el.dataset.tabExit){delete el.dataset.tabExit;return;}
- event.preventDefault();
- const value=el.value,start=el.selectionStart,end=el.selectionEnd;
- if(!event.shiftKey&&start===end){if(value.length+4>el.maxLength)return;el.setRangeText('    ',start,end,'end');}
- else{
-  const first=start===0?0:value.lastIndexOf('\n',start-1)+1;
-  const lastPoint=end>start&&value[end-1]==='\n'?end-1:end;
-  const newline=value.indexOf('\n',lastPoint),last=newline<0?value.length:newline;
-  const block=value.slice(first,last),lines=block.split('\n');let changed,selStart,selEnd;
-  if(!event.shiftKey){changed=lines.map(line=>'    '+line).join('\n');if(value.length+4*lines.length>el.maxLength)return;selStart=start+4;selEnd=end+4*lines.length;}
-  else{
-   let offset=first,removedStart=0,removedEnd=0;
-   changed=lines.map(line=>{const n=Math.min(4,line.match(/^ */)[0].length);removedStart+=Math.max(0,Math.min(n,start-offset));removedEnd+=Math.max(0,Math.min(n,end-offset));offset+=line.length+1;return line.slice(n);}).join('\n');
-   selStart=start-removedStart;selEnd=end-removedEnd;
-  }
-  el.setRangeText(changed,first,last,'preserve');el.setSelectionRange(selStart,selEnd);
- }
- el.dispatchEvent(new Event('input',{bubbles:true}));
-});
-
-</script>
-</body></html>
+</body>
+</html>
